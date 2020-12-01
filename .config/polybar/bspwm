@@ -1,0 +1,394 @@
+;===============================================================================
+;
+;   Sife's
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;                                                    config
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;===============================================================================
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+;==== COLORS ===================================================================
+
+[colors]
+foreground          = ${xrdb:foreground:#fff}
+background          = ${xrdb:background:#fff}
+black               = ${xrdb:color0:#fff}
+red                 = ${xrdb:color1:#fff}
+green               = ${xrdb:color2:#fff}
+yellow              = ${xrdb:color3:#fff}
+blue                = ${xrdb:color4:#fff}
+magenta             = ${xrdb:color5:#fff}
+cyan                = ${xrdb:color6:#fff}
+white               = ${xrdb:color7:#fff}
+dark_grey           = ${xrdb:color8:#fff}
+light_red           = ${xrdb:color9:#fff}
+light_green         = ${xrdb:color10:#fff}
+light_yellow        = ${xrdb:color11:#fff}
+light_blue          = ${xrdb:color12:#fff}
+light_magenta       = ${xrdb:color13:#fff}
+light_cyan          = ${xrdb:color14:#fff}
+light_grey          = ${xrdb:color15:#fff}
+dark_red            = ${xrdb:color1_dark:#fff}
+dark_green          = ${xrdb:color2_dark:#fff}
+dark_yellow         = ${xrdb:color3_dark:#fff}
+dark_blue           = ${xrdb:color4_dark:#fff}
+dark_magenta        = ${xrdb:color5_dark:#fff}
+dark_cyan           = ${xrdb:color6_dark:#fff}
+
+;==== BARS =====================================================================
+
+;;_-_- MAIN _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
+;;--- OPTIONS ---;;
+
+[bar/main]
+monitor = ${env:MONITOR0:HDMI-1}
+bottom = false
+fixed-center = false
+width = 100%
+height = 24
+background = ${colors.background}
+foreground = ${colors.foreground}
+padding = 2
+tray-position = left
+tray-background = ${colors.background}
+line-size = 2
+
+;;--- FONTS ---;;
+
+font-0 = "Noto Sans Mono:size=12;3"
+font-1 = "Noto Color Emoji:scale=9;2"
+
+;;--- MODULES ---;;
+
+modules-left = date cpu temperature memory wlan battery
+modules-right = bspwm
+; modules-center = mpd
+
+;;_-_- SECONDARY _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+;;--- OPTIONS ---;;
+
+[bar/secondary]
+monitor = ${env:MONITOR1:HDMI-1}
+bottom = false
+fixed-center = false
+width = 100%
+height = 24
+background = ${colors.background}
+foreground = ${colors.foreground}
+padding = 0
+line-size = 2
+
+;;--- FONTS ---;;
+
+font-0 = "Noto Sans:size=12;3"
+font-1 = "Noto Color Emoji:scale=9;2"
+
+;;--- MODULES ---;;
+
+modules-left = bspwm
+
+;==== MODULE DEFINITIONS =======================================================
+
+[module/bspwm]
+type = internal/bspwm
+pin-workspaces = true
+inline-mode = false
+enable-click = false
+enable-scroll = false
+reverse-scroll = false
+fuzzy-match = true
+
+
+label-focused = %name%
+label-focused-foreground = ${colors.blue}
+label-focused-padding = 1
+label-focused-overline = ${colors.magenta}
+
+label-occupied = %name%
+label-occupied-foreground = ${colors.blue}
+label-occupied-padding = 1
+
+label-urgent = %name%
+label-urgent-background = ${colors.red}
+label-urgent-foreground = ${colors.foreground}
+label-urgent-padding = 1
+
+label-empty = %name%
+label-empty-foreground = ${colors.foreground}
+label-empty-padding = 1
+
+; label-separator = |
+
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/date]
+type = internal/date
+interval = 1
+
+date = "%a, %b %d,"
+time = %H:%M
+
+format = <label>
+format-padding = 2
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+
+label = %{T2}⏰%{T-}%date% %time%
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+
+format = <label>
+format-padding = 2
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+
+label = %{T2}💻%{T-}%percentage%%
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/temperature]
+
+type = custom/script
+exec = temperature.sh
+interval = 2
+
+format-padding = 2
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+
+label = %output%
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/memory]
+type = internal/memory
+interval = 2
+
+format = <label>
+format-padding = 2
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+
+label = %{T2}🧠%{T-}%percentage_used%%
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/wlan]
+type = internal/network
+interface = ${env:WLAN:wlan0}
+interval = 3.0
+
+format-connected = <label-connected><ramp-signal>
+format-connected-padding = 2
+format-connected-background = ${colors.background}
+format-connected-foreground = ${colors.foreground}
+
+format-disconnected = <label-disconnected>
+format-disconnected-padding = 2
+format-disconnected-background = ${colors.background}
+format-disconnected-foreground = ${colors.foreground}
+
+; label-connected = %{T2}📡%{T-}%local_ip%
+label-connected = %{T2}📡%{T-}
+label-disconnected = %ifname% down
+
+ramp-signal-foreground = ${colors.foreground}
+ramp-signal-0 = %{T2}💩%{T-}
+ramp-signal-1 = %{T2}😞%{T-}
+ramp-signal-2 = %{T2}🙄%{T-}
+ramp-signal-3 = %{T2}👌%{T-}
+ramp-signal-4 = %{T2}🥰%{T-}
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/mpd]
+type = internal/mpd
+; format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+format-online = <label-song>
+format-foreground = ${colors.foreground}
+
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+
+label-song-maxlen = 50
+label-song-ellipsis = true
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/filesystem]
+type = internal/fs
+
+mount-0 = /
+mount-1 = /home
+mount-2 = /mnt/wyatt/sda1
+
+interval = 30
+fixed-value = true
+spacing = 1
+
+format-mounted =  <label-mounted>
+format-unmounted = <label-unmounted>
+format-foreground = ${colors.foreground}
+
+label-mounted = %{T2}💽%{T-}%mountpoint%:%percentage_used%%
+label-umounted = %{T2}💽%{T-}%mountpoint%: %{T2}☹%%{T-}
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/battery]
+type = internal/battery
+
+full-at = 99
+
+battery = BAT0
+adapter = ADP1
+
+poll-interval = 5
+
+; format-foreground = ${colors.foreground}
+; format-background = ${colors.dark_cyan}
+
+format-charging = <label-charging>
+format-charging-background = ${colors.background}
+format-charging-foreground = ${colors.foreground}
+
+format-discharging = <label-discharging>
+format-discharging-background = ${colors.background}
+format-discharging-foreground = ${colors.foreground}
+
+format-full = <label-full>
+format-full-foreground = ${colors.foreground}
+format-full-background = ${colors.background}
+
+label-charging = 🔌%percentage%%
+
+label-discharging = 🔋%percentage%%
+
+label-full = ⚡%percentage%%
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/separator]
+type = custom/text
+content-foreground = ${colors.foreground}
+content-background = ${colors.background}
+content = " "
+
+[module/l0]
+type = custom/text
+content-background = ${colors.background}
+content-foreground = ${colors.dark_magenta}
+content = "%{T3}%{T-}"
+
+[module/l1]
+type = custom/text
+content-foreground = ${colors.dark_magenta}
+content-background = ${colors.dark_blue}
+content = "%{T3}%{T-}"
+
+[module/l2]
+type = custom/text
+content-foreground = ${colors.dark_blue}
+content-background = ${colors.dark_yellow}
+content = "%{T3}%{T-}"
+
+[module/l3]
+type = custom/text
+content-foreground = ${colors.dark_yellow}
+content-background = ${colors.dark_green}
+content = "%{T3}%{T-}"
+
+[module/l4]
+type = custom/text
+content-foreground = ${colors.dark_green}
+content-background = ${colors.dark_red}
+content = "%{T3}%{T-}"
+
+[module/l5]
+type = custom/text
+content-foreground = ${colors.dark_red}
+content-background = ${colors.dark_cyan}
+content = "%{T3}%{T-}"
+
+[module/l6]
+type = custom/text
+content-foreground = ${colors.dark_cyan}
+content-background = ${colors.background}
+content = "%{T3}%{T-}"
+
+[module/l10]
+type = custom/text
+content-foreground = ${colors.dark_blue}
+content-background = ${colors.background}
+content = "%{T3}%{T-}"
+
+[module/r0]
+type = custom/text
+content-foreground = ${colors.dark_blue}
+content-background = ${colors.background}
+content = "%{T3}%{T-}"
+
+[module/r1]
+type = custom/text
+content-foreground = ${colors.dark_green}
+content-background = ${colors.dark_red}
+content = "%{T3}%{T-}"
+
+[module/r2]
+type = custom/text
+content-foreground = ${colors.dark_yellow}
+content-background = ${colors.dark_green}
+content = "%{T3}%{T-}"
+
+[module/r3]
+type = custom/text
+content-foreground = ${colors.dark_blue}
+content-background = ${colors.dark_yellow}
+content = "%{T3}%{T-}"
+
+[module/r4]
+type = custom/text
+content-foreground = ${colors.dark_magenta}
+content-background = ${colors.dark_blue}
+content = "%{T3}%{T-}"
+
+[module/r5]
+type = custom/text
+content-foreground = ${colors.black}
+content-background = ${colors.dark_magenta}
+content = "%{T3}%{T-}"
+
+; https://raw.githubusercontent.com/ryanoasis/powerline-extra-symbols/master/img/fontforge.png
+; 
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+;[settings]
+;compositing-background = over
+
+; vim:ft=dosini

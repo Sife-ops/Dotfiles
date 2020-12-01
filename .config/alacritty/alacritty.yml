@@ -1,0 +1,369 @@
+window:
+  title: Alacritty
+  class:
+    instance: Alacritty
+    general: Alacritty
+
+# SauceCodePro
+font:
+  normal:
+    family: SauceCodePro Nerd Font Mono
+    style: Regular
+  bold:
+    family: SauceCodePro Nerd Font Mono
+    style: Bold
+  italic:
+    family: SauceCodePro Nerd Font Mono
+    style: Italic
+  bold_italic:
+    family: SauceCodePro Nerd Font Mono
+    style: Bold Italic
+
+# # JetBrains
+# font:
+#   normal:
+#     family: JetBrainsMono Nerd Font Mono
+#     style: Regular
+#   bold:
+#     family: JetBrainsMono Nerd Font Mono
+#     style: Bold
+#   italic:
+#     family: JetBrainsMono Nerd Font Mono
+#     style: Italic
+#   bold_italic:
+#     family: JetBrainsMono Nerd Font Mono
+#     style: Bold Italic
+#   # offset:
+#   #   x: 0
+#   #   y: -5
+#   # glyph_offset:
+#   #   x: 0
+#   #   y: -5
+
+  size: 12.0
+
+# If `true`, bold text is drawn using the bright color variants.
+draw_bold_text_with_bright_colors: false
+
+# bell:
+#   animation: Ease
+#   duration: 1
+#   color: '#ffffff'
+#   # command:
+#   #   program: notify-send
+#   #   args: ["Hello, World!"]
+
+#background_opacity: 1.0
+
+selection:
+  save_to_clipboard: false
+
+window.dynamic_title: false
+
+live_config_reload: true
+
+#working_directory: None
+
+key_bindings:
+  - { key: U,    mods: Alt,   mode: ~Alt, action: ScrollPageUp,  }
+  - { key: D,  mods: Alt,   mode: ~Alt, action: ScrollPageDown }
+  - { key: K,    mods: Alt,   mode: ~Alt, action: ScrollLineUp,  }
+  - { key: J,  mods: Alt,   mode: ~Alt, action: ScrollLineDown }
+
+# https://github.com/alacritty/alacritty/wiki/Color-schemes
+
+# # VSCode
+# colors:
+#   # Default colors
+#   primary:
+#     background: '#1e1e1e' #Background from Dark Theme
+#   # Normal colors
+#   normal:
+#     # black:   '#000000'
+#     black:   '#1e1e1e'
+#     red:     '#cd3131'
+#     green:   '#0dbc79'
+#     yellow:  '#e5e510'
+#     blue:    '#2472c8'
+#     magenta: '#bc3fbc'
+#     cyan:    '#11a8cd'
+#     white:   '#e5e5e5'
+#   # Bright colors
+#   bright:
+#     black:   '#666666'
+#     red:     '#f14c4c'
+#     green:   '#23d18b'
+#     yellow:  '#f5f543'
+#     blue:    '#3b8eea'
+#     magenta: '#d670d6'
+#     cyan:    '#29b8db'
+#     white:   '#e5e5e5'
+
+# Colors (Solarized Dark)
+colors:
+  # Default colors
+  primary:
+    background: '#002b36' # base03
+    foreground: '#839496' # base0
+  # Cursor colors
+  cursor:
+    text:   '#002b36' # base03
+    cursor: '#839496' # base0
+  # Normal colors
+  normal:
+    # black:   '#073642' # base02
+    black:   '#002b36' # base03
+    red:     '#dc322f' # red
+    green:   '#859900' # green
+    yellow:  '#b58900' # yellow
+    blue:    '#268bd2' # blue
+    magenta: '#d33682' # magenta
+    cyan:    '#2aa198' # cyan
+    white:   '#eee8d5' # base2
+  # Bright colors
+  bright:
+    black:   '#002b36' # base03
+    red:     '#cb4b16' # orange
+    green:   '#586e75' # base01
+    yellow:  '#657b83' # base00
+    blue:    '#839496' # base0
+    magenta: '#6c71c4' # violet
+    cyan:    '#93a1a1' # base1
+    white:   '#fdf6e3' # base3
+
+# # Colors (Solarized Light)
+# colors:
+#   # Default colors
+#   primary:
+#     background: '#fdf6e3' # base3
+#     foreground: '#657b83' # base00
+#   # Cursor colors
+#   cursor:
+#     text:   '#fdf6e3' # base3
+#     cursor: '#657b83' # base00
+#   # Normal colors
+#   normal:
+#     black:   '#073642' # base02
+#     red:     '#dc322f' # red
+#     green:   '#859900' # green
+#     yellow:  '#b58900' # yellow
+#     blue:    '#268bd2' # blue
+#     magenta: '#d33682' # magenta
+#     cyan:    '#2aa198' # cyan
+#     white:   '#eee8d5' # base2
+#   # Bright colors
+#   bright:
+#     black:   '#002b36' # base03
+#     red:     '#cb4b16' # orange
+#     green:   '#586e75' # base01
+#     yellow:  '#657b83' # base00
+#     blue:    '#839496' # base0
+#     magenta: '#6c71c4' # violet
+#     cyan:    '#93a1a1' # base1
+#     white:   '#fdf6e3' # base3
+
+# # Afterglow
+# colors:
+#   # Default colors
+#   primary:
+#     background: '#2c2c2c'
+#     foreground: '#d6d6d6'
+#     dim_foreground:    '#dbdbdb'
+#     bright_foreground: '#d9d9d9'
+#     dim_background:    '#202020' # not sure
+#     bright_background: '#3a3a3a' # not sure
+#   # Cursor colors
+#   cursor:
+#     text:   '#2c2c2c'
+#     cursor: '#d9d9d9'
+#   # Normal colors
+#   normal:
+#     black:   '#1c1c1c'
+#     red:     '#bc5653'
+#     green:   '#909d63'
+#     yellow:  '#ebc17a'
+#     blue:    '#7eaac7'
+#     magenta: '#aa6292'
+#     cyan:    '#86d3ce'
+#     white:   '#cacaca'
+#   # Bright colors
+#   bright:
+#     black:   '#636363'
+#     red:     '#bc5653'
+#     green:   '#909d63'
+#     yellow:  '#ebc17a'
+#     blue:    '#7eaac7'
+#     magenta: '#aa6292'
+#     cyan:    '#86d3ce'
+#     white:   '#f7f7f7'
+#   # Dim colors
+#   dim:
+#     black:   '#232323'
+#     red:     '#74423f'
+#     green:   '#5e6547'
+#     yellow:  '#8b7653'
+#     blue:    '#556b79'
+#     magenta: '#6e4962'
+#     cyan:    '#5c8482'
+#     white:   '#828282'
+
+# # Colors (Molokai Dark)
+# colors:
+#   # Default colors
+#   primary:
+#     background: '#1B1D1E'
+#     foreground: '#F8F8F2'
+#   # Normal colors
+#   normal:
+#     black:   '#333333'
+#     red:     '#C4265E'
+#     green:   '#86B42B'
+#     yellow:  '#B3B42B'
+#     blue:    '#6A7EC8'
+#     magenta: '#8C6BC8'
+#     cyan:    '#56ADBC'
+#     white:   '#E3E3DD'
+#   # Bright colors
+#   bright:
+#     black:   '#666666'
+#     red:     '#F92672'
+#     green:   '#A6E22E'
+#     yellow:  '#E2E22E'
+#     blue:    '#819AFF'
+#     magenta: '#AE81FF'
+#     cyan:    '#66D9EF'
+#     white:   '#F8F8F2'
+
+# # Colors (Tomorrow Night Bright)
+# colors:
+#   # Default colors
+#   primary:
+#     background: '#000000'
+#     foreground: '#eaeaea'
+#   # Normal colors
+#   normal:
+#     black:   '#000000'
+#     red:     '#d54e53'
+#     green:   '#b9ca4a'
+#     yellow:  '#e6c547'
+#     blue:    '#7aa6da'
+#     magenta: '#c397d8'
+#     cyan:    '#70c0ba'
+#     white:   '#424242'
+#   # Bright colors
+#   bright:
+#     black:   '#666666'
+#     red:     '#ff3334'
+#     green:   '#9ec400'
+#     yellow:  '#e7c547'
+#     blue:    '#7aa6da'
+#     magenta: '#b77ee0'
+#     cyan:    '#54ced6'
+#     white:   '#2a2a2a'
+
+# # Colors (Tomorrow Night)
+# colors:
+#   primary:
+#    background: '#1d1f21'
+#    foreground: '#c5c8c6'
+#    dim_foreground: '#828482'
+#    bright_foreground: '#eaeaea'
+#   cursor:
+#    text: CellBackground
+#    cursor: CellForeground
+#   vi_mode_cursor:
+#    text: CellBackground
+#    cursor: CellForeground
+#   selection:
+#    text: CellBackground
+#    background: CellForeground
+#   search:
+#    matches:
+#     foreground: '#000000'
+#     background: '#ffffff'
+#   bar:
+#    background: CellForeground
+#    foreground: CellBackground
+#   normal:
+#     black:   '#1d1f21'
+#     red:     '#cc6666'
+#     green:   '#b5bd68'
+#     yellow:  '#f0c674'
+#     blue:    '#81a2be'
+#     magenta: '#b294bb'
+#     cyan:    '#8abeb7'
+#     white:   '#c5c8c6'
+#   bright:
+#     black:   '#666666'
+#     red:     '#d54e53'
+#     green:   '#b9ca4a'
+#     yellow:  '#e7c547'
+#     blue:    '#7aa6da'
+#     magenta: '#c397d8'
+#     cyan:    '#70c0b1'
+#     white:   '#eaeaea'
+#   dim:
+#     black:   '#131415'
+#     red:     '#864343'
+#     green:   '#777c44'
+#     yellow:  '#9e824c'
+#     blue:    '#556a7d'
+#     magenta: '#75617b'
+#     cyan:    '#5b7d78'
+#     white:   '#828482'
+
+# # Colors (Gruvbox light)
+# colors:
+#   # Default colors
+#   primary:
+#     # hard contrast: background = '#f9f5d7'
+#     background: '#fbf1c7'
+#     # soft contrast: background = '#f2e5bc'
+#     foreground: '#3c3836'
+#   # Normal colors
+#   normal:
+#     black:   '#fbf1c7'
+#     red:     '#cc241d'
+#     green:   '#98971a'
+#     yellow:  '#d79921'
+#     blue:    '#458588'
+#     magenta: '#b16286'
+#     cyan:    '#689d6a'
+#     white:   '#7c6f64'
+#   # Bright colors
+#   bright:
+#     black:   '#928374'
+#     red:     '#9d0006'
+#     green:   '#79740e'
+#     yellow:  '#b57614'
+#     blue:    '#076678'
+#     magenta: '#8f3f71'
+#     cyan:    '#427b58'
+#     white:   '#3c3836'
+
+# # Colors (Gruvbox dark)
+# colors:
+#   primary:
+#     # background: '#282828'
+#     background: '#000000'
+#     foreground: '#ebdbb2'
+#   normal:
+#     # black:   '#282828'
+#     black:   '#000000'
+#     red:     '#cc241d'
+#     green:   '#98971a'
+#     yellow:  '#d79921'
+#     blue:    '#458588'
+#     magenta: '#b16286'
+#     cyan:    '#689d6a'
+#     white:   '#a89984'
+#   bright:
+#     # black:   '#928374'
+#     black:   '#000000'
+#     red:     '#fb4934'
+#     green:   '#b8bb26'
+#     yellow:  '#fabd2f'
+#     blue:    '#83a598'
+#     magenta: '#d3869b'
+#     cyan:    '#8ec07c'
+#     white:   '#ebdbb2'

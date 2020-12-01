@@ -1,0 +1,16 @@
+map C copyto
+map c $code "$f"
+map D &dragon-drag-and-drop $fx
+map G bottom
+map g top
+map M moveto
+map r $vidir
+map t $trash-put $fx
+map x $$f
+map <a-c> fzfcd
+map <c-n> push :mkdir<space>
+map <c-r> reload
+map . set hidden!
+
+# map O $mimeopen --ask $f
+# map R $rm -rf $fx

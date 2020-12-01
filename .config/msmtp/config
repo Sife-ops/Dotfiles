@@ -1,0 +1,21 @@
+#
+# Sife's msmtp config
+#
+
+# Set default value for all following accounts
+defaults
+auth            on
+tls             on
+tls_trust_file  /etc/ssl/certs/ca-certificates.crt
+tls_starttls    off
+logfile         ~/.config/msmtp/msmtp.log
+
+# GMX
+account         gmx
+host            mail.gmx.com
+port            465
+from            wyattgoettsch@gmx.us
+user            wyattgoettsch@gmx.us
+passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ${GNUPGHOME}/gmx.gpg"
+
+account default: gmx

@@ -1,0 +1,17 @@
+old/
+gapmenu.sh
+layoutmenu.sh
+fdsa.sh
+brightness.sh
+monmenu.sh
+bspcmenu.sh
+clock.sh
+cpu.sh
+deskmenu.sh
+extract_canvas
+induce_rules
+memory.sh
+recursenode.sh
+temperature.sh
+winmenu.sh
+wsmenu.sh

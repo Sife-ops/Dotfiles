@@ -1,0 +1,5 @@
+#!/bin/sh
+
+sudo pkill barrierc
+. ${HOME}/.zprofile
+. ${XDG_CONFIG_HOME:-${HOME}/.config}/X11/xinit/xinitrc

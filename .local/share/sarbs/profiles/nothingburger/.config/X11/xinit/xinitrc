@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# monitors
+export MONITOR0="LVDS-1"
+
+# Increase autorepeat rate
+xset r rate 300 50
+
+# Swap ESC and Caps Lock
+setxmodmap.sh
+
+# Load Xresources
+xrdb ${XDG_CONFIG_HOME:-${HOME}/.config}/X11/xinit/Xresources
+
+# Start WM
+exec bspwm

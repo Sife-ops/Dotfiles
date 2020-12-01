@@ -1,0 +1,26 @@
+#
+# Sife's sxhkdrc for xmonad
+#
+
+# XF86
+XF86AudioMute
+    pactl set-sink-mute 1 toggle
+
+XF86AudioLowerVolume
+    pactl set-sink-volume 1 -5%
+
+XF86AudioRaiseVolume
+    pactl set-sink-volume 1 +5%
+
+# Function
+
+# Number
+
+# Left hand
+alt + e
+    dmoji.sh ~/.local/share/doc/emojis.txt
+
+alt + q
+    xmonad --recompile; xmonad --restart
+
+# Right Hand

@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# Increase autorepeat rate
+xset r rate 300 50
+
+# Keyboard layout
+. ${SARBS}/bin/keymapemacs.sh
+
+# Load Xresources
+xrdb ${XDG_CONFIG_HOME:-${HOME}/.config}/X11/xinit/Xresources
+
+# Start WM
+# . ${XDG_CONFIG_HOME:-${HOME}/.config}/dwm/startup
+# while :; do
+# 	ssh-agent dwm
+# done
+
+# Start XFCE
+exec startxfce4
+
+# Start EXWM
+# ln -sf ${XDG_CONFIG_HOME:-${HOME}/.config}/sxhkd/dwm/norm \
+#    ${XDG_CONFIG_HOME:-${HOME}/.config}/sxhkd/sxhkdrc
+# sxhkd &
+# barriers &
+# exec emacs

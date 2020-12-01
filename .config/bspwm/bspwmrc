@@ -1,0 +1,21 @@
+#!/bin/sh
+
+#
+# Sife's bspwmrc
+#
+
+# To enable modules, create links from modules/ to init.d/ like this:
+#
+# $ cd ~/.config/bspwm/init.d
+# $ ln -sf ../modules/options.conf ./00-options.conf
+#
+# Modules are loaded in alpha-numerical order, so it is recommended to make use
+# of a numbering scheme as in the above example to manage dependencies. While
+# efforts are made to provide modules that are as sequence-independent as
+# possible, conditions may arise in which one module is dependent on another and
+# should be given a number higher than the prerequisite module.
+
+for file in $(find ${XDG_CONFIG_HOME:-${HOME}/.config}/bspwm/init.d/*)
+do
+    source $file
+done

@@ -1,0 +1,58 @@
+!! k310
+
+clear Lock
+clear Control
+clear Mod1
+clear Mod4
+
+!! Left Hand
+! Escape
+keycode   9 = Caps_Lock
+
+! Caps Lock
+keycode  66 = Control_L
+
+! Left Control
+keycode  37 = Escape
+
+! Left Win
+keycode 133 = Alt_L
+
+! Left Alt
+keycode  64 = Super_L
+
+!! Right Hand
+! BackSpace
+keycode  22 = bar
+
+! Backslash
+keycode  51 = Alt_R
+
+! Return
+keycode  36 = Control_R
+
+! Henkan
+! keycode 100 =
+
+! Hiragana_Katakana
+keycode 101 = Super_R
+
+! Right Alt
+keycode 108 = Return
+
+! Right Win
+! keycode 134 = Return
+
+! Right Menu
+keycode 135 = BackSpace
+
+! Right Control
+keycode 105 = backslash
+
+add Lock    = Caps_Lock
+add Control = Control_L
+add Control = Control_R
+add Mod1    = Alt_L
+add Mod1    = Alt_R
+add Mod4    = Super_L
+add Mod4    = Super_R

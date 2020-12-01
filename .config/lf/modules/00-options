@@ -1,0 +1,13 @@
+set shell sh
+set shellopts '-eu'
+set ifs "\n"
+set scrolloff 10
+set icons on
+set hidden on
+set truncatechar '-'
+set sortby ext
+set wrapscan on
+set wrapscroll on
+# set hiddenfiles '*~:.#*:#*'
+# set drawbox off
+

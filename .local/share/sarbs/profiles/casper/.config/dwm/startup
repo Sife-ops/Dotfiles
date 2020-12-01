@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# #--- STARTUP PROGRAMS ---# #
+setsid -f mpv --volume=50 --loop=no --audio-wait-open=1 \
+    $SARBS/sounds/win95/BA_START.WAV
+ln -sf ${XDG_CONFIG_HOME:-${HOME}/.config}/sxhkd/dwm/norm \
+    ${XDG_CONFIG_HOME:-${HOME}/.config}/sxhkd/sxhkdrc
+[ $(pgrep -u $(id -u) -x dwmblocks) ] || dwmblocks &
+[ $(pgrep -u $(id -u) -x sxhkd) ] || sxhkd &
+[ $(pgrep -u $(id -u) -x unclutter) ] || unclutter --timeout 1 &
+# [ $(pgrep -u $(id -u) -x dunst) ] || dunst &
+[ $(pgrep -u $(id -u) -x xscreensaver) ] || xscreensaver -nosplash &
+# [ $(pgrep -u $(id -u) -x barrierc) ] || barrierc 45savage &
+[ $(pgrep -u $(id -u) -x barriers) ] || barriers &
+[ $(pgrep -u $(id -u) -x xcompmgr) ] || xcompmgr &
+hsetroot -solid black &
+# tmux has-session -t 0 >/dev/null 2>&1 \
+#     && setsid -f st -e tmux attach-session -t 0 \
+#     || setsid -f st -e tmux -f ~/.config/tmux/tmux.conf
+
+# #--- DROPDOWN WINDOWS ---# #
+floatgrid.sh -c 1 -r 1 -x 1 -y 1 -g 100 \
+    | floatspawn.sh -a 0.75 -l 6 -p dd fpass.sh
+floatgrid.sh -c 1 -r 1 -x 1 -y 1 -g 100 \
+    | floatspawn.sh -a 0.75 -l 6 -p dd $TERMINAL
+floatgrid.sh -c 1 -r 1 -x 1 -y 1 -g 100 \
+    | floatspawn.sh -a 0.75 -l 6 -p dd -D 3 pulsemixer
+floatgrid.sh -c 1 -r 1 -x 1 -y 1 -g 100 \
+    | floatspawn.sh -a 0.75 -l 6 -p dd fmarks.sh ${HOME}/Documents/bookmarks
+# floatgrid.sh -c 1 -r 1 -x 1 -y 1 -g 100 \
+    # | floatspawn.sh -a 0.75 -l 6 -p dd newsboat

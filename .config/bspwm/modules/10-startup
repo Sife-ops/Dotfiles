@@ -1,0 +1,17 @@
+#!/bin/sh
+
+ln -sf ${XDG_CONFIG_HOME:=${HOME}/.config}/sxhkd/bspwm \
+    ${XDG_CONFIG_HOME:=${HOME}/.config}/sxhkd/sxhkdrc
+(which sxhkd && ! pgrep -x sxhkd) && sxhkd &
+
+ln -sf ${XDG_CONFIG_HOME:=${HOME}/.config}/polybar/bspwm \
+    ${XDG_CONFIG_HOME:=${HOME}/.config}/polybar/config
+
+(which polybar && ! pgrep -x polybar) && \
+    (polybar main & [ -z $MONITOR1 ] || polybar secondary &)
+
+(which unclutter && ! pgrep -x unclutter) && unclutter --timeout 1 &
+
+(which dunst && ! pgrep -x dunst) && dunst &
+
+which xsetroot && xsetroot -solid "#282828" &

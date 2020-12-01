@@ -1,0 +1,21 @@
+.config/emacs/.git
+.pki
+.Xauthority
+.xinitrc
+.cache/
+.config/Bitwarden\ CLI/
+.config/Bitwarden/
+.config/BraveSoftware/
+.config/discord/
+.config/emacs/
+.config/nvim/
+.config/pulse/
+.config/zsh/
+.local/share/gnupg/
+.local/share/history
+.local/share/lf/
+.local/share/nvim/shada/
+.local/share/nvim/undo/
+.local/share/www/
+.local/share/xorg/
+.local/src/

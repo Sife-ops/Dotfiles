@@ -1,0 +1,7 @@
+#
+# Sife's lfrc
+#
+
+source ~/.config/lf/conf.d/00-options
+source ~/.config/lf/conf.d/10-functions
+source ~/.config/lf/conf.d/20-keymap

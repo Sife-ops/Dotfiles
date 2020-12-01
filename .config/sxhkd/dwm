@@ -1,0 +1,66 @@
+#
+# Sife's sxhkdrc for dwm
+#
+
+# #--- FUNCTION ROW ---# #
+
+# previous track
+{F7,F8,F9}
+    mpc {prev,toggle,next}
+
+# mute volume
+F10
+    pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+12 dwmblocks
+
+# lower/increase volume
+{F11,F12}
+    pactl set-sink-volume @DEFAULT_SINK@ {-,+}5% && pkill -RTMIN+12 dwmblocks
+
+# #--- LEFT HAND ---# #
+
+# restart dwm
+mod4 + shift + q
+    pkill dwm
+
+# quit dwm
+mod4 + ctrl + shift + q
+	prompt.sh "Quit dwm?" "pkill Xorg"
+
+# launch browser
+mod4 + w
+    $BROWSER
+
+# launch emoji menu
+mod4 + e
+    dmenuunicode.sh ~/.local/share/larbs/emoji
+
+# dropdowns
+mod4 + r; {b,c,d,e,n,m,p,r,s,t,v}
+    floatctrl.sh -p dd -n \
+    { fmarks.sh \
+    , cordless \
+    , Discord \
+    , tremc \
+    , ncmpcpp \
+    , neomutt \
+    , gotop \
+    , newsboat \
+    , fpass.sh \
+    , term \
+    , pulsemixer \
+    } toggle
+
+# #--- RIGHT HAND ---# #
+
+# lock screen
+mod4 + shift + o
+    xscreensaver-command -lock
+
+# dmenu_run
+mod4 + p
+    dmenu_run -b
+
+# open terminal
+mod4 + shift + Return
+    $TERMINAL
+    # alacritty

@@ -1,0 +1,127 @@
+#
+# Sife's .offlineimaprc
+#
+
+[general]
+# List of accounts to be synced, separated by a comma.
+accounts = 420blaze,airmail,cock,gmx
+pythonfile = ~/.config/offlineimap/functions.py
+
+# #--- 420blaze.it ---# #
+
+[Account 420blaze]
+# Identifier for the local repository; e.g. the maildir to be synced via IMAP.
+localrepository = 420blaze-local
+# Identifier for the remote repository; i.e. the actual IMAP, usually non-local.
+remoterepository = 420blaze-remote
+
+[Repository 420blaze-local]
+# OfflineIMAP supports Maildir, GmailMaildir, and IMAP for local repositories.
+type = Maildir
+# Where should the mail be placed?
+localfolders = ~/.local/share/mail/wyattgoettsch@420blaze.it
+
+[Repository 420blaze-remote]
+# Remote repos can be IMAP or Gmail, the latter being a preconfigured IMAP.
+type = IMAP
+remotehost = mail.cock.li
+remoteuser = wyattgoettsch@420blaze.it
+remotepasseval = get_pass('420blaze.gpg')
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+# #--- sife@airmail.cc ---# #
+
+[Account airmail]
+# Identifier for the local repository; e.g. the maildir to be synced via IMAP.
+localrepository = airmail-local
+# Identifier for the remote repository; i.e. the actual IMAP, usually non-local.
+remoterepository = airmail-remote
+
+[Repository airmail-local]
+# OfflineIMAP supports Maildir, GmailMaildir, and IMAP for local repositories.
+type = Maildir
+# Where should the mail be placed?
+localfolders = ~/.local/share/mail/sife@airmail.cc
+
+[Repository airmail-remote]
+# Remote repos can be IMAP or Gmail, the latter being a preconfigured IMAP.
+type = IMAP
+remotehost = mail.cock.li
+remoteuser = sife@airmail.cc
+remotepasseval = get_pass('airmail.gpg')
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+# #--- wyatchungus@cock.li ---# #
+
+[Account cock]
+# Identifier for the local repository; e.g. the maildir to be synced via IMAP.
+localrepository = cock-local
+# Identifier for the remote repository; i.e. the actual IMAP, usually non-local.
+remoterepository = cock-remote
+
+[Repository cock-local]
+# OfflineIMAP supports Maildir, GmailMaildir, and IMAP for local repositories.
+type = Maildir
+# Where should the mail be placed?
+localfolders = ~/.local/share/mail/wyatchungus@cock.li
+
+[Repository cock-remote]
+# Remote repos can be IMAP or Gmail, the latter being a preconfigured IMAP.
+type = IMAP
+remotehost = mail.cock.li
+remoteuser = wyatchungus@cock.li
+remotepasseval = get_pass('cock.gpg')
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+# #--- wyattgoettsch@gmx.us ---# #
+
+[Account gmx]
+# Identifier for the local repository; e.g. the maildir to be synced via IMAP.
+localrepository = gmx-local
+# Identifier for the remote repository; i.e. the actual IMAP, usually non-local.
+remoterepository = gmx-remote
+
+[Repository gmx-local]
+# OfflineIMAP supports Maildir, GmailMaildir, and IMAP for local repositories.
+type = Maildir
+# Where should the mail be placed?
+localfolders = ~/.local/share/mail/wyattgoettsch@gmx.us
+
+[Repository gmx-remote]
+# Remote repos can be IMAP or Gmail, the latter being a preconfigured IMAP.
+type = IMAP
+remotehost = imap.gmx.com
+remoteuser = wyattgoettsch@gmx.us
+remotepasseval = get_pass('gmx.gpg')
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+# [mbnames]
+# enabled = yes
+# filename = ~/.config/mutt/mailboxes
+# header = "mailboxes "
+# peritem = "+/%(foldername)s"
+# sep = " "
+# footer = "\n"
+
+# #--- wyattgoettsch@yandex.com ---# #
+
+# [Account yandex]
+# # Identifier for the local repository; e.g. the maildir to be synced via IMAP.
+# localrepository = yandex-local
+# # Identifier for the remote repository; i.e. the actual IMAP, usually non-local.
+# remoterepository = yandex-remote
+
+# [Repository yandex-local]
+# # OfflineIMAP supports Maildir, GmailMaildir, and IMAP for local repositories.
+# type = Maildir
+# # Where should the mail be placed?
+# localfolders = ~/.local/share/mail/wyattgoettsch@yandex.com
+
+# [Repository yandex-remote]
+# # Remote repos can be IMAP or Gmail, the latter being a preconfigured IMAP.
+# type = IMAP
+# remotehost = mail.cock.li
+# remoteuser = wyattgoettsch@yandex.com
+# remotepasseval = get_pass('yandex.gpg')
+# sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+

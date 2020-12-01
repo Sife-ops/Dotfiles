@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# monitors
+export MONITOR0="DP-1"
+export MONITOR1="HDMI-1"
+export WLAN="wlp42s0f1u1"
+
+# keymap
+setxmodmap.sh
+
+# autorepeat rate
+xset r rate 300 50
+
+# xresources
+xrdb ${XDG_CONFIG_HOME:-${HOME}/.config}/X11/xinit/Xresources
+
+# wm
+exec bspwm
