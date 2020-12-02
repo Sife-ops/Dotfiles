@@ -24,7 +24,13 @@ fi
 
 # enable barrier for xdm
 if [ "$(cat /etc/hostname)" != "casper" ] \
-&& [ -f /etc/X11/xdm/Xsetup_0 ] \
-&& ! grep '^barrierc casper$' /etc/X11/xdm/Xsetup_0 >/dev/null 2>&1; then
+    && [ -f /etc/X11/xdm/Xsetup_0 ] \
+    && ! grep '^barrierc casper$' /etc/X11/xdm/Xsetup_0 >/dev/null 2>&1; then
     echo 'barrierc casper' >> /etc/X11/xdm/Xsetup_0
+fi
+
+# crontab
+if [ ! -e /var/spool/cron/$(id -un) ]; then
+    @reboot /usr/bin/pacman -Qqen > ~/.local/share/sarbs/profiles/$(uname -n)/.local/share/sarbs/paclist
+    @reboot /usr/bin/pacman -Qqem > ~/.local/share/sarbs/profiles/$(uname -n)/.local/share/sarbs/aurlist
 fi
