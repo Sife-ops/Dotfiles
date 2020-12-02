@@ -11,7 +11,7 @@ if which checkdeps.sh >/dev/null; then
 
 [ -z $1 ] && msg_help && exit 1
 
-chosen=$(cut -d ';' -f1 $1 | dmenu -i -l 30 | sed "s/ .*//")
+chosen=$(cut -d ';' -f1 $1 | dmenu -b -i -l 20 | sed "s/ .*//")
 
 [ -z "$chosen" ] && exit
 
