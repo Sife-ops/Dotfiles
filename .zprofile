@@ -83,4 +83,4 @@ install_profile $default_profile
 install_profile $host_profile
 
 # Switch escape and caps if tty and no passwd required:
-sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share}/larbs/ttymaps.kmap 2>/dev/null
+sudo -n loadkeys ${SARBS}/ttymaps.kmap 2>/dev/null
