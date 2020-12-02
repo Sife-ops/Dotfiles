@@ -2,18 +2,16 @@
 
 # hosts file
 if [ "$(wc -l /etc/hosts | cut -d' ' -f1)" -lt "3" ]; then
-cat > /etc/hosts << 'EOL'
-# Static table lookup for hostnames.
+echo "# Static table lookup for hostnames.
 # See hosts(5) for details.
 127.0.0.1           localhost
 ::1                 localhost
-127.0.1.1           <hostname>.geofront     <hostname>
+127.0.1.1           $(uname -n).geofront    $(uname -n)
 
-192.168.69.1        russianbot.geofront     russianbot
-192.168.69.2        casper.geofront         casper
-192.168.69.3        nothingburger.geofront  nothingburger
-192.168.69.4        45savage.geofront       45savage
-EOL
+# 192.168.69.1        russianbot.geofront     russianbot
+# 192.168.69.2        casper.geofront         casper
+# 192.168.69.3        nothingburger.geofront  nothingburger
+# 192.168.69.4        45savage.geofront       45savage" > /etc/hosts
 fi
 
 # pacman colors
