@@ -19,5 +19,3 @@ case $chosen in
         ln -sf ${maps}/${chosen} ${maps}/xmodmap 
         setxmodmap.sh ;;
 esac
-
-
