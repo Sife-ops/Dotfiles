@@ -1,8 +1,38 @@
 #!/bin/sh
 
+msg_help() { echo \
+"Usage:
+    install.sh OPTIONS
+
+Options:
+    -C          install crontab
+    -H          install the hosts file
+    -P          install pacman options
+    -X          install barriers on XDM
+    -h          print this message"
+}
+
+while getopts "CHPXh" o; do case "${o}" in
+	C) crontab="true" ;;
+	H) hosts="true" ;;
+	P) pacman="true" ;;
+	X) xdm="true" ;;
+    h) msg_help ;;
+	*) printf "Invalid option: -%s\\n" "$o" && msg_help && exit 1 ;;
+esac done
+
+# crontab
+if [ ! -z $crontab ]; then
+    if [ ! -e /var/spool/cron/$(id -un) ]; then
+        @reboot /usr/bin/pacman -Qqen > ~/.local/share/sarbs/profiles/$(uname -n)/.local/share/sarbs/paclist
+        @reboot /usr/bin/pacman -Qqem > ~/.local/share/sarbs/profiles/$(uname -n)/.local/share/sarbs/aurlist
+    fi fi
+
 # hosts file
-if [ "$(wc -l /etc/hosts | cut -d' ' -f1)" -lt "3" ]; then
-echo "# Static table lookup for hostnames.
+if [ ! -z $hosts ]; then
+    if [ "$(wc -l /etc/hosts | cut -d' ' -f1)" -lt "3" ]; then
+    echo \
+"# Static table lookup for hostnames.
 # See hosts(5) for details.
 127.0.0.1           localhost
 ::1                 localhost
@@ -12,25 +42,21 @@ echo "# Static table lookup for hostnames.
 # 192.168.69.2        casper.geofront         casper
 # 192.168.69.3        nothingburger.geofront  nothingburger
 # 192.168.69.4        45savage.geofront       45savage" > /etc/hosts
-fi
+    fi fi
 
 # pacman colors
-if ! grep '^Color$' /etc/pacman.conf >/dev/null 2>&1; then
-    sed -i '/^# Misc options$/a Color' /etc/pacman.conf
-fi
-if ! grep '^ILoveCandy$' /etc/pacman.conf >/dev/null 2>&1; then
-    sed -i '/^# Misc options$/a ILoveCandy' /etc/pacman.conf
-fi
+if [ ! -z $pacman ]; then
+    if ! grep '^Color$' /etc/pacman.conf >/dev/null 2>&1; then
+        sed -i '/^# Misc options$/a Color' /etc/pacman.conf
+    fi
+    if ! grep '^ILoveCandy$' /etc/pacman.conf >/dev/null 2>&1; then
+        sed -i '/^# Misc options$/a ILoveCandy' /etc/pacman.conf
+    fi fi
 
 # enable barrier for xdm
-if [ "$(cat /etc/hostname)" != "casper" ] \
-    && [ -f /etc/X11/xdm/Xsetup_0 ] \
-    && ! grep '^barrierc casper$' /etc/X11/xdm/Xsetup_0 >/dev/null 2>&1; then
-    echo 'barrierc casper' >> /etc/X11/xdm/Xsetup_0
-fi
-
-# crontab
-if [ ! -e /var/spool/cron/$(id -un) ]; then
-    @reboot /usr/bin/pacman -Qqen > ~/.local/share/sarbs/profiles/$(uname -n)/.local/share/sarbs/paclist
-    @reboot /usr/bin/pacman -Qqem > ~/.local/share/sarbs/profiles/$(uname -n)/.local/share/sarbs/aurlist
-fi
+if [ ! -z $xdm ]; then
+    if [ "$(cat /etc/hostname)" != "casper" ] \
+        && [ -f /etc/X11/xdm/Xsetup_0 ] \
+        && ! grep '^barrierc casper$' /etc/X11/xdm/Xsetup_0 >/dev/null 2>&1; then
+        echo 'barrierc casper' >> /etc/X11/xdm/Xsetup_0
+    fi fi
