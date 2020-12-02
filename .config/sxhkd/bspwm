@@ -70,7 +70,7 @@ mod4 + a
 
 # select emoji
 mod4 + d; e
-    unicodemenu.sh ~/.local/share/larbs/emoji
+    unicodemenu.sh ~/.local/share/sarbs/emoji
 
 # select meme emote
 mod4 + d; m
