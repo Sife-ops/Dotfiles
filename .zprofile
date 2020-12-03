@@ -9,13 +9,16 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 # Path settings
 export PATH="${PATH}:${HOME}/.local/bin"
-# export PATH="${PATH}:${XDG_DATA_HOME:-${HOME}/.local/share}/sarbs/bin"
 export PATH="${PATH}:${XDG_DATA_HOME:-${HOME}/.local/share}/npm/bin"
 
 # Default programs
 command -v nvim >/dev/null 2>&1 \
-	&& editor=nvim \
-	|| editor=vim
+	&& editor="nvim" \
+	|| editor="vim"
+systemctl --quiet --user is-active emacs.service >/dev/null \
+    && alteditor="emacsclient" \
+    || alteditor="emacs"
+export ALTEDITOR="$alteditor"
 export EDITOR="$editor"
 export VISUAL="$editor"
 export FCEDIT="$editor"
