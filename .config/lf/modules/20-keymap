@@ -1,6 +1,7 @@
 map C copyto
 map c $code "$f"
 map D &dragon-drag-and-drop $fx
+map E $$ALTEDITOR "$f"
 map G bottom
 map g top
 map M moveto
