@@ -48,23 +48,26 @@ alias \
 
 # Git
 alias \
-    gc='git commit' \
-    gcm='git commit -m' \
+    ga='git add' \
+    gap='git add -p' \
+    gau='git add -u' \
     gch='git checkout --' \
-    gd='git diff' \
-    gdh='git diff HEAD' \
+    gcm='git commit -m' \
+    gdh='git diff HEAD | less' \
     gi="git status --porcelain | grep '^??' | cut -c4- >> .gitignore" \
-    gl='git ls-tree -r master --name-only' \
-    glu='git ls-files --others --exclude-standard' \
-    glua='git ls-files --others' \
+    gl='git ls-tree -r master --name-only | less' \
+    glu='git ls-files --others --exclude-standard | less' \
+    glua='git ls-files --others | less' \
     gp='git push -u origin main' \
-    gr='git rebase -i' \
-    grl='git rev-list --pretty=oneline --abbrev-commit HEAD' \
     grh='git reset --hard' \
-    gs='git status' \
-    gt='git add' \
-    gu='git add -u' \
-    gut='git rm -r --cached'
+    grl='git rev-list --pretty=oneline --abbrev-commit HEAD | less' \
+    grm='git rm -r --cached' \
+    gs='git status' 
+
+# Emacs
+systemctl --quiet --user is-active emacs.service >/dev/null \
+    && alias e='emacsclient' \
+    || alias e='emacs'
 
 # Vim
 command -v nvim >/dev/null \
