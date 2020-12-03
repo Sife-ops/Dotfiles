@@ -1,5 +1,3 @@
-cmd echoid $echo $id
-
 cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
 
 cmd fzfcd ${{
