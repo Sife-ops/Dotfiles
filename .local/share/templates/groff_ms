@@ -1,0 +1,60 @@
+.\" Margin settings
+.nr PO 1i
+.nr LL 6i
+.nr LT 6i
+.nr HM 1i
+.nr FM 1i
+.\" Text settings
+.nr PS 12p
+.nr VS 12p
+.nr PSINCR 1p
+.nr GROWPS 0
+.\" Paragraph settings
+.nr PI 5n
+.nr PD 0.3v
+.nr QI 5n
+.nr PORPHANS 1
+.nr HORPHANS 5
+.\" Footnote settings
+.nr FL \n[LL]*5/6
+.nr FI 2n
+.nr FF 0
+.nr FPS \n[PS]-2
+.nr FVS \n[FPS]+2
+.nr FPD \n[PD]/2
+.\" Other settings
+.nr DD 0.5v
+.nr MINGW 2n
+.RP
+.P1
+.\" .DA
+.\" .ND
+.TL
+Title
+.AU
+Author
+.AI
+Organization
+.\" Abstract
+.AB
+.PP
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+.PP
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+.AE
+.\" Body
+.NH 1
+First Heading
+.PP
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+.NH 1
+Second Heading
+.PP
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+.\" Table of Contents
+.XS
+First Heading
+.XA
+Second Heading
+.XE
+.TC
