@@ -70,6 +70,12 @@ mod4 + {1-9}
 mod4 + shift + {1-9}
     bspc node -d '^{1-9}'
 
+# #--- H, J, K, L ---# #
+
+# focus the node in dir
+mod4 + {h,j,k,l}
+	bspc node -f {west,south,north,east}
+
 # #--- LEFT SIDE ---# #
 
 # launch browser
