@@ -35,3 +35,9 @@ Downloads
 .config/inkscape/
 .local/share/zathura/
 Documents
+.config/nvim_/
+.config/systemd/
+.config/vivaldi/
+.local/lib/
+.local/share/.vivaldi_reporting_data
+.local/share/ranger/

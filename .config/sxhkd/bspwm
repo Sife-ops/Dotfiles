@@ -2,39 +2,63 @@
 # Sife's  sxhkdrc for bspwm
 #
 
-# #--- H, J, K, L ---# #
-
-# focus the node in dir
-mod4 + {h,j,k,l}
-	bspc node -f {west,south,north,east}
-
 # #--- XF86 ---# #
 
-# brightness
+XF86HomePage
+    $BROWSER
+
+# XF86Search
+#
+
+# XF86Mail
+#
+
+{XF86AudioLowerVolume,XF86AudioRaiseVolume}
+    pactl set-sink-volume @DEFAULT_SINK@ {-,+}5% && pkill -RTMIN+12 dwmblocks
+
+XF86AudioMute
+    pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+12 dwmblocks
+
 {XF86MonBrightnessUp,XF86MonBrightnessDown}
     sudo brightness.sh {inc,dec} 50
 
 # #--- FUNCTION ROW ---# #
 
+# pulsemixer
+F1
+    togmap.sh -c dd_pulsemixer
+
+# fpass
+F2
+    togmap.sh -c dd_fpass
+
+# st
+F3
+    togmap.sh -c dd_st
+
+#
+# F4
+#
+
 # terminal
 F5
     $TERMINAL
 
-# urlmenu
+# close window
 F6
+    bspc node -c
+
+# youtube-dl 
+# F7
+    # qndl.sh $(xclip -selection clipboard -o)
+
+# urlmenu
+F8
     urlmenu.sh
 
-# previous track
-{F7,F8,F9}
+# music player
+mod4 + {F10,F11,F12}
     mpc {prev,toggle,next}
-
-# mute volume
-F10
-    pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+12 dwmblocks
-
-# lower/increase volume
-{F11,F12}
-    pactl set-sink-volume @DEFAULT_SINK@ {-,+}5% && pkill -RTMIN+12 dwmblocks
 
 # #--- NUMBER ROW ---# #
 
