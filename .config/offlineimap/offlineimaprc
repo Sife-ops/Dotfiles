@@ -1,13 +1,18 @@
-#
-# Sife's .offlineimaprc
-#
+#            __  __ _ _            _                                
+#      ___  / _|/ _| (_)_ __   ___(_)_ __ ___   __ _ _ __  _ __ ___ 
+#     / _ \| |_| |_| | | '_ \ / _ \ | '_ ` _ \ / _` | '_ \| '__/ __|
+#    | (_) |  _|  _| | | | | |  __/ | | | | | | (_| | |_) | | | (__ 
+#     \___/|_| |_| |_|_|_| |_|\___|_|_| |_| |_|\__,_| .__/|_|  \___|
+#                                                   |_|             
 
+###---- GENERAL ----------------------------------------------------------------
 [general]
 # List of accounts to be synced, separated by a comma.
 accounts = 420blaze,airmail,cock,gmx
 pythonfile = ~/.config/offlineimap/functions.py
+##
 
-# #--- 420blaze.it ---# #
+###--- 420blaze.it -------------------------------------------------------------
 
 [Account 420blaze]
 # Identifier for the local repository; e.g. the maildir to be synced via IMAP.
@@ -28,8 +33,9 @@ remotehost = mail.cock.li
 remoteuser = wyattgoettsch@420blaze.it
 remotepasseval = get_pass('420blaze.gpg')
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+##
 
-# #--- sife@airmail.cc ---# #
+###---- sife@airmail.cc --------------------------------------------------------
 
 [Account airmail]
 # Identifier for the local repository; e.g. the maildir to be synced via IMAP.
@@ -50,8 +56,9 @@ remotehost = mail.cock.li
 remoteuser = sife@airmail.cc
 remotepasseval = get_pass('airmail.gpg')
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+##
 
-# #--- wyatchungus@cock.li ---# #
+###---- wyatchungus@cock.li ----------------------------------------------------
 
 [Account cock]
 # Identifier for the local repository; e.g. the maildir to be synced via IMAP.
@@ -72,8 +79,9 @@ remotehost = mail.cock.li
 remoteuser = wyatchungus@cock.li
 remotepasseval = get_pass('cock.gpg')
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+##
 
-# #--- wyattgoettsch@gmx.us ---# #
+###---- wyattgoettsch@gmx.us ---------------------------------------------------
 
 [Account gmx]
 # Identifier for the local repository; e.g. the maildir to be synced via IMAP.
@@ -94,6 +102,33 @@ remotehost = imap.gmx.com
 remoteuser = wyattgoettsch@gmx.us
 remotepasseval = get_pass('gmx.gpg')
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+##
+
+###---- wyattgoettsch@yandex.com -----------------------------------------------
+
+# [Account yandex]
+# # Identifier for the local repository; e.g. the maildir to be synced via IMAP.
+# localrepository = yandex-local
+# # Identifier for the remote repository; i.e. the actual IMAP, usually non-local.
+# remoterepository = yandex-remote
+#
+# [Repository yandex-local]
+# # OfflineIMAP supports Maildir, GmailMaildir, and IMAP for local repositories.
+# type = Maildir
+# # Where should the mail be placed?
+# localfolders = ~/.local/share/mail/wyattgoettsch@yandex.com
+#
+# [Repository yandex-remote]
+# # Remote repos can be IMAP or Gmail, the latter being a preconfigured IMAP.
+# type = IMAP
+# remotehost = mail.cock.li
+# remoteuser = wyattgoettsch@yandex.com
+# remotepasseval = get_pass('yandex.gpg')
+# sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+##
+
+###--- MUTT --------------------------------------------------------------------
 
 # [mbnames]
 # enabled = yes
@@ -103,25 +138,6 @@ sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 # sep = " "
 # footer = "\n"
 
-# #--- wyattgoettsch@yandex.com ---# #
+##
 
-# [Account yandex]
-# # Identifier for the local repository; e.g. the maildir to be synced via IMAP.
-# localrepository = yandex-local
-# # Identifier for the remote repository; i.e. the actual IMAP, usually non-local.
-# remoterepository = yandex-remote
-
-# [Repository yandex-local]
-# # OfflineIMAP supports Maildir, GmailMaildir, and IMAP for local repositories.
-# type = Maildir
-# # Where should the mail be placed?
-# localfolders = ~/.local/share/mail/wyattgoettsch@yandex.com
-
-# [Repository yandex-remote]
-# # Remote repos can be IMAP or Gmail, the latter being a preconfigured IMAP.
-# type = IMAP
-# remotehost = mail.cock.li
-# remoteuser = wyattgoettsch@yandex.com
-# remotepasseval = get_pass('yandex.gpg')
-# sslcacertfile = /etc/ssl/certs/ca-certificates.crt
-
+# vim: fdm=marker fmr=###,##

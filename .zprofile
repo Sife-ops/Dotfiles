@@ -1,17 +1,22 @@
-#
-# Sife's .zprofile
-#
+#                            __ _ _      
+#       _____ __  _ __ ___  / _(_) | ___ 
+#      |_  / '_ \| '__/ _ \| |_| | |/ _ \
+#     _ / /| |_) | | | (_) |  _| | |  __/
+#    (_)___| .__/|_|  \___/|_| |_|_|\___|
+#          |_|                           
 
-# XDG settings
+###---- XDG SETTINGS -----------------------------------------------------------
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
+##"
 
-# Path settings
+###---- PATH SETTINGS ----------------------------------------------------------
 export PATH="${PATH}:${HOME}/.local/bin"
 export PATH="${PATH}:${XDG_DATA_HOME:-${HOME}/.local/share}/npm/bin"
+##"
 
-# Default programs
+###---- DEFAULT PROGRAMS -------------------------------------------------------
 command -v nvim >/dev/null 2>&1 \
 	&& editor="nvim" \
 	|| editor="vim"
@@ -26,8 +31,9 @@ export TERMINAL="st"
 export BROWSER="brave"
 export PAGER="less"
 export READER="zathura"
+##"
 
-# Man settings
+###---- MAN SETTINGS -----------------------------------------------------------
 export LESS_TERMCAP_mb=$'\e[1;32m'
 export LESS_TERMCAP_md=$'\e[1;32m'
 export LESS_TERMCAP_me=$'\e[0m'
@@ -35,8 +41,9 @@ export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
+##"
 
-# Other settings
+###---- OTHER SETTINGS ---------------------------------------------------------
 export ANDROID_SDK_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android"
 export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 export GEM_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/gem" # remove gem: --user-install from /etc/gemrc
@@ -69,9 +76,10 @@ export XMONAD_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}/xmonad"
 export XMONAD_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/xmonad"
 export XMONAD_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/xmonad"
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
-# # export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="${XDG_CONFIG_HOME:-$HOME/.config}/java"
+# export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="${XDG_CONFIG_HOME:-$HOME/.config}/java"
+##"
 
-# Apply host profile
+###---- HOST PROFILE -----------------------------------------------------------
 profiles=$SARBS/profiles
 default_profile=$profiles/default
 host=$(cat /etc/hostname)
@@ -84,6 +92,11 @@ function install_profile(){
 }
 install_profile $default_profile
 install_profile $host_profile
+##"
 
-# Switch escape and caps if tty and no passwd required:
+###---- VIRTUAL CONSOLE --------------------------------------------------------
+# nopasswd required
 sudo -n loadkeys ${SARBS}/ttymaps.kmap 2>/dev/null
+##"
+
+# vim: fdm=marker fmr=###,##"

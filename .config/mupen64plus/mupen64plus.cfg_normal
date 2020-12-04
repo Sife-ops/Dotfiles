@@ -1,7 +1,3 @@
-#
-# Sifes Mupen64Plus Configuration File
-#
-
 # This file is automatically read and written by the Mupen64Plus Core library
 
 [Audio-SDL]

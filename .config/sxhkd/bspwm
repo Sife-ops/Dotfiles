@@ -1,16 +1,20 @@
-#
-# Sife's  sxhkdrc for bspwm
-#
-
-# #--- XF86 ---# #
+#              _     _       _          
+#     _____  _| |__ | | ____| |_ __ ___ 
+#    / __\ \/ / '_ \| |/ / _` | '__/ __|
+#    \__ \>  <| | | |   < (_| | | | (__ 
+#    |___/_/\_\_| |_|_|\_\__,_|_|  \___|
+                                   
+###---- XF86 -------------------------------------------------------------------
 
 XF86HomePage
     $BROWSER
 
 # XF86Search
 #
+#
 
 # XF86Mail
+#
 #
 
 {XF86AudioLowerVolume,XF86AudioRaiseVolume}
@@ -21,8 +25,9 @@ XF86AudioMute
 
 {XF86MonBrightnessUp,XF86MonBrightnessDown}
     sudo brightness.sh {inc,dec} 50
+##
 
-# #--- FUNCTION ROW ---# #
+###---- FUNCTION ROW -----------------------------------------------------------
 
 # pulsemixer
 F1
@@ -59,8 +64,9 @@ F8
 # music player
 mod4 + {F10,F11,F12}
     mpc {prev,toggle,next}
+##
 
-# #--- NUMBER ROW ---# #
+###---- NUMBER ROW -------------------------------------------------------------
 
 # go to workspace 1-10
 mod4 + {1-9}
@@ -69,14 +75,16 @@ mod4 + {1-9}
 # move window to workspace 1-10
 mod4 + shift + {1-9}
     bspc node -d '^{1-9}'
+##
 
-# #--- H, J, K, L ---# #
+###---- H, J, K, L -------------------------------------------------------------
 
 # focus the node in dir
 mod4 + {h,j,k,l}
 	bspc node -f {west,south,north,east}
+##
 
-# #--- LEFT SIDE ---# #
+###---- LEFT SIDE --------------------------------------------------------------
 
 # launch browser
 mod4 + w
@@ -162,8 +170,9 @@ mod4 + c
 # select biggest
 mod4 + space
     bspc node -f biggest.local
+##
 
-# #--- RIGHT SIDE ---# #
+###---- RIGHT SIDE -------------------------------------------------------------
 
 # splitting ratio
 mod4 + {minus,equal}
@@ -202,4 +211,7 @@ mod4 + n
     bspc node @parent -C forward
 
 Menu
-    bspcmenu.sh
+    bspcmenu.sh 
+##
+
+# vim: ft=sh fdm=marker fmr=###,##

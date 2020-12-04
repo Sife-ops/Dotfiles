@@ -15,7 +15,6 @@ floating
 focus desktop
 focus parent
 focus window
-gaps
 insert
 kill all windows
 kill desktop
@@ -40,8 +39,7 @@ zoom" |
 dmenu -b -i -l 20 -p "bspc")
 
 case $chosen in
-    "add desktop")
-        bspc monitor -a \
+    "add desktop") bspc monitor -a \
             $(printf "💻\\n📷\\n🎥\\n💾\\n🎬\\n📀\\n🎶\\n💯\\n🔐\\n" |
             dmenu -b -i -l 20 -p "Enter text: ") ;;
     "flip horizontal") bspc node -F horizontal ;;
@@ -55,15 +53,13 @@ case $chosen in
         for desktop in $(bspc query -D -m focused -d .\!focused); do
             bspc desktop $desktop -r
         done ;;
-    "kill other windows")
-        bspc node @/ -i
+    "kill other windows") bspc node @/ -i
         bspc node -n $(bspc query -N -d focused -n .leaf.!window)
         bspc node @/1 -c ;;
     "kill desktop") bspc desktop $(deskmenu.sh -f) -r ;;
     "move desktop") bspc desktop focused -m $(monmenu.sh) ;;
     "move to desktop") bspc node -d $(deskmenu.sh) ;;
-    "rename desktop")
-        bspc desktop focused -n \
+    "rename desktop") bspc desktop focused -n \
             $(printf "💻\\n📷\\n🎥\\n💾\\n🎬\\n📀\\n🎶\\n💯\\n🔐\\n" |
             dmenu -b -i -l 20 -p "Enter text: ") ;;
     "rotate clockwise") bspc node -R 90 ;;
@@ -75,8 +71,7 @@ case $chosen in
     cycle) bspc node @parent -C forward ;;
     equalize) bspc node -E ;;
     floating) bspc node -t floating ;;
-    insert)
-        bspc node $(bspc query -N -n focused) -n \
+    insert) bspc node $(bspc query -N -n focused) -n \
             $(bspc query -N -d focused -n .leaf.!window) ;;
     layout) bsp-layout set $(layoutmenu.sh) ;;
     monocle) bspc desktop focused -l monocle ;;

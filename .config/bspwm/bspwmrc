@@ -1,8 +1,13 @@
 #!/bin/sh
 
-#
-# Sife's bspwmrc
-#
+#     _                                          
+#    | |__  ___ _ ____      ___ __ ___  _ __ ___ 
+#    | '_ \/ __| '_ \ \ /\ / / '_ ` _ \| '__/ __|
+#    | |_) \__ \ |_) \ V  V /| | | | | | | | (__ 
+#    |_.__/|___/ .__/ \_/\_/ |_| |_| |_|_|  \___|
+#              |_|                               
+
+###---- INSTRUCTIONS -----------------------------------------------------------
 
 # To enable modules, create links from modules/ to init.d/ like this:
 #
@@ -15,7 +20,13 @@
 # possible, conditions may arise in which one module is dependent on another and
 # should be given a number higher than the prerequisite module.
 
+##
+
+###
 for file in $(find ${XDG_CONFIG_HOME:-${HOME}/.config}/bspwm/init.d/*)
 do
     source $file
 done
+##
+
+# vim: ft=sh fdm=marker fmr=###,##
