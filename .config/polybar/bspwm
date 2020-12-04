@@ -76,7 +76,7 @@ font-1 = "Noto Color Emoji:scale=9;2"
 
 ;;--- MODULES ---;;
 
-modules-left = date cpu temperature memory wlan battery
+modules-left = date cpu temperature memory pulseaudio wlan battery
 modules-right = bspwm
 ; modules-center = mpd
 
@@ -135,7 +135,6 @@ label-empty-foreground = ${colors.foreground}
 label-empty-padding = 1
 
 ; label-separator = |
-
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -257,6 +256,29 @@ format-foreground = ${colors.foreground}
 
 label-mounted = %{T2}💽%{T-}%mountpoint%:%percentage_used%%
 label-umounted = %{T2}💽%{T-}%mountpoint%: %{T2}☹%%{T-}
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/pulseaudio]
+type = internal/pulseaudio
+; sink = 
+use-ui-max = true
+interval = 5
+
+format-volume = <ramp-volume><label-volume>
+format-volume-padding = 2
+format-muted = <label-muted>
+format-muted-padding = 2
+
+label-volume = %percentage%%
+label-muted = 🔇muted
+label-muted-foreground = #666
+
+ramp-volume-0 = 🔈
+ramp-volume-1 = 🔉
+ramp-volume-2 = 🔊
+
+; click-right = pavucontrol
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
