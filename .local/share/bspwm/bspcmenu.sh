@@ -23,7 +23,7 @@ kill other windows
 kill window
 layout
 monocle
-move desktop
+move to monitor
 move to desktop
 rename desktop
 rotate clockwise
@@ -57,7 +57,7 @@ case $chosen in
         bspc node -n $(bspc query -N -d focused -n .leaf.!window)
         bspc node @/1 -c ;;
     "kill desktop") bspc desktop $(deskmenu.sh -f) -r ;;
-    "move desktop") bspc desktop focused -m $(monmenu.sh) ;;
+    "move to monitor") bspc desktop focused -m $(monmenu.sh) ;;
     "move to desktop") bspc node -d $(deskmenu.sh) ;;
     "rename desktop") bspc desktop focused -n \
             $(printf "💻\\n📷\\n🎥\\n💾\\n🎬\\n📀\\n🎶\\n💯\\n🔐\\n" |
