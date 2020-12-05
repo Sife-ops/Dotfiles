@@ -73,7 +73,7 @@ case $chosen in
     floating) bspc node -t floating ;;
     insert) bspc node $(bspc query -N -n focused) -n \
             $(bspc query -N -d focused -n .leaf.!window) ;;
-    layout) bsp-layout set $(layoutmenu.sh) ;;
+    layout) bsp-layout set $(bsp-layout layouts | dmenu -b -i -l 20 -p "layout") ;;
     monocle) bspc desktop focused -l monocle ;;
     tiled) bspc desktop focused -l tiled ;;
     split) bspc node --presel-dir south -i ;;
