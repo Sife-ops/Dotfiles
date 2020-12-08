@@ -30,20 +30,16 @@ XF86AudioMute
 ###---- FUNCTION ROW -----------------------------------------------------------
 
 # pulsemixer
-F1
+F2
     togmap.sh -c dd_pulsemixer
 
 # fpass
-F2
+F3
     togmap.sh -c dd_fpass
 
 # st
-F3
+F4
     togmap.sh -c dd_st
-
-#
-# F4
-#
 
 # terminal
 F5
