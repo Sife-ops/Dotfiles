@@ -1,0 +1,61 @@
+#    _
+#   | |__  ___ _ ____      ___ __ ___
+#   | '_ \/ __| '_ \ \ /\ / / '_ ` _ \
+#   | |_) \__ \ |_) \ V  V /| | | | | |
+#   |_.__/|___/ .__/ \_/\_/ |_| |_| |_| alt
+#             |_|
+
+Escape
+    ln -sf $HOME/.config/sxhkd/bspwm_norm $HOME/.config/sxhkd/sxhkdrc && pkill -USR1 sxhkd && notify-send "bspwm normal"
+
+# focus
+{h,j,k,l}
+	bspc node -f {west,south,north,east}
+
+# move
+mod4 + {h,j,k,l}
+    bspc node -s {west,south,north,east}
+
+# ratio
+{minus,equal}
+	bspc node @parent --ratio {-,+}20
+0
+    bspc node @parent --equalize
+
+# gap
+mod4 + {minus,equal}
+    bspc config window_gap $(( $(bspc config window_gap) {-,+} 5 ))
+mod4 + 0
+    bspc config window_gap 15
+
+# float
+f
+    bspc node -t floating
+
+# receptacles
+i; {h,j,k,l}
+    bspc node --presel-dir {west,south,north,east} -i
+
+# select parent
+p
+    bspc node -f @parent
+
+# rotate
+r
+    bspc node -R 90
+
+# tile
+t
+    bspc node -t tiled
+
+# close
+x
+    bspc node -c
+
+# yank to receptacle
+y
+    bspc node focused -n $(bspc query -N -n .local.leaf.\!window)
+
+# focus biggest
+space
+    bspc node -f biggest.local
