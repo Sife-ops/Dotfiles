@@ -8,6 +8,3 @@ set truncatechar '-'
 set sortby ext
 set wrapscan on
 set wrapscroll on
-# set hiddenfiles '*~:.#*:#*'
-# set drawbox off
-
