@@ -4,45 +4,10 @@
 #    | |\  |  __/\ V  V /\__ \ |_) | (_) | (_| | |_
 #    |_| \_|\___| \_/\_/ |___/_.__/ \___/ \__,_|\__|
 
-###--- BEHAVIOR ----------------------------------------------------------------
-#show-read-feeds no
 auto-reload yes
-external-url-viewer "urlscan -dc -r 'dmenuhandler.sh {}'"
+browser fzfurl.sh
+external-url-viewer "urlscan -dc -r 'fzfurl.sh {}'"
 feed-sort-order lastupdated-desc
 notify-always no
 notify-program "notify-send"
 reload-time 10
-##
-
-###--- KEYMAP ------------------------------------------------------------------
-bind-key j down
-bind-key k up
-bind-key j next articlelist
-bind-key k prev articlelist
-bind-key J next-feed articlelist
-bind-key K prev-feed articlelist
-bind-key G end
-bind-key g home
-# bind-key d pagedown
-# bind-key u pageup
-bind-key l open
-bind-key h quit
-bind-key a toggle-article-read
-bind-key n next-unread
-bind-key N prev-unread
-# bind-key U show-urls
-
-# browser dmenuhandler.sh
-browser linkhandler.sh
-# macro , open-in-browser
-# macro t set browser "qndl" ; open-in-browser ; set browser linkhandler.sh
-# macro a set browser "tsp youtube-dl --add-metadata -xic -f bestaudio/best" ; open-in-browser ; set browser linkhandler.sh
-macro v set browser "setsid -f mpv" ; open-in-browser ; set browser linkhandler.sh
-macro w set browser "setsid -f $BROWSER" ; open-in-browser ; set browser linkhandler.sh
-macro l set browser "lynx" ; open-in-browser ; set browser linkhandler.sh
-macro p set browser "dmenuhandler.sh" ; open-in-browser ; set browser linkhandler.sh
-# macro c set browser "xsel -b <<<" ; open-in-browser ; set browser linkhandler.sh
-# macro C set browser "youtube-viewer --comments=%u" ; open-in-browser ; set browser linkhandler.sh
-##
-
-# vim: fdm=marker fmr=###,##
