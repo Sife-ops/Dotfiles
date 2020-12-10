@@ -64,7 +64,7 @@ mod4 + {h,j,k,l}
 
 # emoji menu
 mod4 + d; e
-    unicodemenu.sh ~/.local/share/sarbs/emoji
+    dmenuunicode.sh ~/.local/share/sarbs/emoji
 
 # meme menu
 mod4 + d; m
@@ -72,27 +72,27 @@ mod4 + d; m
 
 # url action menu
 mod4 + d; u
-    urlmenu.sh
+    dmenuurl.sh
 
 # window menu
 mod4 + x; b
-    xdotool windowactivate $(winmenu.sh)
+    xdotool windowactivate $(dmenuwin.sh)
 
 # desktop menu
 mod4 + x; mod4 + b
-    bspc desktop -f $(deskmenu.sh)
+    bspc desktop -f $(dmenudesk.sh)
 
 # kill window
 mod4 + x; k
-    bspc node $(winmenu.sh -f) -c
+    bspc node $(dmenuwin.sh -f) -c
 
 # fullscreen/tiled
 mod4 + x; m
 	bspc desktop --layout next
 
-# bspcmenu
+# dmenubspc.sh
 mod4 + c
-    bspcmenu.sh
+    dmenubspc.sh.sh
 #$
 
 #^---- RIGHT SIDE -------------------------------------------------------------
