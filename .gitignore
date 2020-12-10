@@ -45,3 +45,6 @@ Downloads
 .config/discordcanary/
 .local/share/cargo/
 .config/QtProject.conf
+.config/tmux_/
+.config/newsboat/.gitignore
+.local/share/bspwm/.gitignore
