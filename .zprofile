@@ -1,24 +1,24 @@
-#                            __ _ _      
-#       _____ __  _ __ ___  / _(_) | ___ 
+#                            __ _ _
+#       _____ __  _ __ ___  / _(_) | ___
 #      |_  / '_ \| '__/ _ \| |_| | |/ _ \
 #     _ / /| |_) | | | (_) |  _| | |  __/
 #    (_)___| .__/|_|  \___/|_| |_|_|\___|
-#          |_|                           
+#          |_|
 
-###---- ENVIRONMENT VARIABLES --------------------------------------------------
+#^#---- ENVIRONMENT VARIABLES --------------------------------------------------
 
-###---- XDG --------------------------------------------------------------------
+#^#---- XDG --------------------------------------------------------------------
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
-##"
+#$#
 
-###---- PATH -------------------------------------------------------------------
+#^#---- PATH -------------------------------------------------------------------
 export PATH="${PATH}:${HOME}/.local/bin"
 export PATH="${PATH}:${XDG_DATA_HOME:-${HOME}/.local/share}/npm/bin"
-##"
+#$#
 
-###---- DEFAULT PROGRAMS -------------------------------------------------------
+#^#---- DEFAULT PROGRAMS -------------------------------------------------------
 command -v nvim >/dev/null 2>&1 \
 	&& editor="nvim" \
 	|| editor="vim"
@@ -33,9 +33,9 @@ export TERMINAL="st"
 export BROWSER="brave"
 export PAGER="less"
 export READER="zathura"
-##"
+#$#
 
-###---- OTHER ------------------------------------------------------------------
+#^#---- OTHER ------------------------------------------------------------------
 export ANDROID_SDK_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android"
 export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 export GEM_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/gem" # remove gem: --user-install from /etc/gemrc
@@ -77,9 +77,9 @@ export XMONAD_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/xmonad"
 export XMONAD_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/xmonad"
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 # export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="${XDG_CONFIG_HOME:-$HOME/.config}/java"
-##" ##"
+#$# #$#
 
-###---- HOST PROFILE -----------------------------------------------------------
+#^#---- HOST PROFILE -----------------------------------------------------------
 profiles=$SARBS/profiles
 default_profile=$profiles/default
 host=$(cat /etc/hostname)
@@ -92,11 +92,11 @@ function install_profile(){
 }
 install_profile $default_profile
 install_profile $host_profile
-##"
+#$#
 
-###---- VIRTUAL CONSOLE --------------------------------------------------------
+#^#---- VIRTUAL CONSOLE --------------------------------------------------------
 # nopasswd required
 sudo -n loadkeys ${SARBS}/ttymaps.kmap 2>/dev/null
-##"
+#$#
 
-# vim: fdm=marker fmr=###,##"
+# vim: fdm=marker fmr=#^#,#$#
