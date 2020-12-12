@@ -1,13 +1,13 @@
 #!/bin/sh
 # fzf bookmark selector
 
+if which checkdeps.sh >/dev/null 2>&1; then
+    checkdeps.sh fzf || exit 1; fi
+
 msg_help() { echo \
 "Usage:
     fmarks.sh file"
 }
-
-if which checkdeps.sh >/dev/null; then
-    if ! checkdeps.sh fzf; then exit 1; fi fi
 
 [ -z $1 ] && msg_help && exit 1
 

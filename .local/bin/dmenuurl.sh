@@ -1,7 +1,8 @@
 #!/bin/sh
+# url action menu
 
-if which checkdeps.sh >/dev/null; then
-    if ! checkdeps.sh dmenu; then exit 1; fi fi
+if which checkdeps.sh >/dev/null 2>&1; then
+    checkdeps.sh dmenu || exit 1; fi
 
 msg_help() { echo \
 "Usage:

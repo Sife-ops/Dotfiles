@@ -1,13 +1,13 @@
 #!/bin/sh
 # copy emoji to clipboard
 
+if which checkdeps.sh >/dev/null 2>&1; then
+    checkdeps.sh xdotool xclip dmenu || exit 1; fi
+
 msg_help() { echo \
 "Usage:
     dmenuunicode.sh file"
 }
-
-if which checkdeps.sh >/dev/null; then
-    if ! checkdeps.sh xdotool xclip dmenu; then exit 1; fi fi
 
 [ -z $1 ] && msg_help && exit 1
 

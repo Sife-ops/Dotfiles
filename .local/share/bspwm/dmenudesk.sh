@@ -1,4 +1,8 @@
 #!/bin/sh
+# bspc desktop menu
+
+if which checkdeps.sh >/dev/null 2>&1; then
+    checkdeps.sh bspc dmenu jq bc || exit 1; fi
 
 msg_help() { echo \
 "Usage:
@@ -8,9 +12,6 @@ Options:
     -f          display focused desktop first (default: last)
     -h          print this message"
 }
-
-if which checkdeps.sh 1>/dev/null 2>&1; then
-    if ! checkdeps.sh bspc dmenu jq bc awk; then exit 1; fi fi
 
 while getopts "fh" o; do case "${o}" in
 	f) focus="true" ;;

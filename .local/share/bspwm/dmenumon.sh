@@ -1,4 +1,8 @@
 #!/bin/sh
+# bspc monitor menu
+
+if which checkdeps.sh >/dev/null 2>&1; then
+    checkdeps.sh bspc jq || exit 1; fi
 
 chosen=$(\
     bspc wm -d |

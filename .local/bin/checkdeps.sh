@@ -1,8 +1,9 @@
 #!/bin/sh
+# check dependencies
 
 msg() {
     echo -n "Dependency not installed: $@" \
-        | tee /dev/tty | gxmessage -file - 2>/dev/null
+        | tee /dev/tty | gxmessage -file - 2>/dev/null &
     exit 1
 }
 

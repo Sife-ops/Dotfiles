@@ -1,7 +1,7 @@
 #!/bin/sh
 
-if which checkdeps.sh >/dev/null; then
-    if ! checkdeps.sh xcape setxkbmap xmodmap; then exit 1; fi fi
+if which checkdeps.sh >/dev/null 2>&1; then
+    checkdeps.sh xcape sexkbmap xmodmap || exit 1; fi
 
 setxkbmap -option
 killall -e xcape 1>/dev/null 2>&1

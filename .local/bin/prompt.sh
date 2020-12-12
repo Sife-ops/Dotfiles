@@ -1,13 +1,13 @@
 #!/bin/sh
 # dmenu prompt
 
+if which checkdeps.sh >/dev/null 2>&1; then
+    checkdeps.sh dmenu || exit 1; fi
+
 msg_help() { echo \
 "Usage:
     prompt.sh prompt action"
 }
-
-if which checkdeps.sh >/dev/null; then
-    if ! checkdeps.sh dmenu; then exit 1; fi fi
 
 [ -z $1 ] && msg_help && exit 1
 

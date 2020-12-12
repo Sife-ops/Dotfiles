@@ -48,3 +48,6 @@ Downloads
 .config/tmux_/
 .config/newsboat/.gitignore
 .local/share/bspwm/.gitignore
+.config/lf/modules/.gitignore
+.local/share/graveyard/
+.local/share/newsboat/

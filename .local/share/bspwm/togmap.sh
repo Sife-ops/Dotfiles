@@ -1,5 +1,8 @@
 #!/bin/sh
 
+if which checkdeps.sh >/dev/null 2>&1; then
+    checkdeps.sh xdotool xwininfo || exit 1; fi
+
 msg_help() { echo \
 "Usage:
     togmap.sh [OPTIONS] PATTERN
@@ -13,9 +16,6 @@ Options:
     -n  perform action on window name PATTERN
     -h  print this message"
 }
-
-which checkdeps.sh >/dev/null 2>&1 && \
-    (checkdeps.sh xdotool xwininfo || exit 1)
 
 while getopts "clnh" o; do case "${o}" in
     c) opt="--class" ;;

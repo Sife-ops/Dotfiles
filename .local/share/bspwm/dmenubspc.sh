@@ -1,7 +1,8 @@
 #!/bin/bash
+# bspc actions menu
 
-if which checkdeps.sh >/dev/null; then
-    if ! checkdeps.sh bspc dmenu; then exit 1; fi fi
+if which checkdeps.sh >/dev/null 2>&1; then
+    checkdeps.sh bspc dmenu || exit 1; fi
 
 chosen=$(echo -e \
 "add desktop

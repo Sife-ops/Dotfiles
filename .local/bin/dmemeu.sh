@@ -1,13 +1,13 @@
 #!/bin/sh
 # select a meme emote
 
+if which checkdeps.sh >/dev/null 2>&1; then
+    checkdeps.sh dragon-drag-and-drop dmenu || exit 1; fi
+
 msg_help() { echo \
 "Usage:
     dmemeyou.sh DIR"
 }
-
-if which checkdeps.sh >/dev/null; then
-    if ! checkdeps.sh dragon-drag-and-drop dmenu; then exit 1; fi fi
 
 [ -z $1 ] && msg_help && exit 1
 

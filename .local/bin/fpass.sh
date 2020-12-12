@@ -1,8 +1,8 @@
 #!/bin/bash
 # fzf wrapper for bitwarden-cli
 
-if which checkdeps.sh >/dev/null; then
-    if ! checkdeps.sh bw fzf jq xclip; then exit 1; fi fi
+if which checkdeps.sh >/dev/null 2>&1; then
+    checkdeps.sh bw fzf jq xclip || exit 1; fi
 
 sessionkey=$(bw unlock \
     | grep 'export' \

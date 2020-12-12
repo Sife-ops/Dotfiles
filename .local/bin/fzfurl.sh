@@ -1,7 +1,8 @@
 #!/bin/sh
+# url action menu
 
-if which checkdeps.sh >/dev/null; then
-    if ! checkdeps.sh fzf; then exit 1; fi fi
+if which checkdeps.sh >/dev/null 2>&1; then
+    checkdeps.sh fzf || exit 1; fi
 
 alias fzfcmd='fzf --no-sort --layout=reverse-list'
 which tsp 1>/dev/null 2>&1 && alias bgcmd='tsp' || alias bgcmd='setsid -f'
