@@ -15,8 +15,11 @@ ln -sf ${XDG_CONFIG_HOME:=${HOME}/.config}/polybar/bspwm \
 
 which xsetroot && xsetroot -solid "#282828" &
 
-xdotool search --class dash || \
-    (st -c dash &
-    st -c dash -e fpass.sh &
-    st -c dash -e pulsemixer &)
-
+xdotool search --class dd || \
+    (st -c dd -n ddpass -e fpass.sh &
+    st -c dd -n ddterm &
+    st -c dd -n ddvol -e pulsemixer &)
+sleep 3
+togmap.sh -l ddpass
+togmap.sh -l ddterm
+togmap.sh -l ddvol

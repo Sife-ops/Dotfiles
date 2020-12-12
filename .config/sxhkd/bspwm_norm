@@ -15,14 +15,11 @@ XF86HomePage
 
 # XF86Search
 #
-#
 
 # XF86Mail
 #
-#
 
 # XF86Sleep
-#
 #
 
 XF86Audio{Next,Prev}
@@ -40,6 +37,14 @@ XF86AudioMute
 
 #^---- FUNCTION ROW ------------------------------------------------------------
 
+F2
+    togmap.sh -l ddvol
+
+F3
+    togmap.sh -l ddpass
+
+F4
+    togmap.sh -l ddterm
 #$
 
 #^---- NUMBER ROW --------------------------------------------------------------
