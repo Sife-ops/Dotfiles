@@ -44,5 +44,7 @@ audio (p)laylist" | fzfcmd --expect=a,b,o,p | sed '2d')
             b) bgcmd youtube-dl -f bestvideo+bestaudio -o ~/Downloads/%\(title\)s.%\(ext\)s $url ;;
             o) bgcmd youtube-dl -x --audio-format mp3 -o ~/Downloads/%\(title\)s.%\(ext\)s "$url" ;;
             p) bgcmd youtube-dl -i --extract-audio --audio-format mp3 -o ~/Downloads/%\(title\)s.%\(ext\)s "$url" ;;
+            *) exit ;;
         esac ;;
+    *) exit ;;
 esac
