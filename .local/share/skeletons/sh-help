@@ -1,5 +1,5 @@
-function msg_help() { echo "Usage:
-
+function msg_help() { echo \
+"Usage:
     <++> [<++>] <++>
 Options:
     -<++>    <++>
@@ -7,5 +7,4 @@ Options:
     -<++>    <++>
     -<++>    <++>
     -h		print this message"
-    exit 1
 }
