@@ -45,6 +45,15 @@ F3
 
 F4
     togmap.sh -l ddterm
+
+F5
+    dmenuurl.sh
+
+F6
+    tsp youtube-dl -o ~/Downloads/%\(title\)s.%\(ext\)s $(xclip -selection clipboard -o)
+
+F7
+    togmap.sh -l ddfeeds
 #$
 
 #^---- NUMBER ROW --------------------------------------------------------------
