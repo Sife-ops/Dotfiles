@@ -9,9 +9,8 @@ ln -sf ${XDG_CONFIG_HOME:=${HOME}/.config}/polybar/bspwm \
 (which polybar && ! pgrep -x polybar) && \
     (polybar main & [ -z $MONITOR1 ] || polybar secondary &)
 
-(which unclutter && ! pgrep -x unclutter) && unclutter --timeout 1 &
-
-(which dunst && ! pgrep -x dunst) && dunst &
+(which unclutter && ! pgrep -x unclutter) && \
+    unclutter --timeout 1 &
 
 which xsetroot && xsetroot -solid "#282828" &
 
