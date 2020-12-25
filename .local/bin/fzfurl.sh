@@ -27,7 +27,7 @@ c(u)rl
 (y)outube-dl" | fzfcmd --expect=a,b,c,u,m,s,y | sed '2d')
 
 case $chosen in
-    a) echo $url >> ${HOME}/newsboat/urls ;;
+    a) echo $url >> ${HOME}/.config/newsboat/urls ;;
     b) setsid -f $BROWSER $url ;;
     c) echo "$url" | xclip -selection clipboard ;;
     u) bgcmd curl -LO --output-dir ~/Downloads $url ;;
