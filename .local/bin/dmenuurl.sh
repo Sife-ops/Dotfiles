@@ -27,7 +27,7 @@ sxiv
 youtube-dl" | dmenucmd -p "action")
 
 case $chosen in
-    "add feed") echo $url >> ${HOME}/newsboat/urls ;;
+    "add feed") echo $url >> ${HOME}/.config/newsboat/urls ;;
 	browser) setsid -f "$BROWSER" "$url" >/dev/null 2>&1 ;;
     "copy to clipboard") echo "$url" | xclip -selection clipboard ;;
     curl) bgcmd curl -LO --output-dir ~/Downloads $url ;;
