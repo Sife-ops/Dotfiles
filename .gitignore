@@ -51,3 +51,10 @@ Downloads
 .config/lf/modules/.gitignore
 .local/share/graveyard/
 .local/share/newsboat/
+.config/GIMP/
+.config/gtk-2.0/
+.config/leafpad/
+.config/pavucontrol.ini
+.local/share/go/
+.local/share/notifications
+.mozilla/
