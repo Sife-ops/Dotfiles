@@ -1,7 +1,9 @@
 #!/bin/sh
 # print last notification
 
-tail -n1 $NOTIFICATIONS |
+notif=$(tail -n1 $NOTIFICATIONS |
     jq -r '.app_name, .summary, .body' 2>/dev/null |
     sed "1,2s/$/ \|/" |
-    paste -s -d' '
+    paste -s -d' ')
+icon="💬"
+printf "%s%s\\n" "$icon" "$notif"
