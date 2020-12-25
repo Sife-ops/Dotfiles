@@ -165,9 +165,35 @@ format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 
 label = %{T2}💻%{T-}%percentage%%
-;;
+;$
 
-; ;_-_- TEMP _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;^_-_- NOTIFICATIONS _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+[module/notifications]
+type = custom/script
+exec = notify.sh
+interval = 1
+
+format-padding = 2
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+
+label = %output%
+;$
+
+;^_-_- PACMAN _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[module/pacman]
+type = custom/script
+exec = pacman.sh
+interval = 300
+
+format-padding = 2
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+
+label = %output%
+;$
+
+;^_-_- TEMP _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 [module/temperature]
 
