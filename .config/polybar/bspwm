@@ -18,11 +18,11 @@
 ;
 ;===============================================================================
 
-; ;==== COLORS =================================================================
+;^==== COLORS ==================================================================
 
 [colors]
-foreground          = ${xrdb:foreground:#fff}
-background          = ${xrdb:background:#fff}
+foreground          = ${xrdb:color15:#fff}
+background          = ${xrdb:color0:#fff}
 black               = ${xrdb:color0:#fff}
 red                 = ${xrdb:color1:#fff}
 green               = ${xrdb:color2:#fff}
@@ -39,19 +39,13 @@ light_blue          = ${xrdb:color12:#fff}
 light_magenta       = ${xrdb:color13:#fff}
 light_cyan          = ${xrdb:color14:#fff}
 light_grey          = ${xrdb:color15:#fff}
-dark_red            = ${xrdb:color1_dark:#fff}
-dark_green          = ${xrdb:color2_dark:#fff}
-dark_yellow         = ${xrdb:color3_dark:#fff}
-dark_blue           = ${xrdb:color4_dark:#fff}
-dark_magenta        = ${xrdb:color5_dark:#fff}
-dark_cyan           = ${xrdb:color6_dark:#fff}
-;;
+;$
 
-; ;==== BARS ===================================================================
+;^==== BARS ====================================================================
 
-; ;_-_- MAIN _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;^_-_- MAIN _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
-; ;--- OPTIONS ---;  ;
+;^--- OPTIONS ---
 
 [bar/main]
 monitor = ${env:MONITOR0:HDMI-1}
@@ -65,24 +59,24 @@ padding = 2
 tray-position = left
 tray-background = ${colors.background}
 line-size = 2
-;;
+;$
 
-; ;--- FONTS ---;  ;
+;^--- FONTS ---
 
 font-0 = "Noto Sans Mono:size=12;3"
 font-1 = "Noto Color Emoji:scale=9;2"
-;;
+;$
 
-; ;--- MODULES ---;  ;
+;^--- MODULES ---
 
-modules-left = date cpu temperature memory pulseaudio wlan battery
+modules-left = date cpu temperature memory pulseaudio wlan pacman battery
 modules-right = bspwm
-; modules-center = mpd
-;; ;;
+modules-center = notifications
+;$ ;$
 
-; ;_-_- SECONDARY _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+;^_-_- SECONDARY _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
-; ;--- OPTIONS ---;  ;
+;^--- OPTIONS ---
 
 [bar/secondary]
 monitor = ${env:MONITOR1:HDMI-1}
@@ -94,22 +88,22 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 padding = 0
 line-size = 2
-;;
+;$
 
-; ;--- FONTS ---;  ;
+;^--- FONTS ---
 
 font-0 = "Noto Sans:size=12;3"
 font-1 = "Noto Color Emoji:scale=9;2"
-;;
+;$
 
-; ;--- MODULES ---;  ;
+;^--- MODULES ---
 
 modules-left = bspwm
-;; ;; ;;
+;$ ;$ ;$
 
-; ;==== MODULES ================================================================
+;^==== MODULES =================================================================
 
-; ;_-_- BSPWM _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+;^_-_- BSPWM _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 [module/bspwm]
 type = internal/bspwm
@@ -140,9 +134,9 @@ label-empty-foreground = ${colors.foreground}
 label-empty-padding = 1
 
 ; label-separator = |
-;;
+;$
 
-; ;_-_- DATE _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;^_-_- DATE _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 [module/date]
 type = internal/date
@@ -157,9 +151,9 @@ format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 
 label = %{T2}⏰%{T-}%date% %time%
-;;
+;$
 
-; ;_-_- CPU _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+;^_-_- CPU _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 [module/cpu]
 type = internal/cpu
@@ -186,9 +180,9 @@ format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 
 label = %output%
-;;
+;$
 
-; ;_-_- MEMORY _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;^_-_- MEMORY _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 [module/memory]
 type = internal/memory
@@ -200,9 +194,9 @@ format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 
 label = %{T2}🧠%{T-}%percentage_used%%
-;;
+;$
 
-; ;_-_- WLAN _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;^_-_- WLAN _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 [module/wlan]
 type = internal/network
@@ -230,9 +224,9 @@ ramp-signal-1 = %{T2}😞%{T-}
 ramp-signal-2 = %{T2}🙄%{T-}
 ramp-signal-3 = %{T2}👌%{T-}
 ramp-signal-4 = %{T2}🥰%{T-}
-;;
+;$
 
-; ;_-_- MPD _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+;^_-_- MPD _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 [module/mpd]
 type = internal/mpd
@@ -248,9 +242,9 @@ icon-next = 
 
 label-song-maxlen = 50
 label-song-ellipsis = true
-;;
+;$
 
-; ;_-_- FS _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;^_-_- FS _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 [module/filesystem]
 type = internal/fs
@@ -269,13 +263,13 @@ format-foreground = ${colors.foreground}
 
 label-mounted = %{T2}💽%{T-}%mountpoint%:%percentage_used%%
 label-umounted = %{T2}💽%{T-}%mountpoint%: %{T2}☹%%{T-}
-;;
+;$
 
-; ;_-_- PULSE _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+;^_-_- PULSE _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 [module/pulseaudio]
 type = internal/pulseaudio
-; sink = 
+; sink =
 use-ui-max = true
 interval = 5
 
@@ -293,9 +287,9 @@ ramp-volume-1 = 🔉
 ramp-volume-2 = 🔊
 
 ; click-right = pavucontrol
-;;
+;$
 
-; ;_-_- BATTERY _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+;^_-_- BATTERY _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 [module/battery]
 type = internal/battery
@@ -327,9 +321,9 @@ label-charging = 🔌%percentage%%
 label-discharging = 🔋%percentage%%
 
 label-full = ⚡%percentage%%
-;;
+;$
 
-; ;_-_- SEPARATORS _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;^_-_- SEPARATORS _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 [module/separator]
 type = custom/text
@@ -423,9 +417,9 @@ content = "%{T3}%{T-}"
 
 ; https://raw.githubusercontent.com/ryanoasis/powerline-extra-symbols/master/img/fontforge.png
 ; 
-;; ;;
+;$ ;$
 
-; ;==== MISC ===================================================================
+;^==== MISC ====================================================================
 
 [global/wm]
 margin-top = 0
@@ -433,6 +427,6 @@ margin-bottom = 0
 
 ;[settings]
 ;compositing-background = over
-;;
+;$
 
-# vim: ft=dosini fdm=marker fmr=;\ ;,;;
+# vim: ft=dosini fdm=marker fmr=;^,;$
