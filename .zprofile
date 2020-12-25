@@ -81,24 +81,4 @@ export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 # export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="${XDG_CONFIG_HOME:-$HOME/.config}/java"
 #$# #$#
 
-#^#---- HOST PROFILE -----------------------------------------------------------
-profiles=$SARBS/profiles
-default_profile=$profiles/default
-host=$(cat /etc/hostname)
-host_profile=$profiles/$host
-function install_profile(){
-    for file in $(find $1 -type f)
-    do
-        ln -sf "$file" "${HOME}/${file##${1}/}"
-    done
-}
-install_profile $default_profile
-install_profile $host_profile
-#$#
-
-#^#---- VIRTUAL CONSOLE --------------------------------------------------------
-# nopasswd required
-sudo -n loadkeys ${SARBS}/ttymaps.kmap 2>/dev/null
-#$#
-
 # vim: fdm=marker fmr=#^#,#$#
