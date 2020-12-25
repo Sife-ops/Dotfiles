@@ -1,0 +1,20 @@
+#          _
+#   __   _(_)_ __ ___
+#   \ \ / / | '_ ` _ \
+#    \ V /| | | | | | |
+#     \_/ |_|_| |_| |_| visual
+
+@Escape
+    xdotool key Home && ln -sf $HOME/.config/sxhkd/vim_norm $HOME/.config/sxhkd/sxhkdrc && pkill -USR1 sxhkd && notify-send "sxhkd" "vim normal mode"
+
+@j
+    xdotool key Shift_L+Down Shift_L+End
+
+@k
+    xdotool key Shift_L+Up Shift_L+Home
+
+@d
+    xdotool key Control_R+x Delete && ln -sf $HOME/.config/sxhkd/vim_norm $HOME/.config/sxhkd/sxhkdrc && pkill -USR1 sxhkd && notify-send "sxhkd" "vim normal mode"
+
+@y
+    xdotool key Control_R+c && ln -sf $HOME/.config/sxhkd/vim_norm $HOME/.config/sxhkd/sxhkdrc && pkill -USR1 sxhkd && notify-send "sxhkd" "vim normal mode"

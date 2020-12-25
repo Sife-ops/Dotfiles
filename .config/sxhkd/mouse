@@ -1,0 +1,49 @@
+#    _ __ ___   ___  _   _ ___  ___
+#   | '_ ` _ \ / _ \| | | / __|/ _ \
+#   | | | | | | (_) | |_| \__ \  __/
+#   |_| |_| |_|\___/ \__,_|___/\___|
+
+mod4 + space
+    ln -sf $HOME/.config/sxhkd/wm_norm $HOME/.config/sxhkd/sxhkdrc \
+        && pkill -USR1 sxhkd && notify-send "sxhkd" "wm normal mode"
+
+{h,j,k,l}
+    xdotool mousemove_relative -- {-50 0,0 50,0 -50,50 0}
+
+{H,J,K,L}
+    xdotool mousemove_relative -- {-500 0,0 500,0 -500,500 0}
+
+period: {h,j,k,l}
+    xdotool mousemove_relative -- {-500 0,0 500,0 -500,500 0}
+
+mod1 + {h,j,k,l}
+    xdotool mousemove_relative -- {-10 0,0 10,0 -10,10 0}
+
+comma: {h,j,k,l}
+    xdotool mousemove_relative -- {-10 0,0 10,0 -10,10 0}
+
+bracket{left,right}
+	bspc desktop -f {prev,next}.local
+
+n
+    xdotool click 1
+
+8
+    xdotool click 2
+
+m
+    xdotool click 3
+
+i
+    xdotool click 4
+
+u
+    xdotool click 5
+
+# y
+    # xdotool mousedown 1
+
+# space; y
+    # xdotool mouseup 1
+
+# vim: ft=sh

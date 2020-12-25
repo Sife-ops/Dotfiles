@@ -2,7 +2,7 @@
 #   | |__  ___ _ ____      ___ __ ___
 #   | '_ \/ __| '_ \ \ /\ / / '_ ` _ \
 #   | |_) \__ \ |_) \ V  V /| | | | | |
-#   |_.__/|___/ .__/ \_/\_/ |_| |_| |_|
+#   |_.__/|___/ .__/ \_/\_/ |_| |_| |_| normal
 #             |_|
 
 #^---- XF86 --------------------------------------------------------------------
@@ -33,6 +33,7 @@ XF86Audio{Pause,Play}
 
 XF86AudioMute
     pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+12 dwmblocks
+
 #$
 
 #^---- FUNCTION ROW ------------------------------------------------------------
@@ -54,6 +55,10 @@ F6
 
 F7
     togmap.sh -l ddfeeds
+
+F12
+    dmenuxmodmap.sh
+
 #$
 
 #^---- NUMBER ROW --------------------------------------------------------------
@@ -65,6 +70,7 @@ mod4 + {1-9}
 # move window to workspace 1-10
 mod4 + shift + {1-9}
     bspc node -d '^{1-9}'
+
 #$
 
 #^---- H, J, K, L --------------------------------------------------------------
@@ -72,6 +78,7 @@ mod4 + shift + {1-9}
 # focus the node in dir
 mod4 + {h,j,k,l}
 	bspc node -f {west,south,north,east}
+
 #$
 
 #^---- LEFT SIDE ---------------------------------------------------------------
@@ -104,12 +111,20 @@ mod4 + x; k
 mod4 + x; m
 	bspc desktop --layout next
 
+# yank to desktop
+mod4 + x; y
+    bspc node -d $(dmenudesk.sh)
+
 # dmenubspc.sh
 mod4 + c
     dmenubspc.sh
+
+mod4 + shift + space
+    xdotool click 1
+
 #$
 
-#^---- RIGHT SIDE -------------------------------------------------------------
+#^---- RIGHT SIDE --------------------------------------------------------------
 
 # dmenu_run
 mod4 + p
@@ -124,19 +139,32 @@ mod4 + Return
 	bspc node -s biggest.local
 
 # terminal
-mod4 + shift + Return
+mod4 + shift + BackSpace
     $TERMINAL
 
 # cycle nodes
 mod4 + n
     bspc node @parent -C forward
+
 #$
 
 #^---- MODES -------------------------------------------------------------------
 
-# alt mode
+# bspwm alternate
+mod4 + BackSpace
+    ln -sf $HOME/.config/sxhkd/bspwm_alt $HOME/.config/sxhkd/sxhkdrc \
+        && pkill -USR1 sxhkd && notify-send "sxhkd" "bspwm alternate mode"
+
+# mouse
 mod4 + space
-    ln -sf $HOME/.config/sxhkd/bspwm_alt $HOME/.config/sxhkd/sxhkdrc && pkill -USR1 sxhkd && notify-send "bspwm alternate"
+    ln -sf $HOME/.config/sxhkd/mouse $HOME/.config/sxhkd/sxhkdrc \
+        && pkill -USR1 sxhkd && notify-send "sxhkd" "mouse mode"
+
+# vim
+mod4 + Escape
+    ln -sf $HOME/.config/sxhkd/vim_norm $HOME/.config/sxhkd/sxhkdrc \
+        && pkill -USR1 sxhkd && notify-send "sxhkd" "vim normal mode"
+
 #$
 
 # vim: ft=sh fdm=marker fmr=#^,#$
