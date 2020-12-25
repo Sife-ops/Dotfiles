@@ -1,7 +1,7 @@
 #!/bin/sh
 # print number of upgradable packages
 
-pkgs=$(pacman -Qu | grep -Fcv "[ignored]" | wc -l)
+pkgs=$(pacman -Qu | grep -Fcv "[ignored]")
 icon="📦"
 [ "$pkgs" == "0" ] \
     && printf " " \
