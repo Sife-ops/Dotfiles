@@ -38,6 +38,7 @@ export READER="zathura"
 #^#---- OTHER ------------------------------------------------------------------
 export ANDROID_SDK_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android"
 export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
+export CLIPBOARD="${XDG_DATA_HOME:-${HOME}/.local/share}/clipboard"
 export GEM_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/gem" # remove gem: --user-install from /etc/gemrc
 export GEM_SPEC_CACHE="${XDG_CACHE_HOME:-${HOME}/.cache}/gem"
 export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
