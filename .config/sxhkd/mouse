@@ -4,7 +4,8 @@
 #   |_| |_| |_|\___/ \__,_|___/\___|
 
 mod4 + space
-    ln -sf $HOME/.config/sxhkd/wm_norm $HOME/.config/sxhkd/sxhkdrc \
+    xdotool mouseup 1 \
+        && ln -sf $HOME/.config/sxhkd/wm_norm $HOME/.config/sxhkd/sxhkdrc \
         && pkill -USR1 sxhkd && notify-send "sxhkd" "wm normal mode"
 
 {h,j,k,l}
@@ -40,10 +41,20 @@ i
 u
     xdotool click 5
 
-# y
-    # xdotool mousedown 1
+v
+    xdotool click --repeat 2 1 && xdotool mousedown 1
 
-# space; y
-    # xdotool mouseup 1
+y
+    xclip -o -selection primary | xclip -i -selection clipboard \
+        && xdotool mouseup 1
+
+q; {1,2,3,4,5,6,7,8,9,0}
+    xdotool getmouselocation | \
+        cut -d' ' -f1,2 | \
+        tr -d 'xy:' > /tmp/mm{1,2,3,4,5,6,7,8,9,0}-$(id -un)
+
+at; {1,2,3,4,5,6,7,8,9,0}
+    xdotool mousemove $(cat /tmp/mm{1,2,3,4,5,6,7,8,9,0}-$(id -un)) \
+        && xdotool click --clearmodifiers 1
 
 # vim: ft=sh

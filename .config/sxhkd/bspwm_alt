@@ -5,7 +5,7 @@
 #   |_.__/|___/ .__/ \_/\_/ |_| |_| |_| alternate
 #             |_|
 
-mod4 + BackSpace
+mod4 + space
     ln -sf $HOME/.config/sxhkd/bspwm_norm $HOME/.config/sxhkd/sxhkdrc \
     && pkill -USR1 sxhkd && notify-send "sxhkd" "bspwm normal mode"
 
