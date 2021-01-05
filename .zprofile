@@ -82,8 +82,13 @@ export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 # export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="${XDG_CONFIG_HOME:-$HOME/.config}/java"
 #$# #$#
 
+#^#---- CLIPBOARD --------------------------------------------------------------
+touch $CLIPBOARD
+chmod 600 $CLIPBOARD
+#$#
+
 #^#---- VCONSOLE ---------------------------------------------------------------
-sudo -n loadkeys ${SARBS}/ttymaps.kmap 2>/dev/null
+# sudo -n loadkeys ${SARBS}/ttymaps.kmap 2>/dev/null
 #$#
 
 #^#---- HOST PROFILE -----------------------------------------------------------
