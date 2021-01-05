@@ -57,7 +57,7 @@ keycode 127 = backslash
 !^ MODE SHIFT ------------------------------------------------------------------
 
 ! Numpad
-keycode  57 = n N NoSymbol 1
+keycode  57 = n N Down 1
 keycode  58 = m M Return 2
 keycode  59 = comma less NoSymbol 3
 keycode  43 = h H Left NoSymbol
@@ -67,6 +67,7 @@ keycode  46 = l L Right 6
 keycode  30 = u U NoSymbol 7
 keycode  31 = i I NoSymbol 8
 keycode  32 = o O NoSymbol 9
+keycode  33 = p P Up NoSymbol
 keycode  65 = space NoSymbol NoSymbol 0
 keycode  60 = period greater period period
 
