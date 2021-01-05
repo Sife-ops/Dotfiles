@@ -184,7 +184,7 @@ label = %output%
 [module/pacman]
 type = custom/script
 exec = pacman.sh
-interval = 300
+interval = 30
 
 format-padding = 2
 format-background = ${colors.background}
