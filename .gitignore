@@ -64,3 +64,9 @@
 .xinitrc
 Documents
 Downloads
+.config/abiword/
+.config/libreoffice/
+.local/share/plover/
+.local/share/sarbs/aurlist
+.local/share/sarbs/paclist
+.plover-lock-casper-0
