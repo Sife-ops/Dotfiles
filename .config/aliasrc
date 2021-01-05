@@ -1,7 +1,7 @@
-#            _ _                    
-#       __ _| (_) __ _ ___ _ __ ___ 
+#            _ _
+#       __ _| (_) __ _ ___ _ __ ___
 #      / _` | | |/ _` / __| '__/ __|
-#     | (_| | | | (_| \__ \ | | (__ 
+#     | (_| | | | (_| \__ \ | | (__
 #    (_)__,_|_|_|\__,_|___/_|  \___|
 
 ###---- COMMAND OPTIONS --------------------------------------------------------
@@ -60,7 +60,7 @@ alias \
     gap='git add -p' \
     gau='git add -u' \
     gb='git branch' \
-    gch='git checkout --' \
+    gch='git checkout' \
     gcm='git commit -m' \
     gdh='git diff HEAD | less' \
     gi="git status --porcelain | grep '^??' | cut -c4- >> .gitignore" \
@@ -71,7 +71,7 @@ alias \
     grh='git reset --hard' \
     grl='git rev-list --pretty=oneline --abbrev-commit HEAD | less' \
     grm='git rm -r --cached' \
-    gs='git status' 
+    gs='git status'
 
 ##
 
