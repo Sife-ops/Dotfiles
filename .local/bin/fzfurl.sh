@@ -29,7 +29,7 @@ c(u)rl
 case $chosen in
     a) echo $url >> ${HOME}/.config/newsboat/urls ;;
     b) setsid -f $BROWSER $url ;;
-    c) echo "$url" | xclip -selection clipboard ;;
+    c) echo "$url" > ${CLIPBOARD:-${XDG_DATA_HOME}/clipboard} ;;
     u) bgcmd curl -LO --output-dir ~/Downloads $url ;;
     m) setsid -f mpv -quiet "$url" >/dev/null 2>&1 ;;
     s) tmp=$(mktemp /tmp/sxivXXX) && curl -L $url -o $tmp && setsid -f sxiv $tmp ;;
