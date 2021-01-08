@@ -29,7 +29,7 @@ youtube-dl" | dmenucmd -p "action")
 case $chosen in
     "add feed") echo $url >> ${HOME}/.config/newsboat/urls ;;
 	browser) setsid -f "$BROWSER" "$url" >/dev/null 2>&1 ;;
-    "copy to clipboard") echo "$url" | xclip -selection clipboard ;;
+    "copy to clipboard") echo "$url" > ${CLIPBOARD:-${XDG_DATA_HOME}/clipboard} ;;
     curl) bgcmd curl -LO --output-dir ~/Downloads $url ;;
 	mpv) setsid -f mpv -quiet "$url" >/dev/null 2>&1 ;;
     sxiv) tmp=$(mktemp /tmp/sxivXXX) && curl -L $url -o $tmp && setsid -f sxiv $tmp ;;
