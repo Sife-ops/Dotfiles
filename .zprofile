@@ -37,6 +37,7 @@ export READER="zathura"
 
 #^#---- OTHER ------------------------------------------------------------------
 export ANDROID_SDK_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android"
+export BOOKMARKS="${XDG_DATA_HOME:-$HOME/.local/share}/bookmarks"
 export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 export CLIPBOARD="${XDG_DATA_HOME:-${HOME}/.local/share}/clipboard"
 export GEM_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/gem" # remove gem: --user-install from /etc/gemrc
