@@ -1,4 +1,4 @@
-!/bin/sh
+#!/bin/sh
 # Setup a work space called `dashboard`
 
 session="default"
