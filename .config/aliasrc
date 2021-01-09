@@ -35,6 +35,7 @@ alias \
     k='kill' \
     ka="killall" \
     ll='ls -la --color=auto' \
+    myip='dig +short myip.opendns.com @resolver1.opendns.com' \
     n='nnncd' \
     nb='newsboat' \
     offlineimap="offlineimap -c \\
