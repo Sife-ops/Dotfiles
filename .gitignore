@@ -7,6 +7,7 @@
 .config/OpenSCAD/
 .config/QtProject.conf
 .config/Thunar/
+.config/abiword/
 .config/blender/
 .config/dconf/
 .config/discord/
@@ -18,6 +19,7 @@
 .config/leafpad/
 .config/lf/modules/.gitignore
 .config/libfm/
+.config/libreoffice/
 .config/newsboat/.gitignore
 .config/nvim/
 .config/nvim_/
@@ -38,6 +40,7 @@
 .local/share/.vivaldi_reporting_data
 .local/share/bspwm/.gitignore
 .local/share/cargo/
+.local/share/clipboard
 .local/share/gnupg/
 .local/share/go/
 .local/share/graveyard/
@@ -47,8 +50,11 @@
 .local/share/notifications
 .local/share/nvim/shada/
 .local/share/nvim/undo/
+.local/share/plover/
 .local/share/ranger/
 .local/share/recently-used.xbel
+.local/share/sarbs/aurlist
+.local/share/sarbs/paclist
 .local/share/vlc/
 .local/share/www/
 .local/share/xdotool/
@@ -59,14 +65,10 @@
 .minecraft/
 .mozilla/
 .pki
+.plover-lock-casper-0
 .ssh/
 .vscode
 .xinitrc
 Documents
 Downloads
-.config/abiword/
-.config/libreoffice/
-.local/share/plover/
-.local/share/sarbs/aurlist
-.local/share/sarbs/paclist
-.plover-lock-casper-0
+

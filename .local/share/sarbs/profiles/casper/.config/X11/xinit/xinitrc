@@ -12,6 +12,8 @@ export MONITOR1="HDMI-1"
 #$
 
 #^----- KEYMAP -----------------------------------------------------------------
+ln -sf ${XDG_DATA_HOME:-${HOME}/.local/share}/xmodmap/k400.map \
+    ${XDG_DATA_HOME:-${HOME}/.local/share}/xmodmap/xmodmap
 # setxmodmap.sh
 #$
 

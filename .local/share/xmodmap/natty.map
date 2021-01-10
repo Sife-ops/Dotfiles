@@ -4,17 +4,12 @@
 clear Lock
 clear Control
 clear Mod1
-clear Mod3
 clear Mod4
-clear Mod5
 !$
 
 !^ LEFT HAND -------------------------------------------------------------------
 ! Escape
 keycode   9 = Caps_Lock
-
-! Tab
-keycode  23 = Hyper_L
 
 ! Caps Lock
 keycode  66 = Control_L
@@ -25,16 +20,10 @@ keycode  37 = Mode_switch
 
 !^ RIGHT HAND ------------------------------------------------------------------
 ! BackSpace
-keycode  22 = bar
+keycode  22 = Return
 
 ! Return
 keycode  36 = Control_R
-
-! Backslash
-keycode  51 = Hyper_R
-
-! Menu
-keycode 135 = ISO_Level3_Shift
 
 ! Right Control
 keycode 105 = Mode_switch
@@ -45,17 +34,16 @@ keycode 105 = Mode_switch
 keycode 100 = Escape
 
 ! Hirigana
-keycode 101 = Tab
+keycode 101 = BackSpace
 
 ! Scroll Lock
-keycode  78 = BackSpace
+! keycode  78 = BackSpace
 
 ! Pause / Break
-keycode 127 = backslash
+! keycode 127 = backslash
 !$
 
 !^ MODE SHIFT ------------------------------------------------------------------
-
 ! Numpad
 keycode  57 = n N Down 1
 keycode  58 = m M Return 2
@@ -71,18 +59,15 @@ keycode  33 = p P Up NoSymbol
 keycode  65 = space NoSymbol NoSymbol 0
 keycode  60 = period greater period period
 
-! Question mark
+! Slash
 keycode  61 = slash question BackSpace question
-
 !$
 
 !^ ADD MOD GROUPS --------------------------------------------------------------
 add Lock    = Caps_Lock
 add Control = Control_L Control_R
 add Mod1    = Alt_L Alt_R
-add Mod3    = Hyper_L Hyper_R
 add Mod4    = Super_L Super_R
-add Mod5    = ISO_Level3_Shift
 !$
 
 ! vim: ft=xmodmap fdm=marker fmr=!^,!$
