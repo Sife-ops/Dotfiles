@@ -8,9 +8,9 @@ bspc config split_ratio          0.50
 bspc config window_gap           20
 
 bspc monitor ${MONITOR0:-focused} -d \
-    Emacs Scratch VSCode WWW
+    Scratch WWW
 [ -z $MONITOR1 ] || bspc monitor $MONITOR1 -d \
-    Discord YouTube
+    Matrix Discord YouTube
 
 bspc rule -a Gxmessage:*:* state=floating
 bspc rule -a dd:*:* state=floating
