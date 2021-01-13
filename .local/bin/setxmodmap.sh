@@ -9,6 +9,6 @@ killall -e xcape 1>/dev/null 2>&1
 
 [ "$1" = "default" ] || \
     (xmodmap ${XDG_DATA_HOME:-${HOME}/.local/share}/xmodmap/xmodmap
-    xcape -e 'Hyper_L=Tab;Control_L=Escape;Hyper_R=backslash;Control_R=BackSpace' &)
+    xcape -e 'Alt_L=Tab;Control_L=Escape;Alt_R=backslash;Control_R=BackSpace' &)
 
 xset r rate 300 50
