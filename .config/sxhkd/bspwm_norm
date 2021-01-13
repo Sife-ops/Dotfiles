@@ -155,15 +155,15 @@ mod4 + space
     ln -sf $HOME/.config/sxhkd/bspwm_alt $HOME/.config/sxhkd/sxhkdrc \
         && pkill -USR1 sxhkd && notify-send "sxhkd" "bspwm alternate mode"
 
-# # mouse
-# mod4 + space
-#     ln -sf $HOME/.config/sxhkd/mouse $HOME/.config/sxhkd/sxhkdrc \
-#         && pkill -USR1 sxhkd && notify-send "sxhkd" "mouse mode"
+# mouse
+mod3 + space
+    ln -sf $HOME/.config/sxhkd/mouse $HOME/.config/sxhkd/sxhkdrc \
+        && pkill -USR1 sxhkd && notify-send "sxhkd" "mouse mode"
 
-# # vim
-# mod4 + Escape
-#     ln -sf $HOME/.config/sxhkd/vim_norm $HOME/.config/sxhkd/sxhkdrc \
-#         && pkill -USR1 sxhkd && notify-send "sxhkd" "vim normal mode"
+# vim
+mod4 + Escape
+    ln -sf $HOME/.config/sxhkd/vim_norm $HOME/.config/sxhkd/sxhkdrc \
+        && pkill -USR1 sxhkd && notify-send "sxhkd" "vim normal mode"
 
 #$
 

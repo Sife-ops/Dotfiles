@@ -3,7 +3,7 @@
 #   | | | | | | (_) | |_| \__ \  __/
 #   |_| |_| |_|\___/ \__,_|___/\___|
 
-mod4 + space
+mod3 + space
     xdotool mouseup 1 \
         && ln -sf $HOME/.config/sxhkd/wm_norm $HOME/.config/sxhkd/sxhkdrc \
         && pkill -USR1 sxhkd && notify-send "sxhkd" "wm normal mode"
