@@ -4,12 +4,16 @@
 clear Lock
 clear Control
 clear Mod1
+clear Mod3
 clear Mod4
 !$
 
 !^ LEFT HAND -------------------------------------------------------------------
 ! Escape
 keycode   9 = Caps_Lock
+
+! Tab
+keycode  23 = Alt_L
 
 ! Caps Lock
 keycode  66 = Control_L
@@ -18,27 +22,24 @@ keycode  66 = Control_L
 keycode  37 = Mode_switch
 
 ! Left Alt
-keycode  64 = Super_L
-
-! Left Win
-keycode 133 = Alt_L
+keycode  64 = Hyper_L
 !$
 
 !^ RIGHT HAND ------------------------------------------------------------------
 ! BackSpace
-keycode  22 = Return
+keycode  22 = bar
+
+! Backslash
+keycode  51 = Alt_R
 
 ! Return
 keycode  36 = Control_R
 
-! Right Win
-keycode 134 = Alt_R
-
 ! Right Alt
-keycode 108 = Super_R
+keycode 108 = Hyper_R
 
-! Right Control
-keycode 105 = Mode_switch
+! Left Arrow
+keycode 113 = Mode_switch
 !$
 
 !^ SPECIAL ---------------------------------------------------------------------
@@ -46,13 +47,13 @@ keycode 105 = Mode_switch
 keycode 100 = Escape
 
 ! Hirigana
-keycode 101 = BackSpace
+keycode 101 = Tab
 
 ! Scroll Lock
-! keycode  78 = BackSpace
+keycode  78 = BackSpace
 
 ! Pause / Break
-! keycode 127 = backslash
+keycode 127 = backslash
 !$
 
 !^ MODE SHIFT ------------------------------------------------------------------
@@ -79,6 +80,7 @@ keycode  61 = slash question BackSpace question
 add Lock    = Caps_Lock
 add Control = Control_L Control_R
 add Mod1    = Alt_L Alt_R
+add Mod3    = Hyper_L Hyper_R
 add Mod4    = Super_L Super_R
 !$
 
