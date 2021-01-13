@@ -14,6 +14,14 @@ mod4 + space
 	bspc node -f {west,south,north,east}
 
 # move
+{H,J,K,L}
+	bspc node -v {-50 0,0 50,0 -50,50 0}
+
+# move
+ctrl + {H,J,K,L}
+	bspc node -z {right -50 0,bottom 0 50,bottom 0 -50,right 50 0}
+
+# swap
 mod4 + {h,j,k,l}
     bspc node -s {west,south,north,east}
 
