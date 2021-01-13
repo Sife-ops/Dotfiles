@@ -3,6 +3,7 @@
 .config/Bitwarden/
 .config/Bitwarden\ CLI/
 .config/BraveSoftware/
+.config/Element
 .config/GIMP/
 .config/OpenSCAD/
 .config/QtProject.conf
@@ -48,6 +49,8 @@
 .local/share/lf/
 .local/share/newsboat/
 .local/share/notifications
+.local/share/nvim/log
+.local/share/nvim/lsp.log
 .local/share/nvim/shada/
 .local/share/nvim/undo/
 .local/share/plover/
@@ -56,6 +59,7 @@
 .local/share/sarbs/aurlist
 .local/share/sarbs/paclist
 .local/share/vlc/
+.local/share/webkitgtk/
 .local/share/www/
 .local/share/xdotool/
 .local/share/xorg/
