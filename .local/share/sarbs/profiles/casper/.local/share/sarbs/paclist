@@ -12,6 +12,7 @@ avr-libc
 avrdude
 barrier-headless
 base
+bind
 binutils
 bison
 bitlbee
@@ -26,11 +27,13 @@ cronie
 ctags
 dfu-programmer
 dfu-util
+dhclient
 dhcpcd
 discord
 doxygen
 dwarffortress
 efibootmgr
+element-desktop
 emacs
 espeak
 exa
@@ -54,8 +57,11 @@ gperf
 grep
 groff
 grub
+gst-plugins-bad
+gst-plugins-good
 gxmessage
 gzip
+hdparm
 hexchat
 highlight
 hsetroot
@@ -81,7 +87,7 @@ mpc
 mpv
 neofetch
 neomutt
-neovim
+net-tools
 networkmanager
 newsboat
 nfs-utils
@@ -109,6 +115,7 @@ qt5-multimedia
 qt5-script
 qt5-webengine
 ranger
+rofi
 rsync
 rubygems
 screenkey
@@ -152,9 +159,9 @@ vi
 vifm
 vim
 virtualbox
-vivaldi
 vlc
 w3m
+webkit2gtk
 wget
 which
 xcape
