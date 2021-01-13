@@ -38,27 +38,6 @@ XF86AudioMute
 
 #^---- FUNCTION ROW ------------------------------------------------------------
 
-F2
-    togmap.sh -l ddvol
-
-# F3
-    # togmap.sh -l ddpass
-
-F4
-    togmap.sh -l ddterm
-
-F5
-    dmenuurl.sh
-
-F6
-    tsp youtube-dl -o ~/Downloads/%\(title\)s.%\(ext\)s $(xclip -selection clipboard -o)
-
-F7
-    togmap.sh -l ddfeeds
-
-F12
-    dmenuxmodmap.sh
-
 #$
 
 #^---- NUMBER ROW --------------------------------------------------------------
@@ -68,8 +47,29 @@ mod4 + {1-9}
 	bspc desktop -f '^{1-9}'
 
 # move window to workspace 1-10
-mod4 + shift + {1-9}
-    bspc node -d '^{1-9}'
+# mod4 + shift + {1-9}
+    # bspc node -d '^{1-9}'
+
+mod4 + shift + 2
+    togmap.sh -l ddvol
+
+mod4 + shift + 3
+    togmap.sh -l ddpass
+
+mod4 + shift + 4
+    togmap.sh -l ddterm
+
+mod4 + shift + 5
+    dmenuurl.sh
+
+mod4 + shift + 6
+    tsp youtube-dl -o ~/Downloads/%\(title\)s.%\(ext\)s $(xclip -selection clipboard -o)
+
+mod4 + shift + 7
+    togmap.sh -l ddfeeds
+
+mod4 + shift + 12
+    dmenuxmodmap.sh
 
 #$
 
@@ -82,6 +82,14 @@ mod4 + {h,j,k,l}
 #$
 
 #^---- LEFT SIDE ---------------------------------------------------------------
+
+# dmenubspc.sh
+mod3 + x
+    dmenubspc.sh
+
+# dmenubspc.sh
+mod4 + c
+    dmenubspc.sh
 
 # emoji menu
 mod4 + d; e
@@ -114,13 +122,6 @@ mod4 + x; m
 # yank to desktop
 mod4 + x; y
     bspc node -d $(dmenudesk.sh)
-
-# dmenubspc.sh
-mod4 + c
-    dmenubspc.sh
-
-mod4 + shift + space
-    xdotool click 1
 
 #$
 
