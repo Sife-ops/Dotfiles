@@ -1,4 +1,0 @@
-#!/bin/sh
-
-. ${HOME}/.zprofile
-. ${XDG_CONFIG_HOME:-${HOME}/.config}/X11/xinit/xinitrc

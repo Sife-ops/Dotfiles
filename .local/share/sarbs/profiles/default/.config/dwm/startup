@@ -1,5 +1,0 @@
-#!/bin/sh
-# #--- STARTUP PROGRAMS ---# #
-ln -sf ${XDG_CONFIG_HOME:=${HOME}/.config}/sxhkd/dwm/sxhkdrc \
-    ${XDG_CONFIG_HOME:=${HOME}/.config}/sxhkd/sxhkdrc
-sxhkd &

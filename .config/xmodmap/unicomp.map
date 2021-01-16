@@ -1,4 +1,4 @@
-! Microsoft Natural Elite / Periboard 512
+! Unicomp Endurapro
 
 !^ CLEAR MOD GROUPS ------------------------------------------------------------
 clear Lock
@@ -38,11 +38,14 @@ keycode  51 = Alt_R
 ! Return
 keycode  36 = Control_R
 
-! Right Alt
-keycode 108 = Super_R
-
 ! Right Win
-keycode 134 = Hyper_R
+! keycode 134 = Hyper_R
+
+! Right Alt
+keycode 108 = Hyper_R
+
+! Menu
+keycode 135 = Henkan
 
 ! Right Control
 keycode 105 = Mode_switch
@@ -50,10 +53,14 @@ keycode 105 = Mode_switch
 
 !^ SPECIAL ---------------------------------------------------------------------
 ! Henkan
-keycode 100 = Escape
+! keycode 100 = Escape
 
 ! Hirigana
-keycode 101 = Tab
+keycode 101 = Escape
+! keycode 101 = Tab
+
+! Print Screen
+keycode 107 = Tab
 
 ! Scroll Lock
 keycode  78 = BackSpace

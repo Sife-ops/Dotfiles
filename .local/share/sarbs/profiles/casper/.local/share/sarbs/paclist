@@ -38,6 +38,9 @@ emacs
 espeak
 exa
 fakeroot
+fcitx
+fcitx-mozc
+fcitx-skk
 ffmpegthumbnailer
 figlet
 file
@@ -158,6 +161,7 @@ usbutils
 vi
 vifm
 vim
+vimb
 virtualbox
 vlc
 w3m
