@@ -4,7 +4,6 @@
 if which checkdeps.sh >/dev/null 2>&1; then
     checkdeps.sh xclip fzf || exit 1; fi
 
-# alias dmenucmd='dmenu -b -i -l 20'
 alias fzfcmd='fzf --no-sort --layout=reverse-list'
 
 function translateChosen(){
@@ -18,17 +17,21 @@ function translateChosen(){
 
 chosen_a=$(echo \
 "=*SOURCE*=
-(p)rimary
-(s)econdary
-(c)lipboard
-(u)ser" | fzfcmd --expect=p,s,c,u | sed '2d')
+(p)rimary: $(xclip -o -selection primary | head -n1)
+(s)econdary: $(xclip -o -selection secondary | head -n1)
+(c)lipboard: $(xclip -o -selection clipboard | head -n1)
+(u)ser: $(head -n1 ${CLIPBOARD:-${HOME}/.local/share/clipboard})" |
+    fzfcmd --expect=p,s,c,u |
+    sed '2d')
 
 chosen_b=$(echo \
 "=*TARGET*=
 (p)rimary
 (s)econdary
 (c)lipboard
-(u)ser" | fzfcmd --expect=p,s,c,u | sed '2d')
+(u)ser" |
+    fzfcmd --expect=p,s,c,u |
+    sed '2d')
 
 chosen_a=$(translateChosen $chosen_a)
 chosen_b=$(translateChosen $chosen_b)
