@@ -91,6 +91,10 @@ mod3 + x
 mod4 + c
     dmenubspc.sh
 
+# clipboard menu
+mod4 + d; c
+    dmenuclipboard.sh
+
 # emoji menu
 mod4 + d; e
     dmenuunicode.sh ~/.local/share/sarbs/emoji
