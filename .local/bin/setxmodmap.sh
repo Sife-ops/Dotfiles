@@ -8,7 +8,7 @@ setxkbmap -option
 killall -e xcape 1>/dev/null 2>&1
 
 [ "$1" = "default" ] || \
-    (xmodmap ${XDG_DATA_HOME:-${HOME}/.local/share}/xmodmap/xmodmap
+    (xmodmap ${XDG_CONFIG_HOME:-${HOME}/.config}/X11/xmodmap/xmodmap
     xcape -e 'Alt_L=Tab;Control_L=Escape;Alt_R=backslash;Control_R=BackSpace' &)
 
 xset r rate 300 50

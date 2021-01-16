@@ -12,9 +12,9 @@ export MONITOR1="HDMI-1"
 #$
 
 #^----- KEYMAP -----------------------------------------------------------------
-ln -sf ${XDG_DATA_HOME:-${HOME}/.local/share}/xmodmap/k400.map \
-    ${XDG_DATA_HOME:-${HOME}/.local/share}/xmodmap/xmodmap
-# setxmodmap.sh
+ln -sf ${XDG_CONFIG_HOME:-${HOME}/.config}/X11/xmodmap/unicomp.map \
+    ${XDG_CONFIG_HOME:-${HOME}/.config}/X11/xmodmap/xmodmap
+setxmodmap.sh
 #$
 
 #^----- AUTOREPEAT RATE --------------------------------------------------------
