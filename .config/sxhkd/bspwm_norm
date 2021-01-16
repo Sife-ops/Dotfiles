@@ -166,7 +166,7 @@ mod3 + space
         && pkill -USR1 sxhkd && notify-send "sxhkd" "mouse mode"
 
 # vim
-mod4 + Escape
+mod3 + Escape
     ln -sf $HOME/.config/sxhkd/vim_norm $HOME/.config/sxhkd/sxhkdrc \
         && pkill -USR1 sxhkd && notify-send "sxhkd" "vim normal mode"
 
