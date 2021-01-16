@@ -7,10 +7,12 @@ if which checkdeps.sh >/dev/null 2>&1; then
 alias dmenucmd='dmenu -b -i -l 20'
 
 chosen_a=$(echo \
-"primary
-secondary
-clipboard
-user" | dmenucmd -p "source")
+"primary: $(xclip -o -selection primary | head -n1)
+secondary: $(xclip -o -selection secondary | head -n1)
+clipboard: $(xclip -o -selection clipboard | head -n1)
+user: $(head -n1 ${CLIPBOARD:-${HOME}/.local/share/clipboard})" |
+    dmenucmd -p "source" |
+    cut -d':' -f1)
 
 chosen_b=$(echo \
 "primary
