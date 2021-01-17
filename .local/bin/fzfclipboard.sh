@@ -23,6 +23,7 @@ chosen_a=$(echo \
 (u)ser: $(head -n1 ${CLIPBOARD:-${HOME}/.local/share/clipboard})" |
     fzfcmd --expect=p,s,c,u |
     sed '2d')
+[ -z $chosen_a ] && exit 1
 
 chosen_b=$(echo \
 "=*TARGET*=
@@ -32,6 +33,7 @@ chosen_b=$(echo \
 (u)ser" |
     fzfcmd --expect=p,s,c,u |
     sed '2d')
+[ -z $chosen_b ] && exit 1
 
 chosen_a=$(translateChosen $chosen_a)
 chosen_b=$(translateChosen $chosen_b)

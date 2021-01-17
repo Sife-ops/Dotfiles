@@ -13,12 +13,14 @@ clipboard: $(xclip -o -selection clipboard | head -n1)
 user: $(head -n1 ${CLIPBOARD:-${HOME}/.local/share/clipboard})" |
     dmenucmd -p "source" |
     cut -d':' -f1)
+[ -z $chosen_a ] && exit 1
 
 chosen_b=$(echo \
 "primary
 secondary
 clipboard
 user" | dmenucmd -p "target")
+[ -z $chosen_b ] && exit 1
 
 case $chosen_a in
     user) cmd_a="cat ${CLIPBOARD:-${XDG_DATA_HOME}/clipboard} " ;;
