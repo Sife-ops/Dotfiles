@@ -68,8 +68,8 @@ mod4 + shift + 6
 mod4 + shift + 7
     togmap.sh -l ddfeeds
 
-mod4 + shift + 12
-    dmenuxmodmap.sh
+mod4 + shift + 8
+    dmenuclipboard.sh
 
 #$
 
@@ -90,6 +90,10 @@ mod3 + x
 # dmenubspc.sh
 mod4 + c
     dmenubspc.sh
+
+# bookmark menu
+mod4 + d; b
+    dmenubmarks.sh
 
 # clipboard menu
 mod4 + d; c
