@@ -4,7 +4,7 @@
 #     | (_| | | | (_| \__ \ | | (__
 #    (_)__,_|_|_|\__,_|___/_|  \___|
 
-###---- COMMAND OPTIONS --------------------------------------------------------
+#^----- COMMAND OPTIONS --------------------------------------------------------
 
 alias \
     cp="cp -iv" \
@@ -18,11 +18,11 @@ alias \
     mkdir="mkdir -pv" \
     rm="rm -vI"
 
-##
+#$
 
-###---- ABBREVIATIONS ----------------------------------------------------------
+#^----- ABBREVIATIONS ----------------------------------------------------------
 
-### General
+#^ General
 
 alias \
     cal='calcurse' \
@@ -52,9 +52,9 @@ alias \
     xr='xrdb ~/.Xresources' \
     z="zathura"
 
-##
+#$
 
-### Git
+#^ Git
 
 alias \
     ga='git add' \
@@ -74,25 +74,25 @@ alias \
     grm='git rm -r --cached' \
     gs='git status'
 
-##
+#$
 
-### Emacs
+#^ Emacs
 
 systemctl --quiet --user is-active emacs.service >/dev/null \
     && alias e='emacsclient' \
     || alias e='emacs'
 
-##
+#$
 
-### Vim
+#^ Vim
 
 command -v nvim >/dev/null \
     && alias vim="nvim" v="nvim" vimdiff="nvim -d"  \
     || alias v="vim"
 
-##
+#$
 
-### Tmux
+#^ Tmux
 
 alias \
 	t="tmux -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf" \
@@ -101,6 +101,6 @@ alias \
     tl='tmux list-sessions' \
 	tmux="tmux -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf"
 
-## ##
+#$ #$
 
-# vim: fdm=marker fmr=###,##
+# vim: fdm=marker fmr=#^,#$
