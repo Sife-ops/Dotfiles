@@ -31,7 +31,8 @@ alias \
     f='lfcd' \
     fcl='fc-list : family style | less' \
     fvm='sudo fuser -vm' \
-    irssi="irssi --home=${XDG_CONFIG_HOME:-$HOME/.config}/irssi" \
+    irssi="irssi --config=${XDG_CONFIG_HOME:-${HOME}/.config}/irssi/config \\
+        --home=${XDG_CONFIG_HOME:-${HOME}/.config}/irssi" \
     k='kill' \
     ka="killall" \
     ll='ls -la --color=auto' \
