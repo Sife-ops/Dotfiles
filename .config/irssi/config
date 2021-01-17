@@ -1,0 +1,44 @@
+settings = {
+  core = { real_name = "Joe Biden"; user_name = "JoJo"; nick = "sife"; };
+  "fe-text" = { actlist_sort = "refnum"; };
+};
+
+servers = (
+  { address = "chat.freenode.net"; chatnet = "Freenode";  port = "6697"; use_tls = "yes"; tls_verify = "yes"; },
+  { address = "irc.irchighway.net";  chatnet = "IRCHighWay";  port = "6667"; }
+  { address = "irc.undernet.org";  chatnet = "Undernet";  port = "6667"; }
+  { address = "ssl.efnet.org";     chatnet = "EFNet";     port = "9999"; use_tls = "yes"; },
+);
+
+chatnets = {
+  EFNet = {
+    type      = "IRC";
+    max_kicks = "1";
+    max_msgs  = "4";
+    max_whois = "1";
+  };
+  Freenode = {
+    type      = "IRC";
+    max_kicks = "1";
+    max_msgs  = "4";
+    max_whois = "1";
+  };
+  IRCHighWay = {
+    type      = "IRC";
+    max_kicks = "1";
+    max_msgs  = "1";
+    max_whois = "1";
+  };
+  Undernet = {
+    type      = "IRC";
+    max_kicks = "1";
+    max_msgs  = "1";
+    max_whois = "1";
+  };
+};
+
+channels = (
+  { name = "#ebooks";   chatnet = "IRCHighWay";   autojoin = "No"; },
+  { name = "#emacs";  chatnet = "Freenode";  autojoin = "No"; },
+  { name = "#freenode";  chatnet = "Freenode";  autojoin = "No"; },
+);
