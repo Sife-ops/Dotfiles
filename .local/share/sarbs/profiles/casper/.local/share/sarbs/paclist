@@ -39,6 +39,7 @@ espeak
 exa
 fakeroot
 fcitx
+fcitx-configtool
 fcitx-mozc
 fcitx-skk
 ffmpegthumbnailer
@@ -70,6 +71,7 @@ highlight
 hsetroot
 inkscape
 inotify-tools
+irssi
 iwd
 jq
 jshon
@@ -79,6 +81,7 @@ libreoffice-still
 libtool
 linux
 linux-firmware
+linux-headers
 lsd
 lsof
 m4
@@ -150,6 +153,7 @@ texlive-publishers
 texlive-science
 thunar
 tldr
+tmux
 trash-cli
 tumbler
 typespeed
