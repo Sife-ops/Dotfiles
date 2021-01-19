@@ -171,6 +171,11 @@ mod4 + n
 
 #^---- MODES -------------------------------------------------------------------
 
+# vim
+# mod4 + Escape
+    # ln -sf $HOME/.config/sxhkd/vim_norm $HOME/.config/sxhkd/sxhkdrc \
+        # && pkill -USR1 sxhkd && notify-send "sxhkd" "vim normal mode"
+
 # bspwm alternate
 mod4 + space
     ln -sf $HOME/.config/sxhkd/bspwm_alt $HOME/.config/sxhkd/sxhkdrc \
@@ -180,11 +185,6 @@ mod4 + space
 mod3 + space
     ln -sf $HOME/.config/sxhkd/mouse $HOME/.config/sxhkd/sxhkdrc \
         && pkill -USR1 sxhkd && notify-send "sxhkd" "mouse mode"
-
-# vim
-mod3 + Escape
-    ln -sf $HOME/.config/sxhkd/vim_norm $HOME/.config/sxhkd/sxhkdrc \
-        && pkill -USR1 sxhkd && notify-send "sxhkd" "vim normal mode"
 
 #$
 
