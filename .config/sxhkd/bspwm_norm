@@ -79,6 +79,10 @@ mod4 + shift + 8
 mod4 + {h,j,k,l}
 	bspc node -f {west,south,north,east}
 
+# swap the node in dir
+mod4 + {H,J,K,L}
+	bspc node -s {west,south,north,east}
+
 #$
 
 #^---- LEFT SIDE ---------------------------------------------------------------
@@ -110,6 +114,14 @@ mod4 + d; m
 # url action menu
 mod4 + d; u
     dmenuurl.sh
+
+# make window floating
+mod4 + f
+    bspc node -t floating
+
+# make window tiled
+mod4 + t
+    bspc node -t tiled
 
 # window menu
 mod4 + x; b
