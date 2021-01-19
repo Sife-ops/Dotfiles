@@ -41,6 +41,7 @@ export ANDROID_SDK_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android"
 export BOOKMARKS="${XDG_DATA_HOME:-$HOME/.local/share}/bookmarks"
 export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 export CLIPBOARD="${XDG_DATA_HOME:-${HOME}/.local/share}/clipboard"
+export CLIPBOARD_DIR="${XDG_DATA_HOME:-${HOME}/.local/share}/clipboard.d"
 export GEM_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/gem" # remove gem: --user-install from /etc/gemrc
 export GEM_SPEC_CACHE="${XDG_CACHE_HOME:-${HOME}/.cache}/gem"
 export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
@@ -85,7 +86,11 @@ export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 #$# #$#
 
 #^#---- CLIPBOARD --------------------------------------------------------------
+mkdir -p $CLIPBOARD_DIR
+touch $CLIPBOARD_DIR/0{0,1,2,3,4}
 touch $CLIPBOARD
+chmod 700 ${CLIPBOARD_DIR}
+chmod 600 ${CLIPBOARD_DIR}/*
 chmod 600 $CLIPBOARD
 #$#
 
