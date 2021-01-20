@@ -1,13 +1,18 @@
-map C copyto
-map c $code "$f"
-map D &dragon-drag-and-drop $fx
-map E $$ALTEDITOR "$f"
-map G bottom
-map g top
-map M moveto
-map r $vidir
-map t $trash-put $fx
+# map G bottom
+# map g top
+map . set hidden!
 map <a-c> fzfcd
 map <c-n> push :mkdir<space>
 map <c-r> reload
-map . set hidden!
+map C copyto
+map D &dragon-drag-and-drop $fx
+map E $$ALTEDITOR "$f"
+map M moveto
+map gg $tig
+map gs $tig status
+map r $vidir
+map te !trash-empty
+map tl !trash-list
+map tp $trash-put $fx
+map tr $trash-restore
+map x extract
