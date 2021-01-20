@@ -19,7 +19,7 @@ which fcitx && fcitx &
 #$
 
 #^----- KEYMAP -----------------------------------------------------------------
-ln -sf ${XDG_CONFIG_HOME:-${HOME}/.config}/xmodmap/unicomp.map \
+ln -sf ${XDG_CONFIG_HOME:-${HOME}/.config}/xmodmap/natty.map \
     ${HOME}/.Xmodmap
 which setxmodmap.sh && setxmodmap.sh
 which xset && xset r rate 300 50

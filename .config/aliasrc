@@ -88,8 +88,8 @@ systemctl --quiet --user is-active emacs.service >/dev/null \
 #^ Vim
 
 command -v nvim >/dev/null \
-    && alias vim="nvim" v="nvim" vimdiff="nvim -d"  \
-    || alias v="vim"
+    && alias vim="nvim" v="nvim" vd="nvim -d"  \
+    || alias v="vim" vd="vim -d"
 
 #$
 
