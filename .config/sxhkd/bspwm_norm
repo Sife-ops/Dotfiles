@@ -88,11 +88,7 @@ mod4 + {H,J,K,L}
 #^---- LEFT SIDE ---------------------------------------------------------------
 
 # dmenubspc.sh
-mod3 + x
-    dmenubspc.sh
-
-# dmenubspc.sh
-mod4 + c
+{mod3 + x,mod4 + c,XF86Tools}
     dmenubspc.sh
 
 # bookmark menu
@@ -122,6 +118,14 @@ mod4 + f
 # make window tiled
 mod4 + t
     bspc node -t tiled
+
+# kill desktop
+mod4 + x; 5; 0
+    bspc desktop -r
+
+# add desktop
+mod4 + x; 5; 2
+    bspc monitor -a "$(printf "Movies\nTemp 00\nTemp 01\nTemp 02" | dmenu -b -i -l 20 -p "name")"
 
 # window menu
 mod4 + x; b
