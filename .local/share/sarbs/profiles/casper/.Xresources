@@ -32,7 +32,10 @@
 
 !^---- DWM ---------------------------------------------------------------------
 
+/*---- font ----*/
 /* dwm.font:Terminus:pixelsize=24:antialias=false:autohint=true */
+
+/*---- color ----*/
 dwm.normbgcolor:        #000000
 dwm.normbordercolor:    #000000
 dwm.normfgcolor:        #a89984
@@ -51,7 +54,10 @@ dwm.mfact:              0.66
 
 !^---- DMENU -------------------------------------------------------------------
 
+/*---- font ----*/
 /* dmenu.font:Terminus:pixelsize=24:antialias=false:autohint=true */
+
+/*---- color ----*/
 dmenu.background:       #282828
 dmenu.foreground:       #ebdbb2
 dmenu.selbackground:    #2e585a
@@ -61,6 +67,7 @@ dmenu.selforeground:    #ebdbb2
 
 !^---- ST ----------------------------------------------------------------------
 
+/*---- font ----*/
 /* st.font:SauceCodePro Nerd Font:pixelsize=24:antialias=false:autohint=true */
 
 /*---- gruvbox: ----*/
