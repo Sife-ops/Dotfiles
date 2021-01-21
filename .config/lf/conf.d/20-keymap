@@ -1,5 +1,3 @@
-# map G bottom
-# map g top
 map . set hidden!
 map <a-c> fzfcd
 map <c-n> push :mkdir<space>
