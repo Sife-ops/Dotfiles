@@ -1,5 +1,27 @@
 cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
 
+cmd open ${{
+    case $(file --mime-type $f -b) in
+        inode/symlink)
+            lfmarks="${XDG_DATA_HOME:-$HOME/.local/share}/lf/marks"
+            mkdir -p $(dirname "$lfmarks") && touch "$lfmarks"
+            grep '^h:' "$lfmarks" \
+                && sed -i "s!^h:.*!h:$(pwd)!" $lfmarks \
+                || printf "h:$(pwd)" >> "$lfmarks"
+            dir="$(readlink -f $f | xargs dirname)"
+            lf -remote "send $id cd \"$dir\""
+            ;;
+        text/*)
+            $EDITOR $f
+            ;;
+        *)
+            for f in $fx; do
+                setsid -f $OPENER $f >/dev/null 2>&1
+            done
+            ;;
+    esac
+}}
+
 cmd fzfcd ${{
     dir="$(cat /var/lib/relocate/relocated.db | fzf || true)"
     lf -remote "send $id cd \"$dir\""
@@ -32,3 +54,5 @@ cmd zip ${{
 	zip -r $1.zip $1
 	rm -rf $1
 }}
+
+# vim: fdm=marker fmr=#^,#$
