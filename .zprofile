@@ -39,6 +39,8 @@ export READER="zathura"
 export ALIASFILE="${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc"
 export ANDROID_SDK_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android"
 export BOOKMARKS="${XDG_DATA_HOME:-$HOME/.local/share}/bookmarks"
+export BW_GPG_NAME="E4D903D4A2A85226E14AE435A744F927AD7099AC"
+export BW_GPG_FILE="${XDG_CACHE_HOME:-$HOME/.cache}/bw.gpg"
 export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 export CLIPBOARD="${XDG_DATA_HOME:-${HOME}/.local/share}/clipboard"
 export CLIPBOARD_DIR="${XDG_DATA_HOME:-${HOME}/.local/share}/clipboard.d"
@@ -85,6 +87,10 @@ export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 # export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="${XDG_CONFIG_HOME:-$HOME/.config}/java"
 #$# #$#
 
+#^#---- BW ---------------------------------------------------------------------
+[ -f "$BW_GPG_FILE" ] && rm "$BW_GPG_FILE"
+#$#
+
 #^#---- CLIPBOARD --------------------------------------------------------------
 mkdir -p $CLIPBOARD_DIR
 touch $CLIPBOARD_DIR/0{0,1,2,3,4}
@@ -92,10 +98,6 @@ touch $CLIPBOARD
 chmod 700 ${CLIPBOARD_DIR}
 chmod 600 ${CLIPBOARD_DIR}/*
 chmod 600 $CLIPBOARD
-#$#
-
-#^#---- VCONSOLE ---------------------------------------------------------------
-# sudo -n loadkeys ${SARBS}/ttymaps.kmap 2>/dev/null
 #$#
 
 #^#---- HOST PROFILE -----------------------------------------------------------
@@ -111,6 +113,28 @@ function install_profile(){
 }
 install_profile $default_profile
 install_profile $host_profile
+#$#
+
+#^#---- NOTIFICATIONS ----------------------------------------------------------
+mkdir -p $(dirname $NOTIFICATIONS)
+touch $NOTIFICATIONS
+chmod 600 $NOTIFICATIONS
+#$#
+
+#^#---- OMISU ------------------------------------------------------------------
+# (which omisu >/dev/null 2>&1 && \
+# ! pgrep -x omisu >/dev/null 2>&1) && \
+    # omisu &
+#$#
+
+#^#---- TIRAMISU ---------------------------------------------------------------
+(which tiramisu >/dev/null 2>&1 && \
+! pgrep -x tiramisu >/dev/null 2>&1) && \
+    tiramisu -j >> $NOTIFICATIONS &
+#$#
+
+#^#---- VCONSOLE ---------------------------------------------------------------
+# sudo -n loadkeys ${SARBS}/ttymaps.kmap 2>/dev/null
 #$#
 
 # vim: fdm=marker fmr=#^#,#$#
