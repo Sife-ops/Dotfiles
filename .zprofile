@@ -30,7 +30,7 @@ export EDITOR="$editor"
 export VISUAL="$editor"
 export FCEDIT="$editor"
 export TERMINAL="st"
-export BROWSER="brave"
+export BROWSER="librewolf"
 export PAGER="less"
 export READER="zathura"
 #$#
