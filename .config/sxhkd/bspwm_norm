@@ -43,33 +43,36 @@ XF86AudioMute
 #^---- NUMBER ROW --------------------------------------------------------------
 
 # go to workspace 1-10
-mod4 + {1-9}
-	bspc desktop -f '^{1-9}'
+# mod4 + {1-9}
+	# bspc desktop -f '^{1-9}'
 
 # move window to workspace 1-10
 # mod4 + shift + {1-9}
     # bspc node -d '^{1-9}'
 
-mod4 + shift + 2
+mod4 + 2
     togmap.sh -l ddvol
 
-mod4 + shift + 3
-    togmap.sh -l ddpass
+mod4 + 3
+    dmenubw.sh
 
-mod4 + shift + 4
+mod4 + 4
     togmap.sh -l ddterm
 
-mod4 + shift + 5
+mod4 + 5
     dmenuurl.sh
 
-mod4 + shift + 6
+mod4 + 6
     tsp youtube-dl -o ~/Downloads/%\(title\)s.%\(ext\)s $(xclip -selection clipboard -o)
 
-mod4 + shift + 7
+mod4 + 7
     togmap.sh -l ddfeeds
 
-mod4 + shift + 8
+mod4 + 8
     dmenuclipboard.sh
+
+mod4 + 9
+    dmenucalc.sh
 
 #$
 
@@ -107,6 +110,10 @@ mod4 + d; e
 mod4 + d; m
     dmemeu.sh ~/Pictures/Emotes
 
+# password menu
+mod4 + d; p
+    dmenupass.sh
+
 # url action menu
 mod4 + d; u
     dmenuurl.sh
@@ -129,7 +136,7 @@ mod4 + x; 5; 2
 
 # window menu
 mod4 + x; b
-    xdotool windowactivate $(dmenuwin.sh)
+    xdotool windowactivate $(dmenunode.sh)
 
 # desktop menu
 mod4 + x; mod4 + b
@@ -137,7 +144,7 @@ mod4 + x; mod4 + b
 
 # kill window
 mod4 + x; k
-    bspc node $(dmenuwin.sh -f) -c
+    bspc node $(dmenunode.sh -f) -c
 
 # fullscreen/tiled
 mod4 + x; m
@@ -164,12 +171,20 @@ mod4 + Return
 	bspc node -s biggest.local
 
 # terminal
-mod4 + shift + BackSpace
-    $TERMINAL
+# mod4 + shift + BackSpace
+    # $TERMINAL
 
 # cycle nodes
 mod4 + n
     bspc node @parent -C forward
+
+# paste primary clipboard
+mod4 + v
+    sleep 0.25 && xdotool type --clearmodifiers "$(xclip -o -selection primary)"
+
+# paste primary clipboard
+mod4 + shift + v
+    sleep 0.25 && xdotool type --clearmodifiers "$(xclip -o -selection secondary)"
 
 #$
 
