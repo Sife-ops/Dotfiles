@@ -1,16 +1,60 @@
+#^ view
 map . set hidden!
+map <c-r> reload
+#$
+
+#^ actions
 map <a-c> fzfcd
 map <c-n> push :mkdir<space>
-map <c-r> reload
-map C copyto
+map <c-s> $ln -sf $fs ./
+map <c-t> push :$touch<space>
 map D &dragon-drag-and-drop $fx
 map E $$ALTEDITOR "$f"
-map M moveto
+map r $vidir
+map x extract
+#$
+
+#^ git
+map gap $git add -p $fx
+map gb !git branch
+map gch push :!git<space>checkout<space>
+map gcm push :!git<space>commit<space>-m<space>" #"
 map gg $tig
 map gs $tig status
-map r $vidir
-map te !trash-empty
+#$
+
+#^ trash-cli
+map te $trash-empty
 map tl !trash-list
-map tp $trash-put $fx
+map tp $trash-put $f
 map tr $trash-restore
-map x extract
+#$
+
+#^ chmod
+map -ar $chmod a-r $fx
+map -aw $chmod a-w $fx
+map -ax $chmod a-x $fx
+map -ur $chmod u-r $fx
+map -uw $chmod u-w $fx
+map -ux $chmod u-x $fx
+map -gr $chmod g-r $fx
+map -gw $chmod g-w $fx
+map -gx $chmod g-x $fx
+map -or $chmod o-r $fx
+map -ow $chmod o-w $fx
+map -ox $chmod o-x $fx
+map +ar $chmod a+r $fx
+map +aw $chmod a+w $fx
+map +ax $chmod a+x $fx
+map +ur $chmod u+r $fx
+map +uw $chmod u+w $fx
+map +ux $chmod u+x $fx
+map +gr $chmod g+r $fx
+map +gw $chmod g+w $fx
+map +gx $chmod g+x $fx
+map +or $chmod o+r $fx
+map +ow $chmod o+w $fx
+map +ox $chmod o+x $fx
+#$
+
+# vim: ft=sh fdm=marker fmr=#^,#$
