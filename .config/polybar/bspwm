@@ -69,7 +69,7 @@ font-1 = "Noto Color Emoji:scale=9;2"
 
 ;^--- MODULES ---
 
-modules-left = date cpu temperature memory pulseaudio wlan pacman battery
+modules-left = date pulseaudio cpu temperature memory wlan feeds pacman battery
 modules-right = bspwm
 modules-center = notifications
 ;$ ;$
@@ -172,6 +172,19 @@ label = %{T2}💻%{T-}%percentage%%
 type = custom/script
 exec = notify.sh
 interval = 1
+
+format-padding = 2
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+
+label = %output%
+;$
+
+;^_-_- FEEDS _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+[module/feeds]
+type = custom/script
+exec = feeds.sh
+interval = 60
 
 format-padding = 2
 format-background = ${colors.background}
