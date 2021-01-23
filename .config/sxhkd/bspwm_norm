@@ -53,8 +53,8 @@ XF86AudioMute
 mod4 + 2
     togmap.sh -l ddvol
 
-mod4 + 3
-    dmenubw.sh
+# mod4 + 3
+    # dmenubw.sh
 
 mod4 + 4
     togmap.sh -l ddterm
@@ -112,7 +112,7 @@ mod4 + d; m
 
 # password menu
 mod4 + d; p
-    dmenupass.sh
+    dmenubw.sh
 
 # url action menu
 mod4 + d; u
