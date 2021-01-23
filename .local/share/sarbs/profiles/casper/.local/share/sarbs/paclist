@@ -127,6 +127,7 @@ rubygems
 screenkey
 scrot
 sed
+shellcheck
 socat
 sudo
 sxhkd
@@ -152,6 +153,7 @@ texlive-pstricks
 texlive-publishers
 texlive-science
 thunar
+tig
 tldr
 tmux
 trash-cli
