@@ -5,6 +5,9 @@
 # edit mode
 
 #^ setup
+# set -E
+# trap '[ "$?" -ne 77 ] || exit 77' ERR
+
 shopt -s expand_aliases
 alias bw_cmd="bw --nointeraction"
 alias dmenu_cmd="${DMENU_CMD:-dmenu -b -i -l 20}"
@@ -27,32 +30,31 @@ function login(){ #^
         session_key=$(bw_cmd unlock "$(prompt_cmd)" |
             grep 'export' |
             sed 's/^.*BW_SESSION="\(.*\)"/\1/')
-        if bw_cmd list items --session "$session_key" >/dev/null; then
-            echo "$session_key" |
-                gpg --quiet --recipient "$BW_GPG_ID" \
-                    --encrypt --output "$session_cache"
-        else
-            exit 1
-        fi
+        echo "$session_key" |
+            gpg --quiet --recipient "$BW_GPG_ID" \
+                --encrypt --output "$session_cache"
     else
         session_key=$(gpg --quiet --decrypt "$session_cache")
     fi
 } #$
 
 function print_items(){ #^
-    # jq -r '.[] | "\(.name) | username: \(.login.username) | id: \(.id)"' |
-    bw_cmd list items --session "$session_key" |
-        jq -r '.[] | "\(.name) | id: \(.id)"'
+    if bw_cmd list items --session "$session_key"; then
+        :
+    else
+        printf "" | dmenu_cmd -p "Error: Bad session key."
+        rm -f "$session_cache"
+        kill 0
+        # exit 77
+    fi | jq -r '.[] | "\(.name) | id: \(.id)"'
 } #$
 
 function logout(){ #^
     rm -f "$session_cache"
-    exit 0
 } #$
 
 function sync(){ #^
     bw_cmd sync --session "$session_key"
-    exit 0
 } #$
 
 function get(){ #^
@@ -61,7 +63,6 @@ function get(){ #^
     cut -d ':' -f 2 |
     tr -d '[:space:]')
 
-    # chosen=$(printf "username\npassword" | dmenu_cmd -p "field")
     output=$(bw_cmd get item --session "$session_key" "$id" |
         jq -r ".login.username, .login.password")
     printf "$output" |
@@ -70,8 +71,6 @@ function get(){ #^
     printf "$output" |
         sed -n 2p |
         xclip -i -selection primary
-
-    exit 0
 } #$
 
 login
@@ -82,14 +81,24 @@ chosen=$(cat \
         <(printf "Create ...\n") \
         <(printf "Logout ...\n") \
         <(printf "Sync ...\n") |
-    dmenu_cmd -p "item")
+    dmenu_cmd -p "Bitwarden")
 
 case "$chosen" in
-    "Create ...") exit 0 ;;
-    "Logout ...") logout ;;
-    "Sync ...") sync ;;
-    "") exit 1 ;;
-    *) get "$chosen" ;;
+    "Create ...")
+        exit 0
+        ;;
+    "Logout ...")
+        logout; exit 0
+        ;;
+    "Sync ...")
+        sync; exit 0
+        ;;
+    "")
+        exit 1
+        ;;
+    *)
+        get "$chosen"; exit 0
+        ;;
 esac
 #$
 
