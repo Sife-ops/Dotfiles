@@ -1,0 +1,32 @@
+#
+# Sife's muttrc
+#
+
+# Behavior
+set mailcap_path    = "~/.local/share/mailcap"
+set new_mail_command="notify-send 'New Email' '%n new messages, %u unread.' &"
+auto_view text/html
+
+# Keybinds
+macro index,pager \cb "<pipe-message> urlscan -dc -r '$URL_OPENER {}'<Enter>"
+macro attach,compose \cb "<pipe-entry> urlscan -dc -r '$URL_OPENER {}'<Enter>"
+
+# Identity
+set realname        = 'Wyatt Goettsch'
+set from            = "Wyatt <wyattgoettsch@gmx.us>"
+
+# IMAP: offlineimap
+set folder          = "~/.local/share/mail/wyattgoettsch@gmx.us"
+source ~/.config/mutt/mailboxes
+set spoolfile       = "+/INBOX"
+set record          = "+/Sent"
+set postponed       = "+/Drafts"
+set sort            = reverse-date-received
+
+# SMTP: msmtp
+set sendmail        = "/usr/bin/msmtp"
+set edit_headers    = yes
+
+# Misc.
+source ~/.config/mutt/gpg.rc
+source ~/.config/mutt/colors.muttrc
