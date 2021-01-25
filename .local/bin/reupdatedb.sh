@@ -7,16 +7,16 @@ prunepaths=("/home/wyatt_bu" "/home/wyatt/.cache" "/home/wyatt/.elfeed" "/root" 
 
 [ -d $dbpath ] || mkdir -p $dbpath
 
-for prunename in ${prunenames[@]}; do
+for prunename in "${prunenames[@]}"; do
     nameargs="$nameargs -not -path '*/\\${prunename}/*'"
 done
 
-for prunepath in ${prunepaths[@]}; do
+for prunepath in "${prunepaths[@]}"; do
     pathargs="$pathargs -path '$prunepath' -prune -o"
 done
 
-eval find / $pathargs $nameargs -type f -print | tee ${dbpath}/relocatef.db
-eval find / $pathargs $nameargs -type d -print | tee ${dbpath}/relocated.db
+eval find / "$pathargs" "$nameargs" -type f -print | tee ${dbpath}/relocatef.db
+eval find / "$pathargs" "$nameargs" -type d -print | tee ${dbpath}/relocated.db
 
 # additional paths
 find /mnt/wyatt/sda1/Downloads -type d -print | tee -a ${dbpath}/relocated.db

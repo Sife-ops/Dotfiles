@@ -1,8 +1,11 @@
 #!/bin/sh
 # bspc desktop menu
 
-if which checkdeps.sh >/dev/null 2>&1; then
+#^ setup
+if which checkdeps.sh 1>/dev/null 2>&1; then
     checkdeps.sh bspc dmenu jq bc || exit 1; fi
+
+alias dmenucmd='dmenu -b -i -l 20'
 
 msg_help() { echo \
 "Usage:
@@ -14,20 +17,16 @@ Options:
 }
 
 while getopts "fh" o; do case "${o}" in
-	f) focus="true" ;;
+	f) focused="focused" ;;
     h) msg_help ;;
 	*) printf "Invalid option: -%s\\n" "$o" && msg_help && exit 1 ;;
 esac done
+#$
 
-[ -z $focus ] && \
-    first=$(bc <<< "obase=10; ibase=16; $(bspc query -D -d last | cut -d'x' -f2)") || \
-    first=$(bc <<< "obase=10; ibase=16; $(bspc query -D -d focused | cut -d'x' -f2)")
-
-# last=$(bc <<< "obase=10; ibase=16; $(bspc query -D -d last | cut -d'x' -f2)")
-
-chosen=$(\
+print_desks(){ #^
     bspc wm -d |
-        jq '.monitors[] |
+        jq -r \
+            '.monitors[] |
             {
                 monitor: .name,
                 desktop: .desktops[] |
@@ -39,12 +38,25 @@ chosen=$(\
             .monitor,
             .desktop.name,
             .desktop.id' |
-        tr -d '"' |
-        paste - - - -d':' | tac |
-        awk "/$first/ { first = \$0 } { print \$0 } END { print first }" | tac |
-        dmenu -b -i -l 20 -p "desktop")
+                paste - - - -d':'
+} #$
 
-case $chosen in
-    "") exit ;;
-    *) echo $chosen | cut -d':' -f3 ;;
+desk_menu(){ #^
+    first_item=$(echo "ibase=16; $(bspc query -D -d "${focused:-last}" |
+        cut -d 'x' -f 2)" |
+        bc)
+    print_desks |
+        tac |
+        awk "/$first_item/ { first = \$0 } { print \$0 } END { print first }" |
+        tac
+} #$
+
+#^ main
+chosen=$(desk_menu | dmenucmd -p "node")
+case "$chosen" in
+    "") kill 0 ;;
+    *) echo "$chosen" | cut -d':' -f3 ;;
 esac
+#$
+
+# vim: fdm=marker fmr=#^,#$

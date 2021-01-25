@@ -1,8 +1,11 @@
 #!/bin/sh
 # bspc window menu
 
-if which checkdeps.sh >/dev/null 2>&1; then
+#^ setup
+if which checkdeps.sh 1>/dev/null 2>&1; then
     checkdeps.sh bspc jq bc dmenu || exit 1; fi
+
+alias dmenucmd='dmenu -b -i -l 20'
 
 msg_help() { echo \
 "Usage:
@@ -14,18 +17,16 @@ Options:
 }
 
 while getopts "fh" o; do case "${o}" in
-	f) focus="true" ;;
+	f) focused="focused" ;;
     h) msg_help ;;
 	*) printf "Invalid option: -%s\\n" "$o" && msg_help && exit 1 ;;
 esac done
+#$
 
-[ -z $focus ] && \
-    first=$(bc <<< "obase=10; ibase=16; $(bspc query -N -n last | cut -d'x' -f2)") || \
-    first=$(bc <<< "obase=10; ibase=16; $(bspc query -N -n focused | cut -d'x' -f2)")
-
-chosen=$(\
+print_nodes(){ #^
     bspc wm -d |
-        jq '.monitors[] |
+        jq -r \
+            '.monitors[] |
             {
                 monitor: .name,
                 desktop: .desktops[] |
@@ -43,12 +44,25 @@ chosen=$(\
             .desktop.name,
             .desktop.window.name,
             .desktop.window.id' |
-        tr -d '"' |
-        paste - - - - -d':' | tac |
-        awk "/$first/ { first = \$0 } { print \$0 } END { print first }" | tac |
-        dmenu -b -i -l 20 -p "window")
+                paste - - - - -d':'
+} #$
 
-case $chosen in
-    "") exit ;;
-    *) echo $chosen | cut -d':' -f4 ;;
+node_menu(){ #^
+    first_item=$(echo "ibase=16; $(bspc query -N -n "${focused:-last}" |
+        cut -d 'x' -f 2)" |
+        bc)
+    print_nodes |
+        tac |
+        awk "/$first_item/ { first = \$0 } { print \$0 } END { print first }" |
+        tac
+} #$
+
+#^ main
+chosen=$(node_menu | dmenucmd -p "node")
+case "$chosen" in
+    "") kill 0 ;; # consider changing
+    *) echo "$chosen" | cut -d ':' -f 4 ;;
 esac
+#$
+
+# vim: fdm=marker fmr=#^,#$

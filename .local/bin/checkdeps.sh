@@ -1,14 +1,21 @@
 #!/bin/sh
 # check dependencies
 
-msg() {
-    echo -n "Dependency not installed: $@" \
-        | tee /dev/tty | gxmessage -file - 2>/dev/null &
-    exit 1
-}
+if xset q 1>/dev/null 2>&1; then
+    dialog_cmd(){
+        gxmessage "$1"
+    }
+else
+    dialog_cmd(){
+        dialog --msgbox "$1" 10 60
+    }
+fi
 
-for dep in $@; do
-    which $dep 1>/dev/null 2>&1 || deps="$deps $dep"
+for dep in "$@"; do
+    which "$dep" 1>/dev/null 2>&1 || deps="$deps $dep"
 done
 
-[ -z "$deps" ] || msg $deps
+if [ -n "$deps" ]; then
+    dialog_cmd "$deps"
+    exit 1
+fi

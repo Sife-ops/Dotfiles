@@ -1,19 +1,23 @@
-#!/bin/bash
+#!/bin/sh
 # dmenu bspc wrapper
 # todo:
 # command cache
 
-shopt -s expand_aliases
-alias dmenucmd='dmenu -b -i -l 20'
+#^ setup
+if which checkdeps.sh 1>/dev/null 2>&1; then
+    checkdeps.sh bspc jq bc dmenu || exit 1; fi
 
-function choose(){ #^
+alias dmenucmd='dmenu -b -i -l 20'
+#$
+
+choose(){ #^
     # choose STRING [PROMPT] [NO_FORMAT]
     # changes external $chosen
     chosen=$(\
         if [ -z "$3" ]; then
             printf '%s' "$1"
         else
-            printf "$1"
+            printf '%s' "$1"
         fi | eval dmenucmd ${2:+"-p \"$2\""} )
     echo "$chosen"
 } #$
@@ -77,7 +81,6 @@ optsWm='-d, --dump-state
 
 domain=$(choose "$domains" "domain")
 cmd="bspc $domain"
-# echo $cmd # debug
 
 case $domain in #^
     node) chosen=$(dmenunode.sh) ;;
@@ -86,7 +89,6 @@ case $domain in #^
     wm) : ;;
 esac
 cmd="$cmd $chosen" #$
-# echo $cmd # debug
 
 case $domain in #^
     node) choose "$optsNode" "options" >/dev/null ;;
@@ -94,9 +96,8 @@ case $domain in #^
     monitor) choose "$optsMon" "options" >/dev/null ;;
     wm) choose "$optsWm" "options" >/dev/null ;;
 esac
-chosen=$(echo $chosen | cut -d ',' -f 1)
+chosen=$(echo "$chosen" | cut -d ',' -f 1)
 cmd="$cmd $chosen" #$
-# echo $cmd # debug
 
 case $domain in #^
 
@@ -151,9 +152,7 @@ case $domain in #^
 
 esac
 cmd="$cmd $chosen" #$
-echo $cmd # debug
 
 eval "$cmd" # what the fuck??
-# sh -c "$cmd"
 
 # vim: fdm=marker fmr=#^,#$

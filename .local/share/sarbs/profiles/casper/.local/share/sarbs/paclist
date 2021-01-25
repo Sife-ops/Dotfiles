@@ -29,6 +29,7 @@ dfu-programmer
 dfu-util
 dhclient
 dhcpcd
+dialog
 discord
 doxygen
 dwarffortress
@@ -163,6 +164,7 @@ unclutter
 unionfs-fuse
 unrar
 unzip
+urlscan
 usbutils
 vi
 vifm
@@ -189,11 +191,13 @@ xorg-xsetroot
 xorg-xwininfo
 xscreensaver
 xterm
+yad
 youtube-dl
 zathura
 zathura-djvu
 zathura-pdf-poppler
 zathura-ps
+zenity
 zip
 zsh
 zsh-autosuggestions

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # print CPU temperature (for Ryzen 7)
 
 temp=$(sensors 2>/dev/null \
