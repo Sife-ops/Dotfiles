@@ -6,6 +6,7 @@
 #     _ >  <| | | | | | |_| | | (__
 #    (_)_/\_\_|_| |_|_|\__|_|  \___|
 
+#^----- ENVIRONMENT VARIABLES --------------------------------------------------
 #^----- MONITORS ---------------------------------------------------------------
 export MONITOR0="DP-1"
 export MONITOR1="HDMI-1"
@@ -18,9 +19,13 @@ export XMODIFIERS=@im=fcitx
 which fcitx && fcitx &
 #$
 
+#^----- URL --------------------------------------------------------------------
+export URL_OPENER="dmenuurl.sh"
+#$ #$
+
 #^----- KEYMAP -----------------------------------------------------------------
-ln -sf ${XDG_CONFIG_HOME:-${HOME}/.config}/xmodmap/natty.map \
-    ${HOME}/.Xmodmap
+# ln -sf ${XDG_CONFIG_HOME:-${HOME}/.config}/xmodmap/natty.map \
+    # ${HOME}/.Xmodmap
 # which setxmodmap.sh && setxmodmap.sh
 which xset && xset r rate 300 50
 which sxhkd && sxhkd &
