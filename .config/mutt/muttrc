@@ -5,11 +5,17 @@
 # Behavior
 set mailcap_path    = "~/.local/share/mailcap"
 set new_mail_command="notify-send 'New Email' '%n new messages, %u unread.' &"
+set sidebar_visible = yes
+set sidebar_width = 20
 auto_view text/html
 
 # Keybinds
 macro index,pager \cb "<pipe-message> urlscan -dc -r '$URL_OPENER {}'<Enter>"
 macro attach,compose \cb "<pipe-entry> urlscan -dc -r '$URL_OPENER {}'<Enter>"
+bind index <F2> sidebar-toggle-visible
+bind index <F3> sidebar-open
+bind index { sidebar-prev
+bind index } sidebar-next
 
 # Identity
 set realname        = 'Wyatt Goettsch'
