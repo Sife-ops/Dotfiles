@@ -69,7 +69,7 @@ font-1 = "Noto Color Emoji:scale=9;2"
 
 ;^--- MODULES ---
 
-modules-left = date pulseaudio cpu temperature memory wlan feeds pacman battery
+modules-left = date pulseaudio cpu temperature memory wlan mail feeds pacman battery
 modules-right = bspwm
 modules-center = notifications
 ;$ ;$
@@ -180,6 +180,19 @@ format-foreground = ${colors.foreground}
 label = %output%
 ;$
 
+;^_-_- MAIL _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+[module/mail]
+type = custom/script
+exec = mail.sh
+interval = 60
+
+format-padding = 2
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+
+label = %output%
+;$
+
 ;^_-_- FEEDS _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 [module/feeds]
 type = custom/script
@@ -197,7 +210,7 @@ label = %output%
 [module/pacman]
 type = custom/script
 exec = pacman.sh
-interval = 30
+interval = 60
 
 format-padding = 2
 format-background = ${colors.background}
