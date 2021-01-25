@@ -8,12 +8,12 @@ ln -sf ${XDG_CONFIG_HOME:=${HOME}/.config}/polybar/bspwm \
 which xsetroot && xsetroot -solid "#282828" &
 
 xdotool search --class dd || \
-    (st -c dd -n ddfeeds -e sh -c 'newsboat; exec zsh' &
-    st -c dd -n ddpass -e sh -c 'fpass.sh; exec zsh' &
-    st -c dd -n ddterm &
-    st -c dd -n ddvol -e sh -c 'pulsemixer; exec zsh' &)
+    (st -c dd -T "Feeds" -n ddfeeds -e sh -c 'newsboat; exec zsh' &
+     st -c dd -T "Terminal" -n ddterm -e sh -c 'tmux; exec zsh' &
+     st -c dd -T "Volume" -n ddvol -e sh -c 'pulsemixer; exec zsh' &
+     st -c dd -T "Email" -n ddmail -e sh -c 'neomutt; exec zsh' &)
 sleep 3
 togmap.sh -l ddfeeds
-togmap.sh -l ddpass
+togmap.sh -l ddmail
 togmap.sh -l ddterm
 togmap.sh -l ddvol
