@@ -59,8 +59,8 @@ mod4 + 2
 mod4 + 4
     togmap.sh -l ddterm
 
-mod4 + 5
-    dmenuurl.sh
+# mod4 + 5
+    # dmenuurl.sh
 
 mod4 + 6
     tsp youtube-dl -o ~/Downloads/%\(title\)s.%\(ext\)s $(xclip -selection clipboard -o)
@@ -68,11 +68,11 @@ mod4 + 6
 mod4 + 7
     togmap.sh -l ddfeeds
 
-mod4 + 8
-    dmenuclipboard.sh
+# mod4 + 8
+    # dmenuclipboard.sh
 
-mod4 + 9
-    dmenucalc.sh
+# mod4 + 9
+    # dmenucalc.sh
 
 #$
 
@@ -99,8 +99,16 @@ mod4 + d; b
     dmenubmarks.sh
 
 # clipboard menu
-mod4 + d; c
+mod4 + d; c; a
+    dmenucalc.sh
+
+# clipboard menu
+mod4 + d; c; b
     dmenuclipboard.sh
+
+# dropdown menu
+mod4 + d; d
+    dmenudd.sh
 
 # emoji menu
 mod4 + d; e
