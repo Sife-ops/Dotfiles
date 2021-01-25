@@ -81,6 +81,7 @@ export SARBS="${XDG_DATA_HOME:-$HOME/.local/share}/sarbs"
 export SAVEHIST=9000
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
+export URL_OPENER="fzfurl.sh"
 # export VIMINIT='if !has('nvim') | source "${XDG_CONFIG_HOME:-$HOME/.config}/vim/vimrc" | endif'
 export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
 # export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # breaks some DMs
