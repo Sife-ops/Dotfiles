@@ -26,8 +26,6 @@
 .config/libreoffice/
 .config/lynx/
 .config/mozc/
-.config/nvim/
-.config/nvim/.git/
 .config/pavucontrol.ini
 .config/pcmanfm/
 .config/pulse/
