@@ -186,7 +186,7 @@ mod4 + Return
 mod4 + n
     bspc node @parent -C forward
 
-# paste primary clipboard
+# paste clipboard
 mod4 + v
     sleep 0.25 && xdotool type --clearmodifiers "$(xclip -o -selection primary)"
 
