@@ -11,6 +11,7 @@ map <c-t> push :$touch<space>
 map D &dragon-drag-and-drop $fx
 map E $$ALTEDITOR "$f"
 map r $vidir
+map u preview
 map x extract
 #$
 
@@ -30,31 +31,38 @@ map tp $trash-put $f
 map tr $trash-restore
 #$
 
+#^ tar
+map <c-a>g $tar czf archive.tar.gz $fx
+map <c-a>b $tar cjf archive.tar.bz2 $fx
+map <c-a>x $tar cJf archive.tar.xz $fx
+map <c-a>t $tar cf archive.tar $f
+#$
+
 #^ chmod
-map -ar $chmod a-r $fx
-map -aw $chmod a-w $fx
-map -ax $chmod a-x $fx
-map -ur $chmod u-r $fx
-map -uw $chmod u-w $fx
-map -ux $chmod u-x $fx
-map -gr $chmod g-r $fx
-map -gw $chmod g-w $fx
-map -gx $chmod g-x $fx
-map -or $chmod o-r $fx
-map -ow $chmod o-w $fx
-map -ox $chmod o-x $fx
-map +ar $chmod a+r $fx
-map +aw $chmod a+w $fx
-map +ax $chmod a+x $fx
-map +ur $chmod u+r $fx
-map +uw $chmod u+w $fx
-map +ux $chmod u+x $fx
-map +gr $chmod g+r $fx
-map +gw $chmod g+w $fx
-map +gx $chmod g+x $fx
-map +or $chmod o+r $fx
-map +ow $chmod o+w $fx
-map +ox $chmod o+x $fx
+map <c-c>a-r $chmod a-r $fx
+map <c-c>a-w $chmod a-w $fx
+map <c-c>a-x $chmod a-x $fx
+map <c-c>u-r $chmod u-r $fx
+map <c-c>u-w $chmod u-w $fx
+map <c-c>u-x $chmod u-x $fx
+map <c-c>g-r $chmod g-r $fx
+map <c-c>g-w $chmod g-w $fx
+map <c-c>g-x $chmod g-x $fx
+map <c-c>o-r $chmod o-r $fx
+map <c-c>o-w $chmod o-w $fx
+map <c-c>o-x $chmod o-x $fx
+map <c-c>a+r $chmod a+r $fx
+map <c-c>a+w $chmod a+w $fx
+map <c-c>a+x $chmod a+x $fx
+map <c-c>u+r $chmod u+r $fx
+map <c-c>u+w $chmod u+w $fx
+map <c-c>u+x $chmod u+x $fx
+map <c-c>g+r $chmod g+r $fx
+map <c-c>g+w $chmod g+w $fx
+map <c-c>g+x $chmod g+x $fx
+map <c-c>o+r $chmod o+r $fx
+map <c-c>o+w $chmod o+w $fx
+map <c-c>o+x $chmod o+x $fx
 #$
 
 # vim: ft=sh fdm=marker fmr=#^,#$
