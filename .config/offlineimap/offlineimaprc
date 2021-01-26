@@ -12,6 +12,7 @@ accounts = gmx
 pythonfile = ~/.config/offlineimap/functions.py
 #$
 
+#^---- ACCOUNTS ----------------------------------------------------------------
 ##^--- 420blaze.it --------------------------------------------------------------
 #[Account 420blaze]
 ## Identifier for the local repository; e.g. the maildir to be synced via IMAP.
@@ -120,6 +121,7 @@ sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 # remoteuser = wyattgoettsch@yandex.com
 # remotepasseval = get_pass('yandex.gpg')
 # sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+#$
 #$
 
 #^--- MUTT ---------------------------------------------------------------------
