@@ -4,3 +4,6 @@
 [submodule ".config/nvim"]
 	path = .config/nvim
 	url = git@github.com:Sife-ops/SoyFreeVim.git
+[submodule ".config/zsh"]
+	path = .config/zsh
+	url = git@github.com:Sife-ops/xyZSH.git
