@@ -17,8 +17,6 @@
 .config/dconf/
 .config/discord/
 .config/discordcanary/
-.config/emacs/
-.config/emacs/.git
 .config/fcitx/
 .config/gtk-2.0/
 .config/hexchat/
