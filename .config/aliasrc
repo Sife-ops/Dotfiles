@@ -55,6 +55,14 @@ alias \
 
 #$
 
+#^ Emacs
+
+systemctl --quiet --user is-active emacs.service >/dev/null \
+    && alias e='emacsclient' \
+    || alias e='emacs'
+
+#$
+
 #^ Git
 
 alias \
@@ -77,19 +85,11 @@ alias \
 
 #$
 
-#^ Emacs
+#^ Mutt
 
-systemctl --quiet --user is-active emacs.service >/dev/null \
-    && alias e='emacsclient' \
-    || alias e='emacs'
-
-#$
-
-#^ Vim
-
-command -v nvim >/dev/null \
-    && alias vim="nvim" v="nvim" vd="nvim -d"  \
-    || alias v="vim" vd="vim -d"
+command -v neomutt >/dev/null \
+    && alias m="cd ~/Downloads && neomutt" mutt="cd ~/Downloads && neomutt" \
+    || alias m="cd ~/Downloads && mutt" mutt="cd ~/Downloads && mutt"
 
 #$
 
@@ -102,6 +102,16 @@ alias \
     tl='tmux list-sessions' \
 	tmux="tmux -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf"
 
-#$ #$
+#$
+
+#^ Vim
+
+command -v nvim >/dev/null \
+    && alias vim="nvim" v="nvim" vd="nvim -d"  \
+    || alias v="vim" vd="vim -d"
+
+#$
+
+#$
 
 # vim: fdm=marker fmr=#^,#$
