@@ -45,6 +45,7 @@
 .local/lib/
 .local/share/.vivaldi_reporting_data
 .local/share/Trash/
+.local/share/bookmarks
 .local/share/cargo/
 .local/share/clipboard
 .local/share/clipboard.d/
