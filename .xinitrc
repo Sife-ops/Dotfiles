@@ -1,1 +1,0 @@
-/home/wyatt/.local/share/sarbs/profiles/casper/.xinitrc

@@ -1,6 +1,9 @@
 .Xauthority
 .Xmodmap
 .Xresources
+.bash_logout
+.bash_profile
+.bashrc
 .cache/
 .config/Bitwarden/
 .config/Bitwarden\ CLI/
