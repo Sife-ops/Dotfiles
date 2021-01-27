@@ -45,6 +45,7 @@ alias \
     pg='pgrep' \
     pk='pkill' \
     r='rangercd' \
+    rtorrent='rtorrent -n -o import=~/.config/rtorrent/rtorrent.rc' \
 	sdn="sudo shutdown -h now" \
     so="source {${XDG_CONFIG_HOME:-${HOME}/.config}/aliasrc,${ZDOTDIR}/.zshrc}" \
     so="source ~/.zprofile; source ${ZDOTDIR}/.zshrc" \
