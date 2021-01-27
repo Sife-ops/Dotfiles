@@ -1,9 +1,9 @@
 [submodule ".config/emacs"]
 	path = .config/emacs
-	url = git@github.com:Sife-ops/SoyFreEmacs.git
+	url = https://github.com/Sife-ops/SoyFreEmacs.git
 [submodule ".config/nvim"]
 	path = .config/nvim
-	url = git@github.com:Sife-ops/SoyFreeVim.git
+	url = https://github.com/Sife-ops/SoyFreeVim.git
 [submodule ".config/zsh"]
 	path = .config/zsh
-	url = git@github.com:Sife-ops/xyZSH.git
+	url = https://github.com/Sife-ops/xyZSH.git
