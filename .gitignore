@@ -83,6 +83,7 @@
 .pki
 .plover-lock-casper-0
 .ssh/
+.viminfo
 .vscode
 .xinitrc
 Documents

@@ -9,6 +9,7 @@ map <c-n> push :mkdir<space>
 map <c-s> $ln -sf $fs ./
 map <c-t> push :$touch<space>
 map D &dragon-drag-and-drop $fx
+map d $nvim -d $fx
 map E $$ALTEDITOR "$f"
 map r $vidir
 map u preview
