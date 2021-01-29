@@ -2,50 +2,10 @@
 # Sife's muttrc
 #
 
-#^ Behavior
-auto_view text/html
-set mailcap_path    = "~/.local/share/mailcap"
-set new_mail_command="notify-send 'New Email' '%n new messages, %u unread.' &"
-set sidebar_visible = yes
-set sidebar_width = 20
-#$
-
-#^ Keymap
-# macro attach,compose \cb "<pipe-entry> urlscan -dc -r '$URL_OPENER {}'<Enter>"
-# macro index,pager \cb "<pipe-message> urlscan -dc -r '$URL_OPENER {}'<Enter>"
-bind attach,pager h exit
-bind index <F2> sidebar-toggle-visible
-bind index <F3> sidebar-open
-bind index l display-message
-bind index { sidebar-prev
-bind index } sidebar-next
-bind index,pager V noop
-macro attach V "<pipe-entry>iconv -c --to-code=UTF8 > ~/.cache/mutt/mail.html<enter><shell-escape>$BROWSER ~/.cache/mutt/mail.html<enter>"
-macro index,pager V "<view-attachments><search>html<enter><pipe-entry>iconv -c --to-code=UTF8 > ~/.cache/mutt/mail.html<enter><shell-escape>$BROWSER ~/.cache/mutt/mail.html<enter><exit>"
-#$
-
-#^ Identity
-set realname        = 'Wyatt Goettsch'
-set from            = "Wyatt <wyattgoettsch@gmx.us>"
-#$
-
-#^ IMAP: offlineimap
-set folder          = "~/.local/share/mail/wyattgoettsch@gmx.us"
-source ~/.config/mutt/mailboxes
-set spoolfile       = "+/INBOX"
-set record          = "+/Sent"
-set postponed       = "+/Drafts"
-set sort            = reverse-date-received
-#$
-
-#^ SMTP: msmtp
-set sendmail        = "/usr/bin/msmtp"
-set edit_headers    = yes
-#$
-
-#^ Misc.
-source ~/.config/mutt/gpg.rc
-source ~/.config/mutt/colors.muttrc
-#$
-
-# vim: fdm=marker fmr=#^,#$
+source ~/.config/mutt/account.d/wyattgoettschatgmxdotus.conf
+source ~/.config/mutt/conf.d/accounts.conf
+source ~/.config/mutt/conf.d/auto-view.conf
+source ~/.config/mutt/conf.d/set.conf
+source ~/.config/mutt/conf.d/keymap.conf
+source ~/.config/mutt/conf.d/colors.conf
+source ~/.config/mutt/conf.d/gpg.rc
