@@ -8,7 +8,7 @@
 #^---- GENERAL ----------------------------------------------------------------
 [general]
 # List of accounts to be synced, separated by a comma.
-accounts = gmx
+accounts = wyattgoettschatgmxdotus, elonbustatgmxdotcom
 pythonfile = ~/.config/offlineimap/functions.py
 #$
 
@@ -80,24 +80,46 @@ pythonfile = ~/.config/offlineimap/functions.py
 ##$
 
 #^---- wyattgoettsch@gmx.us ----------------------------------------------------
-[Account gmx]
+[Account wyattgoettschatgmxdotus]
 # Identifier for the local repository; e.g. the maildir to be synced via IMAP.
-localrepository = gmx-local
+localrepository = wyattgoettschatgmxdotus-local
 # Identifier for the remote repository; i.e. the actual IMAP, usually non-local.
-remoterepository = gmx-remote
+remoterepository = wyattgoettschatgmxdotus-remote
 
-[Repository gmx-local]
+[Repository wyattgoettschatgmxdotus-local]
 # OfflineIMAP supports Maildir, GmailMaildir, and IMAP for local repositories.
 type = Maildir
 # Where should the mail be placed?
 localfolders = ~/.local/share/mail/wyattgoettsch@gmx.us
 
-[Repository gmx-remote]
+[Repository wyattgoettschatgmxdotus-remote]
 # Remote repos can be IMAP or Gmail, the latter being a preconfigured IMAP.
 type = IMAP
 remotehost = imap.gmx.com
 remoteuser = wyattgoettsch@gmx.us
-remotepasseval = get_pass('gmx.gpg')
+remotepasseval = get_pass('wyattgoettschatgmxdotus.gpg')
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+#$
+
+#^---- elonbust@gmx.com --------------------------------------------------------
+[Account elonbustatgmxdotcom]
+# Identifier for the local repository; e.g. the maildir to be synced via IMAP.
+localrepository = elonbustatgmxdotcom-local
+# Identifier for the remote repository; i.e. the actual IMAP, usually non-local.
+remoterepository = elonbustatgmxdotcom-remote
+
+[Repository elonbustatgmxdotcom-local]
+# OfflineIMAP supports Maildir, GmailMaildir, and IMAP for local repositories.
+type = Maildir
+# Where should the mail be placed?
+localfolders = ~/.local/share/mail/elonbust@gmx.com
+
+[Repository elonbustatgmxdotcom-remote]
+# Remote repos can be IMAP or Gmail, the latter being a preconfigured IMAP.
+type = IMAP
+remotehost = imap.gmx.com
+remoteuser = elonbust@gmx.com
+remotepasseval = get_pass('elonbustatgmxdotcom.gpg')
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 #$
 
@@ -122,16 +144,6 @@ sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 # remotepasseval = get_pass('yandex.gpg')
 # sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 #$
-#$
-
-#^--- MUTT ---------------------------------------------------------------------
-[mbnames]
-enabled = yes
-filename = ~/.config/mutt/mailboxes
-header = "mailboxes "
-peritem = "+/%(foldername)s"
-sep = " "
-footer = "\n"
 #$
 
 # vim: fdm=marker fmr=#^,#$
