@@ -12,15 +12,19 @@ export MONITOR0="DP-1"
 export MONITOR1="HDMI-1"
 #$
 
+#^----- BROWSER ----------------------------------------------------------------
+export BROWSER="librewolf"
+#$
+
+#^----- URL --------------------------------------------------------------------
+export URL_OPENER="dmenuurl.sh"
+#$
+
 #^----- IM ---------------------------------------------------------------------
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 which fcitx && fcitx &
-#$
-
-#^----- URL --------------------------------------------------------------------
-export URL_OPENER="dmenuurl.sh"
 #$ #$
 
 #^----- KEYMAP -----------------------------------------------------------------
