@@ -45,6 +45,8 @@
 .local/lib/
 .local/share/.vivaldi_reporting_data
 .local/share/Trash/
+.local/share/addressbook
+.local/share/addressbook~
 .local/share/bookmarks
 .local/share/cargo/
 .local/share/clipboard
