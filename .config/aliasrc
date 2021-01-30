@@ -25,6 +25,8 @@ alias \
 #^ General
 
 alias \
+    abook="abook -C ${XDG_CONFIG_HOME:-${HOME}/.config}/abook/abookrc \\
+        --datafile ${XDG_DATA_HOME:-${HOME}/.local/share}/addressbook" \
     cal='calcurse' \
     chx='chmod +x' \
     d='dragon-drag-and-drop' \
