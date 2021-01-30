@@ -43,6 +43,7 @@ export BW_SESSION_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/bw-session.gpg"
 
 #^#---- OTHER ------------------------------------------------------------------
 export ALIASFILE="${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc"
+export ADDRESS_BOOK="${XDG_DATA_HOME:-$HOME/.local/share}/addressbook"
 export ANDROID_SDK_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android"
 export BOOKMARKS="${XDG_DATA_HOME:-$HOME/.local/share}/bookmarks"
 export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
