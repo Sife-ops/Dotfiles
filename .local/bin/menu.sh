@@ -12,45 +12,29 @@ which xclip 1>/dev/null 2>&1 || noxclip=t
 which dmenu 1>/dev/null 2>&1 || nodmenu=t
 dmenucmd="${DMENU_CMD:-dmenu -b -i -l 20}"
 
+which zenity 1>/dev/null 2>&1 || nozenity=t
+zenitycmd="zenity --password"
+
 which fzf 1>/dev/null 2>&1 || nofzf=t
 fzfcmd="${FZF_CMD:-fzf --tac --cycle}"
 
+which dialog 1>/dev/null 2>&1 || nodialog=t
+dialogcmd="dialog --no-cancel --passwordbox 'Enter a password.' 10 60 3>&1 1>&2 2>&3 3>&1"
+
 if [ -n "$nox" ]; then
-        if [ -n "$nofzf" ]; then
-            exit 1;
-        else
-            menucmd="$fzfcmd"
-        fi
-        clipcmd='cat'
+    if [ -n "$nofzf" ]; then exit 1; else menucmd="$fzfcmd"; fi
+    if [ -n "$nodialog" ]; then exit 1; else promptcmd="$dialogcmd"; fi
+    clipcmd='cat'
 else
-    if [ -n "$nodmenu" ]; then
-        exit 1;
-    else
-        menucmd="$dmenucmd"
-    fi
-    if [ -n "$noxclip" ]; then
-        clipcmd='cat'
-    else
-        clipcmd='xclip'
-    fi
-
-    # if [ -n "$PS1" ]; then
-    #     menucmd="$fzfcmd"
-    # else
-    #     if [ -n "$nodmenu" ]; then
-    #         exit 1;
-    #     else
-    #         menucmd="$dmenucmd"
-    #     fi
-    # fi
-    # if [ -n "$noxclip" ]; then
-    #     clipcmd='cat'
-    # else
-    #     clipcmd='xclip'
-    # fi
-
+    if [ -n "$nodmenu" ]; then exit 1; else menucmd="$dmenucmd"; fi
+    if [ -n "$nozenity" ]; then exit 1; else promptcmd="$zenitycmd"; fi
+    if [ -n "$noxclip" ]; then clipcmd='cat'; else clipcmd='xclip'; fi
 fi
 #$
+
+prompt() { #^
+    eval "$promptcmd"
+} #$
 
 menu(){ #^
     # menu <func. menu> [str. prompt] [bool print_query]
