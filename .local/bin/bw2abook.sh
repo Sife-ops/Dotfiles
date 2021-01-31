@@ -3,9 +3,6 @@
 
 . bw.sh
 
-if which checkdeps.sh 1>/dev/null 2>&1; then
-    checkdeps.sh jq || exit 1; fi
-
 bw_sync 1>/dev/null 2>&1
 
 idents=$(bw_list_identities)
