@@ -5,8 +5,8 @@
 #    |_| \_|\___| \_/\_/ |___/_.__/ \___/ \__,_|\__|
 
 auto-reload yes
-browser fzfurl.sh
-external-url-viewer "urlscan -dc -r 'fzfurl.sh {}'"
+browser "url.sh %u"
+external-url-viewer "urlscan -dc -r 'url.sh {}'"
 feed-sort-order lastupdated-desc
 notify-always no
 notify-program "notify-send"
