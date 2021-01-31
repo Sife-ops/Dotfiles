@@ -1,44 +1,66 @@
 settings = {
   core = { real_name = "Joe Biden"; user_name = "JoJo"; nick = "sife"; };
   "fe-text" = { actlist_sort = "refnum"; };
+  "irc/dcc" = { dcc_download_path = "~/Downloads/"; };
 };
 
 servers = (
-  { address = "chat.freenode.net"; chatnet = "Freenode";  port = "6697"; use_tls = "yes"; tls_verify = "yes"; },
-  { address = "irc.irchighway.net";  chatnet = "IRCHighWay";  port = "6667"; }
-  { address = "irc.undernet.org";  chatnet = "Undernet";  port = "6667"; }
-  { address = "ssl.efnet.org";     chatnet = "EFNet";     port = "9999"; use_tls = "yes"; },
+  {
+    address = "chat.freenode.net";
+    chatnet = "Freenode";
+    port = "6697";
+    use_tls = "yes";
+    tls_verify = "yes";
+  },
+  {
+    address = "irc.irchighway.net";
+    chatnet = "IRCHighWay";
+    port = "6667";
+  },
+  {
+    address = "irc.undernet.org";
+    chatnet = "Undernet";
+    port = "6667";
+  },
+  {
+    address = "ssl.efnet.org";
+    chatnet = "EFNet";
+    port = "9999";
+    use_tls = "yes";
+  }
 );
 
 chatnets = {
   EFNet = {
-    type      = "IRC";
+    type = "IRC";
     max_kicks = "1";
-    max_msgs  = "4";
+    max_msgs = "4";
     max_whois = "1";
   };
   Freenode = {
-    type      = "IRC";
+    type = "IRC";
     max_kicks = "1";
-    max_msgs  = "4";
+    max_msgs = "4";
     max_whois = "1";
   };
   IRCHighWay = {
-    type      = "IRC";
+    type = "IRC";
     max_kicks = "1";
-    max_msgs  = "1";
+    max_msgs = "1";
     max_whois = "1";
   };
   Undernet = {
-    type      = "IRC";
+    type = "IRC";
     max_kicks = "1";
-    max_msgs  = "1";
+    max_msgs = "1";
     max_whois = "1";
   };
 };
 
 channels = (
-  { name = "#ebooks";   chatnet = "IRCHighWay";   autojoin = "No"; },
-  { name = "#emacs";  chatnet = "Freenode";  autojoin = "No"; },
-  { name = "#freenode";  chatnet = "Freenode";  autojoin = "No"; },
+  { name = "#bash"; chatnet = "Freenode"; autojoin = "Yes"; },
+  { name = "#ebooks"; chatnet = "IRCHighWay"; autojoin = "Yes"; },
+  { name = "#emacs"; chatnet = "Freenode"; autojoin = "No"; },
+  { name = "#freenode"; chatnet = "Freenode"; autojoin = "No"; }
+  { name = "#posix"; chatnet = "Freenode"; autojoin = "Yes"; },
 );
