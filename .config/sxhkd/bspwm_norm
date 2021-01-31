@@ -50,23 +50,23 @@ XF86AudioMute
 # mod4 + shift + {1-9}
     # bspc node -d '^{1-9}'
 
-mod4 + 2
-    togmap.sh -l ddvol
+# mod4 + 2
+    # togmap.sh -l ddvol
 
 # mod4 + 3
     # dmenubw.sh
 
-mod4 + 4
-    togmap.sh -l ddterm
+# mod4 + 4
+    # togmap.sh -l ddterm
 
 # mod4 + 5
     # dmenuurl.sh
 
-mod4 + 6
-    tsp youtube-dl -o ~/Downloads/%\(title\)s.%\(ext\)s $(xclip -selection clipboard -o)
+# mod4 + 6
+    # tsp youtube-dl -o ~/Downloads/%\(title\)s.%\(ext\)s $(xclip -selection clipboard -o)
 
-mod4 + 7
-    togmap.sh -l ddfeeds
+# mod4 + 7
+    # togmap.sh -l ddfeeds
 
 # mod4 + 8
     # dmenuclipboard.sh
@@ -96,15 +96,15 @@ mod4 + {H,J,K,L}
 
 # bookmark menu
 mod4 + d; b
-    dmenubmarks.sh
+    bookmarks.sh
 
 # clipboard menu
 mod4 + d; c; a
-    dmenucalc.sh
+    calc.sh
 
 # clipboard menu
 mod4 + d; c; b
-    dmenuclipboard.sh
+    clipboard.sh
 
 # dropdown menu
 mod4 + d; d
@@ -112,19 +112,19 @@ mod4 + d; d
 
 # emoji menu
 mod4 + d; e
-    dmenuunicode.sh ~/.local/share/sarbs/emoji
+    emoji.sh
 
 # meme menu
 mod4 + d; m
-    dmemeu.sh ~/Pictures/Emotes
+    meme.sh
 
 # password menu
 mod4 + d; p
-    dmenubw.sh
+    bwvault.sh
 
 # url action menu
 mod4 + d; u
-    dmenuurl.sh
+    url.sh
 
 # make window floating
 mod4 + f
