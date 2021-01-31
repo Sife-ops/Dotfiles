@@ -3,13 +3,29 @@
 # todo:
 # finish setsid/tmux bg functions
 # test without notify-send present
-# research alternate terminals
 
 . menu.sh
 
 #^ runtime check
-download_dir="${XDG_DOWNLOAD_DIR:-${HOME}/Downloads}"
-[ ! -d "$download_dir" ] && mkdir -p "$download_dir"
+[ -d "${DOWNLOADS:=${XDG_DOWNLOAD_DIR:-${HOME}/Downloads}}" ] || exit 1
+
+[ -f "${BOOKMARKS:=${XDG_DATA_HOME:-${HOME}/.local/share}/bookmarks}" ] || \
+    nobookmarks=t
+
+[ -f "${FEEDS:=${XDG_CONFIG_HOME:-${HOME}/.config}/newsboat/urls}" ] || \
+    nofeeds=t
+
+which "${BROWSER:=firefox}" 1>/dev/null 2>&1 || nobrowser=t
+which "${TERMINAL:=xfce4-terminal}" 1>/dev/null 2>&1 || noterm=t
+case "$TERMINAL" in
+    alacritty) termcmd='alacritty --class dd -e sh -c' ;; # todo
+    st) termcmd='st -c dd -e sh -c' ;;
+    urxvt) termcmd='urxvt -name dd -e sh -c' ;; # todo
+    xfce4-terminal) : ;; # todo
+    xterm) termcmd='xterm -class dd -e sh -c' ;; # todo
+    "") : ;;
+    *) : ;;
+esac
 
 which curl 1>/dev/null 2>&1 || nocurl=t
 which mpv 1>/dev/null 2>&1 || nompv=t
@@ -18,21 +34,6 @@ which sxiv 1>/dev/null 2>&1 || nosxiv=t
 which tmux 1>/dev/null 2>&1 || notmux=t
 which tsp 1>/dev/null 2>&1 || notsp=t
 which youtube-dl 1>/dev/null 2>&1 || noytdl=t
-
-[ -e "${BOOKMARKS:=${XDG_DATA_HOME}/bookmarks}" ] || nobookmarks=t
-[ -e "${FEEDS:=${XDG_CONFIG_HOME}/newsboat/urls}" ] || nofeeds=t
-
-which "${BROWSER:=firefox}" 1>/dev/null 2>&1 || nobrowser=t
-which "${TERMINAL:=xfce4-terminal}" 1>/dev/null 2>&1 || noterm=t
-case "$TERMINAL" in
-    alacritty) : ;; # todo
-    st) termcmd='st -c dd -e sh -c' ;;
-    urxvt) : ;; # todo
-    xfce4-terminal) : ;; # todo
-    xterm) : ;; # todo
-    "") : ;;
-    *) : ;;
-esac
 #$
 
 #^ input
@@ -52,8 +53,8 @@ fi
 #^ lists
 main_list(){ #^
 printf 'File: %s\n' "$urlbase"
-printf 'add feed\n'
-printf 'add bookmark\n'
+[ -z "$nofeeds" ] && printf 'add feed\n'
+[ -z "$nobookmarks" ] && printf 'add bookmark\n'
 [ -z "$nobrowser" ] && printf 'browser\n'
 [ -z "$nox" ] && printf 'copy to clipboard\n'
 [ -z "$nocurl" ] && printf 'curl\n'
@@ -78,7 +79,7 @@ bg_list(){ #^
 
 bg_with(){ #^
     # bg_with <bg_type> <command>
-    cd "$download_dir" || kill 0
+    cd "$DOWNLOADS" || kill 0
     case "$1" in
         tsp) notify-send "task spooler" "Queuing $urlbase... ⏳"
              tspid=$(eval tsp "$2")
@@ -92,7 +93,7 @@ bg_with(){ #^
 
 bg_menu(){ #^
     # bg_menu <command>
-    chosen=$(menu bg_list "background") # no prompt word splitting
+    chosen=$(menu bg_list "background with")
     case "$chosen" in
         "task spooler") bg_with tsp "$1" ;;
         setsid) bg_with setsid "$1" ;;
@@ -119,7 +120,7 @@ ytdl_menu(){ #^
 chosen=$(menu main_list "action")
 case "$chosen" in
     "add feed") echo "$url" >> "$FEEDS" ;;
-    "add bookmark") echo "$url" >> "$BOOKMARK" ;;
+    "add bookmark") echo "$url" >> "$BOOKMARKS" ;;
 	browser) setsid -f "$BROWSER" "$url" 1>/dev/null 2>&1 ;; # change to & disown?
     "copy to clipboard") echo "$url" > "${CLIPBOARD:-${XDG_DATA_HOME}/clipboard}" ;;
     curl) bg_menu "curl -LO $url" ;;
