@@ -51,7 +51,10 @@
 .local/share/cargo/
 .local/share/clipboard
 .local/share/clipboard.d/
+.local/share/doc
 .local/share/doc/
+.local/share/emoji
+.local/share/games
 .local/share/gnupg/
 .local/share/go/
 .local/share/graveyard/
@@ -59,6 +62,7 @@
 .local/share/irssi/
 .local/share/lf/
 .local/share/mail/
+.local/share/memes
 .local/share/newsboat/
 .local/share/notifications
 .local/share/nvim/log
@@ -70,9 +74,12 @@
 .local/share/recently-used.xbel
 .local/share/sarbs/aurlist
 .local/share/sarbs/paclist
+.local/share/steam
 .local/share/tig/
 .local/share/ucollage
+.local/share/vbox
 .local/share/vlc/
+.local/share/warez
 .local/share/webkitgtk/
 .local/share/www/
 .local/share/xdotool/
@@ -91,3 +98,4 @@
 .xinitrc
 Documents
 Downloads
+Pictures
