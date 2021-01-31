@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=HTML Reader
+Exec=/usr/bin/librewolf %u
