@@ -16,16 +16,21 @@ if [ -z "$BW_GPG_ID" ]; then
 fi
 #$
 
+bw_login() { #^
+    bw_session_key=$(bw_cmd unlock "$(prompt)" |
+        grep 'export' |
+        sed 's/^.*BW_SESSION="\(.*\)"/\1/')
+    echo "$bw_session_key" |
+        gpg --quiet --recipient "$BW_GPG_ID" \
+            --encrypt --output "$bw_session_cache"
+    printf '%s' "$bw_session_key"
+} #$
+
 bw_session_key(){ #^
     if [ -f "$bw_session_cache" ]; then
         bw_session_key=$(gpg --quiet --decrypt "$bw_session_cache")
     else
-        bw_session_key=$(bw_cmd unlock $(printf '' | eval "$menucmd -p \"Password:\"") |
-            grep 'export' |
-            sed 's/^.*BW_SESSION="\(.*\)"/\1/')
-        echo "$bw_session_key" |
-            gpg --quiet --recipient "$BW_GPG_ID" \
-                --encrypt --output "$bw_session_cache"
+        bw_session_key=$(bw_login)
     fi
     printf '%s' "$bw_session_key"
 } #$
