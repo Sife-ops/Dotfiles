@@ -5,6 +5,7 @@ coverage-3.9
 coverage3
 cpu.sh
 dmenubspc.sh
+dmenudd.sh
 dmenudesk.sh
 dmenumon.sh
 dmenunode.sh

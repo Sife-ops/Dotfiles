@@ -1,1 +1,0 @@
-/home/wyatt/.local/share/bspwm/dmenudd.sh
