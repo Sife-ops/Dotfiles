@@ -70,6 +70,7 @@
 .local/share/nvim/shada/
 .local/share/nvim/undo/
 .local/share/plover/
+.local/share/qutebrowser/
 .local/share/ranger/
 .local/share/recently-used.xbel
 .local/share/sarbs/aurlist
