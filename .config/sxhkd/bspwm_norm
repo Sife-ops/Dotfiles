@@ -50,29 +50,14 @@ XF86AudioMute
 # mod4 + shift + {1-9}
     # bspc node -d '^{1-9}'
 
-# mod4 + 2
-    # togmap.sh -l ddvol
+mod4 + 2
+    udacity.sh yank cpp
+
+mod4 + 3
+    udacity.sh put
 
 # mod4 + 3
-    # dmenubw.sh
-
-# mod4 + 4
-    # togmap.sh -l ddterm
-
-# mod4 + 5
-    # dmenuurl.sh
-
-# mod4 + 6
-    # tsp youtube-dl -o ~/Downloads/%\(title\)s.%\(ext\)s $(xclip -selection clipboard -o)
-
-# mod4 + 7
-    # togmap.sh -l ddfeeds
-
-# mod4 + 8
-    # dmenuclipboard.sh
-
-# mod4 + 9
-    # dmenucalc.sh
+    # udacity.sh c
 
 #$
 
