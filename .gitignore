@@ -24,6 +24,7 @@
 .config/gtk-2.0/
 .config/hexchat/
 .config/inkscape/
+.config/irssi/default.theme
 .config/leafpad/
 .config/libfm/
 .config/libreoffice/
@@ -59,6 +60,8 @@
 .local/share/go/
 .local/share/graveyard/
 .local/share/history
+.local/share/ii/
+.local/share/irssi
 .local/share/irssi/
 .local/share/lf/
 .local/share/mail/
@@ -81,6 +84,7 @@
 .local/share/vbox
 .local/share/vlc/
 .local/share/warez
+.local/share/warez/
 .local/share/webkitgtk/
 .local/share/www/
 .local/share/xdotool/

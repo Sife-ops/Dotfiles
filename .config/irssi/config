@@ -2,6 +2,10 @@ settings = {
   core = { real_name = "Joe Biden"; user_name = "JoJo"; nick = "sife"; };
   "fe-text" = { actlist_sort = "refnum"; };
   "irc/dcc" = { dcc_download_path = "~/Downloads/"; };
+  "fe-common/core" = {
+    autolog = "yes";
+    autolog_path = "~/.local/share/irssi/irclogs/$tag/$0.log";
+  };
 };
 
 servers = (
@@ -17,7 +21,7 @@ servers = (
     chatnet = "IRCHighWay";
     port = "6667";
   },
-  {
+  { 
     address = "irc.undernet.org";
     chatnet = "Undernet";
     port = "6667";
@@ -31,7 +35,7 @@ servers = (
 );
 
 chatnets = {
-  EFNet = {
+  EFNet = { 
     type = "IRC";
     max_kicks = "1";
     max_msgs = "4";
@@ -62,5 +66,5 @@ channels = (
   { name = "#ebooks"; chatnet = "IRCHighWay"; autojoin = "Yes"; },
   { name = "#emacs"; chatnet = "Freenode"; autojoin = "No"; },
   { name = "#freenode"; chatnet = "Freenode"; autojoin = "No"; }
-  { name = "#posix"; chatnet = "Freenode"; autojoin = "Yes"; },
 );
+logs = { };
