@@ -70,6 +70,16 @@ audio only
 audio playlist"
 } #$
 
+browser_list() { #^
+    printf '$BROWSER\n'
+    which brave 1>/dev/null 2>&1 && printf 'brave\n'
+    which chromium 1>/dev/null 2>&1 && printf 'chromium\n'
+    which firefox 1>/dev/null 2>&1 && printf 'firefox\n'
+    which icecat 1>/dev/null 2>&1 && printf 'icecat\n'
+    which librewolf 1>/dev/null 2>&1 && printf 'librewolf\n'
+    which qutebrowser 1>/dev/null 2>&1 && printf 'qutebrowser\n'
+} #$
+
 bg_list(){ #^
 [ -z "$notsp" ] && printf "task spooler\n"
 [ -z "$nosetsid" ] && printf "setsid\n"
@@ -104,6 +114,11 @@ bg_menu(){ #^
     esac
 } #$
 
+browser_menu() { #^
+    chosen=$(menu browser_list "browser")
+    eval "$chosen $url"
+} #$
+
 ytdl_menu(){ #^
     chosen=$(menu ytdl_list "youtube-dl")
     case "$chosen" in
@@ -121,7 +136,7 @@ chosen=$(menu main_list "action")
 case "$chosen" in
     "add feed") echo "$url" >> "$FEEDS" ;;
     "add bookmark") echo "$url" >> "$BOOKMARKS" ;;
-	browser) setsid -f "$BROWSER" "$url" 1>/dev/null 2>&1 ;; # change to & disown?
+	browser) browser_menu ;;
     "copy to clipboard") echo "$url" > "${CLIPBOARD:-${XDG_DATA_HOME}/clipboard}" ;;
     curl) bg_menu "curl -LO $url" ;;
 	mpv) setsid -f mpv -quiet "$url" 1>/dev/null 2>&1 ;; # change to & disown?
