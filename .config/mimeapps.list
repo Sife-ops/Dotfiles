@@ -1,14 +1,8 @@
 [Default Applications]
+
 application/pdf=pdf.desktop;
 application/postscript=pdf.desktop;
 application/rss+xml=rss.desktop
-application/x-bittorrent=torrent.desktop;
-application/x-extension-htm=browser.desktop
-application/x-extension-html=browser.desktop
-application/x-extension-shtml=browser.desktop
-application/x-extension-xht=browser.desktop
-application/x-extension-xhtml=browser.desktop
-application/xhtml+xml=browser.desktop
 image/gif=img.desktop;
 image/jpeg=img.desktop;
 image/png=img.desktop;
@@ -16,8 +10,16 @@ inode/directory=file.desktop
 text/plain=text.desktop;
 text/x-shellscript=text.desktop;
 video/x-matroska=video.desktop
-x-scheme-handler/http=browser.desktop;
-x-scheme-handler/https=browser.desktop;
+
+application/x-bittorrent=torrent.desktop;
+application/x-extension-htm=url.desktop
+application/x-extension-html=url.desktop
+application/x-extension-shtml=url.desktop
+application/x-extension-xht=url.desktop
+application/x-extension-xhtml=url.desktop
+application/xhtml+xml=url.desktop
+x-scheme-handler/http=url.desktop;
+x-scheme-handler/https=url.desktop;
 x-scheme-handler/lbry=lbry.desktop
 x-scheme-handler/magnet=torrent.desktop;
 x-scheme-handler/mailto=mail.desktop;
