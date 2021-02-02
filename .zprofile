@@ -42,7 +42,6 @@ export BW_SESSION_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/bw-session.gpg"
 #$#
 
 #^#---- OTHER ------------------------------------------------------------------
-export ALIASFILE="${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc"
 export ADDRESS_BOOK="${XDG_DATA_HOME:-$HOME/.local/share}/addressbook"
 export ANDROID_SDK_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android"
 export BOOKMARKS="${XDG_DATA_HOME:-$HOME/.local/share}/bookmarks"
@@ -56,7 +55,7 @@ export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
 export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
-export HISTSIZE=10000
+export HISTSIZE=1000000
 export ICEAUTHORITY="${XDG_CACHE_HOME:-$HOME/.cache}/ICEauthority"
 export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/inputrc"
 export IRC="${XDG_DATA_HOME:-$HOME/.local/share}/irc"
@@ -80,7 +79,7 @@ export NVM_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/nvm"
 export QT_QPA_PLATFORMTHEME="gtk2"
 # export QT_AUTO_SCREEN_SCALE_FACTOR=0
 export SARBS="${XDG_DATA_HOME:-$HOME/.local/share}/sarbs"
-export SAVEHIST=9000
+export SAVEHIST=900000
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export URL_OPENER="fzfurl.sh"
