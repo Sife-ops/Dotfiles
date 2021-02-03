@@ -24,11 +24,15 @@ dialogcmd="dialog --no-cancel --passwordbox 'Enter a password.' 10 60 3>&1 1>&2 
 if [ -n "$nox" ]; then
     if [ -n "$nofzf" ]; then exit 1; else menucmd="$fzfcmd"; fi
     if [ -n "$nodialog" ]; then exit 1; else promptcmd="$dialogcmd"; fi
-    clipcmd='cat'
+    if [ -n "$nouserclip" ]; then exit 1; clipcmd='cat'; fi
 else
     if [ -n "$nodmenu" ]; then exit 1; else menucmd="$dmenucmd"; fi
     if [ -n "$nozenity" ]; then exit 1; else promptcmd="$zenitycmd"; fi
-    if [ -n "$noxclip" ]; then clipcmd='cat'; else clipcmd='xclip'; fi
+    if [ -n "$noxclip" ]; then
+        [ -n "$nouserclip" ] && exit 1 || clipcmd='cat'
+    else
+        clipcmd='xclip';
+    fi
 fi
 #$
 

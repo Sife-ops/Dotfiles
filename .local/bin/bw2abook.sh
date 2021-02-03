@@ -1,11 +1,12 @@
 #!/bin/sh
 # convert bw identities to abook database
 
-. bw.sh
+. bwvault.sh
 
 bw_sync 1>/dev/null 2>&1
 
-idents=$(bw_list_identities)
+# idents=$(bw_list_identities)
+idents=$(vault | jq -c '[ .[] | select(.type == 4) ]')
 len=$(echo "$idents" | jq 'length')
 
 echo "# abook addressbook file

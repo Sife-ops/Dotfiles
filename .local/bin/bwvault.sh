@@ -1,48 +1,68 @@
 #!/bin/sh
-# interface for bitwarden-cli
-# todo:
-# create mode
-# edit mode
+# bw library
 
-. bw.sh
+. menu.sh
 
-main_list(){ #^
-    bw_list_logins | jq -r '.[] | "\(.name) | \(.id)"'
-    printf "Create ...\n"
-    printf "Logout ...\n"
-    printf "Sync ...\n"
-} #$
+#^ setup
+if which checkdeps.sh 1>/dev/null 2>&1; then
+    checkdeps.sh bw gpg jq || exit 1; fi
 
-field_list(){ #^
-    printf "both\n"
-    printf "username\n"
-    printf "password\n"
-} #$
+alias bw_cmd="bw --nointeraction"
 
-field_menu(){ #^
-    # field_menu <id>
-    secret=$(bw_get_item "$1" |
-        jq -c "{username: .login.username, password: .login.password}")
-    chosen=$(menu field_list "field")
-    case "$chosen" in
-        both) clipboard yank "$(echo "$secret" | jq -r '.username')"
-              clipboard yank "$(echo "$secret" | jq -r '.password')" primary ;;
-        username) clipboard yank "$(echo "$secret" | jq -r '.username')" ;;
-        password) clipboard yank "$(echo "$secret" | jq -r '.password')" ;;
-        "") kill 0 ;;
-        *) kill 0 ;;
-    esac
-} #$
-
-#^ main menu
-chosen=$(menu main_list "Bitwarden")
-case "$chosen" in
-    "Create ...") exit 0 ;;
-    "Logout ...") bw_logout ;;
-    "Sync ...") bw_sync ;;
-    "") exit 1 ;;
-    *) field_menu "$(echo "$chosen" | cut -d '|' -f 2 | tr -d '[:space:]')" ;;
-esac
+bw_session_cache="${BW_SESSION_CACHE:-$HOME/.cache/bw-session.gpg}"
+if [ -z "$BW_GPG_ID" ]; then
+    printf "Error: BW_GPG_ID must be set.\n"
+    exit 1
+fi
 #$
+
+bw_login(){ #^
+    bw_session_key=$(bw_cmd unlock "$(prompt)" |
+        grep 'export' |
+        sed 's/^.*BW_SESSION="\(.*\)"/\1/')
+    echo "$bw_session_key" |
+        gpg --quiet --recipient "$BW_GPG_ID" \
+            --encrypt --output "$bw_session_cache"
+    printf '%s' "$bw_session_key"
+} #$
+
+bw_session_key(){ #^
+    if [ -f "$bw_session_cache" ]; then
+        bw_session_key=$(gpg --quiet --decrypt "$bw_session_cache")
+    else
+        bw_session_key=$(bw_login)
+    fi
+    printf '%s' "$bw_session_key"
+} #$
+
+vault(){ #^
+    bw_cmd list items --session "$(bw_session_key)"
+} #$
+
+bw_list_items(){ #^
+    bw_cmd list items --session "$(bw_session_key)"
+} #$
+
+bw_list_logins(){ #^
+    bw_list_items |
+        jq -c '[ .[] | select(.type == 1) ]'
+} #$
+
+bw_list_identities(){ #^
+    bw_list_items |
+        jq -c '[ .[] | select(.type == 4) ]'
+} #$
+
+bw_get_item(){ #^
+    bw_cmd get item --session "$(bw_session_key)" "$1"
+} #$
+
+bw_logout(){ #^
+    rm -f "$bw_session_cache"
+} #$
+
+bw_sync(){ #^
+    bw_cmd sync --session "$(bw_session_key)"
+} #$
 
 # vim: fdm=marker fmr=#^,#$
