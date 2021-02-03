@@ -1,6 +1,6 @@
 #!/bin/sh
 
-tmux start-server
+tmux -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf start-server
 
 session="default"
 win0="default"
