@@ -41,6 +41,11 @@ export BW_SESSION_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/bw-session.gpg"
 [ -f "$BW_SESSION_CACHE" ] && rm -f "$BW_SESSION_CACHE"
 #$#
 
+#^#---- IPFS VUALT -------------------------------------------------------------
+export IPFS_VAULT_GPG_ID="E4D903D4A2A85226E14AE435A744F927AD7099AC"
+export IPFS_VAULT_HASH="${XDG_CACHE_HOME:-$HOME/.cache}/ipfs-vault-hash"
+#$#
+
 #^#---- OTHER ------------------------------------------------------------------
 export ADDRESS_BOOK="${XDG_DATA_HOME:-$HOME/.local/share}/addressbook"
 export ANDROID_SDK_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android"

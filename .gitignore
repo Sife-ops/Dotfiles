@@ -24,11 +24,11 @@
 .config/gtk-2.0/
 .config/hexchat/
 .config/inkscape/
-.config/irssi/default.theme
 .config/leafpad/
 .config/libfm/
 .config/libreoffice/
 .config/mozc/
+.config/neofetch
 .config/pavucontrol.ini
 .config/pcmanfm/
 .config/pulse/
@@ -36,11 +36,13 @@
 .config/spacefm/
 .config/sxhkd/sxhkdrc
 .config/systemd/
+.config/user-dirs.dirs
 .config/vimb/
 .config/vivaldi/
 .config/vlc/
 .config/xfce4/
 .gitconfig
+.ipfs/
 .lein/
 .librewolf/
 .local/lib/
