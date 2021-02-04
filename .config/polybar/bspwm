@@ -55,7 +55,7 @@ width = 100%
 height = 24
 background = ${colors.background}
 foreground = ${colors.foreground}
-padding = 2
+padding = 1
 tray-position = left
 tray-background = ${colors.background}
 line-size = 2
@@ -69,9 +69,9 @@ font-1 = "Noto Color Emoji:scale=9;2"
 
 ;^--- MODULES ---
 
-modules-left = date pulseaudio cpu temperature memory wlan mail feeds pacman battery
+modules-left = date pulseaudio cpu temperature memory wlan mail feeds pacman battery backlight
 modules-right = bspwm
-modules-center = notifications
+; modules-center = notifications
 ;$ ;$
 
 ;^_-_- SECONDARY _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
@@ -146,7 +146,7 @@ date = "%a, %b %d,"
 time = %H:%M
 
 format = <label>
-format-padding = 2
+format-padding = 1
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 
@@ -160,11 +160,24 @@ type = internal/cpu
 interval = 2
 
 format = <label>
-format-padding = 2
+format-padding = 1
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 
 label = %{T2}💻%{T-}%percentage%%
+;$
+
+;^_-_- BACKLIGHT _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+[module/backlight]
+type = custom/script
+exec = backlight.sh
+interval = 1
+
+format-padding = 1
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+
+label = %output%
 ;$
 
 ;^_-_- NOTIFICATIONS _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
@@ -173,7 +186,7 @@ type = custom/script
 exec = notify.sh
 interval = 1
 
-format-padding = 2
+format-padding = 1
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 
@@ -186,7 +199,7 @@ type = custom/script
 exec = mail.sh
 interval = 60
 
-format-padding = 2
+format-padding = 1
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 
@@ -199,7 +212,7 @@ type = custom/script
 exec = feeds.sh
 interval = 60
 
-format-padding = 2
+format-padding = 1
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 
@@ -212,7 +225,7 @@ type = custom/script
 exec = pacman.sh
 interval = 60
 
-format-padding = 2
+format-padding = 1
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 
@@ -227,7 +240,7 @@ type = custom/script
 exec = temperature.sh
 interval = 2
 
-format-padding = 2
+format-padding = 1
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 
@@ -241,7 +254,7 @@ type = internal/memory
 interval = 2
 
 format = <label>
-format-padding = 2
+format-padding = 1
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 
@@ -257,12 +270,12 @@ interface = wlan0
 interval = 3.0
 
 format-connected = <label-connected><ramp-signal>
-format-connected-padding = 2
+format-connected-padding = 1
 format-connected-background = ${colors.background}
 format-connected-foreground = ${colors.foreground}
 
 format-disconnected = <label-disconnected>
-format-disconnected-padding = 2
+format-disconnected-padding = 1
 format-disconnected-background = ${colors.background}
 format-disconnected-foreground = ${colors.foreground}
 
@@ -326,9 +339,9 @@ use-ui-max = true
 interval = 5
 
 format-volume = <ramp-volume><label-volume>
-format-volume-padding = 2
+format-volume-padding = 1
 format-muted = <label-muted>
-format-muted-padding = 2
+format-muted-padding = 1
 
 label-volume = %percentage%%
 label-muted = 🔇muted
