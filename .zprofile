@@ -135,9 +135,9 @@ chmod 600 $NOTIFICATIONS
 #$#
 
 #^#---- TIRAMISU ---------------------------------------------------------------
-(which tiramisu >/dev/null 2>&1 && \
-! pgrep -x tiramisu >/dev/null 2>&1) && \
-    tiramisu -j >> $NOTIFICATIONS &
+# (which tiramisu >/dev/null 2>&1 && \
+# ! pgrep -x tiramisu >/dev/null 2>&1) && \
+#     tiramisu -j >> $NOTIFICATIONS &
 #$#
 
 #^#---- VCONSOLE ---------------------------------------------------------------
