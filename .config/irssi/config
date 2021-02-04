@@ -22,7 +22,7 @@ servers = (
     chatnet = "IRCHighWay";
     port = "6667";
   },
-  { 
+  {
     address = "irc.undernet.org";
     chatnet = "Undernet";
     port = "6667";
@@ -36,7 +36,7 @@ servers = (
 );
 
 chatnets = {
-  EFNet = { 
+  EFNet = {
     type = "IRC";
     max_kicks = "1";
     max_msgs = "4";
@@ -44,10 +44,12 @@ chatnets = {
   };
   Freenode = {
     type = "IRC";
-    autosendcmd = "/^query NickServ";
     max_kicks = "1";
     max_msgs = "4";
     max_whois = "1";
+    sasl_mechanism = "PLAIN";
+    sasl_username = "sife";
+    sasl_password = "****************";
   };
   IRCHighWay = {
     type = "IRC";
