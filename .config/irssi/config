@@ -15,6 +15,7 @@ servers = (
     port = "6697";
     use_tls = "yes";
     tls_verify = "yes";
+    autoconnect = "yes";
   },
   {
     address = "irc.irchighway.net";
@@ -66,6 +67,9 @@ channels = (
   { name = "#bash"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#ebooks"; chatnet = "IRCHighWay"; autojoin = "Yes"; },
   { name = "#emacs"; chatnet = "Freenode"; autojoin = "No"; },
-  { name = "#freenode"; chatnet = "Freenode"; autojoin = "No"; }
+  { name = "#freebsd"; chatnet = "Freenode"; autojoin = "Yes"; },
+  { name = "#netbsd"; chatnet = "Freenode"; autojoin = "Yes"; },
+  { name = "#openbsd"; chatnet = "Freenode"; autojoin = "Yes"; }
 );
 logs = { };
+ignores = ( { level = "JOINS PARTS QUITS NICKS"; } );
