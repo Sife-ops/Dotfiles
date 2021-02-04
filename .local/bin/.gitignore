@@ -4,6 +4,7 @@ coverage
 coverage-3.9
 coverage3
 cpu.sh
+disk.sh
 dmenubspc.sh
 dmenudd.sh
 dmenudesk.sh
@@ -21,8 +22,11 @@ graveyard
 hjson
 hjson.cmd
 induce_rules
+internet.sh
 mail.sh
 memory.sh
+music.sh
+nettraf.sh
 nose2
 nose2-3.6
 notify.sh
@@ -38,5 +42,6 @@ temperature.sh
 todo/
 togmap.sh
 udacity.sh
+volume.sh
 yapf
 zerohosts
