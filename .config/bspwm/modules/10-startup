@@ -20,9 +20,10 @@ find "${XDG_DATA_HOME:-${HOME}/.local/share}/dwmblocks" \
     -exec ln -sf {} ${HOME}/.local/bin/ \;
 ln -sf ${XDG_CONFIG_HOME:-${HOME}/.config}/polybar/bspwm \
     ${XDG_CONFIG_HOME:-${HOME}/.config}/polybar/config
-# (which polybar && ! pgrep -x polybar) && \
-    # (polybar main & [ -z $MONITOR1 ] || polybar secondary &)
-pgrep -x polybar || polybar main &
+if ! pgrep -x polybar; then
+    polybar main &
+    [ -n "$MONITOR1" ] && polybar secondary &
+fi
 
 xsetroot -solid "#282828" &
 
