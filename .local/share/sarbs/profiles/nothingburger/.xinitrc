@@ -9,7 +9,7 @@
 #^----- ENVIRONMENT VARIABLES --------------------------------------------------
 #^----- MONITORS ---------------------------------------------------------------
 export MONITOR0="DP-1"
-export MONITOR1="HDMI-1"
+# export MONITOR1="HDMI-1"
 #$
 
 #^----- IM ---------------------------------------------------------------------
@@ -30,6 +30,10 @@ export URL_OPENER="dmenuurl.sh"
 which xset && xset r rate 300 50
 which sxhkd && sxhkd &
 which unclutter && unclutter --timeout 1 &
+#$
+
+#^----- TMUX -------------------------------------------------------------------
+~/.config/tmux/default.sh
 #$
 
 #^----- XRESOURCES -------------------------------------------------------------
