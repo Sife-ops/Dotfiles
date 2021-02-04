@@ -9,7 +9,6 @@ dragon-drag-and-drop
 genact
 godot-bin
 gron
-icecat-bin
 lf
 librewolf-bin
 minecraft-launcher
@@ -27,3 +26,4 @@ ttf-ubraille
 ucollage
 visual-studio-code-bin
 yay
+zsh-fast-syntax-highlighting
