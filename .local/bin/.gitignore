@@ -1,3 +1,5 @@
+backlight.sh
+battery.sh
 brightness.sh
 clock.sh
 coverage
