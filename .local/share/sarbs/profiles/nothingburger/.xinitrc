@@ -26,10 +26,11 @@ export URL_OPENER="dmenuurl.sh"
 #^----- KEYMAP -----------------------------------------------------------------
 ln -sf ${XDG_CONFIG_HOME:-${HOME}/.config}/xmodmap/mac.map \
     ${HOME}/.Xmodmap
-which setxmodmap.sh && setxmodmap.sh
-which xset && xset r rate 300 50
-which sxhkd && sxhkd &
-which unclutter && unclutter --timeout 1 &
+sleep 1
+setxmodmap.sh
+xset r rate 300 50
+sxhkd &
+unclutter --timeout 1 &
 #$
 
 #^----- TMUX -------------------------------------------------------------------
