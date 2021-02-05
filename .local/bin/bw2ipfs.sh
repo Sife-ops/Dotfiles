@@ -8,6 +8,7 @@ elif systemctl --user start ipfs.service; then
     :
 else
     printf 'Error: ipfs.service unavailable.\n'
+    exit 1
 fi
 
 safe="$(mktemp -d /tmp/bw2ipfs.XXX)"
