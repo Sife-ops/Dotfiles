@@ -108,18 +108,19 @@ chmod 600 $CLIPBOARD
 #$#
 
 #^#---- HOST PROFILE -----------------------------------------------------------
-profiles=$SARBS/profiles
-default_profile=$profiles/default
-host=$(cat /etc/hostname)
-host_profile=$profiles/$host
-function install_profile(){
-    for file in $(find $1 -type f)
-    do
-        ln -sf "$file" "${HOME}/${file##${1}/}"
-    done
+profiles="${SARBS}/profiles"
+default_profile="${profiles}/default"
+host="$(hostname)"
+host_profile="${profiles}/${host}"
+install_profile(){
+    find "$1" -type f |
+        while IFS= read -r line; do
+            mkdir -p "$(dirname "${HOME}/${line##${1}/}")"
+            ln -sf "$line" "${HOME}/${line##${1}/}"
+        done
 }
-install_profile $default_profile
-install_profile $host_profile
+install_profile "$default_profile"
+install_profile "$host_profile"
 #$#
 
 #^#---- NOTIFICATIONS ----------------------------------------------------------
