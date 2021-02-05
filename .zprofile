@@ -110,7 +110,7 @@ chmod 600 $CLIPBOARD
 #^#---- HOST PROFILE -----------------------------------------------------------
 profiles="${SARBS}/profiles"
 default_profile="${profiles}/default"
-host="$(hostname)"
+host="$(cat /etc/hostname)"
 host_profile="${profiles}/${host}"
 install_profile(){
     find "$1" -type f |
