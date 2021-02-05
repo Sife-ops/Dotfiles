@@ -37,7 +37,6 @@ which unclutter && unclutter --timeout 1 &
 #$
 
 #^----- GPG --------------------------------------------------------------------
-# gpg --decrypt ~/.cache/bw-session.gpg 1>/dev/null 2>&1
 password.sh -b ipfs
 offlineimap &
 #$
