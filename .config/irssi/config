@@ -48,8 +48,8 @@ chatnets = {
     max_msgs = "4";
     max_whois = "1";
     sasl_mechanism = "PLAIN";
-    sasl_username = "sife";
-    sasl_password = "<++>";
+    sasl_username = "<+sife:user+>";
+    sasl_password = "<+sife:pass+>";
   };
   IRCHighWay = {
     type = "IRC";
