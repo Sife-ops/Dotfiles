@@ -56,8 +56,9 @@ chatnets = {
     max_msgs = "4";
     max_whois = "1";
     sasl_mechanism = "PLAIN";
-    sasl_username = "<+sife:user+>";
-    sasl_password = "<+sife:pass+>";
+    # sifefreenode
+    sasl_username = "<+user+>";
+    sasl_password = "<+pass+>";
   };
   IRCHighWay = {
     type = "IRC";
@@ -74,18 +75,21 @@ chatnets = {
   Bitlbee = {
     type = "IRC";
     sasl_mechanism = "PLAIN";
-    sasl_username = "<+bitlbee:user+>";
-    sasl_password = "<+bitlbee:pass+>";
+    # sifebitlbee
+    sasl_username = "<+user+>";
+    sasl_password = "<+pass+>";
   };
 };
 
 channels = (
   { name = "#bash"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#ebooks"; chatnet = "IRCHighWay"; autojoin = "Yes"; },
-  { name = "#emacs"; chatnet = "Freenode"; autojoin = "No"; },
+  { name = "#bookz"; chatnet = "Undernet"; autojoin = "Yes"; },
+  { name = "#emacs"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#freebsd"; chatnet = "Freenode"; autojoin = "Yes"; },
   { name = "#netbsd"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#openbsd"; chatnet = "Freenode"; autojoin = "Yes"; }
+  { name = "#openbsd"; chatnet = "Freenode"; autojoin = "Yes"; },
+  { name = "#irssi"; chatnet = "Freenode"; autojoin = "Yes"; }
 );
 logs = { };
 ignores = ( { level = "JOINS PARTS QUITS NICKS"; } );

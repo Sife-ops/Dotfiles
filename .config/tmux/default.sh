@@ -21,6 +21,6 @@ tmux split-window -t "${name}:0.2" -h
 # -------------------------
 
 tmux send-keys -t "${name}:0.0" "neomutt" C-m
-tmux send-keys -t "${name}:0.1" "irssi" C-m
+tmux send-keys -t "${name}:0.1" "irssi_login.sh" C-m
 tmux send-keys -t "${name}:0.2" "newsboat" C-m
 tmux send-keys -t "${name}:0.4" "pulsemixer" C-m
