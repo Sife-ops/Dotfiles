@@ -1,2 +1,4 @@
 *
-!.gitignore
+!00-settings
+!10-startup
+!20-xresources
