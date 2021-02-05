@@ -32,6 +32,14 @@ servers = (
     chatnet = "EFNet";
     port = "9999";
     use_tls = "yes";
+  },
+  {
+    address = "localhost";
+    chatnet = "Bitlbee";
+    port = "6667";
+    use_tls = "no";
+    tls_verify = "no";
+    autoconnect = "yes";
   }
 );
 
@@ -62,6 +70,12 @@ chatnets = {
     max_kicks = "1";
     max_msgs = "1";
     max_whois = "1";
+  };
+  Bitlbee = {
+    type = "IRC";
+    sasl_mechanism = "PLAIN";
+    sasl_username = "<+bitlbee:user+>";
+    sasl_password = "<+bitlbee:pass+>";
   };
 };
 
