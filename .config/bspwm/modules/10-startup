@@ -11,13 +11,11 @@ else
 fi
 
 find "${XDG_DATA_HOME:-${HOME}/.local/share}/bspwm" \
-    -type f \
-    -o -type l \
+    ! -type d \
     ! -regex '^.*gitignore.*$' \
     -exec ln -sf {} ${HOME}/.local/bin/ \;
 find "${XDG_DATA_HOME:-${HOME}/.local/share}/dwmblocks" \
-    -type f \
-    -o -type l \
+    ! -type d \
     ! -regex '^.*gitignore.*$' \
     -exec ln -sf {} ${HOME}/.local/bin/ \;
 
