@@ -2,10 +2,13 @@
 # print brightness level
 
 brmaxdev="/sys/class/backlight/intel_backlight/max_brightness"
-brmax="$(cat $brmaxdev)"
 brdev="/sys/class/backlight/intel_backlight/brightness"
-brnum="$(($(cat $brdev) * 100))"
-pbr="$(($brnum / $brmax))%"
+[ -f "$brmaxdev" ] || exit 1
+[ -f "$brdev" ] || exit 1
+
+brmax="$(cat $brmaxdev)"
+br="$(($(cat $brdev) * 100))"
+brperc="$(($br / $brmax))%"
 
 icon="☀"
-printf "%s%s\\n" "$icon" "$pbr"
+printf "%s%s\\n" "$icon" "$brperc"
