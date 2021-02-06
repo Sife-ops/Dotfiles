@@ -1,8 +1,8 @@
 #!/bin/sh
-fdsa="$(git branch --show-current)"
+branch="$(git branch --show-current)"
 git stash
 git checkout master
 git pull
-git checkout "$fdsa"
+git checkout "$branch"
 git merge master
 git stash apply
