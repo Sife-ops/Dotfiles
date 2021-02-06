@@ -105,7 +105,8 @@ mod4 + d; m
 
 # password menu
 mod4 + d; p
-    password.sh -b ipfs
+    password.sh -b bitwarden
+    # password.sh -b ipfs
 
 # url action menu
 mod4 + d; u
