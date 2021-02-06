@@ -28,21 +28,6 @@ main_list () { #^
     fi
 } #$
 
-# second_list () { #^
-#     # menu_b $chosen_a
-#     if [ -z "$nouserclipd" ]; then
-#         # echo "$1" | grep '^user\/.*' && \
-#         printf "delete user clipboard: %s\n" "$1"
-#         printf "new user clipboard: ...\n"
-#     fi
-# } #$
-
-# both_lists(){ #^
-#     main_list
-#     second_list
-# } #$
-#$
-
 #^ main menu
 chosen=$(menu main_list | cut -d':' -f1)
 case "$chosen" in
