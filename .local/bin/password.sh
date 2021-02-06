@@ -45,14 +45,7 @@ secrets_list(){ #^
 } #$
 
 get_secret(){ #^
-    secrets |
-        jq -c \
-        ".[] |
-            select(.id == \"$1\") |
-                {
-                    username: .login.username,
-                    password: .login.password
-                }"
+    secrets | jq -c ".[] | select(.id == \"$1\")"
 } #$
 
 main_list(){ #^
@@ -63,31 +56,41 @@ main_list(){ #^
 } #$
 
 field_list(){ #^
+    [ -n "$nox" ] || printf "autofill\n"
     printf "both\n"
     printf "username\n"
     printf "password\n"
+    printf "Edit ...\n"
 } #$
 
 field_menu(){ #^
-    chosen=$(menu field_list "field")
+    id="$(echo "$1" |
+        cut -d '|' -f 2 |
+        tr -d '[:space:]')"
+    chosen="$(menu field_list "field")"
     case "$chosen" in
-        both) clipboard yank "$(get_secret "$1" | jq -r '.username')"
-              clipboard yank "$(get_secret "$1" | jq -r '.password')" primary ;;
-        username) clipboard yank "$(get_secret "$1" | jq -r '.username')" ;;
-        password) clipboard yank "$(get_secret "$1" | jq -r '.password')" ;;
+        autofill)
+            xdotool type --clearmodifiers "$(get_secret "$id" | jq -r '.login.username')"
+            xdotool key --clearmodifiers Tab
+            xdotool type --clearmodifiers "$(get_secret "$id" | jq -r '.login.password')" ;;
+        both) clipboard yank "$(get_secret "$id" | jq -r '.login.username')"
+              clipboard yank "$(get_secret "$id" | jq -r '.login.password')" primary ;;
+        username) clipboard yank "$(get_secret "$id" | jq -r '.login.username')" ;;
+        password) clipboard yank "$(get_secret "$id" | jq -r '.login.password')" ;;
+        "Edit ...") edit_item "$(edit "$(get_secret "$id")")" "$id" ;;
         "") kill 0 ;;
         *) kill 0 ;;
     esac
 } #$
 
 #^ main menu
-chosen=$(menu main_list "secrets")
+chosen="$(menu main_list "secrets")"
 case "$chosen" in
     "Create ...") bwcreate.sh ;;
     "Logout ...") bw_logout ;;
     "Sync ...") bw_sync ;;
     "") exit 1 ;;
-    *) field_menu "$(echo "$chosen" | cut -d '|' -f 2 | tr -d '[:space:]')" ;;
+    *) field_menu "$chosen" ;;
 esac
 #$
 

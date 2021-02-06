@@ -63,7 +63,7 @@ bw_logout(){ #^
     rm -f "$bw_session_cache"
 } #$
 
-edit() { #^
+edit(){ #^
     # edit <json> -> json
     safe="$(mktemp -d /tmp/bwvault.XXX)"
     chmod 700 "$safe"
@@ -80,7 +80,7 @@ edit() { #^
     rm -rf "$safe" 1>/dev/null 2>&1
 } #$
 
-template() { #^
+template(){ #^
     # template <type> -> json
     item="$(bw_cmd --session "$(bw_session_key)" get template item)"
     template="$(bw_cmd --session "$(bw_session_key)" get template item."$1")"
@@ -101,6 +101,13 @@ template() { #^
         *) kill 0 ;;
     esac
     echo "$item"
+} #$
+
+edit_item(){ #^
+    # create_item <id> <json> -> json
+    echo "$1" |
+        bw_cmd --session "$(bw_session_key)" encode |
+        bw_cmd --session "$(bw_session_key)" edit item "$2"
 } #$
 
 create_item(){ #^
