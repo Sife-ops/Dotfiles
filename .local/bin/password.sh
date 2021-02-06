@@ -18,8 +18,9 @@ shift $((OPTIND - 1))
 
 if [ -n "$backend" ]; then
     case "$backend" in
-        bitwarden) . bwvault.sh ;;
-        ipfs) . ipfsvault.sh ;;
+        bitwarden)  . bwvault.sh ;;
+        ipfs)       . ipfsvault.sh ;;
+        github)     . ghvault.sh ;;
         "") exit 1 ;;
         *) exit 1 ;;
     esac
@@ -82,7 +83,7 @@ field_menu(){ #^
 #^ main menu
 chosen=$(menu main_list "secrets")
 case "$chosen" in
-    "Create ...") exit 0 ;;
+    "Create ...") bwcreate.sh ;;
     "Logout ...") bw_logout ;;
     "Sync ...") bw_sync ;;
     "") exit 1 ;;

@@ -5,7 +5,6 @@
 
 bw_sync 1>/dev/null
 
-# idents=$(bw_list_identities)
 idents=$(vault | jq -c '[ .[] | select(.type == 4) ]')
 len=$(echo "$idents" | jq 'length')
 

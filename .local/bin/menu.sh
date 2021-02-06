@@ -48,6 +48,14 @@ menu(){ #^
     esac
 } #$
 
+buffer(){ #^
+    # buffer <file>
+    case "$nox" in
+        t) eval "${EDITOR:-nano} $1" ;;
+        *) eval "${TERMINAL:-xterm} -e ${EDITOR:-nano} $1" ;;
+    esac
+} #$
+
 dir_contents(){ #^
     # dir_contents <dir>
     find "$1" -type f -print0 |

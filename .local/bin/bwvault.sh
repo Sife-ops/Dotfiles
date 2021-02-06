@@ -1,5 +1,9 @@
 #!/bin/sh
 # bw library
+# todo:
+# add condition for bw login
+# clientid feature
+# remove menu.sh dependency
 
 . menu.sh
 
@@ -9,14 +13,16 @@ if which checkdeps.sh 1>/dev/null 2>&1; then
 
 alias bw_cmd="bw --nointeraction"
 
-bw_session_cache="${BW_SESSION_CACHE:-$HOME/.cache/bw-session.gpg}"
+bw_session_cache="${BW_SESSION_CACHE:-${XDG_CACHE_HOME:-${HOME}/.cache}/bw-session.gpg}"
 if [ -z "$BW_GPG_ID" ]; then
     printf "Error: BW_GPG_ID must be set.\n"
     exit 1
 fi
+bw_vault_cache="${BW_VAULT_CACHE:-${XDG_CACHE_HOME:-${HOME}/.cache}/bw-vault.gpg}"
 #$
 
 bw_login(){ #^
+    # condition for bw login
     bw_session_key=$(bw_cmd unlock "$(prompt)" |
         grep 'export' |
         sed 's/^.*BW_SESSION="\(.*\)"/\1/')
@@ -36,33 +42,72 @@ bw_session_key(){ #^
 } #$
 
 vault(){ #^
-    bw_cmd list items --session "$(bw_session_key)"
+    if [ -f "${bw_vault_cache}" ]; then
+        gpg --quiet --decrypt "$bw_vault_cache"
+    else
+        bw_cmd --session "$(bw_session_key)" list items |
+            gpg \
+                --recipient "$BW_GPG_ID" \
+                --output "$bw_vault_cache" \
+                --encrypt
+        gpg --quiet --decrypt "$bw_vault_cache"
+    fi
 } #$
 
-bw_list_items(){ #^
-    bw_cmd list items --session "$(bw_session_key)"
-} #$
-
-bw_list_logins(){ #^
-    bw_list_items |
-        jq -c '[ .[] | select(.type == 1) ]'
-} #$
-
-bw_list_identities(){ #^
-    bw_list_items |
-        jq -c '[ .[] | select(.type == 4) ]'
-} #$
-
-bw_get_item(){ #^
-    bw_cmd get item --session "$(bw_session_key)" "$1"
+bw_sync(){ #^
+    bw_cmd --session "$(bw_session_key)" sync
+    rm -rf "$bw_vault_cache"
 } #$
 
 bw_logout(){ #^
     rm -f "$bw_session_cache"
 } #$
 
-bw_sync(){ #^
-    bw_cmd sync --session "$(bw_session_key)"
+edit() { #^
+    # edit <json> -> json
+    safe="$(mktemp -d /tmp/bwvault.XXX)"
+    chmod 700 "$safe"
+    item="$(mktemp "${safe}/bwitem.XXX.json")"
+    chmod 600 "$item"
+    echo "$1" | jq > "$item"
+
+    buffer "$item"
+    while ! cat "$item" | jq 1>/dev/null 2>&1; do
+        # message cannot parse json
+        buffer "$item"
+    done
+    cat "$item" | jq -c
+    rm -rf "$safe" 1>/dev/null 2>&1
+} #$
+
+template() { #^
+    # template <type> -> json
+    item="$(bw_cmd --session "$(bw_session_key)" get template item)"
+    template="$(bw_cmd --session "$(bw_session_key)" get template item."$1")"
+    item="$(echo "$item" | jq -c ".$1 = $template")"
+    item="$(echo "$item" | jq -c ".notes = null")"
+    case "$1" in
+        identity)
+            item="$(echo "$item" | jq -c '.type = 1')" ;;
+        secureNote)
+            item="$(echo "$item" | jq -c '.type = 2')" ;;
+        card)
+            item="$(echo "$item" | jq -c '.type = 3')" ;;
+        login)
+            uri="$(bw_cmd --session "$(bw_session_key)" get template item.login.uri)"
+            item="$(echo "$item" | jq -c ".login.uris = [${uri}]")"
+            item="$(echo "$item" | jq -c ".login.uris[0].uri = null")" ;;
+        "") kill 0 ;;
+        *) kill 0 ;;
+    esac
+    echo "$item"
+} #$
+
+create_item(){ #^
+    # create_item <json> -> json
+    echo "$1" |
+        bw_cmd --session "$(bw_session_key)" encode |
+        bw_cmd --session "$(bw_session_key)" create item
 } #$
 
 # vim: fdm=marker fmr=#^,#$
