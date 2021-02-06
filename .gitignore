@@ -21,6 +21,7 @@
 .config/discord/
 .config/discordcanary/
 .config/fcitx/
+.config/gh/
 .config/gtk-2.0/
 .config/hexchat/
 .config/inkscape/
