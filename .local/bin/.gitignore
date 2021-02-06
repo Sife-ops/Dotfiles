@@ -40,6 +40,7 @@ pyflakes
 qmk
 recursenode.sh
 shfm
+stashmasterpull.sh
 temperature.sh
 todo/
 togmap.sh
