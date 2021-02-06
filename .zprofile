@@ -35,15 +35,12 @@ export PAGER="less"
 export READER="zathura"
 #$#
 
-#^#---- BITWARDEN --------------------------------------------------------------
+#^#---- VAULTS -----------------------------------------------------------------
 export BW_GPG_ID="E4D903D4A2A85226E14AE435A744F927AD7099AC"
-export BW_SESSION_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/bw-session.gpg"
-[ -f "$BW_SESSION_CACHE" ] && rm -f "$BW_SESSION_CACHE"
-#$#
-
-#^#---- IPFS VUALT -------------------------------------------------------------
+# export BW_SESSION_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/bw-session.gpg"
+# [ -f "$BW_SESSION_CACHE" ] && rm -f "$BW_SESSION_CACHE"
 export IPFS_VAULT_GPG_ID="E4D903D4A2A85226E14AE435A744F927AD7099AC"
-export IPFS_VAULT_HASH="${XDG_CACHE_HOME:-$HOME/.cache}/ipfs-vault-hash"
+export GHVAULT_GPG_ID="B66DD63E2F11A127B3C7DE21AD75C45079F90534"
 #$#
 
 #^#---- OTHER ------------------------------------------------------------------
