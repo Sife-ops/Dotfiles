@@ -3,7 +3,7 @@
 
 . bwvault.sh
 
-bw_sync 1>/dev/null 2>&1
+bw_sync 1>/dev/null
 
 # idents=$(bw_list_identities)
 idents=$(vault | jq -c '[ .[] | select(.type == 4) ]')
