@@ -47,7 +47,7 @@ export IPFS_VAULT_HASH="${XDG_CACHE_HOME:-$HOME/.cache}/ipfs-vault-hash"
 #$#
 
 #^#---- OTHER ------------------------------------------------------------------
-export ADDRESS_BOOK="${XDG_DATA_HOME:-$HOME/.local/share}/addressbook"
+export ADDRESSBOOK="${XDG_DATA_HOME:-$HOME/.local/share}/addressbook"
 export ANDROID_SDK_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android"
 export BOOKMARKS="${XDG_DATA_HOME:-$HOME/.local/share}/bookmarks"
 export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
