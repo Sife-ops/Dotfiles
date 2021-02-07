@@ -1,6 +1,6 @@
 #!/bin/sh
 
-bspc config border_width         2
+bspc config border_width         1
 bspc config borderless_monocle   true
 bspc config focus_follows_pointer true
 bspc config gapless_monocle      true
