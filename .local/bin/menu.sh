@@ -44,7 +44,13 @@ menu(){ #^
     # menu <func. menu> [str. prompt] [bool print_query]
     case "$nox" in
         t) eval "$1 | $menucmd ${2:+--prompt \"$2 \"} ${3:+--print-query}" ;; # sucks
-        *) eval "$1 | $menucmd ${2:+-p \"$2\"}" ;;
+        *)
+            if [ -n "$mouse" ]; then
+                eval "$(xdotool getmouselocation --shell)"
+                eval "$1 | dmenu -i -l 20 -x $X -y $Y -z 200"
+            else
+                eval "$1 | $menucmd ${2:+-p \"$2\"}"
+            fi ;;
     esac
 } #$
 

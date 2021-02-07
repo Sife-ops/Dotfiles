@@ -1,8 +1,8 @@
 #!/bin/sh
 # general purpose url handler
 # todo:
-# finish setsid/tmux bg functions
 # test without notify-send present
+# test nox
 
 . menu.sh
 
@@ -37,6 +37,14 @@ which youtube-dl 1>/dev/null 2>&1 || noytdl=t
 #$
 
 #^ input
+while getopts "m" o; do
+    case "${o}" in
+        m) mouse=t ;;
+        *) printf "Invalid option: -%s\n" "$o" ;;
+    esac
+done
+shift $((OPTIND - 1))
+
 if [ -n "$1" ]; then
     url="$1"
 else
