@@ -124,7 +124,7 @@ bg_menu(){ #^
 
 browser_menu() { #^
     chosen=$(menu browser_list "browser")
-    eval "$chosen $url"
+    setsid -f $chosen $url
 } #$
 
 ytdl_menu(){ #^
