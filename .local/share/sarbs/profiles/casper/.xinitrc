@@ -13,11 +13,11 @@ export MONITOR1="HDMI-1"
 #$
 
 #^----- BROWSER ----------------------------------------------------------------
-export BROWSER="librewolf"
+export BROWSER="qutebrowser"
 #$
 
 #^----- URL --------------------------------------------------------------------
-export URL_OPENER="dmenuurl.sh"
+export URL_OPENER="url.sh"
 #$
 
 #^----- IM ---------------------------------------------------------------------
