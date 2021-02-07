@@ -29,8 +29,8 @@ fi
 xsetroot -solid "#282828" &
 
 xdotool search --class dd || \
-    (st -c dd -T "Terminal" -n ddterm -e sh -c 'tmux attach-session -t default; exec zsh' &
-     st -c dd -T "Volume" -n ddvol -e sh -c 'pulsemixer; exec zsh' &)
+    (st -c dd -n ddterm -T "Terminal" -e sh -c 'tmux attach-session -t default; exec zsh' &
+     st -c dd -n ddvol -T "Volume" -e sh -c 'pulsemixer; exec zsh' &)
 sleep 3
 togmap.sh -l ddterm
 togmap.sh -l ddvol

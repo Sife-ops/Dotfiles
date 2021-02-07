@@ -10,7 +10,9 @@ bspc config window_gap           20
 bspc monitor ${MONITOR0:-focused} -d \
     Scratch WWW YouTube
 [ -z $MONITOR1 ] || bspc monitor $MONITOR1 -d \
-    Talk
+    Discord
 
 bspc rule -a Gxmessage:*:* state=floating
 bspc rule -a dd:*:* state=floating
+bspc rule -a dd:ddterm:* state=fullscreen
+bspc rule -a discord:*:* desktop=Discord

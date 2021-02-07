@@ -29,11 +29,9 @@ togmap(){ #^
 chosen=$(print_ids | dmenu_cmd -p "dd" | cut -d ':' -f 1)
 case "$chosen" in
     "")
-        exit 1
-        ;;
+        exit 1 ;;
     *)
-        togmap "$chosen"
-        ;;
+        togmap "$chosen" ;;
 esac
 #$
 

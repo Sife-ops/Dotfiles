@@ -27,10 +27,10 @@ while getopts "clnh" o; do case "${o}" in
 esac done
 shift $((OPTIND - 1))
 
-[ -z $opt ] && opt="--name"
+[ -z "$opt" ] && opt="--name"
 [ -z "$1" ] && msg_help && exit 1
 
-for wid in $(xdotool search $opt "$1"); do
+for wid in $(xdotool search "$opt" "$1"); do
 
     mapstate=$(xwininfo -id "$wid" | awk '/Map State/{print $3}')
 

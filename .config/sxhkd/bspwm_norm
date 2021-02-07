@@ -76,8 +76,12 @@ mod4 + {H,J,K,L}
 #^---- LEFT SIDE ---------------------------------------------------------------
 
 # dmenubspc.sh
-{mod3 + x,mod4 + c,XF86Tools}
+{mod3 + x,mod4 + x; x,XF86Tools}
     dmenubspc.sh
+
+# console
+mod4 + asciitilde
+    togmap.sh -l ddterm
 
 # bookmark menu
 mod4 + d; b
