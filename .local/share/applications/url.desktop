@@ -1,5 +1,4 @@
 [Desktop Entry]
 Type=Application
 Name=HTML Reader
-Exec=~/.local/bin/url.sh %u
-# Exec=/usr/local/bin/st -e lynx -assume_charset=%{charset} -display_charset=utf-8 -collapse_br_tags -dump %u
+Exec=~/.local/bin/url.sh -m %u
