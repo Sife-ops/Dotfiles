@@ -1,55 +1,95 @@
 #!/bin/sh
 # menu library
+# todo:
+# implement yad
 
-#^ runtime checks
-[ -f "${CLIPBOARD:=${XDG_DATA_HOME:-${HOME}/.local/share}/clipboard}" ] || \
-    nouserclip=t
-
-xset q 1>/dev/null 2>&1 || nox=t
-
-which xclip 1>/dev/null 2>&1 || noxclip=t
-
-which dmenu 1>/dev/null 2>&1 || nodmenu=t
+# alias dialogcmd
+# alias yadcmd
+# alias zenitycmd
 dmenucmd="${DMENU_CMD:-dmenu -b -i -l 20}"
-
-which zenity 1>/dev/null 2>&1 || nozenity=t
-zenitycmd="zenity --password"
-
-which fzf 1>/dev/null 2>&1 || nofzf=t
 fzfcmd="${FZF_CMD:-fzf --tac --cycle}"
 
+#^ runtime checks
+# [ -f "${CLIPBOARD:=${XDG_DATA_HOME:-${HOME}/.local/share}/clipboard}" ] || \
+    # nouserclip=t
+
 which dialog 1>/dev/null 2>&1 || nodialog=t
-dialogcmd="dialog --no-cancel --passwordbox 'Enter a password.' 10 60 3>&1 1>&2 2>&3 3>&1"
+which dmenu 1>/dev/null 2>&1 || nodmenu=t
+which fzf 1>/dev/null 2>&1 || nofzf=t
+which xclip 1>/dev/null 2>&1 || noxclip=t
+which yad 1>/dev/null 2>&1 || noyad=t
+which zenity 1>/dev/null 2>&1 || nozenity=t
+xset q 1>/dev/null 2>&1 || nox=t
 
 if [ -n "$nox" ]; then
-    if [ -n "$nofzf" ]; then exit 1; else menucmd="$fzfcmd"; fi
-    if [ -n "$nodialog" ]; then exit 1; else promptcmd="$dialogcmd"; fi
-    if [ -n "$nouserclip" ]; then exit 1; clipcmd='cat'; fi
+    if [ -n "$nofzf" ]; then exit 1; else alias menucmd="$fzfcmd"; fi
+    if [ -n "$nouserclip" ]; then exit 1; clipboard='user'; fi
+    if [ -n "$nodialog" ]; then exit 1; else prompt='dialog'; fi
 else
-    if [ -n "$nodmenu" ]; then exit 1; else menucmd="$dmenucmd"; fi
-    if [ -n "$nozenity" ]; then exit 1; else promptcmd="$zenitycmd"; fi
-    if [ -n "$noxclip" ]; then
-        [ -n "$nouserclip" ] && exit 1 || clipcmd='cat'
-    else
-        clipcmd='xclip';
-    fi
+    if [ -n "$nodmenu" ]; then exit 1; else alias menucmd="$dmenucmd"; fi
+    if [ -n "$noxclip" ]; then clipboard='user'; else clipboard='xclip'; fi
+
+    if [ -n "$noyad" ]; then : ; else prompt='yad'; fi
+    if [ -n "$nozenity" ]; then exit 1; else prompt='zenity'; fi
 fi
 #$
 
 prompt() { #^
-    eval "$promptcmd"
+    # prompt <string prompt> [bool hidden] -> string
+    case $prompt in
+        dialog)
+            if [ -n "$2" ]; then
+                dialog --passwordbox "$1" 10 60 3>&1 1>&2 2>&3 3>&1
+            else
+                dialog --inputbox "$1" 10 60 3>&1 1>&2 2>&3 3>&1
+            fi ;;
+        zenity)
+            if [ -n "$2" ]; then
+                zenity --password
+            else
+                zenity --entry --text="$1"
+            fi ;;
+        yad) : ;;
+    esac
+} #$
+
+clipboard() { #^
+    # clipboard (yank <string PROMPT>)|put [clipboard|primary|secondary]
+
+    case $clipboard in
+        user) case $1 in
+            yank) echo "$2" > "$CLIPBOARD" ;;
+            put) cat "$CLIPBOARD" ;;
+        esac ;;
+        xclip) case $1 in
+            yank) echo "$2" | eval "xclip -i -selection ${3:-clipboard}" ;;
+            put) eval "xclip -o -selection ${3:-clipboard}" ;;
+        esac ;;
+    esac
+
+    # case "$1" in
+    #     yank) case "$clipboard" in
+    #         user) echo "$2" > "$CLIPBOARD" ;;
+    #         xclip) echo "$2" | eval "xclip -i -selection ${3:-clipboard}" ;;
+    #     esac ;;
+    #     put) case "$clipboard" in
+    #         user) user "$CLIPBOARD" ;;
+    #         xclip) eval "xclip -o -selection ${3:-clipboard}" ;;
+    #     esac ;;
+    # esac
+
 } #$
 
 menu(){ #^
     # menu <func. menu> [str. prompt] [bool print_query]
     case "$nox" in
-        t) eval "$1 | $menucmd ${2:+--prompt \"$2 \"} ${3:+--print-query}" ;; # sucks
+        t) eval "$1 | menucmd ${2:+--prompt \"$2 \"} ${3:+--print-query}" ;; # sucks
         *)
             if [ -n "$mouse" ]; then
                 eval "$(xdotool getmouselocation --shell)"
                 eval "$1 | dmenu -i -l 20 -x $X -y $Y -z 200"
             else
-                eval "$1 | $menucmd ${2:+-p \"$2\"}"
+                eval "$1 | menucmd ${2:+-p \"$2\"}"
             fi ;;
     esac
 } #$
@@ -66,20 +106,6 @@ dir_contents(){ #^
     # dir_contents <dir>
     find "$1" -type f -print0 |
     xargs --null -n 1 -I {} basename {}
-} #$
-
-clipboard() { #^
-    # clipboard <yank|put> <string> [primary]
-    case "$1" in
-        yank) case "$clipcmd" in
-            cat) echo "$2" > "$CLIPBOARD" ;;
-            xclip) echo "$2" | eval "xclip -i -selection ${3:-clipboard}" ;;
-        esac ;;
-        put) case "$clipcmd" in
-            cat) cat "$CLIPBOARD" ;;
-            xclip) eval "xclip -o -selection ${3:-clipboard}" ;;
-        esac ;;
-    esac
 } #$
 
 # vim: fdm=marker fmr=#^,#$
