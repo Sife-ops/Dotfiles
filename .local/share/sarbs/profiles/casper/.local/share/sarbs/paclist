@@ -58,6 +58,7 @@ gcc
 gettext
 gimp
 git
+github-cli
 gnu-netcat
 go-ipfs
 gperf
