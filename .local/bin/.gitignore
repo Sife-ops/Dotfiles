@@ -27,6 +27,7 @@ induce_rules
 internet.sh
 mail.sh
 memory.sh
+mount.sh
 music.sh
 nettraf.sh
 nose2
