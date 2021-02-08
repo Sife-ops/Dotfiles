@@ -117,37 +117,17 @@ install_profile(){ #^#
             targdir="$(dirname "$targ")"
 
             if [ ! -d "$targdir" ]; then
-                # requires sudo nopass
-                mkdir -p "$targdir" || sudo mkdir -p "$targdir"
-            fi
+                mkdir -p "$targdir" 2>/dev/null || \
+                    sudo mkdir -p "$targdir"; fi
 
-            if [ -e "$targ" ]; then
-                if readlink "$targ" 1>/dev/null; then
-                    if [ "$(stat -c %U "$targdir")" = "$(id -un)" ]; then
-                        ln -sfn "$file" "${targ}"
-                    else
-                        sudo ln -sfn "$file" "${targ}"
-                    fi
-                else
-                    if [ "$(stat -c %U "$targdir")" = "$(id -un)" ]; then
-                        mv "$targ" "${targ}_bu"
-                        ln -sfn "$file" "${targ}"
-                    else
-                        sudo mv "$targ" "${targ}_bu"
-                        sudo ln -sfn "$file" "${targ}"
-                    fi
-                fi
-            fi
+            if [ -e "$targ" ] && ! readlink "$targ" 1>/dev/null; then
+                mv "$targ" "${targ}_bu" 2>/dev/null || \
+                    sudo mv "$targ" "${targ}_bu"; fi
+
+            ln -sfn "$file" "$targ" 2>/dev/null || \
+                sudo ln -sfn "$file" "$targ"
         done
 } #$#
-
-# install_profile(){ #^#
-#     find "$1" -type f |
-#         while IFS= read -r line; do
-#             mkdir -p "$(dirname "${HOME}/${line##${1}/}")"
-#             ln -sf "$line" "${HOME}/${line##${1}/}"
-#         done
-# } #$#
 
 install_profile "$default_profile"
 install_profile "$host_profile"
