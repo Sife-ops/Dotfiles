@@ -22,7 +22,6 @@ bw_vault_cache="${BW_VAULT_CACHE:-${XDG_CACHE_HOME:-${HOME}/.cache}/bw-vault.gpg
 #$
 
 bw_login(){ #^
-
     status="$(bw status | jq -r '.userEmail')"
     case "$status" in
         null) bw_session_key="$(bw login \
@@ -34,15 +33,6 @@ bw_login(){ #^
         gpg --quiet --recipient "$BW_GPG_ID" \
             --encrypt --output "$bw_session_cache"
     printf '%s' "$bw_session_key"
-
-    # bw_session_key=$(bw_cmd unlock "$(prompt "Password:" t)" --raw)
-    #     grep 'export' |
-    #     sed 's/^.*BW_SESSION="\(.*\)"/\1/')
-    # echo "$bw_session_key" |
-    #     gpg --quiet --recipient "$BW_GPG_ID" \
-    #         --encrypt --output "$bw_session_cache"
-    # printf '%s' "$bw_session_key"
-
 } #$
 
 bw_session_key(){ #^
