@@ -11,6 +11,7 @@ fzfcmd="${FZF_CMD:-fzf --tac --cycle}"
 clipboardfile="${CLIPBOARD:=${XDG_DATA_HOME:-${HOME}/.local/share}/clipboard}"
 
 #^ runtime checks
+which notify-send 1>/dev/null 2>&1 || nonotify=t
 which dialog 1>/dev/null 2>&1 || nodialog=t
 which dmenu 1>/dev/null 2>&1 || nodmenu=t
 which fzf 1>/dev/null 2>&1 || nofzf=t
@@ -34,6 +35,7 @@ fi
 
 prompt() { #^
     # prompt <string prompt> [bool hidden] -> string
+    [ -n "$nonotify" ] || notify-send "sfx" "win95/DA_ERROR.WAV"
     case $prompt in
         dialog)
             if [ -n "$2" ]; then
@@ -53,6 +55,7 @@ prompt() { #^
 
 clipboard() { #^
     # clipboard (yank <string PROMPT>)|put [clipboard|primary|secondary]
+    [ -n "$nonotify" ] || notify-send "sfx" "win95/DA_MENUC.WAV"
     case $clipboard in
         user) case $1 in
             yank) echo "$2" > "$clipboardfile" ;;
@@ -67,6 +70,7 @@ clipboard() { #^
 
 menu(){ #^
     # menu <func. menu> [str. prompt] [bool print_query]
+    [ -n "$nonotify" ] || notify-send "sfx" "win95/DA_MENU.WAV"
     case "$nox" in
         t) eval "$1 | menucmd ${2:+--prompt \"$2 \"} ${3:+--print-query}" ;; # sucks
         *)
@@ -81,6 +85,7 @@ menu(){ #^
 
 buffer(){ #^
     # buffer <file>
+    [ -n "$nonotify" ] || notify-send "sfx" "win95/DA_QUEST.WAV"
     case "$nox" in
         t) eval "${EDITOR:-nano} $1" ;;
         *) eval "${TERMINAL:-xterm} -e ${EDITOR:-nano} $1" ;;

@@ -13,7 +13,8 @@ alias dmenucmd="$DMENU_CMD"
 
 choose(){ #^
     # choose STRING [PROMPT] -> string
-    echo "$1" | eval "dmenucmd ${2:+-p \"$2\"}"
+    notify-send "sfx" "win95/DA_MENU.WAV"
+    printf '%s' "$1" | eval "dmenucmd ${2:+-p \"$2\"}"
 } #$
 
 # menus #^
@@ -166,7 +167,8 @@ case $domain in #^
             cmd="$cmd $chosen"
             chosen=$(choose "$dxdy" "dx dy") ;; # top|left|bottom|right|top_left|top_right|bottom_right|bottom_left dx dy
         # -E|-B|-i|-c|-k) echo "$cmd" && exit 0 ;;
-        -E|-B|-i|-c|-k) eval "$cmd"; exit ;;
+        # -E|-B|-i|-c|-k) eval "$cmd"; exit ;;
+        -E|-B|-i|-c|-k) chosen="" ;;
         "") exit 1 ;;
         *) exit 1 ;;
     esac ;; #$
@@ -176,7 +178,7 @@ case $domain in #^
         -l|-b) chosen=$(choose "cycle" "cycle") ;; # , --layout CYCLE_DIR|monocle|tiled
         -m) chosen=$(dmenumon.sh -f) ;; # , --to-monitor MONITOR_SEL [--follow]
         -n) chosen=$(choose "" "name") ;; # , --rename <new_name>
-        -r) eval "$cmd"; exit ;;
+        -r) chosen="" ;;
         "") exit 1 ;;
         *) exit 1 ;;
     esac ;; #$
@@ -188,7 +190,7 @@ case $domain in #^
         -o) chosen=$(choose "" "name") ;; # , --reorder-desktops <name>...
         -d) chosen=$(choose "" "name") ;; # , --reset-desktops <name>...
         -g) chosen=$(choose "" "WxH+X+Y") ;; # , --rectangle WxH+X+Y
-        -r) eval "$cmd"; exit ;;
+        -r) chosen="" ;;
         "") exit 1 ;;
         *) exit 1 ;;
     esac ;; #$
@@ -208,6 +210,7 @@ case $domain in #^
 esac
 cmd="$cmd $chosen" #$
 
+notify-send "sfx" "win95/DA_MENUC.WAV"
 eval "$cmd"
 
 # vim: fdm=marker fmr=#^,#$

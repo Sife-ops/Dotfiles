@@ -31,7 +31,7 @@ which fcitx && fcitx &
 # ln -sf ${XDG_CONFIG_HOME:-${HOME}/.config}/xmodmap/natty.map \
     # ${HOME}/.Xmodmap
 # which setxmodmap.sh && setxmodmap.sh
-which xset && xset r rate 300 50
+which xset && xset r rate 200 50
 which sxhkd && sxhkd &
 which unclutter && unclutter --timeout 1 &
 #$
@@ -47,6 +47,10 @@ offlineimap &
 
 #^----- XRESOURCES -------------------------------------------------------------
 xrdb ~/.Xresources
+#$
+
+#^----- DUNST ------------------------------------------------------------------
+which dunst && dunst -always_run_script &
 #$
 
 #^----- WM ---------------------------------------------------------------------

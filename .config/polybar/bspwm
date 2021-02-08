@@ -71,7 +71,7 @@ font-1 = "Noto Color Emoji:scale=9;2"
 
 modules-left = date pulseaudio cpu temperature memory wlan mail feeds pacman battery backlight
 modules-right = bspwm
-; modules-center = notifications
+modules-center = notifications
 ;$ ;$
 
 ;^_-_- SECONDARY _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_

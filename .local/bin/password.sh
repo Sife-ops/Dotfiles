@@ -70,6 +70,7 @@ field_menu(){ #^
     chosen="$(menu field_list "field")"
     case "$chosen" in
         autofill)
+            [ -n "$nonotify" ] || notify-send "sfx" "win95/DA_MENUC.WAV"
             xdotool type --clearmodifiers "$(get_secret "$id" | jq -r '.login.username')"
             xdotool key --clearmodifiers Tab
             xdotool type --clearmodifiers "$(get_secret "$id" | jq -r '.login.password')" ;;

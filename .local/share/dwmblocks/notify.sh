@@ -1,12 +1,7 @@
 #!/bin/sh
 # print last notification
 
-charlim=75
-notif=$(tail -n1 "$NOTIFICATIONS" |
-    jq -r '.app_name, .summary, .body' 2>/dev/null |
-    sed "1,2s/$/ \|/" |
-    paste -s -d' ' |
-    sed "s/\(^.\{$charlim\}\)\(.*\)/\1 \.\.\./")
-icon="💬"
-printf "%s%s\\n" "$icon" "$notif"
+notifications="${NOTIFICATIONS:-${XDG_DATA_HOME:-${HOME}/.local/share}/notifications}"
+
+notif=$(tail -n1 "$notifications")
 echo "$notif"

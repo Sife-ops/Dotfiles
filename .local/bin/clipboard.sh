@@ -27,6 +27,7 @@ main_list () { #^
         done | sort
     fi
 } #$
+#$
 
 #^ main menu
 chosen=$(menu main_list | cut -d':' -f1)
@@ -50,6 +51,7 @@ case "$chosen" in
     *) exit 1 ;;
 esac #$
 
+[ -n "$nonotify" ] || notify-send "sfx" "win95/DA_MENUC.WAV"
 eval "$cmd_a $cmd_b"
 
 # vim: fdm=marker fmr=#^,#$

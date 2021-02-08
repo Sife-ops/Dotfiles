@@ -27,7 +27,8 @@ togmap(){ #^
 } #$
 
 #^ main
-chosen=$(print_ids | dmenu_cmd -p "dd" | cut -d ':' -f 1)
+notify-send "sfx" "win95/DA_MENU.WAV"
+chosen=$(print_ids | dmenucmd -p "dd" | cut -d ':' -f 1)
 case "$chosen" in
     "")
         exit 1 ;;
