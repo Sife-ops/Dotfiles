@@ -5,7 +5,8 @@
 if which checkdeps.sh 1>/dev/null 2>&1; then
     checkdeps.sh bspc dmenu jq bc || exit 1; fi
 
-alias dmenucmd='dmenu -b -i -l 20'
+DMENU_CMD="${DMENU_CMD:-dmenu -b -i -l 20}"
+alias dmenucmd="$DMENU_CMD"
 
 msg_help() { echo \
 "Usage:
@@ -52,7 +53,7 @@ desk_menu(){ #^
 } #$
 
 #^ main
-chosen=$(desk_menu | dmenucmd -p "node")
+chosen=$(desk_menu | dmenucmd -p "desktop")
 case "$chosen" in
     "") kill 0 ;;
     *) echo "$chosen" | cut -d':' -f3 ;;

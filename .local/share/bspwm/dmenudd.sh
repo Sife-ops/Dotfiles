@@ -5,7 +5,8 @@
 if which checkdeps.sh 1>/dev/null 2>&1; then
     checkdeps.sh xdotool xwininfo dmenu || exit 1; fi
 
-alias dmenu_cmd="${DMENU_CMD:-dmenu -b -i -l 20}"
+DMENU_CMD="${DMENU_CMD:-dmenu -b -i -l 20}"
+alias dmenucmd="$DMENU_CMD"
 #$
 
 print_ids(){ #^
