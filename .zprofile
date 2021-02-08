@@ -109,13 +109,46 @@ profiles="${SARBS}/profiles"
 default_profile="${profiles}/default"
 host="$(cat /etc/hostname)"
 host_profile="${profiles}/${host}"
-install_profile(){
+
+install_profile(){ #^#
     find "$1" -type f |
-        while IFS= read -r line; do
-            mkdir -p "$(dirname "${HOME}/${line##${1}/}")"
-            ln -sf "$line" "${HOME}/${line##${1}/}"
+        while IFS= read -r file; do
+            targ="${file##${1}}"
+            targdir="$(dirname "$targ")"
+
+            if [ ! -d "$targdir" ]; then
+                # requires sudo nopass
+                mkdir -p "$targdir" || sudo mkdir -p "$targdir"
+            fi
+
+            if [ -e "$targ" ]; then
+                if readlink "$targ" 1>/dev/null; then
+                    if [ "$(stat -c %U "$targdir")" = "$(id -un)" ]; then
+                        ln -sfn "$file" "${targ}"
+                    else
+                        sudo ln -sfn "$file" "${targ}"
+                    fi
+                else
+                    if [ "$(stat -c %U "$targdir")" = "$(id -un)" ]; then
+                        mv "$targ" "${targ}_bu"
+                        ln -sfn "$file" "${targ}"
+                    else
+                        sudo mv "$targ" "${targ}_bu"
+                        sudo ln -sfn "$file" "${targ}"
+                    fi
+                fi
+            fi
         done
-}
+} #$#
+
+# install_profile(){ #^#
+#     find "$1" -type f |
+#         while IFS= read -r line; do
+#             mkdir -p "$(dirname "${HOME}/${line##${1}/}")"
+#             ln -sf "$line" "${HOME}/${line##${1}/}"
+#         done
+# } #$#
+
 install_profile "$default_profile"
 install_profile "$host_profile"
 #$#
@@ -142,4 +175,4 @@ chmod 600 $NOTIFICATIONS
 # sudo -n loadkeys ${SARBS}/ttymaps.kmap 2>/dev/null
 #$#
 
-# vim: fdm=marker fmr=#^#,#$#
+# vim: ft=sh fdm=marker fmr=#^#,#$#
