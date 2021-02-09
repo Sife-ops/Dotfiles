@@ -9,16 +9,14 @@ play(){
     mpv --profile=low-latency --volume="${2:-100}" "$1"
 }
 
+
 case "$2" in
     sfx) play "${sfxdir}/$3" ;;
-    *) case "$5" in
-            LOW) icon=😁 ;;
-            NORMAL) icon=💬 ;;
-            CRITICAL) icon=⚠️  ;;
-        esac
-
-        appname="$(echo "$1" | sed "s/\(^.\{$charlim\}\)\(.*\)/\1 \.\.\./")"
-        summary="$(echo "$2" | sed "s/\(^.\{$charlim\}\)\(.*\)/\1 \.\.\./")"
-        body="$(echo "$3" | sed "s/\(^.\{$charlim\}\)\(.*\)/\1 \.\.\./")"
-        echo "$icon $appname | $summary | $body $icon" > "$notifications" ;;
+    *) echo \
+        "{ \"appname\": \"$1\",
+        \"summary\": \"$2\",
+        \"body\": \"$3\",
+        \"icon\": \"$4\",
+        \"urgency\": \"$5\" }" |
+            jq -c >> "$notifications" ;;
 esac
