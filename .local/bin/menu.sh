@@ -58,11 +58,11 @@ clipboard() { #^
     [ -n "$nonotify" ] || notify-send "sfx" "win95/DA_MENUC.WAV"
     case $clipboard in
         user) case $1 in
-            yank) echo "$2" > "$clipboardfile" ;;
+            yank) printf '%s' "$2" > "$clipboardfile" ;;
             put) cat "$clipboardfile" ;;
         esac ;;
         xclip) case $1 in
-            yank) echo "$2" | eval "xclip -i -selection ${3:-clipboard}" ;;
+            yank) printf '%s' "$2" | eval "xclip -i -selection ${3:-clipboard}" ;;
             put) eval "xclip -o -selection ${3:-clipboard}" ;;
         esac ;;
     esac
