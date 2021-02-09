@@ -37,8 +37,6 @@ export READER="zathura"
 
 #^#---- VAULTS -----------------------------------------------------------------
 export BW_GPG_ID="E4D903D4A2A85226E14AE435A744F927AD7099AC"
-# export BW_SESSION_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/bw-session.gpg"
-# [ -f "$BW_SESSION_CACHE" ] && rm -f "$BW_SESSION_CACHE"
 export IPFS_VAULT_GPG_ID="E4D903D4A2A85226E14AE435A744F927AD7099AC"
 export GHVAULT_GPG_ID="B66DD63E2F11A127B3C7DE21AD75C45079F90534"
 #$#
@@ -83,6 +81,7 @@ export QT_QPA_PLATFORMTHEME="gtk2"
 export SARBS="${XDG_DATA_HOME:-$HOME/.local/share}/sarbs"
 export SAVEHIST=900000
 export SFX="${XDG_DATA_HOME:-$HOME/.local/share}/sfx"
+export SOUNDFONT="$SFX/win95/DA_"
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export URL_OPENER="url.sh"
