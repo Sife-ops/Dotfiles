@@ -24,7 +24,7 @@ export URL_OPENER="dmenuurl.sh"
 #$ #$
 
 #^----- KEYMAP -----------------------------------------------------------------
-ln -sf ${XDG_CONFIG_HOME:-${HOME}/.config}/xmodmap/mac.map \
+ln -sf ${XDG_CONFIG_HOME:-${HOME}/.config}/xmodmap/unicomp.map \
     ${HOME}/.Xmodmap
 sleep 1
 setxmodmap.sh

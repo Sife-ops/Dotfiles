@@ -38,9 +38,6 @@ keycode  51 = Alt_R
 ! Return
 keycode  36 = Control_R
 
-! Right Win
-! keycode 134 = Hyper_R
-
 ! Right Alt
 keycode 108 = Hyper_R
 
