@@ -1,7 +1,5 @@
 #!/bin/sh
 # dmenu bspc wrapper
-# todo:
-# command cache
 
 #^ setup
 if which checkdeps.sh 1>/dev/null 2>&1; then
@@ -13,7 +11,6 @@ alias dmenucmd="$DMENU_CMD"
 
 choose(){ #^
     # choose STRING [PROMPT] -> string
-    notify-send "sfx" "win95/DA_MENU.WAV"
     printf '%s' "$1" | eval "dmenucmd ${2:+-p \"$2\"}"
 } #$
 
@@ -210,7 +207,6 @@ case $domain in #^
 esac
 cmd="$cmd $chosen" #$
 
-notify-send "sfx" "win95/DA_MENUC.WAV"
 eval "$cmd"
 
 # vim: fdm=marker fmr=#^,#$

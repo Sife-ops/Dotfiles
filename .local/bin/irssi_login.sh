@@ -1,6 +1,8 @@
 #!/bin/sh
 # login wrapper for irssi
 
+pgrep -x irssi && echo "already running" && exit 1
+
 sasl_gpg_conf="${XDG_CONFIG_HOME:-${HOME}/config}/irssi/sasl_gpg.conf"
 
 irssi_conf="${XDG_CONFIG_HOME:-${HOME}/config}/irssi/config"

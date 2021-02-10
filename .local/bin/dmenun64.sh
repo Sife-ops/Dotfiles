@@ -3,26 +3,16 @@
 
 . menu.sh
 
-if which checkdeps.sh 1>/dev/null 2>&1; then
-    checkdeps.sh mupen64plus || exit 1; fi
-
 if [ -n "$1" ]; then
-   N64ROMS="$1"
-elif [ -d "${N64ROMS:=${XDG_DATA_DIR:-${HOME}/.local/share}/roms/n64}" ]; then
-    :
+   n64roms="$1"
 else
-    exit 1
+   n64roms="${N64ROMS:-${XDG_DATA_DIR:-${HOME}/.local/share}/roms/n64}"
 fi
 
-main_list(){ #^
-    find "${N64ROMS}/" -type f -print0 |
-    xargs --null -n 1 -I {} basename {}
-} #$
+main_list="$(dir_contents "${n64roms}/")"
 
-#^ main menu
-chosen=$(menu main_list "N64")
+choose "$main_list" "N64"
 case "$chosen" in
     "") exit 1 ;;
-    *) mupen64plus "${N64ROMS}/${chosen}" ;;
+    *) mupen64plus "${n64roms}/${chosen}" ;;
 esac
-#$

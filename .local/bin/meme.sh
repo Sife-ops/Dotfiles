@@ -7,22 +7,16 @@ if which checkdeps.sh 1>/dev/null 2>&1; then
     checkdeps.sh dragon-drag-and-drop || exit 1; fi
 
 if [ -n "$1" ]; then
-   MEMES="$1"
-elif [ -d "${MEMES:=${XDG_DATA_HOME:-${HOME}/.local/share}/memes}" ]; then
-    :
+   memes="$1"
 else
-    exit 1
+   memes="${MEMES:-${XDG_DATA_HOME:-${HOME}/.local/share}/memes}"
 fi
 
-main_list(){ #^
-    find "${MEMES}/" -type f -print0 |
-    xargs --null -n 1 -I {} basename {}
-} #$
+main_list="$(dir_contents "${memes}/")"
 
-#^ main menu
-chosen=$(menu main_list "meme")
+choose "$main_list" "memes"
 case "$chosen" in
     "") exit 1 ;;
-    *) dragon-drag-and-drop -x "${MEMES}/${chosen}" ;;
+    *) dragon-drag-and-drop -x "${memes}/${chosen}" ;;
 esac
 #$

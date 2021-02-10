@@ -47,7 +47,6 @@ export ANDROID_SDK_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android"
 export BOOKMARKS="${XDG_DATA_HOME:-$HOME/.local/share}/bookmarks"
 export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 export CLIPBOARD="${XDG_DATA_HOME:-${HOME}/.local/share}/clipboard"
-export CLIPBOARD_DIR="${XDG_DATA_HOME:-${HOME}/.local/share}/clipboard.d"
 export FEEDS="${XDG_CONFIG_HOME:-$HOME/.config}/newsboat/urls"
 export GEM_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/gem" # remove gem: --user-install from /etc/gemrc
 export GEM_SPEC_CACHE="${XDG_CACHE_HOME:-${HOME}/.cache}/gem"
@@ -81,7 +80,6 @@ export QT_QPA_PLATFORMTHEME="gtk2"
 export SARBS="${XDG_DATA_HOME:-$HOME/.local/share}/sarbs"
 export SAVEHIST=900000
 export SFX="${XDG_DATA_HOME:-$HOME/.local/share}/sfx"
-export SOUNDFONT="$SFX/win95/DA_"
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export URL_OPENER="url.sh"
@@ -96,12 +94,10 @@ export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 #$# #$#
 
 #^#---- CLIPBOARD --------------------------------------------------------------
-mkdir -p $CLIPBOARD_DIR
-touch $CLIPBOARD_DIR/0{0,1,2,3,4}
-touch $CLIPBOARD
-chmod 700 ${CLIPBOARD_DIR}
-chmod 600 ${CLIPBOARD_DIR}/*
-chmod 600 $CLIPBOARD
+mkdir -p $CLIPBOARD
+touch ${CLIPBOARD}/0{0,1,2,3,4}
+chmod 700 $CLIPBOARD
+chmod 600 ${CLIPBOARD}/*
 #$#
 
 #^#---- HOST PROFILE -----------------------------------------------------------

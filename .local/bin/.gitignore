@@ -42,6 +42,7 @@ qmk
 recursenode.sh
 shfm
 stashmasterpull.sh
+tags
 temperature.sh
 todo/
 togmap.sh

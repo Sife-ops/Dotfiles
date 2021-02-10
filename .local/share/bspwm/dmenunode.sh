@@ -59,7 +59,6 @@ node_menu(){ #^
 } #$
 
 #^ main
-notify-send "sfx" "win95/DA_MENU.WAV"
 chosen=$(node_menu | dmenucmd -p "node")
 case "$chosen" in
     "") kill 0 ;; # consider changing

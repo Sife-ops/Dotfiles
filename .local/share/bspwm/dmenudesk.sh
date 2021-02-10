@@ -53,7 +53,6 @@ desk_menu(){ #^
 } #$
 
 #^ main
-notify-send "sfx" "win95/DA_MENU.WAV"
 chosen=$(desk_menu | dmenucmd -p "desktop")
 case "$chosen" in
     "") kill 0 ;;

@@ -1,12 +1,8 @@
 #!/bin/sh
 # interface for bitwarden-cli
-# todo:
-# create mode
-# edit mode
 
 . menu.sh
 
-#^ setup
 while getopts "b:h" o; do
     case "${o}" in
         b) backend="$OPTARG" ;;
@@ -14,7 +10,6 @@ while getopts "b:h" o; do
         *) printf "Invalid option: -%s\n" "$o" ;;
     esac
 done
-shift $((OPTIND - 1))
 
 if [ -n "$backend" ]; then
     case "$backend" in
@@ -28,9 +23,8 @@ else
     backend="bitwarden"
     . bwvault.sh
 fi
-#$
 
-secrets(){ #^
+secrets(){
     if [ -n "$secrets" ]; then
         echo "$secrets"
     else
@@ -38,61 +32,58 @@ secrets(){ #^
     fi
 }
 secrets="$(secrets)"
-#$
 
-secrets_list(){ #^
+secrets_list(){
     secrets | jq -r '.[] | "\(.name) | \(.id)"'
-} #$
+}
 
-get_secret(){ #^
+get_secret(){
     secrets | jq -c ".[] | select(.id == \"$1\")"
-} #$
+}
 
-main_list(){ #^
-    secrets_list
-    [ "$backend" = "bitwarden" ] && printf "Create ...\n"
-    [ "$backend" = "bitwarden" ] && printf "Logout ...\n"
-    [ "$backend" = "bitwarden" ] && printf "Sync ...\n"
-} #$
+get_username(){
+    get_secret "$1" | jq -r '.login.username'
+}
 
-field_list(){ #^
-    [ -n "$nox" ] || printf "autofill\n"
-    printf "both\n"
-    printf "username\n"
-    printf "password\n"
-    printf "Edit ...\n"
-} #$
+get_password(){
+    get_secret "$1" | jq -r '.login.password'
+}
 
-field_menu(){ #^
-    id="$(echo "$1" |
-        cut -d '|' -f 2 |
-        tr -d '[:space:]')"
-    chosen="$(menu field_list "field")"
+main_list="$(secrets_list)
+$([ "$backend" = "bitwarden" ] && printf "Create ...\n")
+$([ "$backend" = "bitwarden" ] && printf "Logout ...\n")
+$([ "$backend" = "bitwarden" ] && printf "Sync ...\n")"
+
+field_list="$([ -z "$nox" ] && printf "autofill\n")
+$(printf "both\n")
+$(printf "username\n")
+$(printf "password\n")
+$(printf "Edit ...\n")"
+
+field_menu(){
+    # field_menu <id>
+    choose "$field_list" "field"
     case "$chosen" in
         autofill)
-            [ -n "$nonotify" ] || notify-send "sfx" "win95/DA_MENUC.WAV"
-            xdotool type --clearmodifiers "$(get_secret "$id" | jq -r '.login.username')"
+            xdotool type --clearmodifiers "$(get_username "$id")"
             xdotool key --clearmodifiers Tab
-            xdotool type --clearmodifiers "$(get_secret "$id" | jq -r '.login.password')" ;;
-        both) clipboard yank "$(get_secret "$id" | jq -r '.login.username')"
-              clipboard yank "$(get_secret "$id" | jq -r '.login.password')" primary ;;
-        username) clipboard yank "$(get_secret "$id" | jq -r '.login.username')" ;;
-        password) clipboard yank "$(get_secret "$id" | jq -r '.login.password')" ;;
+            xdotool type --clearmodifiers "$(get_password "$id")" ;;
+        both) clipboard yank "$(get_username "$id")"
+              clipboard yank "$(get_password "$id")" primary ;;
+        username) clipboard yank "$(get_username "$id")" ;;
+        password) clipboard yank "$(get_password "$id")" ;;
         "Edit ...") edit_item "$(edit "$(get_secret "$id")")" "$id" ;;
         "") kill 0 ;;
         *) kill 0 ;;
     esac
-} #$
+}
 
-#^ main menu
-chosen="$(menu main_list "secrets")"
+choose "$main_list" "secrets"
+id="$(echo "$chosen" | cut -d '|' -f 2 | tr -d '[:space:]')"
 case "$chosen" in
     "Create ...") bwcreate.sh ;;
     "Logout ...") bw_logout ;;
     "Sync ...") bw_sync ;;
     "") exit 1 ;;
-    *) field_menu "$chosen" ;;
+    *) field_menu "$id" ;;
 esac
-#$
-
-# vim: fdm=marker fmr=#^,#$

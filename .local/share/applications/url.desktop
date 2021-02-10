@@ -1,4 +1,4 @@
 [Desktop Entry]
 Type=Application
 Name=HTML Reader
-Exec=~/.local/bin/url.sh -m %u
+Exec=~/.local/bin/url.sh %u

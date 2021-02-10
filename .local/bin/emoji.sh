@@ -3,26 +3,21 @@
 
 . menu.sh
 
-if which checkdeps.sh 1>/dev/null 2>&1; then
-    checkdeps.sh xdotool || exit 1; fi
-
 if [ -n "$1" ]; then
-   EMOJI="$1"
-elif [ -f "${EMOJI:=${XDG_DATA_HOME:-${HOME}/.local/share}/emoji}" ]; then
-    :
+   emoji="$1"
 else
-    exit 1
+   emoji="${EMOJI:-${XDG_DATA_HOME:-${HOME}/.local/share}/emoji}"
 fi
 
-list(){
-    cat "$EMOJI"
-}
+main_list="$(cat "$emoji")"
 
-chosen=$(menu list | sed "s/ .*//")
+choose "$main_list" "emoji"
+emoji="$(echo "$chosen" | sed "s/ .*//")"
 case "$chosen" in
     "") exit 1 ;;
-    *) clipboard yank "$chosen"
-       sleep 0.25; xdotool type --clearmodifiers "$chosen" ;;
+    *) clipboard yank "$emoji"
+        if [ -z "$nox" ]; then
+            sleep 0.25
+            xdotool type --clearmodifiers "$emoji"
+        fi ;;
 esac
-
-# vim: fdm=marker fmr=#^,#$

@@ -3,7 +3,6 @@
 # todo:
 # add condition for bw login
 # clientid feature
-# remove menu.sh dependency
 
 . menu.sh
 
@@ -22,6 +21,7 @@ bw_vault_cache="${BW_VAULT_CACHE:-${XDG_CACHE_HOME:-${HOME}/.cache}/bw-vault.gpg
 #$
 
 bw_login(){ #^
+    # bw_login -> session key
     status="$(bw status | jq -r '.userEmail')"
     case "$status" in
         null) bw_session_key="$(bw login \

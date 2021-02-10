@@ -3,22 +3,15 @@
 
 . menu.sh
 
-[ -f "${BOOKMARKS:=${XDG_DATA_HOME:-${HOME}/.local/share}/bookmarks}" ] || \
-    exit 1
+bookmarks="${BOOKMARKS:-${XDG_DATA_HOME:-${HOME}/.local/share}/bookmarks}"
 
-main_list(){
-    grep -v '^#' "$BOOKMARKS" |
-    sed '/^$/d' |
-    sort
-}
+main_list="$(grep -v '^#' "$bookmarks" | sed '/^$/d' | sort)"
 
-chosen=$(menu main_list "bookmarks" |
-    cut -d '|' -f 2 |
-    tr -d "[:space:]")
-
+choose "$main_list" "bookmarks"
+url=$(echo "$chosen" | cut -d '|' -f 2 | tr -d "[:space:]")
 case "$chosen" in
     "") exit 1 ;;
-    *) $BROWSER "$chosen" ;;
+    *) url.sh $url ;;
 esac
 
 
