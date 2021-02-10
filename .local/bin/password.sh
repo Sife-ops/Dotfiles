@@ -50,38 +50,58 @@ get_password(){
 }
 
 main_list="$(secrets_list)
-$([ "$backend" = "bitwarden" ] && printf "Create ...\n")
-$([ "$backend" = "bitwarden" ] && printf "Logout ...\n")
-$([ "$backend" = "bitwarden" ] && printf "Sync ...\n")"
+$([ "$backend" = "bitwarden" ] && printf "Create ...")
+$([ "$backend" = "bitwarden" ] && printf "Logout ...")
+$([ "$backend" = "bitwarden" ] && printf "Sync ...")"
+main_list="$(echo "$main_list" | sed '/^$/d')"
 
-field_list="$([ -z "$nox" ] && printf "autofill\n")
-$(printf "both\n")
-$(printf "username\n")
-$(printf "password\n")
-$(printf "Edit ...\n")"
+field_list="$([ -z "$nox" ] && printf "autofill")
+$(printf "both")
+$(printf "username")
+$(printf "password")
+$([ "$backend" = "bitwarden" ] && printf "Edit ...")"
+field_list="$(echo "$field_list" | sed '/^$/d')"
+
+create_list="card
+identity
+login
+secure note"
 
 field_menu(){
     # field_menu <id>
     choose "$field_list" "field"
     case "$chosen" in
-        autofill)
-            xdotool type --clearmodifiers "$(get_username "$id")"
-            xdotool key --clearmodifiers Tab
-            xdotool type --clearmodifiers "$(get_password "$id")" ;;
+        autofill) xdotool type --clearmodifiers "$(get_username "$id")"
+                  xdotool key --clearmodifiers Tab
+                  xdotool type --clearmodifiers "$(get_password "$id")" ;;
         both) clipboard yank "$(get_username "$id")"
               clipboard yank "$(get_password "$id")" primary ;;
         username) clipboard yank "$(get_username "$id")" ;;
         password) clipboard yank "$(get_password "$id")" ;;
-        "Edit ...") edit_item "$(edit "$(get_secret "$id")")" "$id" ;;
+        "Edit ...") edit_item "$(edit "$(get_secret "$id")")" "$id"
+                    bw_sync ;;
         "") kill 0 ;;
         *) kill 0 ;;
     esac
 }
 
+create_menu(){
+    choose "$create_list" "type"
+    case "$chosen" in
+        card) create_item "$(edit "$(template card)")" ;;
+        identity) create_item "$(edit "$(template identity)")" ;;
+        login) create_item "$(edit "$(template login)")" ;;
+        "secure note") create_item "$(edit "$(template securenote)")" ;;
+        "") exit 1 ;;
+        *) exit 1 ;;
+    esac
+    bw_sync
+}
+
 choose "$main_list" "secrets"
 id="$(echo "$chosen" | cut -d '|' -f 2 | tr -d '[:space:]')"
 case "$chosen" in
-    "Create ...") bwcreate.sh ;;
+    "Create ...") create_menu ;;
     "Logout ...") bw_logout ;;
     "Sync ...") bw_sync ;;
     "") exit 1 ;;
