@@ -9,7 +9,7 @@ alias fzfcmd="${FZF_CMD:-fzf --tac --cycle}"
 nox="${MENU_NOX}"
 case "$nox" in
     "") which dmenu 1>/dev/null || exit 1
-        which zenity 1>/dev/null || exit 1 ;;
+        which yad 1>/dev/null || exit 1 ;;
     *) which fzf 1>/dev/null || exit 1
        which dialog 1>/dev/null || exit 1 ;;
 esac
@@ -26,9 +26,9 @@ prompt() {
     case "$nox" in
         "")
             if [ -n "$2" ]; then
-                zenity --password
+                yad --text-align=center --text="$1" --entry --hide-text
             else
-                zenity --entry --text="$1"
+                yad --text-align=center --text="$1" --entry
             fi ;;
         *)
             if [ -n "$2" ]; then
@@ -77,4 +77,3 @@ dir_contents(){
     find "$1" -type f -print0 |
     xargs --null -I {} basename {}
 }
-
