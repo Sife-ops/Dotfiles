@@ -4,7 +4,7 @@
 # test without notify-send present
 # test nox
 
-. bettermenu.sh
+. menu.sh
 
 downloads="${DOWNLOADS:-${XDG_DOWNLOAD_DIR:-${HOME}/Downloads}}"
 [ -d "$downloads" ] || mkdir -p "$downloads"
