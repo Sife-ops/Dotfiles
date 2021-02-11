@@ -37,7 +37,7 @@ which unclutter && unclutter --timeout 1 &
 #$
 
 #^----- GPG --------------------------------------------------------------------
-# password.sh -b bitwarden
+password.sh -b bitwarden
 offlineimap &
 #$
 
