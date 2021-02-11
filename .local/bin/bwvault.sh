@@ -1,7 +1,7 @@
 #!/bin/sh
 # bw library
 # todo:
-# add condition for bw login
+# todo: verify session key validity
 # clientid feature
 
 . menu.sh
@@ -36,6 +36,7 @@ bw_login(){ #^
 } #$
 
 bw_session_key(){ #^
+    # todo: verify session key validity
     if [ -f "$bw_session_cache" ]; then
         bw_session_key=$(gpg --quiet --decrypt "$bw_session_cache")
     else
