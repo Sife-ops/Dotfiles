@@ -102,7 +102,8 @@ choose "$main_list" "secrets"
 id="$(echo "$chosen" | cut -d '|' -f 2 | tr -d '[:space:]')"
 case "$chosen" in
     "Create ...") create_menu ;;
-    "Logout ...") bw_logout ;;
+    "Clear cache ...") bw_clear ;;
+    "Logout ...") : ;;
     "Sync ...") bw_sync ;;
     "") exit 1 ;;
     *) field_menu "$id" ;;
