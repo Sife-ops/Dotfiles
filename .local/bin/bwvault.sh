@@ -62,8 +62,9 @@ bw_sync(){ #^
     rm -rf "$bw_vault_cache"
 } #$
 
-bw_logout(){ #^
+bw_clear(){ #^
     rm -f "$bw_session_cache"
+    rm -f "$bw_vault_cache"
 } #$
 
 edit(){ #^
