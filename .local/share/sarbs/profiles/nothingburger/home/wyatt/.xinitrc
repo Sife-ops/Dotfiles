@@ -7,8 +7,7 @@
 #    (_)_/\_\_|_| |_|_|\__|_|  \___|
 
 #^----- ENVIRONMENT VARIABLES --------------------------------------------------
-# export MONITOR0="LVDS-1"
-# export MONITOR1=""
+export MONITOR0="LVDS-1"
 
 export BROWSER="qutebrowser"
 export URL_OPENER="dmenuurl.sh"
