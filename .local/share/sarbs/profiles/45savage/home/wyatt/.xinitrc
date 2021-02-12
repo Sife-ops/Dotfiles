@@ -18,7 +18,7 @@ export XMODIFIERS=@im=fcitx
 #$
 
 #^----- STARTUP ----------------------------------------------------------------
-xrandr --output HDMI-1 --mode 1920x1080
+xrandr --output $MONITOR0 --mode 1920x1080
 xrdb ~/.Xresources
 
 # ln -sf ${XDG_CONFIG_HOME:-${HOME}/.config}/X11/xmodmap/k400.map \
