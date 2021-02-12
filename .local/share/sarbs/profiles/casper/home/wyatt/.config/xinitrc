@@ -1,0 +1,24 @@
+#!/bin/sh
+
+#            _       _ _
+#      __  _(_)_ __ (_) |_ _ __ ___
+#      \ \/ / | '_ \| | __| '__/ __|
+#     _ >  <| | | | | | |_| | | (__
+#    (_)_/\_\_|_| |_|_|\__|_|  \___|
+
+#^----- ENVIRONMENT VARIABLES --------------------------------------------------
+export MONITOR0="DP-1"
+export MONITOR1="HDMI-1"
+#$
+
+#^----- STARTUP ----------------------------------------------------------------
+fcitx &
+
+password.sh
+offlineimap &
+~/.config/tmux/default.sh
+#$
+
+exec bspwm
+
+# vim: fdm=marker fmr=#^,#$
