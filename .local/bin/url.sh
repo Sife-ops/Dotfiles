@@ -12,6 +12,7 @@ bookmarks="${BOOKMARKS:-${XDG_DATA_HOME:-${HOME}/.local/share}/bookmarks}"
 [ -f "$bookmarks" ] || nobookmarks=t
 feeds="${FEEDS:-${XDG_CONFIG_HOME:-${HOME}/.config}/newsboat/urls}"
 [ -f "$feeds" ] || nofeeds=t
+wallpaper="${WALLPAPER:-${XDG_DATA_HOME:-${HOME}/.local/share}/wallpaper}"
 
 which "${BROWSER:=firefox}" 1>/dev/null 2>&1 || nobrowser=t
 which "${TERMINAL:=xterm}" 1>/dev/null 2>&1 || noterm=t
@@ -32,6 +33,7 @@ which sxiv 1>/dev/null 2>&1 || nosxiv=t
 which tmux 1>/dev/null 2>&1 || notmux=t
 which tsp 1>/dev/null 2>&1 || notsp=t
 which youtube-dl 1>/dev/null 2>&1 || noytdl=t
+which xwallpaper 1>/dev/null 2>&1 || noxwallpaper=t
 
 while getopts "ms" o; do
     case "${o}" in
@@ -62,7 +64,8 @@ $(printf 'copy to clipboard')
 $([ -z "$nocurl" ] && printf 'curl')
 $([ -z "$nox" ] && [ -z "$nompv" ] && printf 'mpv')
 $([ -z "$nox" ] && [ -z "$nosxiv" ] && printf 'sxiv')
-$([ -z "$noytdl" ] && printf 'youtube-dl')"
+$([ -z "$noytdl" ] && printf 'youtube-dl')
+$([ -z "$noxwallpaper" ] && printf 'set wallpaper')"
 main_list="$(echo "$main_list" | sed '/^$/d')"
 
 browser_list="$(printf '$BROWSER')
@@ -140,6 +143,8 @@ case "$chosen" in
     sxiv) tmp=$(mktemp /tmp/sxivXXX)
         curl -L "$url" -o "$tmp" && setsid -f sxiv "$tmp" ;;
     youtube-dl) ytdl_menu ;;
+    "set wallpaper") curl "$url" > "$wallpaper"
+        xwallpaper --zoom "$wallpaper" ;;
     "") exit 1 ;;
     *) exit 1 ;;
 esac
