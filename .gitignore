@@ -44,6 +44,7 @@
 .config/vivaldi/
 .config/vlc/
 .config/xfce4/
+.config/xinitrc
 .gitconfig
 .ipfs/
 .lein/
