@@ -84,6 +84,7 @@ export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export URL_OPENER="url.sh"
 # export VIMINIT='if !has('nvim') | source "${XDG_CONFIG_HOME:-$HOME/.config}/vim/vimrc" | endif'
+export WALLPAPER="${XDG_DATA_HOME:-$HOME/.local/share}/wallpaper"
 export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
 # export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # breaks some DMs
 export XMONAD_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}/xmonad"
@@ -133,18 +134,6 @@ install_profile "$host_profile"
 mkdir -p $(dirname $NOTIFICATIONS)
 touch $NOTIFICATIONS
 chmod 600 $NOTIFICATIONS
-#$#
-
-#^#---- OMISU ------------------------------------------------------------------
-# (which omisu >/dev/null 2>&1 && \
-# ! pgrep -x omisu >/dev/null 2>&1) && \
-    # omisu &
-#$#
-
-#^#---- TIRAMISU ---------------------------------------------------------------
-# (which tiramisu >/dev/null 2>&1 && \
-# ! pgrep -x tiramisu >/dev/null 2>&1) && \
-#     tiramisu -j >> $NOTIFICATIONS &
 #$#
 
 #^#---- VCONSOLE ---------------------------------------------------------------
