@@ -23,10 +23,10 @@ echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen
 echo 'ja_JP.UTF-8 UTF-8' >> /etc/locale.gen
 locale-gen
 echo 'LANG=en_US.UTF-8' > /etc/locale.conf
-echo 'nothingburger' > /etc/hostname
+echo 'coolname' > /etc/hostname
 echo '127.0.0.1	localhost
 ::1		localhost
-127.0.1.1	nothingburger.geofront	nothingburger' > /etc/hosts
+127.0.1.1	coolname.geofront	coolname' > /etc/hosts
 passwd
 systemctl enable NetworkManager
 systemctl enable sshd
