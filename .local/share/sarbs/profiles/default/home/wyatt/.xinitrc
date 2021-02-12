@@ -19,6 +19,9 @@ export XMODIFIERS=@im=fcitx
 
 #^----- STARTUP ----------------------------------------------------------------
 xrdb ~/.Xresources
+ln -sf "${SARBS:-${XDG_DATA_HOME:-${HOME}/.local/share}/sarbs}/waves.jpg" \
+    "${WALLPAPER:-${XDG_DATA_HOME:-${HOME}/.local/share}/wallpaper}"
+xwallpaper --zoom "${WALLPAPER:-${XDG_DATA_HOME:-${HOME}/.local/share}/wallpaper}"
 
 # ln -sf ${XDG_CONFIG_HOME:-${HOME}/.config}/xmodmap/natty.map \
     # ${HOME}/.Xmodmap
