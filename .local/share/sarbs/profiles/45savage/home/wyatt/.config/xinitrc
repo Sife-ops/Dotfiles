@@ -9,8 +9,7 @@
 #^----- STARTUP ----------------------------------------------------------------
 xrandr --output $MONITOR0 --mode 1920x1080
 
-# ln -sf ${XDG_CONFIG_HOME:-${HOME}/.config}/X11/xmodmap/k400.map \
-    # ${HOME}/.Xmodmap
+# ln -sf "$XMODMAPS/k400.map" "$XMODMAP"
 # setxmodmap.sh
 setxkbmap -option caps:swapescape
 
