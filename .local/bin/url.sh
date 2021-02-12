@@ -13,6 +13,7 @@ bookmarks="${BOOKMARKS:-${XDG_DATA_HOME:-${HOME}/.local/share}/bookmarks}"
 feeds="${FEEDS:-${XDG_CONFIG_HOME:-${HOME}/.config}/newsboat/urls}"
 [ -f "$feeds" ] || nofeeds=t
 wallpaper="${WALLPAPER:-${XDG_DATA_HOME:-${HOME}/.local/share}/wallpaper}"
+wallpaper_cache="${WALLPAPER_CACHE:-${XDG_CACHE_HOME:-${HOME}/.cache}/wallpaper}"
 
 which "${BROWSER:=firefox}" 1>/dev/null 2>&1 || nobrowser=t
 which "${TERMINAL:=xterm}" 1>/dev/null 2>&1 || noterm=t
@@ -143,7 +144,8 @@ case "$chosen" in
     sxiv) tmp=$(mktemp /tmp/sxivXXX)
         curl -L "$url" -o "$tmp" && setsid -f sxiv "$tmp" ;;
     youtube-dl) ytdl_menu ;;
-    "set wallpaper") curl "$url" > "$wallpaper"
+    "set wallpaper") curl "$url" > "$wallpaper_cache"
+        ln -sf "$wallpaper_cache" "$wallpaper"
         xwallpaper --zoom "$wallpaper" ;;
     "") exit 1 ;;
     *) exit 1 ;;
