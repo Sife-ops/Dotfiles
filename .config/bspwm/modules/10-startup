@@ -26,8 +26,6 @@ if ! pgrep -x polybar; then
     [ -n "$MONITOR1" ] && polybar secondary &
 fi
 
-xsetroot -solid "#282828" &
-
 xdotool search --class dd || \
     (st -c dd -n ddterm -T "Terminal" -e sh -c 'tmux attach-session -t default; exec zsh' &
      st -c dd -n ddvol -T "Volume" -e sh -c 'pulsemixer; exec zsh' &)
