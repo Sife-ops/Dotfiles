@@ -51,6 +51,7 @@ get_password(){
 
 main_list="$(secrets_list)
 $([ "$backend" = "bitwarden" ] && printf "Create ...")
+$([ "$backend" = "bitwarden" ] && printf "Clear cache ...")
 $([ "$backend" = "bitwarden" ] && printf "Logout ...")
 $([ "$backend" = "bitwarden" ] && printf "Sync ...")"
 main_list="$(echo "$main_list" | sed '/^$/d')"
