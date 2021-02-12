@@ -25,6 +25,7 @@ hjson
 hjson.cmd
 induce_rules
 internet.sh
+lf
 mail.sh
 memory.sh
 mount.sh
