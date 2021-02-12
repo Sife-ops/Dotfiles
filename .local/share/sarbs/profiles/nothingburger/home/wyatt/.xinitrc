@@ -10,7 +10,7 @@
 export MONITOR0="LVDS-1"
 
 export BROWSER="qutebrowser"
-export URL_OPENER="dmenuurl.sh"
+export URL_OPENER="url.sh"
 
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
