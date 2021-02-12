@@ -1,13 +1,35 @@
 #!/bin/sh
 
-# Increase autorepeat rate
-xset r rate 300 50
+#            _       _ _
+#      __  _(_)_ __ (_) |_ _ __ ___
+#      \ \/ / | '_ \| | __| '__/ __|
+#     _ >  <| | | | | | |_| | | (__
+#    (_)_/\_\_|_| |_|_|\__|_|  \___|
 
-# Swap ESC and Caps Lock
+#^----- ENVIRONMENT VARIABLES --------------------------------------------------
+export BROWSER="qutebrowser"
+export URL_OPENER="url.sh"
+
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+#$
+
+#^----- STARTUP ----------------------------------------------------------------
+xrdb ~/.Xresources
+
+# ln -sf ${XDG_CONFIG_HOME:-${HOME}/.config}/xmodmap/natty.map \
+    # ${HOME}/.Xmodmap
+# which setxmodmap.sh && setxmodmap.sh
 setxkbmap -option caps:swapescape
+xset r rate 200 50
+sxhkd &
+unclutter --timeout 1 &
+# fcitx &
 
-# Start WM
-. ${XDG_CONFIG_HOME:-${HOME}/.config}/dwm/startup
-while :; do
-	ssh-agent dwm
-done
+dunst -always_run_script &
+#$
+
+exec bspwm
+
+# vim: fdm=marker fmr=#^,#$

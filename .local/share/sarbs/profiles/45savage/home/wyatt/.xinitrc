@@ -6,33 +6,34 @@
 #     _ >  <| | | | | | |_| | | (__
 #    (_)_/\_\_|_| |_|_|\__|_|  \___|
 
-#^----- MONITORS ---------------------------------------------------------------
-export MONITOR0="DP-1"
-export MONITOR1="HDMI-1"
-#$
+#^----- ENVIRONMENT VARIABLES --------------------------------------------------
+# export MONITOR0="HDMI-1"
+# export MONITOR1=""
 
-#^----- IM ---------------------------------------------------------------------
+export BROWSER="qutebrowser"
+export URL_OPENER="url.sh"
+
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-which fcitx && fcitx &
 #$
 
-#^----- KEYMAP -----------------------------------------------------------------
-ln -sf ${XDG_CONFIG_HOME:-${HOME}/.config}/X11/xmodmap/unicomp.map \
-    ${HOME}/.Xmodmap
-which setxmodmap.sh && setxmodmap.sh
-which xset && xset r rate 300 50
-which sxhkd && sxhkd &
-which unclutter && unclutter --timeout 1 &
-#$
-
-#^----- XRESOURCES -------------------------------------------------------------
+#^----- STARTUP ----------------------------------------------------------------
+xrandr --output HDMI-1 --mode 1920x1080
 xrdb ~/.Xresources
+
+# ln -sf ${XDG_CONFIG_HOME:-${HOME}/.config}/X11/xmodmap/k400.map \
+    # ${HOME}/.Xmodmap
+# setxmodmap.sh
+setxkbmap -option caps:swapescape
+xset r rate 300 50
+sxhkd &
+unclutter --timeout 1 &
+# fcitx &
+
+dunst -always_run_script &
 #$
 
-#^----- WM ---------------------------------------------------------------------
 exec bspwm
-#$
 
 # vim: fdm=marker fmr=#^,#$

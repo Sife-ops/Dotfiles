@@ -7,54 +7,36 @@
 #    (_)_/\_\_|_| |_|_|\__|_|  \___|
 
 #^----- ENVIRONMENT VARIABLES --------------------------------------------------
-#^----- MONITORS ---------------------------------------------------------------
 export MONITOR0="DP-1"
 export MONITOR1="HDMI-1"
-#$
 
-#^----- BROWSER ----------------------------------------------------------------
 export BROWSER="qutebrowser"
-#$
-
-#^----- URL --------------------------------------------------------------------
 export URL_OPENER="url.sh"
-#$
 
-#^----- IM ---------------------------------------------------------------------
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-which fcitx && fcitx &
-#$ #$
+#$
 
-#^----- KEYMAP -----------------------------------------------------------------
+#^----- STARTUP ----------------------------------------------------------------
+xrdb ~/.Xresources
+
 # ln -sf ${XDG_CONFIG_HOME:-${HOME}/.config}/xmodmap/natty.map \
     # ${HOME}/.Xmodmap
 # which setxmodmap.sh && setxmodmap.sh
-which xset && xset r rate 200 50
-which sxhkd && sxhkd &
-which unclutter && unclutter --timeout 1 &
-#$
+xset r rate 200 50
+sxhkd &
+unclutter --timeout 1 &
+fcitx &
 
-#^----- GPG --------------------------------------------------------------------
-password.sh -b bitwarden
+~/.config/tmux/default.sh
+
+dunst -always_run_script &
+
+password.sh
 offlineimap &
 #$
 
-#^----- TMUX -------------------------------------------------------------------
-~/.config/tmux/default.sh
-#$
-
-#^----- XRESOURCES -------------------------------------------------------------
-xrdb ~/.Xresources
-#$
-
-#^----- DUNST ------------------------------------------------------------------
-which dunst && dunst -always_run_script &
-#$
-
-#^----- WM ---------------------------------------------------------------------
 exec bspwm
-#$
 
 # vim: fdm=marker fmr=#^,#$

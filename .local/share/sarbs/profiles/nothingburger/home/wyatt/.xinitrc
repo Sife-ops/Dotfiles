@@ -7,23 +7,20 @@
 #    (_)_/\_\_|_| |_|_|\__|_|  \___|
 
 #^----- ENVIRONMENT VARIABLES --------------------------------------------------
-#^----- MONITORS ---------------------------------------------------------------
-export MONITOR0="LVDS-1"
-export MONITOR1=""
-#$
+# export MONITOR0="LVDS-1"
+# export MONITOR1=""
 
-#^----- IM ---------------------------------------------------------------------
+export BROWSER="qutebrowser"
+export URL_OPENER="dmenuurl.sh"
+
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
-which fcitx && fcitx &
 #$
 
-#^----- URL --------------------------------------------------------------------
-export URL_OPENER="dmenuurl.sh"
-#$ #$
+#^----- STARTUP ----------------------------------------------------------------
+xrdb ~/.Xresources
 
-#^----- KEYMAP -----------------------------------------------------------------
 ln -sf ${XDG_CONFIG_HOME:-${HOME}/.config}/xmodmap/unicomp.map \
     ${HOME}/.Xmodmap
 sleep 1
@@ -31,22 +28,13 @@ setxmodmap.sh
 xset r rate 300 50
 sxhkd &
 unclutter --timeout 1 &
-#$
+fcitx &
 
-#^----- TMUX -------------------------------------------------------------------
 ~/.config/tmux/default.sh
+
+dunst -always_run_script &
 #$
 
-#^----- XRESOURCES -------------------------------------------------------------
-xrdb ~/.Xresources
-#$
-
-#^----- DUNST ------------------------------------------------------------------
-which dunst && dunst -always_run_script &
-#$
-
-#^----- WM ---------------------------------------------------------------------
 exec bspwm
-#$
 
 # vim: fdm=marker fmr=#^,#$
