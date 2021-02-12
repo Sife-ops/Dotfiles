@@ -20,7 +20,7 @@ export XMODIFIERS=@im=fcitx
 #^----- STARTUP ----------------------------------------------------------------
 xrdb ~/.Xresources
 
-ln -sf ${XDG_CONFIG_HOME:-${HOME}/.config}/xmodmap/unicomp.map \
+ln -sf ${XDG_CONFIG_HOME:-${HOME}/.config}/xmodmap/mac.map \
     ${HOME}/.Xmodmap
 sleep 1
 setxmodmap.sh
