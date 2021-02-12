@@ -25,12 +25,10 @@ xrdb ~/.Xresources
     # ${HOME}/.Xmodmap
 # which setxmodmap.sh && setxmodmap.sh
 xset r rate 200 50
-sxhkd &
 unclutter --timeout 1 &
 fcitx &
 
 ~/.config/tmux/default.sh
-
 dunst -always_run_script &
 
 password.sh

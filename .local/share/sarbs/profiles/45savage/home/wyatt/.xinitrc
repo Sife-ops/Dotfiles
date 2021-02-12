@@ -26,7 +26,6 @@ xrdb ~/.Xresources
 # setxmodmap.sh
 setxkbmap -option caps:swapescape
 xset r rate 300 50
-sxhkd &
 unclutter --timeout 1 &
 # fcitx &
 

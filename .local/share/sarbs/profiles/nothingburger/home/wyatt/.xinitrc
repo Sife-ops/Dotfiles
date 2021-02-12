@@ -19,18 +19,18 @@ export XMODIFIERS=@im=fcitx
 
 #^----- STARTUP ----------------------------------------------------------------
 xrdb ~/.Xresources
+xwallpaper --zoom $WALLPAPER
+picom &
 
 ln -sf ${XDG_CONFIG_HOME:-${HOME}/.config}/xmodmap/mac.map \
     ${HOME}/.Xmodmap
 sleep 1
 setxmodmap.sh
 xset r rate 300 50
-sxhkd &
 unclutter --timeout 1 &
 fcitx &
 
 ~/.config/tmux/default.sh
-
 dunst -always_run_script &
 #$
 
