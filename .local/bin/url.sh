@@ -13,7 +13,7 @@ bookmarks="${BOOKMARKS:-${XDG_DATA_HOME:-${HOME}/.local/share}/bookmarks}"
 feeds="${FEEDS:-${XDG_CONFIG_HOME:-${HOME}/.config}/newsboat/urls}"
 [ -f "$feeds" ] || nofeeds=t
 wallpaper="${WALLPAPER:-${XDG_DATA_HOME:-${HOME}/.local/share}/wallpaper}"
-wallpaper_cache="${WALLPAPER_CACHE:-${XDG_CACHE_HOME:-${HOME}/.cache}/wallpaper}"
+wallpapers="${WALLPAPERS:-${XDG_DATA_HOME:-${HOME}/.local/share}/wallpapers}"
 
 which "${BROWSER:=firefox}" 1>/dev/null 2>&1 || nobrowser=t
 which "${TERMINAL:=xterm}" 1>/dev/null 2>&1 || noterm=t
@@ -145,13 +145,9 @@ case "$chosen" in
         curl -L "$url" -o "$tmp" && setsid -f sxiv "$tmp" ;;
     youtube-dl) ytdl_menu ;;
     "set wallpaper")
-        if [ -f "$wallpaper_cache" ]; then
-            mkdir -p "${wallpaper_cache}s"
-            backup="$(mktemp "${wallpaper_cache}s/XXXXX")"
-            cp "$wallpaper_cache" "$backup"
-        fi
-        curl "$url" > "$wallpaper_cache"
-        ln -sf "$wallpaper_cache" "$wallpaper"
+        new="$(mktemp "${wallpapers}/XXXXX")"
+        curl "$url" > "$new"
+        ln -sf "$new" "$wallpaper"
         xwallpaper --zoom "$wallpaper" ;;
     "") exit 1 ;;
     *) exit 1 ;;

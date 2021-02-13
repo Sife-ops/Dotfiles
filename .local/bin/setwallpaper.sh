@@ -1,7 +1,7 @@
 #!/bin/sh
 
 wallpaper="${WALLPAPER:-${XDG_DATA_HOME:-${HOME}/.local/share}/wallpaper}"
-wallpaper_cache="${WALLPAPER_CACHE:-${XDG_CACHE_HOME:-${HOME}/.cache}/wallpaper}"
+wallpapers="${WALLPAPERS:-${XDG_CACHE_HOME:-${HOME}/.local/share}/wallpapers}"
 
-cp "$1" "$wallpaper_cache"
+ln -sf "$1" "$wallpaper"
 xwallpaper --zoom "$wallpaper"

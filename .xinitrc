@@ -20,9 +20,7 @@ export XMODIFIERS=@im=fcitx
 #^----- STARTUP ----------------------------------------------------------------
 xrdb ~/.Xresources
 
-if [ -f "$WALLPAPER_CACHE" ]; then
-    ln -sf "$WALLPAPER_CACHE" "$WALLPAPER"
-else
+if [ ! -f "$WALLPAPER" ]; then
     ln -sf "$SARBS/waves.jpg" "$WALLPAPER"
 fi
 xwallpaper --zoom "$WALLPAPER"
