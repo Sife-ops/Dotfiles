@@ -134,7 +134,7 @@ mod4 + x; f
 
 # kill window
 mod4 + x; k
-    bspc node -c $(dmenunode.sh -f)
+    bspc node $(dmenunode.sh -f) -c
 
 # fullscreen/tiled
 mod4 + x; m
