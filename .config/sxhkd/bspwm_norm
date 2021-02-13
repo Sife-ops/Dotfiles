@@ -116,41 +116,41 @@ mod4 + d; p
 mod4 + d; u
     url.sh
 
-# make window floating
-mod4 + f
-    bspc node -t floating
-
-# make window tiled
-mod4 + t
-    bspc node -t tiled
-
 # kill desktop
 mod4 + x; 5; 0
     bspc desktop -r
 
 # add desktop
 mod4 + x; 5; 2
-    bspc monitor -a "$(printf "Movies\nTemp 00\nTemp 01\nTemp 02" | dmenu -b -i -l 20 -p "name")"
+    bspc monitor -a "$(printf "" | dmenu -b -i -l 20 -p "name")"
 
 # window menu
 mod4 + x; b
     xdotool windowactivate $(dmenunode.sh)
 
-# desktop menu
-mod4 + x; mod4 + b
-    bspc desktop -f $(dmenudesk.sh)
+# make window floating
+mod4 + x; f
+    bspc node -t floating
 
 # kill window
 mod4 + x; k
-    bspc node $(dmenunode.sh -f) -c
+    bspc node -c $(dmenunode.sh -f)
 
 # fullscreen/tiled
 mod4 + x; m
 	bspc desktop --layout next
 
+# make window tiled
+mod4 + x; t
+    bspc node -t tiled
+
 # yank to desktop
 mod4 + x; y
     bspc node -d $(dmenudesk.sh)
+
+# desktop menu
+mod4 + x; mod4 + b
+    bspc desktop -f $(dmenudesk.sh)
 
 #$
 
