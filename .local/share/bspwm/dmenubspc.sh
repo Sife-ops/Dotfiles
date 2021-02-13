@@ -18,7 +18,8 @@ choose(){ #^
 domains='node
 desktop
 monitor
-wm'
+wm
+config'
 
 optsNode='-f, --focus [NODE_SEL]
 -a, --activate [NODE_SEL]
@@ -119,30 +120,70 @@ bottom_left'
 
 cycle='next
 prev'
+
+settings='normal_border_color, Color of the border of an unfocused window.
+active_border_color, Color of the border of a focused window of an unfocused monitor.
+focused_border_color, Color of the border of a focused window of a focused monitor.
+presel_feedback_color, Color of the node --presel-{dir,ratio} message feedback area.
+split_ratio, Default split ratio.
+status_prefix, Prefix prepended to each of the status lines.
+external_rules_command, Absolute path to the command used to retrieve rule consequences. The command will receive the following arguments: window ID, class name, instance name, and intermediate consequences. The output of that command must have the following format: key1=value1 key2=value2 ...  (the valid key/value pairs are given in the description of the rule command).
+automatic_scheme, The insertion scheme used when the insertion point is in automatic mode. Accept the following values: longest_side, alternate, spiral.
+initial_polarity, On which child should a new window be attached when adding a window on a single window tree in automatic mode. Accept the following values: first_child, second_child.
+directional_focus_tightness, The tightness of the algorithm used to decide whether a window is on the DIR side of another window. Accept the following values: high, low.
+removal_adjustment, Adjust the brother when unlinking a node from the tree in accordance with the automatic insertion scheme.
+presel_feedback, Draw the preselection feedback area. Defaults to true.
+borderless_monocle, Remove borders of tiled windows for the monocle desktop layout.
+gapless_monocle, Remove gaps of tiled windows for the monocle desktop layout.
+top_monocle_padding, Padding space added at the sides of the screen for the monocle desktop layout.
+right_monocle_padding, Padding space added at the sides of the screen for the monocle desktop layout.
+bottom_monocle_padding, Padding space added at the sides of the screen for the monocle desktop layout.
+left_monocle_padding, Padding space added at the sides of the screen for the monocle desktop layout.
+single_monocle, Set the desktop layout to monocle if there’s only one tiled window in the tree.
+pointer_motion_interval, The minimum interval, in milliseconds, between two motion notify events.
+pointer_modifier, Keyboard modifier used for moving or resizing windows. Accept the following values: shift, control, lock, mod1, mod2, mod3, mod4, mod5.
+pointer_action1, pointer_action2, pointer_action3, Action performed when pressing pointer_modifier + button<n>.  Accept the following values: move, resize_side, resize_corner, focus, none.
+click_to_focus, Button used for focusing a window (or a monitor). The possible values are: button1, button2, button3, any, none. Defaults to button1.
+swallow_first_click, Don’t replay the click that makes a window focused if click_to_focus isn’t none.
+focus_follows_pointer, Focus the window under the pointer.
+top_padding, Padding space added at the sides of the monitor or desktop.
+right_padding, Padding space added at the sides of the monitor or desktop.
+bottom_padding, Padding space added at the sides of the monitor or desktop.
+left_padding, Padding space added at the sides of the monitor or desktop.
+window_gap, Size of the gap that separates windows.
+border_width, Window border width.'
 #$
 
-domain=$(choose "$domains" "domain")
+domain="$(choose "$domains" "domain")"
 cmd="bspc $domain"
 
-case $domain in #^
-    node) chosen=$(dmenunode.sh -f) ;;
-    desktop) chosen=$(dmenudesk.sh -f) ;;
-    monitor) chosen=$(dmenumon.sh -f) ;;
+case "$domain" in #^
+    node) chosen="$(dmenunode.sh -f)" ;;
+    desktop) chosen="$(dmenudesk.sh -f)" ;;
+    monitor) chosen="$(dmenumon.sh -f)" ;;
     wm) : ;;
+    config) chosen="$(choose "$(printf 'global\nnode\ndesktop\nmonitor')")"
+        case "$chosen" in
+            global) chosen="" ;;
+            node) chosen="-n $(dmenunode.sh -f)" ;;
+            desktop) chosen="-d $(dmenudesk.sh -f)" ;;
+            monitor) chosen="-m $(dmenumon.sh -f)" ;;
+        esac ;;
     "") exit 1 ;;
     *) exit 1 ;;
 esac
 cmd="$cmd $chosen" #$
 
-case $domain in #^
-    node) chosen=$(choose "$optsNode" "options") ;;
-    desktop) chosen=$(choose "$optsDesk" "options") ;;
-    monitor) chosen=$(choose "$optsMon" "options") ;;
-    wm) chosen=$(choose "$optsWm" "options") ;;
+case "$domain" in #^
+    node) chosen="$(choose "$optsNode" "options")" ;;
+    desktop) chosen="$(choose "$optsDesk" "options")" ;;
+    monitor) chosen="$(choose "$optsMon" "options")" ;;
+    wm) chosen="$(choose "$optsWm" "options")" ;;
+    config) chosen="$(choose "$settings" "settings")" ;;
     "") exit 1 ;;
     *) exit 1 ;;
 esac
-chosen=$(echo "$chosen" | cut -d ',' -f 1)
+chosen="$(echo "$chosen" | cut -d ',' -f 1)"
 cmd="$cmd $chosen" #$
 
 case $domain in #^
@@ -172,7 +213,7 @@ case $domain in #^
 
     desktop) case $chosen in #^
         -f|-a|-s) chosen=$(dmenudesk.sh -f) ;; # , --focus [DESKTOP_SEL]
-        -l|-b) chosen=$(choose "cycle" "cycle") ;; # , --layout CYCLE_DIR|monocle|tiled
+        -l|-b) chosen=$(choose "$cycle" "cycle") ;; # , --layout CYCLE_DIR|monocle|tiled
         -m) chosen=$(dmenumon.sh -f) ;; # , --to-monitor MONITOR_SEL [--follow]
         -n) chosen=$(choose "" "name") ;; # , --rename <new_name>
         -r) chosen="" ;;
@@ -193,7 +234,7 @@ case $domain in #^
     esac ;; #$
 
     wm) case $chosen in #^
-        -r) eval "$cmd"; exit ;;
+        -r) chosen="" ;;
         # -d) : ;; # , --dump-state # open in buffer?
         # -l) : ;; # , --load-state <file_path>
         # -a) : ;; # , --add-monitor <name> WxH+X+Y
@@ -204,6 +245,8 @@ case $domain in #^
         "") exit 1 ;;
         *) exit 1 ;;
     esac ;; #$
+
+    config) chosen="$(choose "" "value")" ;;
 esac
 cmd="$cmd $chosen" #$
 
