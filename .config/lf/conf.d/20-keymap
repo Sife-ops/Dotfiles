@@ -9,6 +9,7 @@ map <c-d> $nvim -d $fx
 map <c-n> push :mkdir<space>
 map <c-s> $ln -sf $fs ./
 map <c-t> push :$touch<space>
+map <c-w> $setwallpaper.sh $f
 map D &dragon-drag-and-drop $fx
 map E $$ALTEDITOR "$f"
 map r $vidir

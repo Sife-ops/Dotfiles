@@ -144,7 +144,13 @@ case "$chosen" in
     sxiv) tmp=$(mktemp /tmp/sxivXXX)
         curl -L "$url" -o "$tmp" && setsid -f sxiv "$tmp" ;;
     youtube-dl) ytdl_menu ;;
-    "set wallpaper") curl "$url" > "$wallpaper_cache"
+    "set wallpaper")
+        if [ -f "$wallpaper_cache" ]; then
+            mkdir -p "${wallpaper_cache}s"
+            backup="$(mktemp "${wallpaper_cache}s/XXXXX")"
+            cp "$wallpaper_cache" "$backup"
+        fi
+        curl "$url" > "$wallpaper_cache"
         ln -sf "$wallpaper_cache" "$wallpaper"
         xwallpaper --zoom "$wallpaper" ;;
     "") exit 1 ;;
