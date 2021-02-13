@@ -21,8 +21,6 @@
 ;^==== COLORS ==================================================================
 
 [colors]
-foreground          = ${xrdb:color15:#fff}
-background          = ${xrdb:color0:#fff}
 black               = ${xrdb:color0:#fff}
 red                 = ${xrdb:color1:#fff}
 green               = ${xrdb:color2:#fff}
@@ -31,14 +29,8 @@ blue                = ${xrdb:color4:#fff}
 magenta             = ${xrdb:color5:#fff}
 cyan                = ${xrdb:color6:#fff}
 white               = ${xrdb:color7:#fff}
-dark_grey           = ${xrdb:color8:#fff}
-light_red           = ${xrdb:color9:#fff}
-light_green         = ${xrdb:color10:#fff}
-light_yellow        = ${xrdb:color11:#fff}
-light_blue          = ${xrdb:color12:#fff}
-light_magenta       = ${xrdb:color13:#fff}
-light_cyan          = ${xrdb:color14:#fff}
-light_grey          = ${xrdb:color15:#fff}
+background          = ${xrdb:color0:#fff}
+foreground          = ${xrdb:color15:#fff}
 ;$
 
 ;^==== BARS ====================================================================
