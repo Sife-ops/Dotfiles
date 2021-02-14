@@ -25,6 +25,13 @@ if [ ! -f "$WALLPAPER" ]; then
 fi
 xwallpaper --zoom "$WALLPAPER"
 
+xmodmap="${XMODMAPS}/$(cat /etc/hostname)"
+if [ -f "$xmodmap" ]; then
+    ln -sf "$xmodmap" "$XMODMAP"
+    sleep 1
+    setxmodmap.sh
+fi
+
 xset r rate 200 50
 unclutter --timeout 1 &
 dunst -always_run_script &

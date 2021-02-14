@@ -12,12 +12,7 @@ export MONITOR0="LVDS-1"
 
 #^----- STARTUP ----------------------------------------------------------------
 picom &
-
-ln -sf "$XMODMAPS/mac.map" "$XMODMAP"
-sleep 1
-setxmodmap.sh
 fcitx &
-
 ~/.config/tmux/default.sh
 #$
 

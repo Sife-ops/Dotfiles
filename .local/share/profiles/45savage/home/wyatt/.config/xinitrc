@@ -8,11 +8,7 @@
 
 #^----- STARTUP ----------------------------------------------------------------
 xrandr --output $MONITOR0 --mode 1920x1080
-
-# ln -sf "$XMODMAPS/k400.map" "$XMODMAP"
-# setxmodmap.sh
-setxkbmap -option caps:swapescape
-
+# setxkbmap -option caps:swapescape
 # fcitx &
 #$
 

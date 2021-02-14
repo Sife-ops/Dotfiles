@@ -43,8 +43,8 @@ export BW_GPG_ID="E4D903D4A2A85226E14AE435A744F927AD7099AC"
 export CARGO_HOME="${XDG_DATA_HOME}/cargo"
 export CLIPBOARD="${XDG_DATA_HOME}/clipboard"
 export FEEDS="${XDG_CONFIG_HOME}/newsboat/urls"
-export GEM_HOME="${XDG_DATA_HOME}/.local/share}/gem" # remove gem: --user-install from /etc/gemrc
-export GEM_SPEC_CACHE="${XDG_CACHE_HOME}/.cache}/gem"
+export GEM_HOME="${XDG_DATA_HOME}/gem" # remove gem: --user-install from /etc/gemrc
+export GEM_SPEC_CACHE="${XDG_CACHE_HOME}/gem"
 export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc-2.0"
 export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
 export GOPATH="${XDG_DATA_HOME}/go"
@@ -73,7 +73,6 @@ export NVM_DIR="${XDG_DATA_HOME}/nvm"
 export PROFILES="${XDG_DATA_HOME}/profiles"
 export QT_QPA_PLATFORMTHEME="gtk2"
 # export QT_AUTO_SCREEN_SCALE_FACTOR=0
-export SARBS="${XDG_DATA_HOME}/sarbs"
 export SAVEHIST=900000
 export SFX="${XDG_DATA_HOME}/sfx"
 # export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
@@ -135,7 +134,7 @@ chmod 600 $NOTIFICATIONS
 #$#
 
 #^#---- VCONSOLE ---------------------------------------------------------------
-# sudo -n loadkeys ${SARBS}/ttymaps.kmap 2>/dev/null
+# sudo -n loadkeys "${XDG_CONFIG_HOME}/kmap/$(cat /etc/hostname)" 2>/dev/null
 #$#
 
 # vim: ft=sh fdm=marker fmr=#^#,#$#
