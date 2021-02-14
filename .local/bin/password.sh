@@ -35,8 +35,7 @@ $(printf "Logout ...")
 $(printf "Sync ...")"
 main_list="$(echo "$main_list" | sed '/^$/d')"
 
-field_list="$([ -z "$nox" ] && printf "autofill")
-$(printf "both")
+field_list="$(printf "both")
 $(printf "username")
 $(printf "password")
 $(printf "Edit ...")"
