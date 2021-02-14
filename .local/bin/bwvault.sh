@@ -3,6 +3,7 @@
 # todo:
 # todo: verify session key validity
 # clientid feature
+# shorten bw command
 
 . menu.sh
 
@@ -24,7 +25,7 @@ bw_login(){ #^
     # bw_login -> session key
     status="$(bw status | jq -r '.userEmail')"
     case "$status" in
-        null) bw_session_key="$(bw login \
+        null) bw_session_key="$(bw_cmd login \
               "$(prompt "Username:")" \
               "$(prompt "Password:" t)" --raw)" ;;
         *) bw_session_key="$(bw_cmd unlock "$(prompt "Password:" t)" --raw)" ;;

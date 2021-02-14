@@ -1,28 +1,7 @@
 #!/bin/sh
 # interface for bitwarden-cli
 
-. menu.sh
-
-while getopts "b:h" o; do
-    case "${o}" in
-        b) backend="$OPTARG" ;;
-        h) msg_help ;;
-        *) printf "Invalid option: -%s\n" "$o" ;;
-    esac
-done
-
-if [ -n "$backend" ]; then
-    case "$backend" in
-        bitwarden)  . bwvault.sh ;;
-        ipfs)       . ipfsvault.sh ;;
-        github)     . ghvault.sh ;;
-        "") exit 1 ;;
-        *) exit 1 ;;
-    esac
-else
-    backend="bitwarden"
-    . bwvault.sh
-fi
+. bwvault.sh
 
 secrets(){
     if [ -n "$secrets" ]; then
@@ -50,17 +29,17 @@ get_password(){
 }
 
 main_list="$(secrets_list)
-$([ "$backend" = "bitwarden" ] && printf "Create ...")
-$([ "$backend" = "bitwarden" ] && printf "Clear cache ...")
-$([ "$backend" = "bitwarden" ] && printf "Logout ...")
-$([ "$backend" = "bitwarden" ] && printf "Sync ...")"
+$(printf "Create ...")
+$(printf "Clear cache ...")
+$(printf "Logout ...")
+$(printf "Sync ...")"
 main_list="$(echo "$main_list" | sed '/^$/d')"
 
 field_list="$([ -z "$nox" ] && printf "autofill")
 $(printf "both")
 $(printf "username")
 $(printf "password")
-$([ "$backend" = "bitwarden" ] && printf "Edit ...")"
+$(printf "Edit ...")"
 field_list="$(echo "$field_list" | sed '/^$/d')"
 
 create_list="card
