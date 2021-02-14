@@ -21,7 +21,7 @@ export XMODIFIERS=@im=fcitx
 xrdb ~/.Xresources
 
 if [ ! -f "$WALLPAPER" ]; then
-    ln -sf "$SARBS/waves.jpg" "$WALLPAPER"
+    ln -sf "$WALLPAPERS/waves.jpg" "$WALLPAPER"
 fi
 xwallpaper --zoom "$WALLPAPER"
 
