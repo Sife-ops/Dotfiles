@@ -12,12 +12,12 @@ while read linea; do
         # echo "$b"
         if [ "$a" = "$b" ]; then
             found=1
-            echo "$a not found in sarbs."
+            echo "✅$a found in sarbs."
         fi
     done < "$sarbs"
     if [ -z "$found" ]; then
         echo "$linea" >> notinsarbs.csv
-        echo "$a not found in sarbs."
+        echo "❎$a not found in sarbs."
     fi
 done < "$larbs"
 
@@ -30,11 +30,11 @@ while read linea; do
         # echo "$b"
         if [ "$a" = "$b" ]; then
             found=1
-            echo "$a found in larbs."
+            echo "✅$a found in larbs."
         fi
     done < "$larbs"
     if [ -z "$found" ]; then
         echo "$linea" >> notinlarbs.csv
-        echo "$a not found in larbs."
+        echo "❎$a not found in larbs."
     fi
 done < "$sarbs"
