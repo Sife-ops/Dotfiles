@@ -1,10 +1,10 @@
-set shell sh
-set shellopts '-eu'
+set hidden on
+set icons on
 set ifs "\n"
 set scrolloff 10
-set icons on
-set hidden on
-set truncatechar '-'
+set shell sh
+set shellopts '-eu'
 set sortby ext
+set truncatechar '-'
 set wrapscan on
 set wrapscroll on
