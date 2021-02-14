@@ -22,11 +22,10 @@ decryptandescape(){
 
 while read ident user pass_file; do
     case "$ident" in
-        '#') : ;;
+        '#'|'') : ;;
         *) pass="$(eval "decryptandescape $pass_file")"
-           ln="$(grep -n "$ident" "$irssi_conf" | cut -d ':' -f 1)"
-           sed -i -e "${ln},$((ln + 2)) s/<+user+>/${user}/" \
-                  -e "${ln},$((ln + 2)) s/<+pass+>/${pass}/" "$irssi_conf_sasl" ;;
+           sed -i -e "s/<+${ident}:user+>/${user}/" \
+                  -e "s/<+${ident}:pass+>/${pass}/" "$irssi_conf_sasl" ;;
     esac
 done < "$sasl_gpg_conf"
 

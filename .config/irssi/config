@@ -56,9 +56,8 @@ chatnets = {
     max_msgs = "4";
     max_whois = "1";
     sasl_mechanism = "PLAIN";
-    # sifefreenode
-    sasl_username = "<+user+>";
-    sasl_password = "<+pass+>";
+    sasl_username = "<+sifefreenode:user+>";
+    sasl_password = "<+sifefreenode:pass+>";
   };
   IRCHighWay = {
     type = "IRC";
@@ -75,9 +74,8 @@ chatnets = {
   Bitlbee = {
     type = "IRC";
     sasl_mechanism = "PLAIN";
-    # sifebitlbee
-    sasl_username = "<+user+>";
-    sasl_password = "<+pass+>";
+    sasl_username = "<+sifebitlbee:user+>";
+    sasl_password = "<+sifebitlbee:pass+>";
   };
 };
 
