@@ -12,6 +12,8 @@ export MONITOR1="HDMI-1"
 #$
 
 #^----- STARTUP ----------------------------------------------------------------
+picom &
+
 fcitx &
 
 password.sh

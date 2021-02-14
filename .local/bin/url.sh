@@ -145,6 +145,7 @@ case "$chosen" in
         curl -L "$url" -o "$tmp" && setsid -f sxiv "$tmp" ;;
     youtube-dl) ytdl_menu ;;
     "set wallpaper")
+        mkdir -p "$wallpapers"
         new="$(mktemp "${wallpapers}/XXXXX")"
         curl "$url" > "$new"
         ln -sf "$new" "$wallpaper"
