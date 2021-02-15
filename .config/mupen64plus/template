@@ -121,22 +121,22 @@ Joy Mapping Gameshark = ""
 
 [Input-SDL-Control1]
 
-###c1###
+<+c1+>
 
 
 [Input-SDL-Control2]
 
-###c2###
+<+c2+>
 
 
 [Input-SDL-Control3]
 
-###c3###
+<+c3+>
 
 
 [Input-SDL-Control4]
 
-###c4###
+<+c4+>
 
 
 [UI-Console]
