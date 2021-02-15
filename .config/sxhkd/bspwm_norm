@@ -79,12 +79,12 @@ mod4 + {H,J,K,L}
 {mod3 + x,mod4 + x; x,XF86Tools}
     dmenubspc.sh
 
+mod4 + d; 6; 4
+    dmenumupen.sh ~/.local/share/warez/N64
+
 # console
 mod4 + asciitilde
     togmap.sh -l ddterm
-
-mod4 + d; v; g
-    dmenun64.sh ~/.local/share/warez/N64
 
 # bookmark menu
 mod4 + d; b

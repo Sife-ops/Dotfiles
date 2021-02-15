@@ -42,7 +42,7 @@ AutoStateSlotIncrement = False
 # Activate the R4300 debugger when ROM execution begins, if core was built with Debugger support
 EnableDebugger = False
 # Save state slot (0-9) to use when saving/loading the emulator state
-CurrentStateSlot = 1
+CurrentStateSlot = 0
 # Path to directory where screenshots are saved. If this is blank, the default value of ${UserConfigPath}/screenshot will be used
 ScreenshotPath = ""
 # Path to directory where emulator save states (snapshots) are saved. If this is blank, the default value of ${UserConfigPath}/save will be used
@@ -121,217 +121,22 @@ Joy Mapping Gameshark = ""
 
 [Input-SDL-Control1]
 
-# Mupen64Plus SDL Input Plugin config parameter version number.  Please don't change this version number.
-version = 2
-# Controller configuration mode: 0=Fully Manual, 1=Auto with named SDL Device, 2=Fully automatic
-mode = 0
-# Specifies which joystick is bound to this controller: -1=No joystick, 0 or more= SDL Joystick number
-device = 0
-# SDL joystick name (or Keyboard)
-name = "ds4"
-# Specifies whether this controller is 'plugged in' to the simulated N64
-plugged = True
-# Specifies which type of expansion pak is in the controller: 1=None, 2=Mem pak, 5=Rumble pak
-plugin = 2
-# If True, then mouse buttons may be used with this controller
-mouse = False
-# Scaling factor for mouse movements.  For X, Y axes.
-MouseSensitivity = "2.00,2.00"
-# The minimum absolute value of the SDL analog joystick axis to move the N64 controller axis value from 0.  For X, Y axes.
-AnalogDeadzone = "4096,4096"
-# An absolute value of the SDL joystick axis >= AnalogPeak will saturate the N64 controller axis value (at 80).  For X, Y axes. For each axis, this must be greater than the corresponding AnalogDeadzone value
-AnalogPeak = "32768,32768"
-DPad R = "hat(0 Right)"
-DPad L = "hat(0 Left)"
-DPad D = "hat(0 Down)"
-DPad U = "hat(0 Up)"
-Start = "button(9)"
-Z Trig = "button(6)"
-B Button = "button(3)"
-A Button = "button(0)"
-C Button R = "axis(3+)"
-C Button L = "axis(3-)"
-C Button D = "axis(4+)"
-C Button U = "axis(4-)"
-R Trig = "button(5)"
-L Trig = "button(4)"
-Mempak switch = "key(44)"
-Rumblepak switch = "key(46)"
-# Analog axis configuration mappings
-X Axis = "axis(0-,0+)"
-Y Axis = "axis(1-,1+)"
+###c1###
 
 
 [Input-SDL-Control2]
 
-# Mupen64Plus SDL Input Plugin config parameter version number.  Please don't change this version number.
-version = 2
-# Controller configuration mode: 0=Fully Manual, 1=Auto with named SDL Device, 2=Fully automatic
-mode = 0
-# Specifies which joystick is bound to this controller: -1=No joystick, 0 or more= SDL Joystick number
-device = 1
-# SDL joystick name (or Keyboard)
-name = "ds4"
-# Specifies whether this controller is 'plugged in' to the simulated N64
-plugged = True
-# Specifies which type of expansion pak is in the controller: 1=None, 2=Mem pak, 5=Rumble pak
-plugin = 2
-# If True, then mouse buttons may be used with this controller
-mouse = False
-# Scaling factor for mouse movements.  For X, Y axes.
-MouseSensitivity = "2.00,2.00"
-# The minimum absolute value of the SDL analog joystick axis to move the N64 controller axis value from 0.  For X, Y axes.
-AnalogDeadzone = "4096,4096"
-# An absolute value of the SDL joystick axis >= AnalogPeak will saturate the N64 controller axis value (at 80).  For X, Y axes. For each axis, this must be greater than the corresponding AnalogDeadzone value
-AnalogPeak = "32768,32768"
-DPad R = "hat(0 Right)"
-DPad L = "hat(0 Left)"
-DPad D = "hat(0 Down)"
-DPad U = "hat(0 Up)"
-Start = "button(9)"
-Z Trig = "button(6)"
-B Button = "button(3)"
-A Button = "button(0)"
-C Button R = "axis(3+)"
-C Button L = "axis(3-)"
-C Button D = "axis(4+)"
-C Button U = "axis(4-)"
-R Trig = "button(5)"
-L Trig = "button(4)"
-Mempak switch = "key(44)"
-Rumblepak switch = "key(46)"
-# Analog axis configuration mappings
-X Axis = "axis(0-,0+)"
-Y Axis = "axis(1-,1+)"
-
-# # Mupen64Plus SDL Input Plugin config parameter version number.  Please don't change this version number.
-# version = 2
-# # Controller configuration mode: 0=Fully Manual, 1=Auto with named SDL Device, 2=Fully automatic
-# mode = 2
-# # Specifies which joystick is bound to this controller: -1=No joystick, 0 or more= SDL Joystick number
-# device = -1
-# # SDL joystick name (or Keyboard)
-# name = ""
-# # Specifies whether this controller is 'plugged in' to the simulated N64
-# plugged = False
-# # Specifies which type of expansion pak is in the controller: 1=None, 2=Mem pak, 5=Rumble pak
-# plugin = 1
-# # If True, then mouse buttons may be used with this controller
-# mouse = False
-# # Scaling factor for mouse movements.  For X, Y axes.
-# MouseSensitivity = "2.00,2.00"
-# # The minimum absolute value of the SDL analog joystick axis to move the N64 controller axis value from 0.  For X, Y axes.
-# AnalogDeadzone = "4096,4096"
-# # An absolute value of the SDL joystick axis >= AnalogPeak will saturate the N64 controller axis value (at 80).  For X, Y axes. For each axis, this must be greater than the corresponding AnalogDeadzone value
-# AnalogPeak = "32768,32768"
-# # Digital button configuration mappings
-# DPad R = ""
-# DPad L = ""
-# DPad D = ""
-# DPad U = ""
-# Start = ""
-# Z Trig = ""
-# B Button = ""
-# A Button = ""
-# C Button R = ""
-# C Button L = ""
-# C Button D = ""
-# C Button U = ""
-# R Trig = ""
-# L Trig = ""
-# Mempak switch = ""
-# Rumblepak switch = ""
-# # Analog axis configuration mappings
-# X Axis = ""
-# Y Axis = ""
+###c2###
 
 
 [Input-SDL-Control3]
 
-# Mupen64Plus SDL Input Plugin config parameter version number.  Please don't change this version number.
-version = 2
-# Controller configuration mode: 0=Fully Manual, 1=Auto with named SDL Device, 2=Fully automatic
-mode = 2
-# Specifies which joystick is bound to this controller: -1=No joystick, 0 or more= SDL Joystick number
-device = -1
-# SDL joystick name (or Keyboard)
-name = ""
-# Specifies whether this controller is 'plugged in' to the simulated N64
-plugged = False
-# Specifies which type of expansion pak is in the controller: 1=None, 2=Mem pak, 5=Rumble pak
-plugin = 1
-# If True, then mouse buttons may be used with this controller
-mouse = False
-# Scaling factor for mouse movements.  For X, Y axes.
-MouseSensitivity = "2.00,2.00"
-# The minimum absolute value of the SDL analog joystick axis to move the N64 controller axis value from 0.  For X, Y axes.
-AnalogDeadzone = "4096,4096"
-# An absolute value of the SDL joystick axis >= AnalogPeak will saturate the N64 controller axis value (at 80).  For X, Y axes. For each axis, this must be greater than the corresponding AnalogDeadzone value
-AnalogPeak = "32768,32768"
-# Digital button configuration mappings
-DPad R = ""
-DPad L = ""
-DPad D = ""
-DPad U = ""
-Start = ""
-Z Trig = ""
-B Button = ""
-A Button = ""
-C Button R = ""
-C Button L = ""
-C Button D = ""
-C Button U = ""
-R Trig = ""
-L Trig = ""
-Mempak switch = ""
-Rumblepak switch = ""
-# Analog axis configuration mappings
-X Axis = ""
-Y Axis = ""
+###c3###
 
 
 [Input-SDL-Control4]
 
-# Mupen64Plus SDL Input Plugin config parameter version number.  Please don't change this version number.
-version = 2
-# Controller configuration mode: 0=Fully Manual, 1=Auto with named SDL Device, 2=Fully automatic
-mode = 2
-# Specifies which joystick is bound to this controller: -1=No joystick, 0 or more= SDL Joystick number
-device = -1
-# SDL joystick name (or Keyboard)
-name = ""
-# Specifies whether this controller is 'plugged in' to the simulated N64
-plugged = False
-# Specifies which type of expansion pak is in the controller: 1=None, 2=Mem pak, 5=Rumble pak
-plugin = 1
-# If True, then mouse buttons may be used with this controller
-mouse = False
-# Scaling factor for mouse movements.  For X, Y axes.
-MouseSensitivity = "2.00,2.00"
-# The minimum absolute value of the SDL analog joystick axis to move the N64 controller axis value from 0.  For X, Y axes.
-AnalogDeadzone = "4096,4096"
-# An absolute value of the SDL joystick axis >= AnalogPeak will saturate the N64 controller axis value (at 80).  For X, Y axes. For each axis, this must be greater than the corresponding AnalogDeadzone value
-AnalogPeak = "32768,32768"
-# Digital button configuration mappings
-DPad R = ""
-DPad L = ""
-DPad D = ""
-DPad U = ""
-Start = ""
-Z Trig = ""
-B Button = ""
-A Button = ""
-C Button R = ""
-C Button L = ""
-C Button D = ""
-C Button U = ""
-R Trig = ""
-L Trig = ""
-Mempak switch = ""
-Rumblepak switch = ""
-# Analog axis configuration mappings
-X Axis = ""
-Y Axis = ""
+###c4###
 
 
 [UI-Console]
@@ -353,11 +158,11 @@ RspPlugin = "mupen64plus-rsp-hle.so"
 [Video-General]
 
 # Use fullscreen mode if True, or windowed mode if False
-Fullscreen = False
+Fullscreen = <+full+>
 # Width of output window or fullscreen width
-ScreenWidth = 1280
+ScreenWidth = <+width+>
 # Height of output window or fullscreen height
-ScreenHeight = 1024
+ScreenHeight = <+height+>
 # If true, activate the SDL_GL_SWAP_CONTROL attribute
 VerticalSync = False
 
