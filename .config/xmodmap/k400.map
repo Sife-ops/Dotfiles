@@ -30,7 +30,8 @@ keycode  64 = Super_L
 
 !^ RIGHT HAND ------------------------------------------------------------------
 ! BackSpace
-keycode  22 = Return
+!keycode  22 = Return
+keycode  22 = bar
 
 ! Backslash
 keycode  51 = Alt_R
