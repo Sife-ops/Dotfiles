@@ -83,6 +83,9 @@ mod4 + {H,J,K,L}
 mod4 + asciitilde
     togmap.sh -l ddterm
 
+mod4 + d; v; g
+    dmenun64.sh ~/.local/share/warez/N64
+
 # bookmark menu
 mod4 + d; b
     bookmarks.sh

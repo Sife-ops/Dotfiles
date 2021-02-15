@@ -70,6 +70,7 @@
 .local/share/lf/
 .local/share/mail/
 .local/share/memes
+.local/share/mupen64plus/
 .local/share/newsboat/
 .local/share/notifications
 .local/share/nvim/log

@@ -8,6 +8,7 @@
 
 #^----- STARTUP ----------------------------------------------------------------
 xrandr --output $MONITOR0 --mode 1920x1080
+picom &
 # setxkbmap -option caps:swapescape
 # fcitx &
 #$
