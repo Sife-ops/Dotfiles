@@ -37,9 +37,10 @@ $(find "/dev/input" -regex '^.*/js[0-9]$' -exec basename {} \;)"
 
 controller_list="$(find "${controllers}" -type f -exec basename {} \;)"
 
-video_list='False,640,480
-True,1920,1080
-True,2560,1440'
+video_list='Windowed,640x480
+Windowed,1920x1080
+Fullscreen,1920x1080
+Fullscreen,2560x1440'
 
 choose "$rom_list" 'N64'; [ -z "$chosen" ] && exit 1
 rom="$chosen"
@@ -61,8 +62,12 @@ done
 
 choose "$video_list" 'video'; [ -z "$chosen" ] && exit 1
 full="$(echo "$chosen" | cut -d ',' -f 1)"
-width="$(echo "$chosen" | cut -d ',' -f 2)"
-height="$(echo "$chosen" | cut -d ',' -f 3)"
+case $full in
+    Fullscreen) full=True ;;
+    Windowed) full=False ;;
+esac
+width="$(echo "$chosen" | cut -d ',' -f 2 | cut -d 'x' -f 1)"
+height="$(echo "$chosen" | cut -d ',' -f 2 | cut -d 'x' -f 2)"
 sed -i -e "s/<+full+>/$full/" \
     -e "s/<+width+>/$width/" \
     -e "s/<+height+>/$height/" "$config_tmp"
