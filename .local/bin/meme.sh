@@ -1,10 +1,9 @@
 #!/bin/sh
 # select a meme emote
 
-. menu.sh
+checkdeps.sh dragon-drag-and-drop
 
-if which checkdeps.sh 1>/dev/null 2>&1; then
-    checkdeps.sh dragon-drag-and-drop || exit 1; fi
+. menu.sh
 
 if [ -n "$1" ]; then
    memes="$1"

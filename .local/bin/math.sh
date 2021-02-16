@@ -1,8 +1,7 @@
 #!/bin/sh
 # math functions
 
-if which checkdeps.sh 1>/dev/null 2>&1; then
-    checkdeps.sh bc || exit 1; fi
+checkdeps.sh bc
 
 bc_(){
     echo "$1" | bc

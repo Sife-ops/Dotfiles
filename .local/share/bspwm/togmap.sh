@@ -1,8 +1,7 @@
 #!/bin/sh
 # toggle X window map state
 
-if which checkdeps.sh 1>/dev/null 2>&1; then
-    checkdeps.sh xdotool xwininfo || exit 1; fi
+checkdeps.sh xdotool xwininfo
 
 msg_help() { echo \
 "Usage:

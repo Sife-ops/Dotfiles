@@ -1,8 +1,7 @@
 #!/bin/sh
 # set up keyboard stuff
 
-if which checkdeps.sh 1>/dev/null 2>&1; then
-    checkdeps.sh xcape setxkbmap xmodmap || exit 1; fi
+checkdeps.sh xcape setxkbmap xmodmap
 
 setxkbmap -option
 killall -e xcape 1>/dev/null 2>&1

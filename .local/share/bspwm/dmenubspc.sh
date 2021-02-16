@@ -1,13 +1,10 @@
 #!/bin/sh
 # dmenu bspc wrapper
 
-#^ setup
-if which checkdeps.sh 1>/dev/null 2>&1; then
-    checkdeps.sh bspc dmenu || exit 1; fi
+checkdeps.sh bspc dmenu
 
-DMENU_CMD="${DMENU_CMD:-dmenu -b -i -l 20}"
-alias dmenucmd="$DMENU_CMD"
-#$
+dmenucmd="${DMENU_CMD:-dmenu -b -i -l 20}"
+alias dmenucmd="$dmenucmd"
 
 choose(){ #^
     # choose STRING [PROMPT] -> string

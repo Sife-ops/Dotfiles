@@ -5,12 +5,11 @@
 # clientid feature
 # shorten bw command
 
+checkdeps.sh bw gpg jq
+
 . menu.sh
 
 #^ setup
-if which checkdeps.sh 1>/dev/null 2>&1; then
-    checkdeps.sh bw gpg jq || exit 1; fi
-
 alias bw_cmd="bw --nointeraction"
 
 bw_session_cache="${BW_SESSION_CACHE:-${XDG_CACHE_HOME:-${HOME}/.cache}/bw-session.gpg}"

@@ -1,21 +1,32 @@
 #!/bin/sh
 # check dependencies
 
-if xset q 1>/dev/null 2>&1; then
-    dialog_cmd(){
-        gxmessage "$1"
-    }
-else
-    dialog_cmd(){
-        dialog --msgbox "$1" 10 60
-    }
-fi
+program="$1"
+shift
 
 for dep in "$@"; do
-    which "$dep" 1>/dev/null 2>&1 || deps="$deps $dep"
+    if ! which "$dep" 1>/dev/null 2>&1; then
+        if [ -z "$deps" ]; then
+            deps="${dep}:"
+        else
+            deps="${deps}${dep}:"
+        fi
+    fi
 done
 
 if [ -n "$deps" ]; then
-    dialog_cmd "$deps"
-    exit 1
+    len="$(echo "$deps" | tr -dc ':')"
+    len="${#len}"
+    for ind in $(seq $len); do
+        dep="$(echo "$deps" | cut -d ':' -f "$ind")"
+        printf '%s: %s dependency "%s" not installed.\n' \
+            "${0##/*/}" \
+            "$program" \
+            "$dep"
+        notify-send \
+            --urgency=critical \
+            "${0##/*/}" \
+            "$program dependency $dep not installed."
+    done
+    kill 0
 fi
