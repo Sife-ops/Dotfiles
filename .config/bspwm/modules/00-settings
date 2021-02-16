@@ -17,3 +17,4 @@ bspc rule -a Yad:*:* state=floating
 bspc rule -a dd:*:* state=floating
 bspc rule -a dd:ddterm:* state=fullscreen
 bspc rule -a discord:*:* desktop=Discord
+bspc rule -a mupen64plus:*:* state=floating
