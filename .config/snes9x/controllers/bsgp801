@@ -1,0 +1,10 @@
+J0<+js+>:Axis1 = Joypad1 Axis Up/Down T=50%
+J0<+js+>:Axis0 = Joypad1 Axis Left/Right T=50%
+J0<+js+>:B0 = Joypad1 A
+J0<+js+>:B1 = Joypad1 B
+J0<+js+>:B2 = Joypad1 X
+J0<+js+>:B3 = Joypad1 Y
+J0<+js+>:B4 = Joypad1 L
+J0<+js+>:B5 = Joypad1 R
+J0<+js+>:B6 = Joypad1 Select
+J0<+js+>:B7 = Joypad1 Start

@@ -1,0 +1,1 @@
+../../.config/snes9x/dmenusnes9x.sh

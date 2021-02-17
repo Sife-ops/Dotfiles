@@ -1,0 +1,110 @@
+#-----------------------------------------
+# snes9x.conf : Snes9x Configuration file
+#-----------------------------------------
+
+[ROM]
+# Filename =
+LoROM = FALSE
+HiROM = FALSE
+PAL = FALSE
+NTSC = FALSE
+# Header = TRUE/FALSE to ForceHeader or ForceNoHeader
+# Interleaved = TRUE/FALSE to ForceInterleaved or ForceNoInterleaved
+Interleaved2 = FALSE
+InterleaveGD24 = FALSE
+Cheat = FALSE
+Patch = TRUE
+
+[Sound]
+Sync = FALSE
+16BitSound = TRUE
+Stereo = TRUE
+ReverseStereo = FALSE
+Rate = 48000
+InputRate = 31950
+Mute = FALSE
+
+[Display]
+HiRes = TRUE
+Transparency = TRUE
+GraphicWindows = TRUE
+DisplayFrameRate = FALSE
+DisplayWatchedAddresses = FALSE
+DisplayInput = FALSE
+DisplayFrameCount = FALSE
+MessagesInImage = TRUE
+MessageDisplayTime = 120
+
+[Settings]
+BSXBootup = FALSE
+# FrameTime =
+FrameSkip = Auto
+TurboMode = FALSE
+TurboFrameSkip = 15
+MovieTruncateAtEnd = FALSE
+MovieNotifyIgnored = FALSE
+WrongMovieStateProtection = TRUE
+StretchScreenshots = 1
+SnapshotScreenshots = TRUE
+DontSaveOopsSnapshot = FALSE
+AutoSaveDelay = 0
+
+[Controls]
+MouseMaster = TRUE
+SuperscopeMaster = TRUE
+JustifierMaster = TRUE
+MP5Master = TRUE
+AllowLeftRight = FALSE
+Port1 = <+pad1+>
+Port2 = <+pad2+>
+Mouse1Crosshair = 1 White/Black
+Mouse2Crosshair = 1 White/Black
+SuperscopeCrosshair = 2 White/Black
+Justifier1Crosshair = 4 Blue/Black
+Justifier2Crosshair = 4 MagicPink/Black
+
+[Hack]
+EnableGameSpecificHacks = TRUE
+AllowInvalidVRAMAccess = FALSE
+SpeedHacks = FALSE
+HDMATiming = 100
+
+[Netplay]
+Enable = FALSE
+Port = 6096
+Server = ""
+
+[DEBUG]
+Debugger = FALSE
+Trace = FALSE
+
+[Unix]
+BaseDir = ~/.config/snes9x
+# SnapshotFilename =
+# PlayMovieFilename =
+# RecordMovieFilename =
+EnableGamePad = TRUE
+PadDevice1 = <+dev1+>
+PadDevice2 = <+dev2+>
+PadDevice3 = (null)
+PadDevice4 = (null)
+PadDevice5 = (null)
+PadDevice6 = (null)
+PadDevice7 = (null)
+PadDevice8 = (null)
+ThreadSound = FALSE
+SoundBufferSize = 100
+SoundFragmentSize = 2048
+# SoundDevice =
+ClearAllControls = FALSE
+
+[Unix/X11]
+SetKeyRepeat = TRUE
+Fullscreen = FALSE
+Xvideo = FALSE
+MaxAspect = FALSE
+VideoMode = <+mode+>
+
+[Unix/X11 Controls]
+<+con1+>
+<+con2+>
