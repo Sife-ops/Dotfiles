@@ -43,6 +43,7 @@ export BOOKMARKS="${XDG_DATA_HOME}/bookmarks"
 export BW_GPG_ID="E4D903D4A2A85226E14AE435A744F927AD7099AC"
 export CARGO_HOME="${XDG_DATA_HOME}/cargo"
 export CLIPBOARD="${XDG_DATA_HOME}/clipboard"
+export DMENU_CMD="dmenu -b -i -l 10"
 export FEEDS="${XDG_CONFIG_HOME}/newsboat/urls"
 export GEM_HOME="${XDG_DATA_HOME}/gem" # remove gem: --user-install from /etc/gemrc
 export GEM_SPEC_CACHE="${XDG_CACHE_HOME}/gem"
