@@ -8,7 +8,8 @@ alias dmenucmd="$dmenucmd"
 
 choose(){ #^
     # choose STRING [PROMPT] -> string
-    printf '%s' "$1" | eval "dmenucmd ${2:+-p \"$2\"}"
+    # printf '%s' "$1" | eval "dmenucmd ${2:+-p \"$2\"}"
+    chosen="$(printf '%s' "$1" | eval "dmenucmd ${2:+-p \"$2\"}")"
 } #$
 
 # menus #^
@@ -18,7 +19,7 @@ monitor
 wm
 config'
 
-optsNode='-f, --focus [NODE_SEL]
+node_options_list='-f, --focus [NODE_SEL]
 -a, --activate [NODE_SEL]
 -d, --to-desktop DESKTOP_SEL [--follow]
 -m, --to-monitor MONITOR_SEL [--follow]
@@ -41,7 +42,7 @@ optsNode='-f, --focus [NODE_SEL]
 -c, --close
 -k, --kill'
 
-optsDesk='-f, --focus [DESKTOP_SEL]
+desktop_options_list='-f, --focus [DESKTOP_SEL]
 -a, --activate [DESKTOP_SEL]
 -m, --to-monitor MONITOR_SEL [--follow]
 -s, --swap DESKTOP_SEL [--follow]
@@ -50,7 +51,7 @@ optsDesk='-f, --focus [DESKTOP_SEL]
 -b, --bubble CYCLE_DIR
 -r, --remove'
 
-optsMon='-f, --focus [MONITOR_SEL]
+monitor_options_list='-f, --focus [MONITOR_SEL]
 -s, --swap MONITOR_SEL
 -a, --add-desktops <name>...
 -o, --reorder-desktops <name>...
@@ -59,7 +60,7 @@ optsMon='-f, --focus [MONITOR_SEL]
 -n, --rename <new_name>
 -r, --remove'
 
-optsWm='-d, --dump-state
+wm_options_list='-d, --dump-state
 -l, --load-state <file_path>
 -a, --add-monitor <name> WxH+X+Y
 -O, --reorder-monitors <name>...
@@ -118,7 +119,7 @@ bottom_left'
 cycle='next
 prev'
 
-settings='normal_border_color, Color of the border of an unfocused window.
+settings_list='normal_border_color, Color of the border of an unfocused window.
 active_border_color, Color of the border of a focused window of an unfocused monitor.
 focused_border_color, Color of the border of a focused window of a focused monitor.
 presel_feedback_color, Color of the node --presel-{dir,ratio} message feedback area.
@@ -151,56 +152,59 @@ window_gap, Size of the gap that separates windows.
 border_width, Window border width.'
 #$
 
-domain="$(choose "$domains" "domain")"
+# domain="$(choose "$domains" "domain")"
+choose "$domains" "domain"
+domain="$chosen"
 cmd="bspc $domain"
 
 case "$domain" in #^
-    node) chosen="$(dmenunode.sh -f)" ;;
-    desktop) chosen="$(dmenudesk.sh -f)" ;;
-    monitor) chosen="$(dmenumon.sh -f)" ;;
-    wm) : ;;
-    config) chosen="$(choose "$(printf 'global\nnode\ndesktop\nmonitor')")"
+    node) domain_sel="$(dmenunode.sh -f)" ;;
+    desktop) domain_sel="$(dmenudesk.sh -f)" ;;
+    monitor) domain_sel="$(dmenumon.sh -f)" ;;
+    wm) domain_sel="" ;;
+    config) choose "$(printf 'node\ndesktop\nmonitor')" "domain"
         case "$chosen" in
-            global) chosen="" ;;
-            node) chosen="-n $(dmenunode.sh -f)" ;;
-            desktop) chosen="-d $(dmenudesk.sh -f)" ;;
-            monitor) chosen="-m $(dmenumon.sh -f)" ;;
+            node) domain_sel="-n $(dmenunode.sh -f -k)" ;;
+            desktop) domain_sel="-d $(dmenudesk.sh -f -k)" ;;
+            monitor) domain_sel="-m $(dmenumon.sh -f -k)" ;;
+            "") domain_sel="" ;;
+            *) exit 1 ;;
         esac ;;
     "") exit 1 ;;
     *) exit 1 ;;
 esac
-cmd="$cmd $chosen" #$
+cmd="$cmd $domain_sel" #$
 
 case "$domain" in #^
-    node) chosen="$(choose "$optsNode" "options")" ;;
-    desktop) chosen="$(choose "$optsDesk" "options")" ;;
-    monitor) chosen="$(choose "$optsMon" "options")" ;;
-    wm) chosen="$(choose "$optsWm" "options")" ;;
-    config) chosen="$(choose "$settings" "settings")" ;;
+    node) choose "$node_options_list" "node options" ;;
+    desktop) choose "$desktop_options_list" "desktop options" ;;
+    monitor) choose "$monitor_options_list" "monitor options" ;;
+    wm) choose "$wm_options_list" "wm options" ;;
+    config) choose "$settings_list" "settings" ;;
     "") exit 1 ;;
     *) exit 1 ;;
 esac
-chosen="$(echo "$chosen" | cut -d ',' -f 1)"
-cmd="$cmd $chosen" #$
+option="$(echo "$chosen" | cut -d ',' -f 1)"
+cmd="$cmd $option" #$
 
 case $domain in #^
-    node) case $chosen in #^
+    node) case $option in #^
         -f|-a|-n|-s) chosen=$(dmenunode.sh -f) ;;
         -d) chosen=$(dmenudesk.sh -f) ;;
         -m) chosen=$(dmenumon.sh -f) ;;
-        -p) chosen=$(choose "$dir" "direction") ;; # [~]DIR|cancel
-        -o) chosen=$(choose "$ratio" "ratio") ;; # RATIO
-        -r) chosen=$(choose "$ratio" "ratio") ;; # RATIO|(+|-)(PIXELS|FRACTION)
-        -R) chosen=$(choose "$degrees" "degrees") ;; # 90|270|180
-        -F) chosen=$(choose "$orientation" "orientation") ;; # horizontal|vertical
-        -C) chosen=$(choose "$direction" "direction") ;; # forward|backward
-        -t) chosen=$(choose "$state" "state") ;; # [~](tiled|pseudo_tiled|floating|fullscreen)
-        -g) chosen=$(choose "$flag" "flag") ;; # hidden|sticky|private|locked|marked[=on|off]
-        -l) chosen=$(choose "$layer" "layer") ;; # below|normal|above
-        -v) chosen=$(choose "$dxdy" "dx dy") ;; # dx dy
-        -z) chosen=$(choose "$edge" "edge")
+        -p) choose "$dir" "direction" ;; # [~]DIR|cancel
+        -o) choose "$ratio" "ratio" ;; # RATIO
+        -r) choose "$ratio" "ratio" ;; # RATIO|(+|-(PIXELS|FRACTION)
+        -R) choose "$degrees" "degrees" ;; # 90|270|180
+        -F) choose "$orientation" "orientation" ;; # horizontal|vertical
+        -C) choose "$direction" "direction" ;; # forward|backward
+        -t) choose "$state" "state" ;; # [~](tiled|pseudo_tiled|floating|fullscreen)
+        -g) choose "$flag" "flag" ;; # hidden|sticky|private|locked|marked[=on|off]
+        -l) choose "$layer" "layer" ;; # below|normal|above
+        -v) choose "$dxdy" "dx dy" ;; # dx dy
+        -z) choose "$edge" "edge"
             cmd="$cmd $chosen"
-            chosen=$(choose "$dxdy" "dx dy") ;; # top|left|bottom|right|top_left|top_right|bottom_right|bottom_left dx dy
+            choose "$dxdy" "dx dy" ;; # top|left|bottom|right|top_left|top_right|bottom_right|bottom_left dx dy
         # -E|-B|-i|-c|-k) echo "$cmd" && exit 0 ;;
         # -E|-B|-i|-c|-k) eval "$cmd"; exit ;;
         -E|-B|-i|-c|-k) chosen="" ;;
@@ -208,29 +212,29 @@ case $domain in #^
         *) exit 1 ;;
     esac ;; #$
 
-    desktop) case $chosen in #^
+    desktop) case $option in #^
         -f|-a|-s) chosen=$(dmenudesk.sh -f) ;; # , --focus [DESKTOP_SEL]
-        -l|-b) chosen=$(choose "$cycle" "cycle") ;; # , --layout CYCLE_DIR|monocle|tiled
+        -l|-b) choose "$cycle" "cycle" ;; # , --layout CYCLE_DIR|monocle|tiled
         -m) chosen=$(dmenumon.sh -f) ;; # , --to-monitor MONITOR_SEL [--follow]
-        -n) chosen=$(choose "" "name") ;; # , --rename <new_name>
+        -n) choose "" "name" ;; # , --rename <new_name>
         -r) chosen="" ;;
         "") exit 1 ;;
         *) exit 1 ;;
     esac ;; #$
 
-    monitor) case $chosen in #^
+    monitor) case $option in #^
         -f|-s) chosen=$(dmenumon.sh -f) ;; # , --focus [MONITOR_SEL]
-        -a) chosen=$(choose "" "name") ;; # , --add-desktops <name>...
-        -n) chosen=$(choose "" "name") ;; # , --rename <new_name>
-        -o) chosen=$(choose "" "name") ;; # , --reorder-desktops <name>...
-        -d) chosen=$(choose "" "name") ;; # , --reset-desktops <name>...
-        -g) chosen=$(choose "" "WxH+X+Y") ;; # , --rectangle WxH+X+Y
+        -a) choose "" "name" ;; # , --add-desktops <name>...
+        -n) choose "" "name" ;; # , --rename <new_name>
+        -o) choose "" "name" ;; # , --reorder-desktops <name>...
+        -d) choose "" "name" ;; # , --reset-desktops <name>...
+        -g) choose "" "WxH+X+Y" ;; # , --rectangle WxH+X+Y
         -r) chosen="" ;;
         "") exit 1 ;;
         *) exit 1 ;;
     esac ;; #$
 
-    wm) case $chosen in #^
+    wm) case $option in #^
         -r) chosen="" ;;
         # -d) : ;; # , --dump-state # open in buffer?
         # -l) : ;; # , --load-state <file_path>
@@ -243,9 +247,10 @@ case $domain in #^
         *) exit 1 ;;
     esac ;; #$
 
-    config) chosen="$(choose "" "value")" ;;
+    config) choose "" "value" ;;
 esac
-cmd="$cmd $chosen" #$
+option_arguments="$chosen"
+cmd="$cmd $option_arguments" #$
 
 eval "$cmd"
 

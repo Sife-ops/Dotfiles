@@ -6,7 +6,7 @@ checkdeps.sh xdotool xwininfo dmenu
 dmenucmd="${DMENU_CMD:-dmenu -b -i -l 20}"
 alias dmenucmd="$dmenucmd"
 
-print_ids(){ #^
+wid_list(){ #^
     for win in $(xdotool search --class "dd"); do
         printf '%s: %s\n' "$win" "$(xdotool getwindowname "$win")"
     done
@@ -14,7 +14,6 @@ print_ids(){ #^
 
 togmap(){ #^
     mapstate=$(xwininfo -id "$1" | awk '/Map State/{print $3}')
-
     case "$mapstate" in
         IsViewable)
             xdotool windowunmap "$1" ;;
@@ -23,14 +22,10 @@ togmap(){ #^
     esac
 } #$
 
-#^ main
-chosen=$(print_ids | dmenucmd -p "dd" | cut -d ':' -f 1)
+chosen=$(wid_list | dmenucmd -p "dd" | cut -d ':' -f 1)
 case "$chosen" in
-    "")
-        exit 1 ;;
-    *)
-        togmap "$chosen" ;;
+    "") exit 1 ;;
+    *) togmap "$chosen" ;;
 esac
-#$
 
 # vim: fdm=marker fmr=#^,#$

@@ -4,8 +4,8 @@
 checkdeps.sh bspc jq bc dmenu
 
 #^ setup
-DMENU_CMD="${DMENU_CMD:-dmenu -b -i -l 20}"
-alias dmenucmd="$DMENU_CMD"
+dmenucmd="${DMENU_CMD:-dmenu -b -i -l 20}"
+alias dmenucmd="$dmenucmd"
 
 msg_help() { echo \
 "Usage:
@@ -16,14 +16,15 @@ Options:
     -h          print this message"
 }
 
-while getopts "fh" o; do case "${o}" in
+while getopts "fhk" o; do case "${o}" in
 	f) focused="focused" ;;
+    k) killzero=t ;;
     h) msg_help ;;
 	*) printf "Invalid option: -%s\\n" "$o" && msg_help && exit 1 ;;
 esac done
 #$
 
-print_nodes(){ #^
+nodes(){ #^
     bspc wm -d |
         jq -r \
             '.monitors[] |
@@ -47,22 +48,18 @@ print_nodes(){ #^
                 paste - - - - -d':'
 } #$
 
-node_menu(){ #^
-    first_item=$(echo "ibase=16; $(bspc query -N -n "${focused:-last}" |
-        cut -d 'x' -f 2)" |
-        bc)
-    print_nodes |
+node_list(){ #^
+    first_item=$(echo "ibase=16; $(bspc query -N -n "${focused:-last}" | cut -d 'x' -f 2)" | bc)
+    nodes |
         tac |
         awk "/$first_item/ { first = \$0 } { print \$0 } END { print first }" |
         tac
 } #$
 
-#^ main
-chosen=$(node_menu | dmenucmd -p "node")
+chosen="$(node_list | dmenucmd -p "node")"
 case "$chosen" in
-    "") kill 0 ;; # consider changing
+    "") [ -n "$killzero" ] && kill 0 ;;
     *) echo "$chosen" | cut -d ':' -f 4 ;;
 esac
-#$
 
 # vim: fdm=marker fmr=#^,#$

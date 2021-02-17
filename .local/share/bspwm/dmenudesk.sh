@@ -23,7 +23,7 @@ while getopts "fh" o; do case "${o}" in
 esac done
 #$
 
-print_desks(){ #^
+desktops(){ #^
     bspc wm -d |
         jq -r \
             '.monitors[] |
@@ -41,22 +41,18 @@ print_desks(){ #^
                 paste - - - -d':'
 } #$
 
-desk_menu(){ #^
-    first_item=$(echo "ibase=16; $(bspc query -D -d "${focused:-last}" |
-        cut -d 'x' -f 2)" |
-        bc)
-    print_desks |
+desktop_list(){ #^
+    first_item=$(echo "ibase=16; $(bspc query -D -d "${focused:-last}" | cut -d 'x' -f 2)" | bc)
+    desktops |
         tac |
         awk "/$first_item/ { first = \$0 } { print \$0 } END { print first }" |
         tac
 } #$
 
-#^ main
-chosen=$(desk_menu | dmenucmd -p "desktop")
+chosen="$(desktop_list | dmenucmd -p "desktop")"
 case "$chosen" in
-    "") kill 0 ;;
-    *) echo "$chosen" | cut -d':' -f3 ;;
+    "") [ -n "$killzero" ] && kill 0 ;;
+    *) echo "$chosen" | cut -d ':' -f 3 ;;
 esac
-#$
 
 # vim: fdm=marker fmr=#^,#$

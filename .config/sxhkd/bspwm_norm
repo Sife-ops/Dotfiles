@@ -128,7 +128,7 @@ mod4 + x; 5; 2
 
 # window menu
 mod4 + x; b
-    xdotool windowactivate $(dmenunode.sh)
+    xdotool windowactivate $(dmenunode.sh -k)
 
 # make window floating
 mod4 + x; f
@@ -136,7 +136,7 @@ mod4 + x; f
 
 # kill window
 mod4 + x; k
-    bspc node $(dmenunode.sh -f) -c
+    bspc node $(dmenunode.sh -f -k) -c
 
 # fullscreen/tiled
 mod4 + x; m
@@ -148,11 +148,11 @@ mod4 + x; t
 
 # yank to desktop
 mod4 + x; y
-    bspc node -d $(dmenudesk.sh)
+    bspc node -d $(dmenudesk.sh -k)
 
 # desktop menu
 mod4 + x; mod4 + b
-    bspc desktop -f $(dmenudesk.sh)
+    bspc desktop -f $(dmenudesk.sh -k)
 
 #$
 
