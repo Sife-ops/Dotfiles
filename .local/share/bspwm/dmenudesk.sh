@@ -13,11 +13,13 @@ msg_help() { echo \
 
 Options:
     -f          display focused desktop first (default: last)
+    -k          kill 0 on no selection
     -h          print this message"
 }
 
-while getopts "fh" o; do case "${o}" in
+while getopts "fhk" o; do case "${o}" in
 	f) focused="focused" ;;
+	k) killzero=t ;;
     h) msg_help ;;
 	*) printf "Invalid option: -%s\\n" "$o" && msg_help && exit 1 ;;
 esac done

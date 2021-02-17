@@ -13,6 +13,7 @@ msg_help() { echo \
 
 Options:
     -f          display focused window first (default: last)
+    -k          kill 0 on no selection
     -h          print this message"
 }
 
