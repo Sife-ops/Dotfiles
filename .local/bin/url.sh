@@ -118,7 +118,7 @@ bg_menu(){
 
 browser_menu() {
     choose "$browser_list" "browser"
-    setsid -f $chosen $url
+    eval "$chosen $url"
 }
 
 ytdl_menu(){
