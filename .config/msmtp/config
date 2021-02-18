@@ -20,7 +20,7 @@ host            mail.gmx.com
 port            465
 from            wyattgoettsch@gmx.us
 user            wyattgoettsch@gmx.us
-passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ${GNUPGHOME}/wyattgoettschatgmxdotus.gpg"
+passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ${SECRETS}/wyattgoettschatgmxdotus.gpg"
 #$
 
 #^---- elonbust@gmx.com ----------------------------------------------------
@@ -29,7 +29,7 @@ host            mail.gmx.com
 port            465
 from            elonbust@gmx.com
 user            elonbust@gmx.com
-passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ${GNUPGHOME}/elonbustatgmxdotcom.gpg"
+passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ${SECRETS}/elonbustatgmxdotcom.gpg"
 #$
 
 account default: wyattgoettschatgmxdotus

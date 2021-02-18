@@ -1,6 +1,6 @@
 #! /usr/bin/env python2
 from subprocess import check_output
 
-gnupghome = '/home/wyatt/.local/share/gnupg/'
+secrets = '/home/wyatt/.local/share/secrets/'
 def get_pass(pwfile):
-    return check_output("/usr/bin/gpg --homedir "+gnupghome+" -dq "+gnupghome+pwfile, shell=True).strip("\n")
+    return check_output("/usr/bin/gpg --homedir "+secrets+" -dq "+secrets+pwfile, shell=True).strip("\n")
