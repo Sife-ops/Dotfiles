@@ -17,6 +17,7 @@ extract_canvas
 fdsa.conf
 fdsa.sh
 feeds.sh
+filesystem.sh
 flake8
 fzfbspc.sh
 graveyard
