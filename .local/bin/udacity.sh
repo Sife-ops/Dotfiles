@@ -26,7 +26,7 @@ if [ "$1" = "yank" ]; then
 
     xclip -o -selection clipboard > "$file"
     printf '\n\n%s vim: ft=%s' "$cs" "$ft" >> "$file"
-    st -e nvim "$file"
+    $TERMEXEC nvim "$file"
 
 elif [ "$1" = "put" ]; then
 
