@@ -23,6 +23,8 @@
 .config/gh/
 .config/gtk-2.0/
 .config/hexchat/
+.config/higan/
+.config/hiro/
 .config/inkscape/
 .config/leafpad/
 .config/libfm/
@@ -82,6 +84,8 @@
 .local/share/recently-used.xbel
 .local/share/sarbs/aurlist
 .local/share/sarbs/paclist
+.local/share/secrets/
+.local/share/statusbar
 .local/share/steam
 .local/share/tig/
 .local/share/ucollage

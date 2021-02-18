@@ -1,13 +1,10 @@
 #!/bin/sh
 # print unread feeds
 
-notifications="${NOTIFICATIONS:-${XDG_DATA_HOME:-${HOME}/.local/share}/notifications}"
+statusbar="${STATUSBAR:-${XDG_DATA_HOME:-${HOME}/.local/share}/statusbar}"
 
 icon="📰"
-unread=$(grep 'newsboat' "$notifications" |
-    tail -n1 |
-    jq -r '.summary' |
-    sed -r 's/.*\(([0-9]+)( unread articles).*/\1/')    # POSIX rewrite
+unread=$(grep 'feeds' "$statusbar" | tail -n1 | cut -d ':' -f 2)
 
 if test "$unread" -eq "$unread" 1>/dev/null 2>&1; then   # evil hack
     if [ "$unread" -lt "1" ]; then

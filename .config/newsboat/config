@@ -5,11 +5,12 @@
 #    |_| \_|\___| \_/\_/ |___/_.__/ \___/ \__,_|\__|
 
 auto-reload yes
+bind-key j down
+bind-key k up
 browser "url.sh %u"
 external-url-viewer "urlscan -dc -r 'url.sh {}'"
 feed-sort-order lastupdated-desc
-notify-always no
+notify-always yes
+notify-format "newsboat: %n unread articles."
 notify-program "notify-send"
 reload-time 10
-bind-key j down
-bind-key k up

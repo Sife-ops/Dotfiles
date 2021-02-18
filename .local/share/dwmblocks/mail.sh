@@ -1,13 +1,10 @@
 #!/bin/sh
 # print unread feeds
 
-notifications="${NOTIFICATIONS:-${XDG_DATA_HOME:-${HOME}/.local/share}/notifications}"
+statusbar="${STATUSBAR:-${XDG_DATA_HOME:-${HOME}/.local/share}/statusbar}"
 
 icon="📧"
-unread=$(grep 'New Email' "$notifications" |
-    tail -n1 |
-    jq -r '.body' |
-    sed -r 's/.* ([0-9]+)( unread).*/\1/')    # need POSIX rewrite
+unread=$(grep 'mail' "$statusbar" | tail -n1 | cut -d ':' -f 2)
 
 if test "$unread" -eq "$unread" 1>/dev/null 2>&1; then   # evil hack
     if [ "$unread" -lt "1" ]; then
@@ -17,6 +14,5 @@ if test "$unread" -eq "$unread" 1>/dev/null 2>&1; then   # evil hack
     fi
 else
     printf ""
-    exit 0
 fi
 
