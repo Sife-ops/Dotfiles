@@ -1,7 +1,10 @@
-#! /usr/bin/env python2
+#! /usr/bin/env python
+
+import os
 from subprocess import check_output
 
-homedir = '/home/wyatt/.local/share/gnupg/'
-secrets = '/home/wyatt/.local/share/secrets/'
+homedir = os.path.expandvars("${GNUPGHOME}/")
+secrets = os.path.expandvars("${SECRETS}/")
+
 def get_pass(pwfile):
     return check_output("/usr/bin/gpg --homedir "+homedir+" -dq "+secrets+pwfile, shell=True).strip("\n")
