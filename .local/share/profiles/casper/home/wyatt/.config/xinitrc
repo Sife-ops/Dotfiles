@@ -14,7 +14,6 @@ export MONITOR1="HDMI-0"
 #^----- STARTUP ----------------------------------------------------------------
 picom &
 fcitx &
-password.sh
 offlineimap &
 ~/.config/tmux/default.sh
 #$
