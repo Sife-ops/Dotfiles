@@ -1,61 +1,91 @@
 #!/bin/sh
-# bw library
+# bw functions
 # todo:
-# todo: verify session key validity
+# verify session key validity
 # clientid feature
 # shorten bw command
+# better username/password prompt
 
 checkdeps.sh bw gpg jq
 
 . menu.sh
 
-#^ setup
+config="${XDG_CONFIG_HOME:-${HOME}/.config}/bwvault/config"
+bw_session_cache="${BW_SESSION_CACHE:-${XDG_CACHE_HOME:-${HOME}/.cache}/bw-session.gpg}"
+bw_vault_cache="${BW_VAULT_CACHE:-${XDG_CACHE_HOME:-${HOME}/.cache}/bw-vault.gpg}"
+
 alias bw_cmd="bw --nointeraction"
 
-bw_session_cache="${BW_SESSION_CACHE:-${XDG_CACHE_HOME:-${HOME}/.cache}/bw-session.gpg}"
+# read configuration file
+while IFS= read -r line; do
+    case "$line" in
+        '#'*) : ;;
+        *) eval "$line" ;;
+    esac
+done < "$config"
+
+# require a GPG ID for encrypting cache files
 if [ -z "$BW_GPG_ID" ]; then
     printf "Error: BW_GPG_ID must be set.\n"
     exit 1
 fi
-bw_vault_cache="${BW_VAULT_CACHE:-${XDG_CACHE_HOME:-${HOME}/.cache}/bw-vault.gpg}"
-#$
 
 bw_login(){ #^
     # bw_login -> session key
+
+    # check whether logged in
     status="$(bw status | jq -r '.userEmail')"
     case "$status" in
+
+        # log into Bitwarden
         null) bw_session_key="$(bw_cmd login \
               "$(prompt "Username:")" \
               "$(prompt "Password:" t)" --raw)" ;;
+
+        # unlock Bitwarden
         *) bw_session_key="$(bw_cmd unlock "$(prompt "Password:" t)" --raw)" ;;
     esac
+
+    # store session key in an encrypted file
     echo "$bw_session_key" |
         gpg --quiet --recipient "$BW_GPG_ID" \
             --encrypt --output "$bw_session_cache"
+
+    # print session key
     printf '%s' "$bw_session_key"
+
 } #$
 
 bw_session_key(){ #^
+    # bw_session_key -> session key
     # todo: verify session key validity
+
+    # decrypt session key or log in
     if [ -f "$bw_session_cache" ]; then
         bw_session_key=$(gpg --quiet --decrypt "$bw_session_cache")
     else
         bw_session_key=$(bw_login)
     fi
+
+    # print session key
     printf '%s' "$bw_session_key"
 } #$
 
 vault(){ #^
-    if [ -f "${bw_vault_cache}" ]; then
-        gpg --quiet --decrypt "$bw_vault_cache"
-    else
+    # vault -> vault json
+
+    # download and encrypt vault json cache
+    if [ ! -f "${bw_vault_cache}" ]; then
         bw_cmd --session "$(bw_session_key)" list items |
             gpg \
                 --recipient "$BW_GPG_ID" \
                 --output "$bw_vault_cache" \
                 --encrypt
-        gpg --quiet --decrypt "$bw_vault_cache"
     fi
+
+    # decrypt cached vault json
+    gpg --quiet --decrypt "$bw_vault_cache"
+
 } #$
 
 bw_sync(){ #^
@@ -70,23 +100,37 @@ bw_clear(){ #^
 
 edit(){ #^
     # edit <json> -> json
+    # edits vault items in a restricted folder
+    # todo: diff edited item with original
+
+    # create secure temp files for editing vault item
     safe="$(mktemp -d /tmp/bwvault.XXX)"
     chmod 700 "$safe"
     item="$(mktemp "${safe}/bwitem.XXX.json")"
     chmod 600 "$item"
     echo "$1" | jq > "$item"
 
+    # open vault item with text editor
     buffer "$item"
+
+    # never accept invalid json
     while ! cat "$item" | jq 1>/dev/null 2>&1; do
         # message cannot parse json
         buffer "$item"
     done
+
+    # print edited vault item
     cat "$item" | jq -c
+
+    # delete temp files
     rm -rf "$safe" 1>/dev/null 2>&1
+
 } #$
 
 template(){ #^
-    # template <type> -> json
+    # template <identity|secureNote|card|login> -> json
+    # generates valid bitwarden vault item json for a new vault item
+
     item="$(bw_cmd --session "$(bw_session_key)" get template item)"
     template="$(bw_cmd --session "$(bw_session_key)" get template item."$1")"
     item="$(echo "$item" | jq -c ".$1 = $template")"
@@ -106,20 +150,27 @@ template(){ #^
         *) kill 0 ;;
     esac
     echo "$item"
+
 } #$
 
 edit_item(){ #^
     # create_item <id> <json> -> json
+    # changes a vault item in your Bitwarden vault
+
     echo "$1" |
         bw_cmd --session "$(bw_session_key)" encode |
         bw_cmd --session "$(bw_session_key)" edit item "$2"
+
 } #$
 
 create_item(){ #^
     # create_item <json> -> json
+    # creates a new item in your Bitwarden vault
+
     echo "$1" |
         bw_cmd --session "$(bw_session_key)" encode |
         bw_cmd --session "$(bw_session_key)" create item
+
 } #$
 
 # vim: fdm=marker fmr=#^,#$
