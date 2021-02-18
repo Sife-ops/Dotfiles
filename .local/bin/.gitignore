@@ -1,6 +1,5 @@
 backlight.sh
 battery.sh
-brightness.sh
 clock.sh
 coverage
 coverage-3.9
