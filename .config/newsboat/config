@@ -10,7 +10,7 @@ bind-key k up
 browser "url.sh %u"
 external-url-viewer "urlscan -dc -r 'url.sh {}'"
 feed-sort-order lastupdated-desc
-notify-always yes
+notify-always no
 notify-format "newsboat: %n unread articles."
 notify-program "notify-send"
 reload-time 10
