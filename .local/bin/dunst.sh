@@ -3,10 +3,9 @@
 # sound crashes Xorg inconsistently
 # tmux send-message
 
-sfx="${SFX:-${XDG_DATA_HOME:-${HOME}/.local/share}/sfx}"
-
 notifications="${NOTIFICATIONS:-${XDG_DATA_HOME:-${HOME}/.local/share}/notifications}"
 statusbar="${STATUSBAR:-${XDG_DATA_HOME:-${HOME}/.local/share}/statusbar}"
+sfx="${SFX:-${XDG_DATA_HOME:-${HOME}/.local/share}/sfx}"
 
 play(){
     mpv --profile=low-latency --volume="${2:-100}" "${sfx}/$1"
@@ -15,15 +14,15 @@ play(){
 updateStatusbarMaybePlaySound(){
     count=$(echo "$1" | tr -dc '[:digit:]')
     if [ "$count" -gt 0 ]; then
-        echo "feeds:$count" >> "$statusbar"
-        play "$2"
+        echo "$2:$count" >> "$statusbar"
+        [ -n "$3" ] && play "$3"
     fi
 }
 
 case "$2" in
-    newsboat:*) updateStatusbarMaybePlaySound "$2" "win95/DA_DEFAU.WAV" ;;
-    pacman) updateStatusbarMaybePlaySound "$3" "win95/DA_EMPTY.WAV" ;;
-    neomutt) updateStatusbarMaybePlaySound "$3" "win95/DA_ERROR.WAV" ;;
+    newsboat:*) updateStatusbarMaybePlaySound "$2" feeds "win95/DA_DEFAU.WAV" ;;
+    pacman) updateStatusbarMaybePlaySound "$3" pacman "win95/DA_EMPTY.WAV" ;;
+    neomutt) updateStatusbarMaybePlaySound "$3" mail "win95/DA_ERROR.WAV" ;;
 esac
 
 case "$2" in
