@@ -12,7 +12,7 @@ play(){
     mpv --profile=low-latency --volume="${2:-100}" "${sfx}/$1"
 }
 
-updateStatusMaybePlay(){
+updateStatusbarMaybePlaySound(){
     count=$(echo "$1" | tr -dc '[:digit:]')
     if [ "$count" -gt 0 ]; then
         echo "feeds:$count" >> "$statusbar"
@@ -21,9 +21,9 @@ updateStatusMaybePlay(){
 }
 
 case "$2" in
-    newsboat:*) updateStatusMaybePlay "$2" "win95/DA_DEFAU.WAV" ;;
-    pacman) updateStatusMaybePlay "$2" "win95/DA_EMPTY.WAV" ;;
-    neomutt) updateStatusMaybePlay "$2" "win95/DA_ERROR.WAV" ;;
+    newsboat:*) updateStatusbarMaybePlaySound "$2" "win95/DA_DEFAU.WAV" ;;
+    pacman) updateStatusbarMaybePlaySound "$3" "win95/DA_EMPTY.WAV" ;;
+    neomutt) updateStatusbarMaybePlaySound "$3" "win95/DA_ERROR.WAV" ;;
 esac
 
 case "$2" in
