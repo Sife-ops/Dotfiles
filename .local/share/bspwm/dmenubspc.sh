@@ -7,8 +7,6 @@ dmenucmd="${DMENU_CMD:-dmenu -b -i -l 20}"
 alias dmenucmd="$dmenucmd"
 
 choose(){ #^
-    # choose STRING [PROMPT] -> string
-    # printf '%s' "$1" | eval "dmenucmd ${2:+-p \"$2\"}"
     chosen="$(printf '%s' "$1" | eval "dmenucmd ${2:+-p \"$2\"}")"
 } #$
 
