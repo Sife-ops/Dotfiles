@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-import os
+from subprocess import os
 from subprocess import check_output
 
 homedir = os.path.expandvars("${GNUPGHOME}/")
