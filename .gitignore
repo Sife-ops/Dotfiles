@@ -36,6 +36,7 @@
 .config/pcmanfm/
 .config/pulse/
 .config/qmk/
+.config/rofi/
 .config/spacefm/
 .config/sxhkd/sxhkdrc
 .config/systemd/
