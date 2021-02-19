@@ -11,12 +11,19 @@ play(){
     mpv --profile=low-latency --volume="${2:-100}" "${sfx}/$1"
 }
 
+trucateFile(){
+    tmp=$(mktemp /tmp/dunst.XXX)
+    tail -n 100 "$1" > "$tmp"
+    mv "$tmp" "$1"
+}
+
 updateStatusbarMaybePlaySound(){
     count=$(echo "$1" | tr -dc '[:digit:]')
     echo "$2:$count" >> "$statusbar"
     if [ "$count" -gt 0 ]; then
         [ -n "$3" ] && play "$3"
     fi
+    truncateFile "$statusbar"
 }
 
 case "$2" in
@@ -36,5 +43,6 @@ case "$2" in
             \"urgency\": \"$5\"
         }" | jq -c >> "$notifications"
         sleep 10
-        echo >> "$notifications" ;;
+        echo >> "$notifications"
+        truncateFile "$notifications" ;;
 esac
