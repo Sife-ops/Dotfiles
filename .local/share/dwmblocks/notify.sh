@@ -17,4 +17,7 @@ appname=$(echo "$json" | jq -r '.appname' | sed "s/\(^.\{$charlim\}\)\(.*\)/\1 \
 summary=$(echo "$json" | jq -r '.summary' | sed "s/\(^.\{$charlim\}\)\(.*\)/\1 \.\.\./")
 body=$(echo "$json" | jq -r '.body' | sed "s/\(^.\{$charlim\}\)\(.*\)/\1 \.\.\./")
 
-echo "$icon $summary | $body"
+printf '%s%s%s' \
+    "${icon:+"$icon "}" \
+    "${summary:+"${summary}: "}" \
+    "${body:+"$body"}"

@@ -3,26 +3,27 @@
 # sound crashes Xorg inconsistently
 # tmux send-message
 
-sfxdir="${SFX:-${XDG_DATA_HOME:-${HOME}/.local/share}/sfx}"
-soundfont="${SOUNDFONT:-/win95/DA_}"
-sfx="${sfxdir}${soundfont}"
+sfx="${SFX:-${XDG_DATA_HOME:-${HOME}/.local/share}/sfx}"
 
 notifications="${NOTIFICATIONS:-${XDG_DATA_HOME:-${HOME}/.local/share}/notifications}"
 statusbar="${STATUSBAR:-${XDG_DATA_HOME:-${HOME}/.local/share}/statusbar}"
 
-# charlim=25
-
 play(){
-    mpv --profile=low-latency --volume="${2:-100}" "${sfx}$1"
+    mpv --profile=low-latency --volume="${2:-100}" "${sfx}/$1"
 }
 
-case $2 in
-    pacman) echo "pacman:$(echo $3 | tr -dc '[:digit:]')" >> $statusbar ;;
-    neomutt) echo "mail:$(echo $3 | tr -dc '[:digit:]')" >> $statusbar ;;
-esac
+updateStatusMaybePlay(){
+    count=$(echo "$1" | tr -dc '[:digit:]')
+    if [ "$count" -gt 0 ]; then
+        echo "feeds:$count" >> "$statusbar"
+        play "$2"
+    fi
+}
 
-case $2 in
-    newsboat:*) echo "feeds:$(echo $2 | tr -dc '[:digit:]')" >> $statusbar ;;
+case "$2" in
+    newsboat:*) updateStatusMaybePlay "$2" "win95/DA_DEFAU.WAV" ;;
+    pacman) updateStatusMaybePlay "$2" "win95/DA_EMPTY.WAV" ;;
+    neomutt) updateStatusMaybePlay "$2" "win95/DA_ERROR.WAV" ;;
 esac
 
 case "$2" in
@@ -34,5 +35,7 @@ case "$2" in
             \"body\": \"$3\",
             \"icon\": \"$4\",
             \"urgency\": \"$5\"
-        }" | jq -c >> "$notifications" ;;
+        }" | jq -c >> "$notifications"
+        sleep 10
+        echo >> "$notifications" ;;
 esac

@@ -83,6 +83,7 @@
 .local/share/qutebrowser/
 .local/share/ranger/
 .local/share/recently-used.xbel
+.local/share/sarbs/
 .local/share/sarbs/aurlist
 .local/share/sarbs/paclist
 .local/share/secrets/
