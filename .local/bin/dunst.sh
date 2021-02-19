@@ -13,8 +13,8 @@ play(){
 
 updateStatusbarMaybePlaySound(){
     count=$(echo "$1" | tr -dc '[:digit:]')
+    echo "$2:$count" >> "$statusbar"
     if [ "$count" -gt 0 ]; then
-        echo "$2:$count" >> "$statusbar"
         [ -n "$3" ] && play "$3"
     fi
 }
