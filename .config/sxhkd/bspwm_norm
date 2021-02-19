@@ -132,6 +132,8 @@ mod4 + x; 5; 2
 # window menu
 mod4 + x; b
     xdotool windowactivate $(dmenunode.sh -k)
+    # rofi -show windowcd \
+         # -theme gruvbox-dark
 
 # make window floating
 mod4 + x; f
@@ -140,6 +142,10 @@ mod4 + x; f
 # kill window
 mod4 + x; k
     bspc node $(dmenunode.sh -f -k) -c
+    # rofi -show window \
+         # -theme gruvbox-dark \
+         # -kb-accept-entry Return \
+         # -kb-delete-entry control+m
 
 # fullscreen/tiled
 mod4 + x; m
@@ -156,6 +162,8 @@ mod4 + x; y
 # desktop menu
 mod4 + x; mod4 + b
     bspc desktop -f $(dmenudesk.sh -k)
+    # rofi -show window \
+         # -theme gruvbox-dark
 
 #$
 
@@ -163,7 +171,9 @@ mod4 + x; mod4 + b
 
 # dmenu_run
 mod4 + p
-    dmenu_run -b -i -l 20 -p "run"
+    dmenu_run -b -i -l 10 -p "run"
+    # rofi -show run \
+         # -theme gruvbox-dark
 
 # move to next/previous workspace
 mod4 + bracket{left,right}
