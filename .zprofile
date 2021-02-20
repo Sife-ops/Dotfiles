@@ -78,6 +78,7 @@ export SAVEHIST=900000
 export SECRETS="${XDG_DATA_HOME}/secrets"
 export SFX="${XDG_DATA_HOME}/sfx"
 # export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
+export TODO="${XDG_DATA_HOME}/todo"
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export URL_OPENER="url.sh"
 # export VIMINIT='if !has('nvim') | source "${XDG_CONFIG_HOME:-$HOME/.config}/vim/vimrc" | endif'
