@@ -78,6 +78,7 @@
 .local/share/nvim/log
 .local/share/nvim/lsp.log
 .local/share/nvim/shada/
+.local/share/nvim/site/autoload/plug.vim.old
 .local/share/nvim/undo/
 .local/share/plover/
 .local/share/qutebrowser/
@@ -90,6 +91,7 @@
 .local/share/statusbar
 .local/share/steam
 .local/share/tig/
+.local/share/todo
 .local/share/ucollage
 .local/share/vbox
 .local/share/vlc/
@@ -97,7 +99,7 @@
 .local/share/warez
 .local/share/warez/
 .local/share/webkitgtk/
-.local/share/www/
+.local/share/www
 .local/share/xdotool/
 .local/share/xorg/
 .local/share/zathura/
