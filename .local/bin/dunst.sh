@@ -1,4 +1,5 @@
 #!/bin/sh
+# a very hacky script for processing notifications
 # todo:
 # sound crashes Xorg inconsistently
 # tmux send-message
@@ -19,17 +20,17 @@ trucateFile(){
 
 updateStatusbarMaybePlaySound(){
     count=$(echo "$1" | tr -dc '[:digit:]')
-    echo "$2:$count" >> "$statusbar"
+    echo "$2:$(( $count - $3 ))" >> "$statusbar"
     if [ "$count" -gt 0 ]; then
-        [ -n "$3" ] && play "$3"
+        [ -n "$4" ] && play "$4"
     fi
     truncateFile "$statusbar"
 }
 
 case "$2" in
-    newsboat:*) updateStatusbarMaybePlaySound "$2" feeds "win95/DA_DEFAU.WAV" ;;
-    pacman) updateStatusbarMaybePlaySound "$3" pacman "win95/DA_EMPTY.WAV" ;;
-    neomutt) updateStatusbarMaybePlaySound "$3" mail "win95/DA_ERROR.WAV" ;;
+    newsboat:*) updateStatusbarMaybePlaySound "$2" feeds 0 "win95/DA_DEFAU.WAV" ;;
+    pacman) updateStatusbarMaybePlaySound "$3" pacman 0 "win95/DA_EMPTY.WAV" ;;
+    neomutt) updateStatusbarMaybePlaySound "$3" mail 1 "win95/DA_ERROR.WAV" ;;
 esac
 
 case "$2" in
