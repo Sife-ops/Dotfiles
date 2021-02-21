@@ -26,7 +26,8 @@ case "$chosen" in
         gh auth login --with-token "$(gpg --decrypt "$BOOKMARKS_TOKEN")"
         if [ -n "$nox" ]; then
             gh gist edit "$gist"; else
-            $TERMEXEC gh gist edit "$gist"; fi ;;
+            ${TERMEXEC:-xterm -e} gh gist edit "$gist"; fi
+        curl "$BOOKMARKS_GIST" > "$BOOKMARKS" ;;
     "Sync ...") curl "$BOOKMARKS_GIST" > "$BOOKMARKS" ;;
     "") exit 1 ;;
     *) url.sh $url ;;

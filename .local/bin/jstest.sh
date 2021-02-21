@@ -12,5 +12,5 @@ find /dev/input -regex '.*/js[0-9]' |
     while read device; do
         name=$(basename $device)
         tmux new-session -d -s $name "jstest $device"
-        $TERMEXEC tmux attach-session -t $name &
+        ${TERMEXEC:-xterm -e} tmux attach-session -t $name &
     done
