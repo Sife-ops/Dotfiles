@@ -76,6 +76,7 @@
 .local/share/mupen64plus/
 .local/share/newsboat/
 .local/share/notifications
+.local/share/nvim/.netrwhist
 .local/share/nvim/log
 .local/share/nvim/lsp.log
 .local/share/nvim/shada/
@@ -107,6 +108,7 @@
 .local/share/xorg/
 .local/share/zathura/
 .local/src/
+.local/var
 .m2/
 .minecraft/
 .mozilla/

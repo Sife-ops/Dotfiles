@@ -23,8 +23,7 @@
 #$
 
 #^
-for file in $(find ${XDG_CONFIG_HOME:-${HOME}/.config}/bspwm/init.d/*)
-do
+for file in $(find ${XDG_CONFIG_HOME}/bspwm/init.d/*); do
     source $file
 done
 #$

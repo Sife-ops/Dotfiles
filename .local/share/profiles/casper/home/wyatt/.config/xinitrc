@@ -15,10 +15,9 @@ export MONITOR1="HDMI-0"
 picom &
 lxqt-policykit-agent &
 fcitx &
-offlineimap &
 ~/.config/tmux/default.sh
 #$
 
-exec bspwm
+. "${XDG_CONFIG_HOME:-${HOME}/.config}/bspwm/xinitrc"
 
 # vim: fdm=marker fmr=#^,#$
