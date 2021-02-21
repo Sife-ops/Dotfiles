@@ -154,7 +154,7 @@ template(){ #^
 } #$
 
 edit_item(){ #^
-    # create_item <id> <json> -> json
+    # edit_item <id> <json> -> json
     # changes a vault item in your Bitwarden vault
 
     echo "$1" |
@@ -170,6 +170,14 @@ create_item(){ #^
     echo "$1" |
         bw_cmd --session "$(bw_session_key)" encode |
         bw_cmd --session "$(bw_session_key)" create item
+
+} #$
+
+delete_item(){ #^
+    # delete_item <id>
+    # creates a new item in your Bitwarden vault
+
+    bw_cmd --session "$(bw_session_key)" delete item "$1"
 
 } #$
 

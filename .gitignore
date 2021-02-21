@@ -29,6 +29,7 @@
 .config/leafpad/
 .config/libfm/
 .config/libreoffice/
+.config/lxqt/
 .config/mozc/
 .config/neofetch
 .config/nordvpn/
@@ -95,6 +96,7 @@
 .local/share/todo
 .local/share/ucollage
 .local/share/vbox
+.local/share/virt
 .local/share/vlc/
 .local/share/wallpaper
 .local/share/warez

@@ -33,13 +33,14 @@ $(printf "Create ...")
 $(printf "Clear cache ...")
 $(printf "Logout ...")
 $(printf "Sync ...")"
-main_list="$(echo "$main_list" | sed '/^$/d')"
+# main_list="$(echo "$main_list" | sed '/^$/d')"
 
 field_list="$(printf "both")
 $(printf "username")
 $(printf "password")
-$(printf "Edit ...")"
-field_list="$(echo "$field_list" | sed '/^$/d')"
+$(printf "Edit ...")
+$(printf "Delete ...")"
+# field_list="$(echo "$field_list" | sed '/^$/d')"
 
 create_list="card
 identity
@@ -59,6 +60,8 @@ field_menu(){
         password) clipboard yank "$(get_password "$id")" ;;
         "Edit ...") edit_item "$(edit "$(get_secret "$id")")" "$id"
                     bw_sync ;;
+        "Delete ...") delete_item "$id"
+                      bw_sync ;;
         "") kill 0 ;;
         *) kill 0 ;;
     esac
