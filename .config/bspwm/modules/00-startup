@@ -20,6 +20,7 @@ if [ "$BSPWM_TARGET" = 'start' ]; then
     ln -sf ${XDG_CONFIG_HOME}/polybar/bspwm \
         ${XDG_CONFIG_HOME}/polybar/config
     polybar main &
+    [ -n "$MONITOR1" ] && polybar secondary &
 
     st -c dd -n ddterm -T "Terminal" -e sh -c 'tmux attach-session -t default; exec zsh' &
     sleep 3
