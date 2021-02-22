@@ -40,7 +40,7 @@ install_profile(){ #^#
 	    	sudo mv "$targ" "${targ}_bu"; fi
 
 	    ln -sfn "$file" "$targ" 2>/dev/null || \
-	        sudo ln -sfn "$file" "$targ"
+	        sudo ln -sfn "$file" "$targ" 2>/dev/null
     done
     fi
 } #$#
