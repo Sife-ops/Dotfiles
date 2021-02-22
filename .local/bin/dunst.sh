@@ -27,6 +27,10 @@ updateStatusbarMaybePlaySound(){
     truncateFile "$statusbar"
 }
 
+case "$1" in
+    discord) play "win95/DA_BEEP.WAV" ;;
+esac
+
 case "$2" in
     newsboat:*) updateStatusbarMaybePlaySound "$2" feeds "win95/DA_DEFAU.WAV" ;;
     pacman) updateStatusbarMaybePlaySound "$3" pacman "win95/DA_EMPTY.WAV" ;;
