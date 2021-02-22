@@ -1,4 +1,4 @@
 #!/bin/sh
 
-export BSPWM_RUNLEVEL='start'
+export BSPWM_TARGET='start'
 exec bspwm

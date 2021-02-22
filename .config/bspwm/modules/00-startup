@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ "$BSPWM_RUNLEVEL" = 'start' ]; then
+if [ "$BSPWM_TARGET" = 'start' ]; then
 
     find "${XDG_DATA_HOME}/bspwm" \
         ! -type d \
@@ -25,6 +25,6 @@ if [ "$BSPWM_RUNLEVEL" = 'start' ]; then
     sleep 1
     togmap.sh -l ddterm
 
-    export BSPWM_RUNLEVEL='init'
+    export BSPWM_TARGET='init'
 
 fi
