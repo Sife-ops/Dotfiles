@@ -11,6 +11,9 @@ pacstrap /mnt \
     efibootmgr \
     grub \
     networkmanager \
+    man \
+    doas \
+    tmux \
     openssh
 
 genfstab -U /mnt >> /mnt/etc/fstab
