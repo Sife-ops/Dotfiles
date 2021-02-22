@@ -25,6 +25,8 @@ if [ "$BSPWM_TARGET" = 'start' ]; then
     sleep 1
     togmap.sh -l ddterm
 
+    st -e sh -c 'tmux attach-session -t default; exec zsh' &
+
     export BSPWM_TARGET='init'
 
 fi

@@ -12,6 +12,8 @@ bspc monitor ${MONITOR0:-focused} -d \
 [ -z $MONITOR1 ] || bspc monitor $MONITOR1 -d \
     Discord
 
+bspc desktop Scratch -l monocle
+
 bspc rule -a Gxmessage:*:* state=floating
 bspc rule -a Yad:*:* state=floating
 bspc rule -a dd:*:* state=floating
