@@ -16,6 +16,6 @@ fcitx &
 ~/.config/tmux/default.sh
 #$
 
-exec bspwm
+. "${XDG_CONFIG_HOME:-${HOME}/.config}/bspwm/xinitrc"
 
 # vim: fdm=marker fmr=#^,#$
