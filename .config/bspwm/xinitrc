@@ -1,9 +1,4 @@
 #!/bin/sh
 
 export BSPWM_RUNLEVEL='start'
-
-# runlevel_file='/tmp/bspwm_runlevel'
-# trucate -s 0 /tmp/bspwm_runlevel
-# echo 'start' > "$runlevel_file"
-
 exec bspwm

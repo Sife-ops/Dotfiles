@@ -104,10 +104,6 @@ mod4 + d; c; a
 mod4 + d; c; b
     clipboard.sh
 
-# dropdown menu
-mod4 + d; d
-    dmenudd.sh
-
 # emoji menu
 mod4 + d; e
     emoji.sh

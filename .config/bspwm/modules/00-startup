@@ -1,11 +1,6 @@
 #!/bin/sh
 
 if [ "$BSPWM_RUNLEVEL" = 'start' ]; then
-    ln -sf ${XDG_CONFIG_HOME}/sxhkd/bspwm_norm \
-        ${XDG_CONFIG_HOME}/sxhkd/wm_norm
-    ln -sf ${XDG_CONFIG_HOME}/sxhkd/wm_norm \
-        ${XDG_CONFIG_HOME}/sxhkd/sxhkdrc
-    pgrep -x sxhkd || sxhkd &
 
     find "${XDG_DATA_HOME}/bspwm" \
         ! -type d \
@@ -16,22 +11,20 @@ if [ "$BSPWM_RUNLEVEL" = 'start' ]; then
         ! -regex '^.*gitignore.*$' \
         -exec ln -sf {} ${HOME}/.local/bin/ \;
 
+    ln -sf ${XDG_CONFIG_HOME}/sxhkd/bspwm_norm \
+        ${XDG_CONFIG_HOME}/sxhkd/wm_norm
+    ln -sf ${XDG_CONFIG_HOME}/sxhkd/wm_norm \
+        ${XDG_CONFIG_HOME}/sxhkd/sxhkdrc
+    sxhkd &
+
     ln -sf ${XDG_CONFIG_HOME}/polybar/bspwm \
         ${XDG_CONFIG_HOME}/polybar/config
-    if ! pgrep -x polybar; then
-        polybar main &
-        [ -n "$MONITOR1" ] && polybar secondary &
-    fi
+    polybar main &
 
-    # xdotool search --class dd || \
-    #     (st -c dd -n ddterm -T "Terminal" -e sh -c 'tmux attach-session -t default; exec zsh' &
-    #      st -c dd -n ddvol -T "Volume" -e sh -c 'pulsemixer; exec zsh' &)
-    # sleep 3
-    # togmap.sh -l ddterm
-    # togmap.sh -l ddvol
+    st -c dd -n ddterm -T "Terminal" -e sh -c 'tmux attach-session -t default; exec zsh' &
+    sleep 1
+    togmap.sh -l ddterm
 
     export BSPWM_RUNLEVEL='init'
-fi
 
-pkill -USR1 -x sxhkd
-pkill -USR1 -x polybar
+fi
