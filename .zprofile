@@ -14,10 +14,19 @@ chmod 600 ${CLIPBOARD}/*
 
 #^#---- HOST PROFILE -----------------------------------------------------------
 default_profile="${PROFILES}/default"
-host="$(cat /etc/hostname)"
+
+case "$(uname)" in
+    FreeBSD) host="$(grep 'hostname' /etc/rc.conf | 
+        sed -E 's/\(^.*="\)\(.*\.\)\(.*$\)/\2/')" ;;
+    Linux) host="$(cat /etc/hostname)" ;;
+    OpenBSD) host="$(cat /etc/myname | cut -d '.' -f 1)" ;;
+    *) host="$(hostname)" ;;
+esac
+
 host_profile="${PROFILES}/${host}"
 
 install_profile(){ #^#
+    [ ! -d "$1" ] && exit
     find "$1" -type f |
         while IFS= read -r file; do
             targ="${file##${1}}"
@@ -50,4 +59,4 @@ chmod 600 $NOTIFICATIONS
 # sudo -n loadkeys "${XDG_CONFIG_HOME}/kmap/$(cat /etc/hostname)" 2>/dev/null
 #$#
 
-# vim: ft=sh fdm=marker fmr=#^#,#$#
+#vim: ft=sh fdm=marker fmr=#^#,#$#
