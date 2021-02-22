@@ -26,23 +26,23 @@ esac
 host_profile="${PROFILES}/${host}"
 
 install_profile(){ #^#
-    [ ! -d "$1" ] && exit
-    find "$1" -type f |
-        while IFS= read -r file; do
-            targ="${file##${1}}"
-            targdir="$(dirname "$targ")"
+    if [ -d "$1" ]; then
+        find "$1" -type f | while IFS= read -r file; do
+	    targ="${file##${1}}"
+	    targdir="$(dirname "$targ")"
 
-            if [ ! -d "$targdir" ]; then
-                mkdir -p "$targdir" 2>/dev/null || \
-                    sudo mkdir -p "$targdir"; fi
+	    if [ ! -d "$targdir" ]; then
+	        mkdir -p "$targdir" 2>/dev/null || \
+	    	sudo mkdir -p "$targdir"; fi
 
-            if [ -e "$targ" ] && ! readlink "$targ" 1>/dev/null; then
-                mv "$targ" "${targ}_bu" 2>/dev/null || \
-                    sudo mv "$targ" "${targ}_bu"; fi
+	    if [ -e "$targ" ] && ! readlink "$targ" 1>/dev/null; then
+	        mv "$targ" "${targ}_bu" 2>/dev/null || \
+	    	sudo mv "$targ" "${targ}_bu"; fi
 
-            ln -sfn "$file" "$targ" 2>/dev/null || \
-                sudo ln -sfn "$file" "$targ"
-        done
+	    ln -sfn "$file" "$targ" 2>/dev/null || \
+	        sudo ln -sfn "$file" "$targ"
+    done
+    fi
 } #$#
 
 install_profile "$default_profile"
