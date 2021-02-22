@@ -16,7 +16,7 @@ chmod 600 ${CLIPBOARD}/*
 default_profile="${PROFILES}/default"
 
 case "$(uname)" in
-    FreeBSD) host="$(grep 'hostname' /etc/rc.conf | 
+    FreeBSD) host="$(grep 'hostname' /etc/rc.conf |
         sed -E 's/\(^.*="\)\(.*\.\)\(.*$\)/\2/')" ;;
     Linux) host="$(cat /etc/hostname)" ;;
     OpenBSD) host="$(cat /etc/myname | cut -d '.' -f 1)" ;;
@@ -59,4 +59,4 @@ chmod 600 $NOTIFICATIONS
 # sudo -n loadkeys "${XDG_CONFIG_HOME}/kmap/$(cat /etc/hostname)" 2>/dev/null
 #$#
 
-#vim: ft=sh fdm=marker fmr=#^#,#$#
+# vim: ft=sh fdm=marker fmr=#^#,#$#

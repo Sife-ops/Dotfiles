@@ -89,3 +89,4 @@ export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 # export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="${XDG_CONFIG_HOME:-$HOME/.config}/java"
 #$#
 
+# vim: ft=sh fdm=marker fmr=#^#,#$#
