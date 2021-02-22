@@ -19,7 +19,7 @@ export PATH="${PATH}:${XDG_DATA_HOME}/npm/bin"
 command -v nvim >/dev/null 2>&1 \
 	&& editor="nvim" \
 	|| editor="vim"
-export ALTEDITOR="$alteditor"
+export ALTEDITOR="emacsclient -nw"
 export EDITOR="$editor"
 export VISUAL="$editor"
 export FCEDIT="$editor"
