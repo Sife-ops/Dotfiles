@@ -19,5 +19,5 @@ notify-program "notify-send"
 bind-key j down
 bind-key k up
 
-color listnormal_unread red black bold
+color listnormal_unread magenta black bold
 color article cyan black
