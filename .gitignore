@@ -1,6 +1,8 @@
 *~
+.ICEauthority
 .Xauthority
 .Xmodmap
+.bash_history
 .bash_logout
 .bash_profile
 .bashrc
@@ -43,11 +45,13 @@
 .config/sxhkd/sxhkdrc
 .config/systemd/
 .config/user-dirs.dirs
+.config/user-dirs.locale
 .config/vimb/
 .config/vivaldi/
 .config/vlc/
 .config/xfce4/
 .config/xinitrc
+.dbus/
 .gitconfig
 .ipfs/
 .lein/
@@ -108,6 +112,7 @@
 .local/share/xdotool/
 .local/share/xorg/
 .local/share/zathura/
+.local/share/zeitgeist/
 .local/src/
 .local/var
 .m2/
@@ -120,6 +125,7 @@
 .sudo_as_admin_successful
 .viminfo
 .vscode
+.xsession-errors
 Documents
 Downloads
 Pictures
