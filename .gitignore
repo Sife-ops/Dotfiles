@@ -126,6 +126,7 @@
 .viminfo
 .vscode
 .xsession-errors
+.xsession-errors.old
 Documents
 Downloads
 Pictures
