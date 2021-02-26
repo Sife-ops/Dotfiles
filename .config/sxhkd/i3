@@ -1,0 +1,121 @@
+#    _ _____
+#   (_)___ /
+#   | | |_ \
+#   | |___) |
+#   |_|____/
+
+#^---- XF86 --------------------------------------------------------------------
+
+{XF86MonBrightnessUp,XF86MonBrightnessDown}
+    sudo brightness.sh {inc,dec} 50
+
+XF86HomePage
+    $BROWSER
+
+# XF86Search
+#
+
+# XF86Mail
+#
+
+# XF86Sleep
+#
+
+XF86Audio{Next,Prev}
+    mpc {next,prev}
+
+XF86Audio{Pause,Play}
+    mpc toggle
+
+# {XF86AudioLowerVolume,XF86AudioRaiseVolume}
+    # pactl set-sink-volume @DEFAULT_SINK@ {-,+}5% && pkill -RTMIN+12 dwmblocks
+
+# XF86AudioMute
+    # pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+12 dwmblocks
+
+#$
+
+#^---- FUNCTION ROW ------------------------------------------------------------
+
+#$
+
+#^---- NUMBER ROW --------------------------------------------------------------
+
+# go to workspace 1-10
+# mod4 + {1-9}
+	# bspc desktop -f '^{1-9}'
+
+# move window to workspace 1-10
+# mod4 + shift + {1-9}
+    # bspc node -d '^{1-9}'
+
+# mod4 + 2
+    # udacity.sh yank cpp
+
+# mod4 + 3
+    # udacity.sh put
+
+# mod4 + 3
+    # udacity.sh c
+
+#$
+
+#^---- H, J, K, L --------------------------------------------------------------
+
+#$
+
+#^---- LEFT SIDE ---------------------------------------------------------------
+
+mod4 + d; 9; 0
+    dmenusnes9x.sh ~/.local/share/warez/SNES
+
+mod4 + d; 6; 4
+    dmenumupen.sh ~/.local/share/warez/N64
+
+# bookmark menu
+mod4 + d; b
+    bookmarks.sh
+
+# clipboard menu
+mod4 + d; c; a
+    calc.sh
+
+# clipboard menu
+mod4 + d; c; b
+    clipboard.sh
+
+# emoji menu
+mod4 + d; e
+    emoji.sh
+
+# meme menu
+mod4 + d; m
+    meme.sh
+
+# password menu
+mod4 + d; p
+    password.sh
+
+# url action menu
+mod4 + d; u
+    url.sh
+
+#$
+
+#^---- RIGHT SIDE --------------------------------------------------------------
+
+# paste primary register
+mod4 + v
+    sleep 0.25 && xdotool type --clearmodifiers "$(xclip -o -selection primary)"
+
+# paste secondary register
+mod4 + shift + v
+    sleep 0.25 && xdotool type --clearmodifiers "$(xclip -o -selection secondary)"
+
+#$
+
+#^---- MODES -------------------------------------------------------------------
+
+#$
+
+# vim: ft=sh fdm=marker fmr=#^,#$
