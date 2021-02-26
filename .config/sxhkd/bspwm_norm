@@ -190,11 +190,11 @@ mod4 + Return
 mod4 + n
     bspc node @parent -C forward
 
-# paste clipboard
+# paste primary register
 mod4 + v
     sleep 0.25 && xdotool type --clearmodifiers "$(xclip -o -selection primary)"
 
-# paste primary clipboard
+# paste secondary register
 mod4 + shift + v
     sleep 0.25 && xdotool type --clearmodifiers "$(xclip -o -selection secondary)"
 
