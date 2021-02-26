@@ -4,6 +4,8 @@ ln -sf ${XDG_CONFIG_HOME}/sxhkd/i3 \
     ${XDG_CONFIG_HOME}/sxhkd/sxhkdrc
 sxhkd &
 
-[ -f ./startup.sh ] && . ./startup.sh
+if [ -f "${XDG_CONFIG_HOME}/i3/startup.sh" ]; then
+    .  "${XDG_CONFIG_HOME}/i3/startup.sh"
+fi
 
 exec i3

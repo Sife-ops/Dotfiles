@@ -3,15 +3,14 @@
 #^ appearance
 
 #^ font
-font pango:Noto Sans Mono 16
+font pango:Noto Sans Mono 20
 #$
 
 #^ gaps
-for_window [class=".*"] border pixel 2
-# smart_gaps on
-gaps inner 10
-# gaps outer current plus 5
-gaps outer 10
+#for_window [class=".*"] border pixel 2
+#smart_gaps on
+#smart_borders on
+#gaps inner 10
 #$
 
 #$
