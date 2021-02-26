@@ -1,0 +1,1 @@
+./bspwm/togmap.sh

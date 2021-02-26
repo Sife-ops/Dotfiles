@@ -1,4 +1,3 @@
 #!/bin/sh
 
-export BSPWM_TARGET='start'
 exec bspwm

@@ -18,6 +18,7 @@ fcitx &
 ~/.config/tmux/default.sh
 #$
 
-. "${XDG_CONFIG_HOME:-${HOME}/.config}/bspwm/xinitrc"
+# . "${XDG_CONFIG_HOME:-${HOME}/.config}/bspwm/xinitrc"
+. "${XDG_CONFIG_HOME:-${HOME}/.config}/i3/xinitrc"
 
 # vim: fdm=marker fmr=#^,#$

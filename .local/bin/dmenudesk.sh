@@ -1,0 +1,1 @@
+./bspwm/dmenudesk.sh

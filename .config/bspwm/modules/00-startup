@@ -1,33 +1,18 @@
 #!/bin/sh
 
-if [ "$BSPWM_TARGET" = 'start' ]; then
+ln -sf ${XDG_CONFIG_HOME}/sxhkd/bspwm_norm \
+    ${XDG_CONFIG_HOME}/sxhkd/wm_norm
+ln -sf ${XDG_CONFIG_HOME}/sxhkd/wm_norm \
+    ${XDG_CONFIG_HOME}/sxhkd/sxhkdrc
+sxhkd &
 
-    find "${XDG_DATA_HOME}/bspwm" \
-        ! -type d \
-        ! -regex '^.*gitignore.*$' \
-        -exec ln -sf {} ${HOME}/.local/bin/ \;
-    find "${XDG_DATA_HOME}/dwmblocks" \
-        ! -type d \
-        ! -regex '^.*gitignore.*$' \
-        -exec ln -sf {} ${HOME}/.local/bin/ \;
+ln -sf ${XDG_CONFIG_HOME}/polybar/bspwm \
+    ${XDG_CONFIG_HOME}/polybar/config
+polybar main &
+[ -n "$MONITOR1" ] && polybar secondary &
 
-    ln -sf ${XDG_CONFIG_HOME}/sxhkd/bspwm_norm \
-        ${XDG_CONFIG_HOME}/sxhkd/wm_norm
-    ln -sf ${XDG_CONFIG_HOME}/sxhkd/wm_norm \
-        ${XDG_CONFIG_HOME}/sxhkd/sxhkdrc
-    sxhkd &
+st -c dd -n ddterm -T "Terminal" -e sh -c 'tmux attach-session -t default; exec zsh' &
+sleep 3
+togmap.sh -l ddterm
 
-    ln -sf ${XDG_CONFIG_HOME}/polybar/bspwm \
-        ${XDG_CONFIG_HOME}/polybar/config
-    polybar main &
-    [ -n "$MONITOR1" ] && polybar secondary &
-
-    st -c dd -n ddterm -T "Terminal" -e sh -c 'tmux attach-session -t default; exec zsh' &
-    sleep 3
-    togmap.sh -l ddterm
-
-    st -e sh -c 'tmux attach-session -t default; exec zsh' &
-
-    export BSPWM_TARGET='init'
-
-fi
+st -e sh -c 'tmux attach-session -t default; exec zsh' &
