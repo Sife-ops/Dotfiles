@@ -20,6 +20,7 @@
 .config/VirtualBox/
 .config/abiword/
 .config/blender/
+.config/configstore
 .config/dconf/
 .config/discord/
 .config/discordcanary/
@@ -119,6 +120,7 @@
 .m2/
 .minecraft/
 .mozilla/
+.npm/
 .offlineimap/
 .pki
 .plover-lock-casper-0
