@@ -28,20 +28,27 @@ host_profile="${PROFILES}/${host}"
 install_profile(){ #^#
     if [ -d "$1" ]; then
         find "$1" -type f | while IFS= read -r file; do
-	    targ="${file##${1}}"
-	    targdir="$(dirname "$targ")"
+	    target="${file##${1}}"
+	    directory="$(dirname "$target")"
 
-	    if [ ! -d "$targdir" ]; then
-	        mkdir -p "$targdir" 2>/dev/null || \
-	    	sudo mkdir -p "$targdir"; fi
+	    if [ ! -d "$directory" ]; then
+	        # mkdir -p "$directory" || \
+	        mkdir -p "$directory" 2>/dev/null || \
+	    	sudo mkdir -p "$directory"; fi
 
-	    if [ -e "$targ" ] && ! readlink "$targ" 1>/dev/null; then
-	        mv "$targ" "${targ}_bu" 2>/dev/null || \
-	    	sudo mv "$targ" "${targ}_bu"; fi
+	    if [ -e "$target" ] && \
+	    	! readlink "$target" 1>/dev/null && \
+		[ ! -f "${target}_bu" ]; then
+	        # mv "$target" "${target}_bu" || \
+	    	# sudo mv "$target" "${target}_bu"; fi
+	        mv "$target" "${target}_bu" 2>/dev/null || \
+	    	sudo mv "$target" "${target}_bu"; fi
 
-	    ln -sfn "$file" "$targ" 2>/dev/null || \
-	        sudo ln -sfn "$file" "$targ" 2>/dev/null
-    done
+	    # ln -sfn "$file" "$target" || \
+	    #     sudo cp "$file" "$target" 
+	    ln -sfn "$file" "$target" 2>/dev/null || \
+	        sudo cp "$file" "$target" 2>/dev/null
+        done
     fi
 } #$#
 
@@ -56,7 +63,9 @@ chmod 600 $NOTIFICATIONS
 #$#
 
 #^#---- VCONSOLE ---------------------------------------------------------------
-# sudo -n loadkeys "${XDG_CONFIG_HOME}/kmap/$(cat /etc/hostname)" 2>/dev/null
+# case "$(uname)" in
+#     Linux) sudo -n loadkeys "${XDG_CONFIG_HOME}/kmap/$(cat /etc/hostname)" 2>/dev/null
+# esac
 #$#
 
 # vim: ft=sh fdm=marker fmr=#^#,#$#
