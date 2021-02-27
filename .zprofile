@@ -38,14 +38,14 @@ install_profile(){ #^#
 
 	    if [ -e "$target" ] && \
 	    	! readlink "$target" 1>/dev/null && \
-		[ ! -f "${target}_bu" ]; then
+            [ ! -f "${target}_bu" ]; then
 	        # mv "$target" "${target}_bu" || \
 	    	# sudo mv "$target" "${target}_bu"; fi
 	        mv "$target" "${target}_bu" 2>/dev/null || \
 	    	sudo mv "$target" "${target}_bu"; fi
 
 	    # ln -sfn "$file" "$target" || \
-	    #     sudo cp "$file" "$target" 
+	    #     sudo cp "$file" "$target"
 	    ln -sfn "$file" "$target" 2>/dev/null || \
 	        sudo cp "$file" "$target" 2>/dev/null
         done
