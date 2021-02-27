@@ -3,7 +3,7 @@
 #^ appearance
 
 #^ font
-font pango:Noto Sans Mono 20
+font pango:Noto Sans Mono 10
 #$
 
 #^ gaps
