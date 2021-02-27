@@ -9,7 +9,7 @@
 #^----- ENVIRONMENT VARIABLES --------------------------------------------------
 export MONITOR0="HDMI-0"
 
-export BROWSER="qutebrowser"
+export BROWSER="librewolf"
 export URL_OPENER="url.sh"
 
 export GTK_IM_MODULE=fcitx
