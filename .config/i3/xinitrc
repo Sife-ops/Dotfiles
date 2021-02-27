@@ -8,4 +8,16 @@ if [ -f "${XDG_CONFIG_HOME}/i3/startup.sh" ]; then
     .  "${XDG_CONFIG_HOME}/i3/startup.sh"
 fi
 
+sed "s/<+monitor0+>/$MONITOR0/" \
+    "${XDG_CONFIG_HOME}/i3/template" \
+        > "${XDG_CONFIG_HOME}/i3/config"
+
+if [ -n "$MONITOR1" ]; then
+    sed -i "s/<+monitor1+>/$MONITOR1/" \
+        "${XDG_CONFIG_HOME}/i3/config"
+else
+    sed -i "s/<+monitor1+>/$MONITOR0/" \
+        "${XDG_CONFIG_HOME}/i3/config"
+fi
+
 exec i3

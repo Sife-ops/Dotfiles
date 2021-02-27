@@ -20,6 +20,22 @@ font pango:Noto Sans Mono 10
 # exec --no-startup-id nm-applet
 #$
 
+#^ workspaces
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+workspace 1 output <+monitor0+>
+workspace 2 output <+monitor1+>
+#$
+
 #^ keymap
 set $mod Mod4
 floating_modifier $mod
@@ -99,19 +115,6 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 bindsym $mod+r mode "resize"
-#$
-
-#^ workspaces
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
 #$
 
 #^ i3status
