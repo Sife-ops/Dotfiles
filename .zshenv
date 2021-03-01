@@ -20,14 +20,14 @@ command -v nvim >/dev/null 2>&1 \
 	&& editor="nvim" \
 	|| editor="vim"
 export ALTEDITOR="emacsclient -nw"
+export BROWSER="${BROWSER:-lynx}"
 export EDITOR="$editor"
-export VISUAL="$editor"
 export FCEDIT="$editor"
-export TERMINAL="st"
-export TERMEXEC="st -e"
-export BROWSER="lynx"
 export PAGER="less"
 export READER="zathura"
+export TERMEXEC="st -e"
+export TERMINAL="st"
+export VISUAL="$editor"
 #$#
 
 #^#---- OTHER ------------------------------------------------------------------
