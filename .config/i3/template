@@ -58,8 +58,6 @@ bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
 
 # bindsym $mod+d focus child
-# bindsym $mod+h split h
-# bindsym $mod+v split v
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+Shift+minus move scratchpad
@@ -74,6 +72,8 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+grave exec $TERMINAL
 bindsym $mod+minus scratchpad show
 bindsym $mod+p exec --no-startup-id dmenu_run -b -i -l 10
+bindsym $mod+percent split h
+bindsym $mod+quotedbl split v
 bindsym $mod+s layout stacking
 bindsym $mod+space focus mode_toggle
 bindsym $mod+w layout tabbed
