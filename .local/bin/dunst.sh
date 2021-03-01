@@ -8,11 +8,12 @@ notifications="${NOTIFICATIONS:-${XDG_DATA_HOME:-${HOME}/.local/share}/notificat
 statusbar="${STATUSBAR:-${XDG_DATA_HOME:-${HOME}/.local/share}/statusbar}"
 sfx="${SFX:-${XDG_DATA_HOME:-${HOME}/.local/share}/sfx}"
 
+
 play(){
     mpv --profile=low-latency --volume="${2:-100}" "${sfx}/$1"
 }
 
-trucateFile(){
+truncateFile(){
     tmp=$(mktemp /tmp/dunst.XXX)
     tail -n 100 "$1" > "$tmp"
     mv "$tmp" "$1"
