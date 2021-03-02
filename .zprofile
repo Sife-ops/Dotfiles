@@ -17,7 +17,7 @@ default_profile="${PROFILES}/default"
 
 case "$(uname)" in
     FreeBSD) host="$(grep 'hostname' /etc/rc.conf |
-        sed -E 's/\(^.*="\)\(.*\.\)\(.*$\)/\2/')" ;;
+        sed -E 's/(^.*=")(.*\.)(.*$)/\2/')" ;;
     Linux) host="$(cat /etc/hostname)" ;;
     OpenBSD) host="$(cat /etc/myname | cut -d '.' -f 1)" ;;
     *) host="$(hostname)" ;;
