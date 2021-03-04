@@ -46,6 +46,7 @@
 .config/spacefm/
 .config/sxhkd/sxhkdrc
 .config/systemd/
+.config/torbrowser
 .config/user-dirs.dirs
 .config/user-dirs.locale
 .config/vimb/
@@ -103,6 +104,7 @@
 .local/share/steam
 .local/share/tig/
 .local/share/todo
+.local/share/torbrowser/
 .local/share/ucollage
 .local/share/vbox
 .local/share/virt
