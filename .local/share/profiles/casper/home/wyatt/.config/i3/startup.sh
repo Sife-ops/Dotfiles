@@ -1,7 +1,9 @@
 #!/bin/sh
 
-# xrandr --output DP-4 --dpi 108 --left-of HDMI-0
+sleep 1
+
 xrandr \
+    --dpi 108 \
     --output DP-0 \
         --off \
     --output DP-1 \
@@ -15,7 +17,6 @@ xrandr \
         --pos 1440x1792 \
         --rotate normal \
     --output DP-4 \
-        --dpi 108 \
         --left-of HDMI-0 \
         --mode 2560x1440 \
         --pos 0x0 \
@@ -24,5 +25,6 @@ xrandr \
         --off
 
 sleep 1
+
 setwallpaper.sh
 offlineimap -c ~/.config/offlineimap/offlineimaprc &
