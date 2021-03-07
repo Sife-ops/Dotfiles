@@ -6,29 +6,30 @@
 font pango:Noto Sans Mono 10
 #$
 
-#^ color
-# class                 border  backgr. text    indicator child_border
-client.focused          #4c7899 #285577 #ffffff #2e9ef4   #ff0000
-# client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-# client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-# client.urgent           #2f343a #900000 #ffffff #900000   #900000
-# client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-# client.background       #ffffff
-#$
+##^ color
+#class                 border  backgr. text    indicator child_border
+#client.focused          #4c7899 #285577 #ffffff #2e9ef4   #ff0000
+#client.focused          #ff0000 #900000 #ffffff #2e9ef4   #ff0000
+#client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+#client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+#client.urgent           #2f343a #900000 #ffffff #900000   #900000
+#client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+#client.background       #ffffff
+##$
 
-#^ gaps
-for_window [class=".*"] border pixel 1
+##^ gaps
+#for_window [class=".*"] border pixel 2
 #smart_gaps on
 #smart_borders on
-gaps inner 20
-#$
+#gaps inner 20
+##$
 
 #$
 
-#^ startup
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-# exec --no-startup-id nm-applet
-#$
+##^ startup
+#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+#exec --no-startup-id nm-applet
+##$
 
 #^ workspaces
 set $ws1 "1"
@@ -43,7 +44,7 @@ set $ws9 "9"
 set $ws10 "10"
 
 workspace 1 output <+monitor0+>
-workspace 6 output <+monitor1+>
+workspace 7 output <+monitor1+>
 #$
 
 #^ keymap
@@ -67,26 +68,26 @@ bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
 
+# bindsym $mod+Shift+c reload
+# bindsym $mod+Shift+minus move scratchpad
 # bindsym $mod+d focus child
-bindsym $mod+Shift+c reload
+# bindsym $mod+minus scratchpad show
+# bindsym $mod+s layout stacking
+# bindsym $mod+w layout tabbed
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+a focus parent
+bindsym $mod+backslash split h
 bindsym $mod+bracketleft workspace prev
 bindsym $mod+bracketright workspace next
 bindsym $mod+e layout toggle split
 bindsym $mod+f fullscreen toggle
 bindsym $mod+grave exec $TERMINAL
-bindsym $mod+minus scratchpad show
+bindsym $mod+minus split v
 bindsym $mod+p exec --no-startup-id dmenu_run -b -i -l 10
-bindsym $mod+percent split h
-bindsym $mod+quotedbl split v
-bindsym $mod+s layout stacking
 bindsym $mod+space focus mode_toggle
-bindsym $mod+w layout tabbed
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
