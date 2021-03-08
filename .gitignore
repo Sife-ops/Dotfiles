@@ -70,6 +70,7 @@
 .local/share/clipboard.d/
 .local/share/doc
 .local/share/doc/
+.local/share/docker
 .local/share/emoji
 .local/share/games
 .local/share/gnupg/
