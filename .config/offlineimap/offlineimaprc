@@ -8,7 +8,7 @@
 #^---- GENERAL ----------------------------------------------------------------
 [general]
 # List of accounts to be synced, separated by a comma.
-accounts = wyattgoettschatgmxdotus, elonbustatgmxdotcom
+accounts = wyattgoettschatgmxdotus, elonbustatgmxdotcom, yukiskitchenatgmxdotcom
 pythonfile = ~/.config/offlineimap/functions.py
 #$
 
@@ -98,6 +98,28 @@ type = IMAP
 remotehost = imap.gmx.com
 remoteuser = wyattgoettsch@gmx.us
 remotepasseval = get_pass('wyattgoettschatgmxdotus.gpg')
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+#$
+
+#^---- yukiskitchen@gmx.com --------------------------------------------------------
+[Account yukiskitchenatgmxdotcom]
+# Identifier for the local repository; e.g. the maildir to be synced via IMAP.
+localrepository = yukiskitchenatgmxdotcom-local
+# Identifier for the remote repository; i.e. the actual IMAP, usually non-local.
+remoterepository = yukiskitchenatgmxdotcom-remote
+
+[Repository yukiskitchenatgmxdotcom-local]
+# OfflineIMAP supports Maildir, GmailMaildir, and IMAP for local repositories.
+type = Maildir
+# Where should the mail be placed?
+localfolders = ~/.local/share/mail/yukiskitchen@gmx.com
+
+[Repository yukiskitchenatgmxdotcom-remote]
+# Remote repos can be IMAP or Gmail, the latter being a preconfigured IMAP.
+type = IMAP
+remotehost = imap.gmx.com
+remoteuser = yukiskitchen@gmx.com
+remotepasseval = get_pass('yukiskitchenatgmxdotcom.gpg')
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 #$
 

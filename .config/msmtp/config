@@ -32,6 +32,15 @@ user            elonbust@gmx.com
 passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ${SECRETS}/elonbustatgmxdotcom.gpg"
 #$
 
+#^---- yukiskitchen@gmx.com ----------------------------------------------------
+account         yukiskitchenatgmxdotcom
+host            mail.gmx.com
+port            465
+from            yukiskitchen@gmx.com
+user            yukiskitchen@gmx.com
+passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ${SECRETS}/elonbustatgmxdotcom.gpg"
+#$
+
 account default: wyattgoettschatgmxdotus
 
 # vim: fdm=marker fmr=#^,#$
