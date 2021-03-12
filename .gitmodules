@@ -1,9 +1,12 @@
 [submodule ".config/emacs"]
-	path = .config/emacs
-	url = https://github.com/Sife-ops/SoyFreEmacs.git
+    path = .config/emacs
+    url = https://github.com/Sife-ops/SoyFreEmacs.git
+    update = merge
 [submodule ".config/nvim"]
-	path = .config/nvim
-	url = https://github.com/Sife-ops/SoyFreeVim.git
+    path = .config/nvim
+    url = https://github.com/Sife-ops/SoyFreeVim.git
+    update = merge
 [submodule ".config/zsh"]
-	path = .config/zsh
-	url = https://github.com/Sife-ops/xyZSH.git
+    path = .config/zsh
+    url = https://github.com/Sife-ops/xyZSH.git
+    update = merge
