@@ -8,6 +8,8 @@ esgenerate
 esparse
 esvalidate
 extract_canvas
+fdsa.conf
+fdsa.sh
 hjson
 hjson.cmd
 installServerIntoExtension

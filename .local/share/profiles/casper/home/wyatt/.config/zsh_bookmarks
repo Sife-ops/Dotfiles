@@ -1,0 +1,25 @@
+# nvim
+
+~/.config/nvim/plugin vp
+
+# zsh
+
+~/.config/zsh/conf.d zi
+~/.config/zsh_bookmarks zb
+~/.zprofile zp
+~/.zshenv ze
+
+# xorg
+
+~/.xinitrc xi
+
+# places
+
+~/ h
+~/.local/bin b
+~/.local/share sh
+~/.local/share/docker do
+~/.local/src sr
+/mnt/wyatt/russianbot r
+/mnt/wyatt/sda1 a1
+~/.local/share/profiles p

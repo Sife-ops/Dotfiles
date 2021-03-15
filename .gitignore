@@ -54,6 +54,7 @@
 .config/vlc/
 .config/xfce4/
 .config/xinitrc
+.config/zsh_bookmarks
 .dbus/
 .gitconfig
 .ipfs/
