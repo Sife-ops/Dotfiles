@@ -1,10 +1,13 @@
 # nvim
 
-~/.config/nvim/plugin vp
+~/.config/nvim/plugin vd
+~/.config/vifm cvf
+~/.config/vifm vf
 
 # zsh
 
-~/.config/zsh/conf.d zi
+~/.config/zsh/conf.d zd
+~/.config/zsh/modules/60-aliasrc.zsh za
 ~/.config/zsh_bookmarks zb
 ~/.zprofile zp
 ~/.zshenv ze
