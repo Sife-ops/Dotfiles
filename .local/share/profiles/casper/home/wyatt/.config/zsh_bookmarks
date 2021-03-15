@@ -1,8 +1,8 @@
 # nvim
 
 ~/.config/nvim/plugin vd
-~/.config/vifm cvf
 ~/.config/vifm vf
+~/.config/vifm/vifmrc cvf
 
 # zsh
 
@@ -14,15 +14,16 @@
 
 # xorg
 
-~/.xinitrc xi
+~/.xinitrc x
 
 # places
 
+/mnt/wyatt/russianbot r
+/mnt/wyatt/sda1 1
 ~/ h
 ~/.local/bin b
 ~/.local/share sh
-~/.local/share/docker do
-~/.local/src sr
-/mnt/wyatt/russianbot r
-/mnt/wyatt/sda1 a1
+~/.local/share/docker d
+~/.local/share/kode k
 ~/.local/share/profiles p
+~/.local/src sr
