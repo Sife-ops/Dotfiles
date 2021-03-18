@@ -60,6 +60,7 @@
 .ipfs/
 .lein/
 .librewolf/
+.local/bin/virtualenv
 .local/lib/
 .local/share/.vivaldi_reporting_data
 .local/share/Trash/
@@ -110,6 +111,7 @@
 .local/share/ucollage
 .local/share/vbox
 .local/share/virt
+.local/share/virtualenv/
 .local/share/vlc/
 .local/share/wallpaper
 .local/share/warez
