@@ -10,7 +10,7 @@ sfx="${SFX:-${XDG_DATA_HOME:-${HOME}/.local/share}/sfx}"
 
 
 play(){
-    mpv --profile=low-latency --volume="${2:-100}" "${sfx}/$1"
+    mpv --profile=low-latency --volume="${2:-50}" "${sfx}/$1"
 }
 
 truncateFile(){
