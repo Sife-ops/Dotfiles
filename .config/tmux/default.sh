@@ -20,8 +20,8 @@ tmux split-window -t "${name}:0.2" -h
 # |           4           |
 # -------------------------
 
-tmux send-keys -t "${name}:0.0" "neomutt" C-m
-tmux send-keys -t "${name}:0.1" "irssi_login.sh" C-m
+tmux send-keys -t "${name}:0.0" "cd ~/Downloads && neomutt" C-m
+tmux send-keys -t "${name}:0.1" "ii_login.sh && cd ~/.local/share/ii && f" C-m
 tmux send-keys -t "${name}:0.2" "newsboat" C-m
 tmux send-keys -t "${name}:0.3" "command emacs --daemon && emacsclient -nw" C-m
 tmux send-keys -t "${name}:0.4" "pulsemixer" C-m
