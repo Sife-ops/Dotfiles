@@ -5,10 +5,11 @@
 # dcc
 
 prefix="${HOME}/.local/share/ii"
-session_log="${prefix}/session_log"
-networks="${prefix}/networks"
 servers="${prefix}/servers"
-passwords="${prefix}/passwords"
+session_log="${prefix}/session_log"
+
+networks="${XDG_CONFIG_HOME}/ii/networks"
+passwords="${XDG_CONFIG_HOME}/ii/passwords"
 
 pinwheel="\\"
 pinwheel () {
@@ -35,7 +36,6 @@ while read server nick bot channels; do
 
     if [ "$server" = "#" ] || [ -z "$server" ]; then continue; fi
     ii -i $servers -s $server -n $nick 1>"$session_log" 2>&1 &
-    # ii -i $servers -s $server -n $nick &
 
     server_pipe="${servers}/${server}/in"
 
@@ -43,7 +43,7 @@ while read server nick bot channels; do
 
         bot_pipe="${servers}/${server}/${bot}/in"
         bot_log="${servers}/${server}/${bot}/out"
-        password=$(gpg --decrypt "${passwords}/${server}~${nick}.gpg")
+        password=$(gpg --decrypt "${passwords}/${server}~${nick}.gpg" 2>/dev/null)
 
         while [ ! -e "$bot_pipe" ]; do
             [ -e "$server_pipe" ] && \
@@ -58,7 +58,7 @@ while read server nick bot channels; do
             "nickserv") magic_word=identified ;;
             "&bitlbee") magic_word=ready ;;
         esac
-        while ! grep "$magic_word" "$bot_log"; do
+        while ! grep "$magic_word" "$bot_log" 1>"$session_log" 2>&1 ; do
             pinwheel "identifying $nick on $server "
         done
         printf "\n"
@@ -71,7 +71,7 @@ while read server nick bot channels; do
         ind=${#ind}
 
         printf "waiting to join channels ...\n"
-        sleep ${1:-10}
+        sleep ${1:-5}
 
         for i in $(seq $(( $ind + 1 )) ); do
             channel=$(echo "$channels" | cut -d ',' -f "$i")
