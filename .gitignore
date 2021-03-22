@@ -7,6 +7,7 @@
 .bash_logout
 .bash_profile
 .bashrc
+.bluej/
 .cache/
 .config/Bitwarden/
 .config/Bitwarden\ CLI/
@@ -52,12 +53,12 @@
 .config/vimb/
 .config/vivaldi/
 .config/vlc/
-.config/xfce4/
 .config/xinitrc
 .config/zsh_bookmarks
 .dbus/
 .gitconfig
 .ipfs/
+.java/
 .lein/
 .librewolf/
 .local/bin/virtualenv
@@ -135,6 +136,7 @@
 .sudo_as_admin_successful
 .viminfo
 .vscode
+.xscreensaver
 .xsession-errors
 .xsession-errors.old
 Documents

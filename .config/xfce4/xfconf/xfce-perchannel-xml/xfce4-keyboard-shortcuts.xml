@@ -59,6 +59,7 @@
       <property name="override" type="bool" value="true"/>
       <property name="&lt;Super&gt;p" type="string" value="dmenu_run -b -i -l 10"/>
       <property name="&lt;Super&gt;grave" type="string" value="st"/>
+      <property name="&lt;Super&gt;BackSpace" type="string" value="xfce4-popup-whiskermenu"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
@@ -136,7 +137,6 @@
       <property name="&lt;Primary&gt;&lt;Alt&gt;Right" type="string" value="right_workspace_key"/>
       <property name="&lt;Alt&gt;F6" type="string" value="stick_window_key"/>
       <property name="&lt;Primary&gt;F11" type="string" value="workspace_11_key"/>
-      <property name="&lt;Alt&gt;F10" type="string" value="maximize_window_key"/>
       <property name="&lt;Alt&gt;Delete" type="string" value="del_workspace_key"/>
       <property name="&lt;Super&gt;Tab" type="string" value="switch_window_key"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;d" type="string" value="show_desktop_key"/>
@@ -188,6 +188,7 @@
       <property name="&lt;Super&gt;8" type="string" value="workspace_8_key"/>
       <property name="&lt;Super&gt;9" type="string" value="workspace_9_key"/>
       <property name="&lt;Shift&gt;&lt;Super&gt;q" type="string" value="close_window_key"/>
+      <property name="&lt;Super&gt;f" type="string" value="maximize_window_key"/>
     </property>
   </property>
   <property name="providers" type="array">
