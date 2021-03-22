@@ -88,6 +88,7 @@
 .local/share/memes
 .local/share/mupen64plus/
 .local/share/newsboat/
+.local/share/notes
 .local/share/notifications
 .local/share/nvim/.netrwhist
 .local/share/nvim/log
@@ -120,6 +121,7 @@
 .local/share/webkitgtk/
 .local/share/www
 .local/share/xdotool/
+.local/share/xfce4
 .local/share/xorg/
 .local/share/zathura/
 .local/share/zeitgeist/
