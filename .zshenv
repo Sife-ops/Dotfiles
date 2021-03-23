@@ -13,6 +13,7 @@ export XDG_CACHE_HOME="${HOME}/.cache"
 #^#---- PATH -------------------------------------------------------------------
 export PATH="${PATH}:${HOME}/.local/bin"
 export PATH="${PATH}:${XDG_DATA_HOME}/npm/bin"
+export PATH="${PATH}:${XDG_CONFIG_HOME}/emacs/bin"
 #$#
 
 #^#---- DEFAULT PROGRAMS -------------------------------------------------------
@@ -71,7 +72,6 @@ export QT_QPA_PLATFORMTHEME="gtk2"
 export SAVEHIST=900000
 export SECRETS="${XDG_DATA_HOME}/secrets"
 export SFX="${XDG_DATA_HOME}/sfx"
-# export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export TODO="${XDG_DATA_HOME}/todo"
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export URL_OPENER="url.sh"
@@ -86,7 +86,6 @@ export XMONAD_CACHE_HOME="${XDG_CACHE_HOME}/xmonad"
 export XMONAD_CONFIG_HOME="${XDG_CONFIG_HOME}/xmonad"
 export XMONAD_DATA_HOME="${XDG_DATA_HOME}/xmonad"
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
-# export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="${XDG_CONFIG_HOME:-$HOME/.config}/java"
 #$#
 
 # vim: ft=sh fdm=marker fmr=#^#,#$#

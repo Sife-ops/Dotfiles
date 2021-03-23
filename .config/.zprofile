@@ -5,11 +5,22 @@
 #    (_)___| .__/|_|  \___/|_| |_|_|\___|
 #          |_|
 
+#------ ONESHOT ----------------------------------------------------------------
+oneShotFile="/tmp/$(id -un)_zshOneShot"
+if [ ! -f "$oneShotFile" ]; then
+touch "$oneShotFile"
+
 #^#---- CLIPBOARD --------------------------------------------------------------
 mkdir -p $CLIPBOARD
 touch ${CLIPBOARD}/0{0,1,2,3,4}
 chmod 700 $CLIPBOARD
 chmod 600 ${CLIPBOARD}/*
+#$#
+
+#^#---- GPG --------------------------------------------------------------------
+# if [ -f "${HOME}/.local/share/secrets/dummy.gpg" ]; then
+   # gpg -d -q "${HOME}/.local/share/secrets/dummy.gpg"
+# fi
 #$#
 
 #^#---- HOST PROFILE -----------------------------------------------------------
@@ -62,10 +73,18 @@ touch $NOTIFICATIONS
 chmod 600 $NOTIFICATIONS
 #$#
 
+#^#---- TMUX -------------------------------------------------------------------
+if [ -f "${HOME}/.config/tmux/default.sh" ]; then
+    "${HOME}/.config/tmux/default.sh"
+fi
+#$#
+
 #^#---- VCONSOLE ---------------------------------------------------------------
 # case "$(uname)" in
 #     Linux) sudo -n loadkeys "${XDG_CONFIG_HOME}/kmap/$(cat /etc/hostname)" 2>/dev/null
 # esac
 #$#
+
+fi
 
 # vim: ft=sh fdm=marker fmr=#^#,#$#

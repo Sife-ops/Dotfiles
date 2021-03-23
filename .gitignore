@@ -20,11 +20,14 @@
 .config/Thunar/
 .config/VirtualBox/
 .config/abiword/
+.config/autostart/
 .config/blender/
 .config/configstore
 .config/dconf/
 .config/discord/
 .config/discordcanary/
+.config/doom/
+.config/emacs_/
 .config/fcitx/
 .config/gh/
 .config/gtk-2.0/
@@ -44,6 +47,7 @@
 .config/pulse/
 .config/qmk/
 .config/rofi/
+.config/skypeforlinux/
 .config/spacefm/
 .config/sxhkd/sxhkdrc
 .config/systemd/
@@ -71,10 +75,12 @@
 .local/share/cargo/
 .local/share/clipboard
 .local/share/clipboard.d/
+.local/share/coursera/
 .local/share/doc
 .local/share/doc/
 .local/share/docker
 .local/share/emoji
+.local/share/fonts/
 .local/share/games
 .local/share/gnupg/
 .local/share/go/
