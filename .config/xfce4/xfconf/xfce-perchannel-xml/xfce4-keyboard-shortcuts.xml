@@ -58,8 +58,8 @@
       <property name="XF86Display" type="string" value="xfce4-display-settings --minimal"/>
       <property name="override" type="bool" value="true"/>
       <property name="&lt;Super&gt;p" type="string" value="dmenu_run -b -i -l 10"/>
-      <property name="&lt;Super&gt;grave" type="string" value="st"/>
       <property name="&lt;Super&gt;BackSpace" type="string" value="xfce4-popup-whiskermenu"/>
+      <property name="&lt;Super&gt;grave" type="string" value="st -g 150x50+0+50"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

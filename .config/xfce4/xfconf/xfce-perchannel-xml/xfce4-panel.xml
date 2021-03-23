@@ -45,6 +45,7 @@
     <property name="plugin-6" type="string" value="systray">
       <property name="square-icons" type="bool" value="true"/>
       <property name="known-items" type="array">
+        <value type="string" value="vlc"/>
         <value type="string" value="Fcitx"/>
       </property>
       <property name="known-legacy-items" type="array">
@@ -54,7 +55,7 @@
     <property name="plugin-8" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
       <property name="show-notifications" type="bool" value="true"/>
-      <property name="mpris-players" type="string" value="chromium.instance19427;chromium.instance22408;firefox.instance60201"/>
+      <property name="mpris-players" type="string" value="chromium.instance19427;chromium.instance22408;firefox.instance18924;firefox.instance60201;firefox.instance99178;vlc;vlc.instance57953;vlc.instance62053;vlc.instance62589"/>
     </property>
     <property name="plugin-11" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
