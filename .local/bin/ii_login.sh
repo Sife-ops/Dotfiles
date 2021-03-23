@@ -43,7 +43,9 @@ while read server nick bot channels; do
 
         bot_pipe="${servers}/${server}/${bot}/in"
         bot_log="${servers}/${server}/${bot}/out"
-        password=$(gpg --decrypt "${passwords}/${server}~${nick}.gpg" 2>/dev/null)
+        password=$(gpg \
+            --decrypt "${passwords}/${server}~${nick}.gpg" \
+            2>"$session_log")
 
         while [ ! -e "$bot_pipe" ]; do
             [ -e "$server_pipe" ] && \
@@ -71,10 +73,11 @@ while read server nick bot channels; do
         ind=${#ind}
 
         printf "waiting to join channels ...\n"
-        sleep ${1:-5}
+        sleep 3
 
         for i in $(seq $(( $ind + 1 )) ); do
             channel=$(echo "$channels" | cut -d ',' -f "$i")
+
             [ -e "$server_pipe" ] && \
                 printf "/j %s\n" "$channel" > "$server_pipe"
         done
