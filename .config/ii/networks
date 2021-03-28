@@ -1,5 +1,5 @@
-# server                nick            bot             channels
-127.0.0.1               sife            &bitlbee
-irc.freenode.net        sife            nickserv        #freebsd,#bash,#emacs
-irc.irchighway.net      sife            _               #ebooks
-irc.undernet.org        sife            _               #bookz
+# server                port            nick            bot             channels
+soyless.xyz             3000            sife            &bitlbee
+irc.freenode.net        6667            sife            nickserv        #freebsd,#bash,#emacs
+irc.irchighway.net      6667            sife            _               #ebooks
+irc.undernet.org        6667            sife            _               #bookz

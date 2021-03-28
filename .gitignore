@@ -39,6 +39,7 @@
 .config/libfm/
 .config/libreoffice/
 .config/lxqt/
+.config/microsoft-edge-dev/
 .config/mozc/
 .config/neofetch
 .config/nordvpn/
