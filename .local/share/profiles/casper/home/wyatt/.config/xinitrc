@@ -12,13 +12,26 @@ export MONITOR1="HDMI-0"
 #$
 
 #^----- STARTUP ----------------------------------------------------------------
-picom &
-lxqt-policykit-agent &
-fcitx &
-~/.config/tmux/default.sh
+# picom &
+# lxqt-policykit-agent &
+# fcitx &
 #$
 
-# . "${XDG_CONFIG_HOME:-${HOME}/.config}/bspwm/xinitrc"
-. "${XDG_CONFIG_HOME:-${HOME}/.config}/i3/xinitrc"
+#^----- WM ---------------------------------------------------------------------
+##^ bspwm
+#. "${XDG_CONFIG_HOME:-${HOME}/.config}/bspwm/xinitrc"
+##$
+
+##^ i3
+#. "${XDG_CONFIG_HOME:-${HOME}/.config}/i3/xinitrc"
+##$
+
+#^ xfce4
+ln -sf ${XDG_CONFIG_HOME}/sxhkd/xfce4 \
+    ${XDG_CONFIG_HOME}/sxhkd/sxhkdrc
+sxhkd &
+exec startxfce4
+#$
+#$
 
 # vim: fdm=marker fmr=#^,#$

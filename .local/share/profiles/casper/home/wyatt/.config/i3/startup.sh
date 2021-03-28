@@ -5,4 +5,4 @@ xrandr --dpi 108 --output DP-0 --off --output DP-1 --off --output DP-2 --off --o
 sleep 1
 
 setwallpaper.sh
-offlineimap -c ~/.config/offlineimap/offlineimaprc &
+# offlineimap -c ~/.config/offlineimap/offlineimaprc &

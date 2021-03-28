@@ -1,4 +1,4 @@
-1   /mnt/wyatt/sda1
+D   ~/Downloads
 bi  ~/.local/bin
 bu  /mnt/wyatt/sda1/backup
 c   ~/.config
@@ -6,8 +6,9 @@ d   ~/.local/share/docker
 h   ~/
 i   ~/.local/share/ii/servers
 k   ~/.local/share/kode
+m1   /mnt/wyatt/sda1
+mr   /mnt/wyatt/russianbot
 p   ~/.local/share/profiles
-r   /mnt/wyatt/russianbot
 sh  ~/.local/share
 sr  ~/.local/src
 t   ~/.config/tmux
@@ -18,4 +19,5 @@ za  ~/.config/zsh/modules/60-aliasrc.zsh
 zb  ~/.config/zsh_bookmarks
 zd  ~/.config/zsh/conf.d
 ze  ~/.zshenv
-zp  ~/.zprofile
+zl  ~/.config/zlogin
+zp  ~/.config/zprofile
