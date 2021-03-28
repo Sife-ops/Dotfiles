@@ -13,6 +13,8 @@
       <property name="size" type="uint" value="48"/>
       <property name="plugin-ids" type="array">
         <value type="int" value="9"/>
+        <value type="int" value="3"/>
+        <value type="int" value="1"/>
         <value type="int" value="17"/>
         <value type="int" value="2"/>
         <value type="int" value="5"/>
@@ -49,13 +51,15 @@
         <value type="string" value="Fcitx"/>
       </property>
       <property name="known-legacy-items" type="array">
+        <value type="string" value="hexchat"/>
+        <value type="string" value="skypeforlinux"/>
         <value type="string" value="discord"/>
       </property>
     </property>
     <property name="plugin-8" type="string" value="pulseaudio">
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
       <property name="show-notifications" type="bool" value="true"/>
-      <property name="mpris-players" type="string" value="chromium.instance19427;chromium.instance22408;firefox.instance18924;firefox.instance60201;firefox.instance99178;vlc;vlc.instance57953;vlc.instance62053;vlc.instance62589"/>
+      <property name="mpris-players" type="string" value="chromium.instance1435009;chromium.instance19427;chromium.instance22408;firefox.instance1776;firefox.instance1831;firefox.instance18924;firefox.instance480459;firefox.instance60201;firefox.instance99178;vlc;vlc.instance1003822;vlc.instance1003841;vlc.instance1235521;vlc.instance1237593;vlc.instance1237612;vlc.instance1435475;vlc.instance1439949;vlc.instance1440590;vlc.instance57953;vlc.instance62053;vlc.instance62589"/>
     </property>
     <property name="plugin-11" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
@@ -69,5 +73,15 @@
     <property name="plugin-7" type="string" value="xfce4-sensors-plugin"/>
     <property name="plugin-9" type="string" value="whiskermenu"/>
     <property name="plugin-17" type="string" value="xfce4-notes-plugin"/>
+    <property name="plugin-1" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="16166909311.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-3" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="16167364361.desktop"/>
+      </property>
+    </property>
   </property>
 </channel>
