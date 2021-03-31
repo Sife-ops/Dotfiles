@@ -1,0 +1,5 @@
+# <host>        <targets>
+casper          /mnt/wyatt/sda1/backup
+casper          /mnt/wyatt/sdb1/backup
+casper          /mnt/wyatt/russianbot/backup
+nothingburger   /mnt/wyatt/russianbot/backup
