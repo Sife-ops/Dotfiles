@@ -21,5 +21,4 @@ za  ~/.config/zsh/modules/60-aliasrc.zsh
 zb  ~/.config/zsh_bookmarks
 zd  ~/.config/zsh/conf.d
 ze  ~/.zshenv
-zl  ~/.config/zlogin
-zp  ~/.config/zprofile
+zp  ~/.config/.zprofile
