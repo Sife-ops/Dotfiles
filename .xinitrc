@@ -37,6 +37,6 @@ unclutter --timeout 1 &
 dunst -always_run_script &
 #$
 
-. "${XDG_CONFIG_HOME:-${HOME}/.config}/xinitrc"
+. "${XDG_CONFIG_HOME}/xinitrc"
 
 # vim: fdm=marker fmr=#^,#$
