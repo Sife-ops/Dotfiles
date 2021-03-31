@@ -12,6 +12,7 @@
 .config/Bitwarden/
 .config/Bitwarden\ CLI/
 .config/BraveSoftware/
+.config/Code\ -\ OSS/
 .config/Element
 .config/GIMP/
 .config/Kitware/
@@ -146,6 +147,7 @@
 .sudo_as_admin_successful
 .viminfo
 .vscode
+.vscode-oss
 .xscreensaver
 .xsession-errors
 .xsession-errors.old
