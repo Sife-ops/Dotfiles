@@ -7,34 +7,16 @@
 
 #---- EVERY LOGIN --------------------------------------------------------------
 
-##^#---- TMUX -------------------------------------------------------------------
-#if [ -f "${HOME}/.config/tmux/default.sh" ]; then
-#    "${HOME}/.config/tmux/default.sh"
-#fi
-##$#
-
-#^#---- VCONSOLE ---------------------------------------------------------------
-# case "$(uname)" in
-#     Linux) sudo -n loadkeys "${XDG_CONFIG_HOME}/kmap/$(cat /etc/hostname)" 2>/dev/null
-# esac
-#$#
-
 #---- EVERY RESTART ------------------------------------------------------------
 oneShotFile="/tmp/zsh_oneshot_$(id -un)"
 if [ ! -f "$oneShotFile" ]; then
     touch "$oneShotFile"
 
-#^#---- STARTUP PROGRAMS -------------------------------------------------------
-if [ -f "${HOME}/.local/share/secrets/dummy.gpg" ]; then
-  gpg -d -q "${HOME}/.local/share/secrets/dummy.gpg"
-fi
-
-"${XDG_CONFIG_HOM}/tmux/default.sh"
-
-offlineimap -c "${XDG_CONFIG_HOME}/offlineimap/offlineimap.rc" &
-
-ii_login.sh &
-#$#
+##^#---- VCONSOLE ---------------------------------------------------------------
+#case "$(uname)" in
+#    Linux) sudo -n loadkeys "${XDG_CONFIG_HOME}/kmap/$(cat /etc/hostname)" 2>/dev/null
+#esac
+##$#
 
 fi
 
@@ -49,6 +31,12 @@ mkdir -p $CLIPBOARD
 touch ${CLIPBOARD}/0{0,1,2,3,4}
 chmod 700 $CLIPBOARD
 chmod 600 ${CLIPBOARD}/*
+#$#
+
+#^#---- NOTIFICATIONS ----------------------------------------------------------
+mkdir -p $(dirname $NOTIFICATIONS)
+touch $NOTIFICATIONS
+chmod 600 $NOTIFICATIONS
 #$#
 
 #^#---- HOST PROFILE INSTALLER -------------------------------------------------
@@ -93,12 +81,6 @@ install_profile(){ #^#
 
 install_profile "$default_profile"
 install_profile "$host_profile"
-#$#
-
-#^#---- NOTIFICATIONS ----------------------------------------------------------
-mkdir -p $(dirname $NOTIFICATIONS)
-touch $NOTIFICATIONS
-chmod 600 $NOTIFICATIONS
 #$#
 
 fi
