@@ -17,6 +17,7 @@ map i $ii_message.sh
 map r $vidir
 map u preview
 map x extract
+map X $$f
 #$
 
 #^ git
