@@ -4,7 +4,7 @@
 # test whether can join channels
 # dcc
 
-prefix="${HOME}/.local/share/ii"
+prefix="${IRC:-${XDG_DATA_HOME}/ii}"
 servers="${prefix}/servers"
 session_log="${prefix}/session_log"
 
@@ -30,8 +30,8 @@ pinwheel () {
 
 # kill running instances of ii
 pgrep -x ii && pkill -x ii
-
 mkdir -p "$servers" || exit 1
+find "$servers" -name 'in' -exec rm {} \;
 [ -f "$session_log" ] && rm "$session_log"
 
 while read server port nick bot channels; do
