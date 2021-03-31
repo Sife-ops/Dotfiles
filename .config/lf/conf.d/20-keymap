@@ -12,8 +12,8 @@ map <c-t> push :$touch<space>
 map <c-w> $setwallpaper.sh $f
 map D &dragon-drag-and-drop $fx
 map E $$ALTEDITOR "$f"
-map F !ii_read.sh $f
-map i !ii_message.sh
+map F $ii_read.sh $f
+map i $ii_message.sh
 map r $vidir
 map u preview
 map x extract
