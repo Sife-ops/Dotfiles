@@ -13,6 +13,7 @@ sh  ~/.local/share
 sr  ~/.local/src
 t   ~/.config/tmux
 vd  ~/.config/nvim/plugin
+vc  ~/.config/nvim/plugin/81-custom.vim
 vf  ~/.config/vifm
 x   ~/.xinitrc
 za  ~/.config/zsh/modules/60-aliasrc.zsh
