@@ -6,7 +6,8 @@ d   ~/.local/share/docker
 h   ~/
 i   ~/.local/share/ii/servers
 k   ~/.local/share/kode
-m1   /mnt/wyatt/sda1
+ma   /mnt/wyatt/sda1
+mb   /mnt/wyatt/sdb1
 mr   /mnt/wyatt/russianbot
 p   ~/.local/share/profiles
 sh  ~/.local/share
