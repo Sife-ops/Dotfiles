@@ -5,10 +5,44 @@
 #    (_)___| .__/|_|  \___/|_| |_|_|\___|
 #          |_|
 
-#------ ONESHOT ----------------------------------------------------------------
-oneShotFile="/tmp/$(id -un)_zshOneShot"
+#---- EVERY LOGIN --------------------------------------------------------------
+
+##^#---- TMUX -------------------------------------------------------------------
+#if [ -f "${HOME}/.config/tmux/default.sh" ]; then
+#    "${HOME}/.config/tmux/default.sh"
+#fi
+##$#
+
+#^#---- VCONSOLE ---------------------------------------------------------------
+# case "$(uname)" in
+#     Linux) sudo -n loadkeys "${XDG_CONFIG_HOME}/kmap/$(cat /etc/hostname)" 2>/dev/null
+# esac
+#$#
+
+#---- EVERY RESTART ------------------------------------------------------------
+oneShotFile="/tmp/zsh_oneshot_$(id -un)"
 if [ ! -f "$oneShotFile" ]; then
-touch "$oneShotFile"
+    touch "$oneShotFile"
+
+#^#---- STARTUP PROGRAMS -------------------------------------------------------
+if [ -f "${HOME}/.local/share/secrets/dummy.gpg" ]; then
+  gpg -d -q "${HOME}/.local/share/secrets/dummy.gpg"
+fi
+
+"${XDG_CONFIG_HOM}/tmux/default.sh"
+
+offlineimap -c "${XDG_CONFIG_HOME}/offlineimap/offlineimap.rc" &
+
+ii_login.sh &
+#$#
+
+fi
+
+#---- EVERY TIME A NEW USER LOGS IN --------------------------------------------
+firstLoginFile="${XDG_CACHE_HOME:-${HOME}/.cache}/zsh_firstlogin"
+mkdir -p "$(dirname "$firstLoginFile")"
+if [ -f "$firstLoginFile" ]; then
+    touch "$firstLoginFile"
 
 #^#---- CLIPBOARD --------------------------------------------------------------
 mkdir -p $CLIPBOARD
@@ -17,13 +51,7 @@ chmod 700 $CLIPBOARD
 chmod 600 ${CLIPBOARD}/*
 #$#
 
-#^#---- GPG --------------------------------------------------------------------
-# if [ -f "${HOME}/.local/share/secrets/dummy.gpg" ]; then
-   # gpg -d -q "${HOME}/.local/share/secrets/dummy.gpg"
-# fi
-#$#
-
-#^#---- HOST PROFILE -----------------------------------------------------------
+#^#---- HOST PROFILE INSTALLER -------------------------------------------------
 default_profile="${PROFILES}/default"
 
 case "$(uname)" in
@@ -73,18 +101,8 @@ touch $NOTIFICATIONS
 chmod 600 $NOTIFICATIONS
 #$#
 
-#^#---- TMUX -------------------------------------------------------------------
-if [ -f "${HOME}/.config/tmux/default.sh" ]; then
-    "${HOME}/.config/tmux/default.sh"
 fi
-#$#
 
-#^#---- VCONSOLE ---------------------------------------------------------------
-# case "$(uname)" in
-#     Linux) sudo -n loadkeys "${XDG_CONFIG_HOME}/kmap/$(cat /etc/hostname)" 2>/dev/null
-# esac
-#$#
 
-fi
 
 # vim: ft=sh fdm=marker fmr=#^#,#$#
