@@ -1,7 +1,6 @@
 C:/home/wyatt/.config
 D:/home/wyatt/Downloads
 a:/home/wyatt/.local/share/lf
-b:/home/wyatt/.local/share/ii
 bi:/home/wyatt/.local/bin
 bu:/mnt/wyatt/sda1/backup
 h:/home/wyatt/
@@ -23,7 +22,7 @@ vf:/home/wyatt/.config/vifm
 vk:/home/wyatt/.config/nvim/plugin/80-keymap.vim
 x:/home/wyatt/.xinitrc
 za:/home/wyatt/.config/zsh/modules/60-aliasrc.zsh
-zb:/home/wyatt/.config/zsh_bookmarks
+zb:/home/wyatt/.local/share/lf/marks
 zd:/home/wyatt/.config/zsh/conf.d
 ze:/home/wyatt/.zshenv
 zf:/home/wyatt/.config/zsh/modules/40-functions.zsh
