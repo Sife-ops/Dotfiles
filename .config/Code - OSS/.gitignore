@@ -1,0 +1,23 @@
+Backups/
+Cache/
+CachedData/
+CachedExtensionVSIXs/
+CachedExtensions/
+Code Cache/
+Cookies
+Cookies-journal
+Crash Reports/
+Dictionaries/
+GPUCache/
+Local Storage/
+Network Persistent State
+Preferences
+Session Storage/
+TransportSecurity
+Workspaces/
+exthost Crash Reports/
+languagepacks.json
+logs/
+machineid
+rapid_render.json
+storage.json
