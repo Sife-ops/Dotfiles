@@ -1,5 +1,4 @@
 [Default Applications]
-
 application/pdf=pdf.desktop
 application/postscript=pdf.desktop
 application/rss+xml=rss.desktop
@@ -10,15 +9,14 @@ application/x-extension-shtml=url.desktop
 application/x-extension-xht=url.desktop
 application/x-extension-xhtml=url.desktop
 application/xhtml+xml=url.desktop
-
 image/gif=img.desktop
 image/jpeg=img.desktop
 image/png=img.desktop
 inode/directory=file.desktop
 text/plain=text.desktop
 text/x-shellscript=text.desktop
+video/x-flv=mpv.desktop;
 video/x-matroska=video.desktop
-
 x-scheme-handler/http=url.desktop
 x-scheme-handler/https=url.desktop
 x-scheme-handler/lbry=lbry.desktop
