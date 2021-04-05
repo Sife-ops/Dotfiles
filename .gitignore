@@ -12,7 +12,6 @@
 .config/Bitwarden/
 .config/Bitwarden\ CLI/
 .config/BraveSoftware/
-.config/Code\ -\ OSS/
 .config/Element
 .config/GIMP/
 .config/Kitware/
@@ -79,6 +78,7 @@
 .local/share/clipboard
 .local/share/clipboard.d/
 .local/share/coursera/
+.local/share/direnv
 .local/share/doc
 .local/share/doc/
 .local/share/docker
