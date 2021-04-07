@@ -108,6 +108,7 @@
 .local/share/qutebrowser/
 .local/share/ranger/
 .local/share/recently-used.xbel
+.local/share/rosetta/
 .local/share/sarbs/
 .local/share/sarbs/aurlist
 .local/share/sarbs/paclist
