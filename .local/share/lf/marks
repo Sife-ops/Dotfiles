@@ -12,8 +12,10 @@ mb:/mnt/wyatt/sdb1
 mr:/mnt/wyatt/russianbot
 p:/home/wyatt/.local/share/profiles
 q:/home/wyatt/.local/src/qmk_firmware_sife/keyboards/converter/periboard_512/keymaps/default
+r:/home/wyatt/.local/share/rosetta/README.md
 sh:/home/wyatt/.local/share
 sr:/home/wyatt/.local/src
+tc:/home/wyatt/.config/tmux/conf.d/custom.conf
 tm:/home/wyatt/.config/tmux
 to:/home/wyatt/.local/share/todo
 vc:/home/wyatt/.config/nvim/plugin/91-custom.vim
