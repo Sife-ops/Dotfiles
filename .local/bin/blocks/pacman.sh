@@ -10,7 +10,7 @@ if test "$pkgs" -eq "$pkgs" 1>/dev/null 2>&1; then   # evil hack
     if [ "$pkgs" -lt "1" ]; then
         printf ""
     else
-        printf "%s%s" "$icon" "$pkgs"
+        printf "%s %s" "$icon" "$pkgs"
     fi
 else
     printf ""

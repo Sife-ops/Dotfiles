@@ -50,6 +50,7 @@
 .config/rofi/
 .config/skypeforlinux/
 .config/spacefm/
+.config/sqlitebrowser
 .config/sxhkd/sxhkdrc
 .config/systemd/
 .config/torbrowser
