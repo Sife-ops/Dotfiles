@@ -35,65 +35,77 @@ find "$servers" -name 'in' -exec rm {} \;
 [ -f "$session_log" ] && rm "$session_log"
 
 while read server port nick bot channels; do
-
-    # ignore comments/empty
+    # ignore comments/empty lines
     if [ "$server" = "#" ] || [ -z "$server" ]; then continue; fi
 
     # start ii
     ii -i $servers -s $server -p $port -n $nick 1>"$session_log" 2>&1 &
-    # ii -i $servers -s $server -p $port -n $nick &
 
     server_pipe="${servers}/${server}/in"
 
-    if [ ! "$bot" = "_" ]; then
+    # wait for server pipe to be created
+    pinwheel "connecting to $server "
+    while [ ! -e "$server_pipe" ]; do
+        sleep 0.2
+        pinwheel "connecting to $server "
+    done
+    printf "\n"
 
-        bot_pipe="${servers}/${server}/${bot}/in"
-        bot_log="${servers}/${server}/${bot}/out"
-        password=$(gpg \
-            --decrypt "${passwords}/${server}~${nick}.gpg" \
-            2>"$session_log")
+    # decrypt password
+    case $bot in
+        "_") : ;;
+        *)
+            pinwheel "decrypting password "
+            printf "\n"
+            password=$(gpg \
+                --decrypt "${passwords}/${server}~${nick}.gpg" \
+                2>"$session_log")
+            ;;
+    esac
 
-        # wait for bot pipe to become active
-        while [ ! -e "$bot_pipe" ]; do
-            [ -e "$server_pipe" ] && \
-                printf "/j %s echo\n" "$bot" > "$server_pipe"
-            sleep 0.2
-            pinwheel "connecting to $server "
-        done
-        printf "\n"
+    case $bot in
+        "&bitlbee"|"nickserv")
+            bot_pipe="${servers}/${server}/${bot}/in"
+            bot_log="${servers}/${server}/${bot}/out"
 
-        # wait to be identified
-        [ -f "$bot_log" ] && truncate -s 0 "$bot_log"
-        printf "identify %s\n" "$password" > "$bot_pipe"
-        case "$bot" in
-            "nickserv") magic_word=identified ;;
-            "&bitlbee") magic_word=accepted ;;
-        esac
-        while ! grep "$magic_word" "$bot_log" 1>"$session_log" 2>&1 ; do
-            sleep 0.2
+            # wait for bot pipe to become active
+            pinwheel "waiting for bots "
+            while [ ! -e "$bot_pipe" ]; do
+                [ -e "$server_pipe" ] && \
+                    printf "/j %s echo\n" "$bot" > "$server_pipe"
+                sleep 0.2
+                pinwheel "waiting for bots "
+            done
+            printf "\n"
+
+            # identify
+            [ -f "$bot_log" ] && truncate -s 0 "$bot_log"
+            printf "identify %s\n" "$password" > "$bot_pipe"
+            case "$bot" in
+                "&bitlbee") magic_word=accepted ;;
+                "nickserv") magic_word=identified ;;
+            esac
+
+            # wait to be identified
             pinwheel "identifying $nick on $server "
-        done
-        printf "\n"
+            while ! grep "$magic_word" "$bot_log" 1>"$session_log" 2>&1 ; do
+                sleep 0.2
+                pinwheel "identifying $nick on $server "
+            done
+            printf "\n"
+            ;;
 
-    fi
+        znc)
+            # wait for server pipe to be created
+            while [ ! -e "$server_pipe" ]; do
+                sleep 0.2
+            done
 
-    sleep 1
-
-    if [ -n "$channels" ]; then
-
-        ind=$(echo "$channels" | tr -dc ',')
-        ind=${#ind}
-
-        # printf "waiting to join channels ...\n"
-        # sleep 3
-
-        for i in $(seq $(( $ind + 1 )) ); do
-            channel=$(echo "$channels" | cut -d ',' -f "$i")
-
-            [ -e "$server_pipe" ] && \
-                printf "/j %s\n" "$channel" > "$server_pipe"
-        done
-
-    fi
-
+            # identify
+            pinwheel "identifying $nick on $server "
+            printf "\n"
+            printf "/PASS %s/%s:%s\n" \
+                "$nick" "$channels" "$password" > "$server_pipe"
+            ;;
+    esac
 done < "$networks"
