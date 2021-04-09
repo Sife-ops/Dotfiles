@@ -1,0 +1,141 @@
+#!/bin/sh
+
+passwordFile="${SECRETS}/bitwarden.gpg"
+
+case $(bw status | jq -r '.status') in
+    unlocked) : ;;
+    *)
+        echo "your session was locked"
+        password=$(gpg --decrypt "$passwordFile" 2>/dev/null)
+        sessionKey=$(bw unlock $password --raw)
+        export BW_SESSION=$sessionKey
+
+        # final confirmation
+        case $(bw status | jq -r '.status') in
+            unlocked) : ;;
+            *) echo "login failed" ;;
+        esac
+
+        ;;
+esac
+
+main_list () {
+    bw list items | jq -r '.[] | "\(.name) | \(.id)"'
+    echo "Create"
+    echo "Sync"
+}
+
+item_list () {
+    echo "Copy"
+    echo "Edit"
+    echo "Delete"
+}
+
+create_list () {
+    echo "card"
+    echo "identity"
+    echo "login"
+    echo "secure note"
+}
+
+template(){
+    # $1 -> item type
+    # generate a template for new items
+    item="$(bw get template item)"
+    template="$(bw get template item."$1")"
+    item="$(echo "$item" | jq -c ".$1 = $template")"
+    item="$(echo "$item" | jq -c ".notes = null")"
+    case "$1" in
+        identity)
+            item="$(echo "$item" | jq -c '.type = 1')" ;;
+        secureNote)
+            item="$(echo "$item" | jq -c '.type = 2')" ;;
+        card)
+            item="$(echo "$item" | jq -c '.type = 3')" ;;
+        login)
+            uri="$(bw get template item.login.uri)"
+            item="$(echo "$item" | jq -c ".login.uris = [${uri}]")"
+            item="$(echo "$item" | jq -c ".login.uris[0].uri = null")" ;;
+        "") kill 0 ;;
+        *) kill 0 ;;
+    esac
+    echo "$item"
+}
+
+edit () {
+    # edit vault items in a restricted folder
+    # todo: diff edited item with original
+
+    # create secure temp files for editing vault items
+    safe="$(mktemp -d /tmp/bwvault.XXX)"
+    chmod 700 "$safe"
+    item="$(mktemp "${safe}/bwitem.XXX.json")"
+    chmod 600 "$item"
+    echo "$1" | jq > "$item"
+
+    # open vault item with text editor
+    $TERMEXEC $EDITOR $item
+
+    # never accept invalid json
+    while ! cat "$item" | jq 1>/dev/null 2>&1; do
+        # message cannot parse json
+        $TERMEXEC $EDITOR $item
+    done
+
+    # print edited vault item
+    cat "$item" | jq -c
+
+    # delete temp files
+    rm -rf "$safe" 1>/dev/null 2>&1
+}
+
+create_item(){
+    # $1 -> item json
+    # create a new item in your Bitwarden vault
+    echo "$1" |
+        bw encode |
+        bw create item
+}
+
+edit_item(){
+    # $1 -> item json, $2 -> id
+    # eidt a vault item in your Bitwarden vault
+    echo "$1" |
+        bw encode |
+        bw edit item "$2"
+
+}
+
+chosen=$(main_list | ${DMENU_CMD:-dmenu})
+case "$chosen" in
+    Create)
+        chosen=$(create_list | ${DMENU_CMD:-dmenu})
+        case "$chosen" in
+            card) create_item "$(edit "$(template card)")" ;;
+            identity) create_item "$(edit "$(template identity)")" ;;
+            login) create_item "$(edit "$(template login)")" ;;
+            "secure note") create_item "$(edit "$(template securenote)")" ;;
+        esac
+        ;;
+    Sync) bw sync -f ;;
+    "") exit 1 ;;
+    *)
+        id=$(echo "$chosen" | cut -d '|' -f 2 | tr -d '[:space:]')
+        item=$(bw list items | jq -c ".[] | select(.id == \"$id\")")
+        chosen=$(item_list | ${DMENU_CMD:-dmenu})
+        case "$chosen" in
+            Copy)
+                echo "$item" | jq
+                username=$(echo "$item" | jq -r '.login.username')
+                password=$(echo "$item" | jq -r '.login.password')
+                echo "$username" | xclip -i -selection clipboard
+                echo "$password" | xclip -i -selection primary
+                tmux set-buffer "$username"
+                tmux set-buffer "$password"
+                ;;
+            Edit) edit_item "$(edit "$item")" $id ;;
+            Delete) bw delete item $id ;;
+        esac
+        ;;
+esac
+bw sync -f

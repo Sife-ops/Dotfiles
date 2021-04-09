@@ -18,6 +18,7 @@ node_modules/
 nose2
 nose2-3.6
 package-lock.json
+password.sh
 pycodestyle
 pyflakes
 qmk
