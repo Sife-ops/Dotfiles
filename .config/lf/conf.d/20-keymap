@@ -7,6 +7,7 @@ map <c-r> reload
 map <a-c> fzfcd
 map <c-d> $nvim -d $fx
 map <c-n> push :mkdir<space>
+map <c-o> $./tmux.sh lf
 map <c-s> $ln -sf $fs ./
 map <c-t> push :$touch<space>
 map <c-w> $setwallpaper.sh $f
