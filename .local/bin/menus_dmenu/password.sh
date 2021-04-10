@@ -6,9 +6,10 @@ passwordFile="${SECRETS}/bitwarden.gpg"
 
 case $(bw status | jq -r '.status') in
     unlocked) : ;;
-    *) echo "your session was locked"
+    *) echo "your session was locked" # change to notify-send
         password=$(gpg --decrypt "$passwordFile" 2>/dev/null)
         sessionKey=$(bw unlock $password --raw)
+
         # need to generalize
         echo "export BW_SESSION=\"${sessionKey}\"" > \
             "${ZDOTDIR}/conf.d/99-bitwarden.zsh"
@@ -17,7 +18,7 @@ case $(bw status | jq -r '.status') in
         # final confirmation
         case $(bw status | jq -r '.status') in
             unlocked) : ;;
-            *) echo "login failed" ;;
+            *) echo "login failed" ;; # change to notify-send
         esac ;;
 esac
 
@@ -41,7 +42,7 @@ create_list () {
 }
 
 template () {
-    # $1 -> item type
+    # $1 -> item type string, => item json
     # generate a template for new items
     item="$(bw get template item)"
     template="$(bw get template item."$1")"
@@ -53,7 +54,8 @@ template () {
         secureNote) item="$(echo "$item" | jq -c '.type = 2')" ;;
         card) item="$(echo "$item" | jq -c '.type = 3')" ;;
         login) item="$(echo "$item" | jq -c ".login.username = \"<++>\"")"
-            password=$(< /dev/urandom tr -dc 'A-Za-z0-9' | head -c 14)
+            # password=$(< /dev/urandom tr -dc 'A-Za-z0-9' | head -c 16)
+            password=$(< /dev/urandom tr -dc 'A-Za-z0-9!@#$%^&*()-=_+[]~{}|;:,./<>?' | head -c 16)
             item="$(echo "$item" | jq -c ".login.password = \"${password}\"")"
             uri="$(bw get template item.login.uri)"
             item="$(echo "$item" | jq -c ".login.uris = [${uri}]")"
@@ -67,18 +69,19 @@ template () {
 }
 
 edit () {
+    # $1 -> item json, => edited item json
     # edit vault items in a restricted folder
     # todo: diff edited item with original
 
     # create secure temp files for editing vault items
-    safe="$(mktemp -d /tmp/bwvault.XXX)"
+    safe="$(mktemp -d /tmp/bw.XXXXX)"
     chmod 700 "$safe"
 
-    item="$(mktemp "${safe}/bwitem.XXX.json")"
+    item="$(mktemp "${safe}/bw.XXXXX.json")"
     chmod 600 "$item"
     echo "$1" | jq > "$item"
 
-    # original="$(mktemp "${safe}/bwitem.XXX.json")"
+    # original="$(mktemp "${safe}/bw.XXXXX.json")"
     # chmod 600 "$original"
     # cp "$item" "$original"
 
@@ -118,7 +121,6 @@ edit_item () {
     echo "$1" |
         bw encode |
         bw edit item "$2"
-
 }
 
 chosen=$(main_list | ${DMENU_CMD:-dmenu})

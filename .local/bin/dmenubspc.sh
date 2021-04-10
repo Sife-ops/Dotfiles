@@ -1,1 +1,0 @@
-./bspwm/dmenubspc.sh
