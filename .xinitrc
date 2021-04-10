@@ -36,10 +36,16 @@ fi
 
 ln -sf ${HOME}/.local/bin/menus_dmenu/* ${HOME}/.local/bin/
 
-xset r rate 200 50
+# xset r rate 200 50
 unclutter --timeout 1 &
 dunst -always_run_script &
 
-. "${XDG_CONFIG_HOME}/xinitrc"
+ln -sf ${XDG_CONFIG_HOME}/sxhkd/xfce4 \
+    ${XDG_CONFIG_HOME}/sxhkd/sxhkdrc
+sxhkd &
+
+exec startxfce4
+
+# . "${XDG_CONFIG_HOME}/xinitrc"
 
 # vim: fdm=marker fmr=#^,#$
