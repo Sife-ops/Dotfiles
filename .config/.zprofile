@@ -12,6 +12,10 @@ oneShotFile="/tmp/zsh_oneshot_$(id -un)"
 if [ ! -f "$oneShotFile" ]; then
     touch "$oneShotFile"
 
+#^#--- INSTALL MENUS -----------------------------------------------------------
+ln -sf ${HOME}/.local/bin/menus_fzf/* ${HOME}/.local/bin/
+#$#
+
 ##^#---- VCONSOLE ---------------------------------------------------------------
 #case "$(uname)" in
 #    Linux) sudo -n loadkeys "${XDG_CONFIG_HOME}/kmap/$(cat /etc/hostname)" 2>/dev/null
@@ -84,7 +88,5 @@ install_profile "$host_profile"
 #$#
 
 fi
-
-
 
 # vim: ft=sh fdm=marker fmr=#^#,#$#
