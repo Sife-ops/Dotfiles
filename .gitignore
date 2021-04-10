@@ -60,6 +60,7 @@
 .config/vivaldi/
 .config/vlc/
 .config/xinitrc
+.config/yarn/
 .config/zsh_bookmarks
 .dbus/
 .gitconfig
@@ -105,6 +106,7 @@
 .local/share/nvim/shada/
 .local/share/nvim/site/autoload/plug.vim.old
 .local/share/nvim/undo/
+.local/share/nvm/
 .local/share/plover/
 .local/share/qutebrowser/
 .local/share/ranger/
@@ -152,6 +154,7 @@
 .xscreensaver
 .xsession-errors
 .xsession-errors.old
+.yarnrc
 Documents
 Downloads
 Mail/
