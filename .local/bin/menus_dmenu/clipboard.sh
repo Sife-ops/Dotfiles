@@ -18,8 +18,8 @@ case "$a" in
     primary) a=$(xclip -o -selection primary) ;;
     secondary) a=$(xclip -o -selection secondary) ;;
     tmux) a=$(tmux show-buffer) ;;
+    "") exit 1 ;;
     *) a=$(cat ${CLIPBOARD}/${a}) ;;
-    "") kill 0 ;;
 esac
 
 b=$(main_list | ${DMENU_CMD:-dmenu})
@@ -29,6 +29,6 @@ case "$b" in
     primary) echo "$a" | xclip -i -selection primary ;;
     secondary) echo "$a" | xclip -i -selection secondary ;;
     tmux) tmux set-buffer "$a" ;;
+    "") exit 1 ;;
     *) echo "$a" > "${CLIPBOARD}/${b}" ;;
-    "") kill 0 ;;
 esac

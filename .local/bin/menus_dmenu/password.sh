@@ -24,14 +24,14 @@ esac
 
 main_list () {
     bw list items | jq -r '.[] | "\(.name) | \(.id)"'
-    echo "Create"
-    echo "Sync"
+    echo "create"
+    echo "sync"
 }
 
 item_list () {
-    echo "Copy"
-    echo "Edit"
-    echo "Delete"
+    echo "copy"
+    echo "edit"
+    echo "delete"
 }
 
 create_list () {
@@ -125,7 +125,7 @@ edit_item () {
 
 chosen=$(main_list | ${DMENU_CMD:-dmenu})
 case "$chosen" in
-    Create)
+    create)
         chosen=$(create_list | ${DMENU_CMD:-dmenu})
         case "$chosen" in
             card) create_item "$(edit "$(template card)")" ;;
@@ -134,14 +134,14 @@ case "$chosen" in
             "secure note") create_item "$(edit "$(template securenote)")" ;;
         esac
         ;;
-    Sync) bw sync -f ;;
+    sync) bw sync -f ;;
     "") exit 1 ;;
     *)
         id=$(echo "$chosen" | cut -d '|' -f 2 | tr -d '[:space:]')
         item=$(bw list items | jq -c ".[] | select(.id == \"$id\")")
         chosen=$(item_list | ${DMENU_CMD:-dmenu})
         case "$chosen" in
-            Copy)
+            copy)
                 echo "$item" | jq
                 username=$(echo "$item" | jq -r '.login.username')
                 password=$(echo "$item" | jq -r '.login.password')
@@ -150,8 +150,8 @@ case "$chosen" in
                 tmux set-buffer "$username"
                 tmux set-buffer "$password"
                 ;;
-            Edit) edit_item "$(edit "$item")" $id ;;
-            Delete) bw delete item $id ;;
+            edit) edit_item "$(edit "$item")" $id ;;
+            delete) bw delete item $id ;;
         esac
         ;;
 esac

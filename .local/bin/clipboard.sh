@@ -1,1 +1,1 @@
-menus_dmenu/clipboard.sh
+/home/wyatt/.local/bin/menus_dmenu/clipboard.sh
