@@ -9,6 +9,12 @@
     "editor.minimap.enabled": false,
     "editor.lineNumbers": "off",
 
+  "vim.handleKeys": {
+
+    "<C-b>": false
+
+  },
+
     "vim.leader": "<space>",
 
     "vim.normalModeKeyBindingsNonRecursive": [
