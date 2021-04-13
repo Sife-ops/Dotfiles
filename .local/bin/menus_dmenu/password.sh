@@ -125,34 +125,27 @@ edit_item () {
 
 chosen=$(main_list | ${DMENU_CMD:-dmenu})
 case "$chosen" in
-    create)
-        chosen=$(create_list | ${DMENU_CMD:-dmenu})
+    create) chosen=$(create_list | ${DMENU_CMD:-dmenu})
         case "$chosen" in
             card) create_item "$(edit "$(template card)")" ;;
             identity) create_item "$(edit "$(template identity)")" ;;
             login) create_item "$(edit "$(template login)")" ;;
             "secure note") create_item "$(edit "$(template securenote)")" ;;
-        esac
-        ;;
+        esac ;;
     sync) bw sync -f ;;
     "") exit 1 ;;
-    *)
-        id=$(echo "$chosen" | cut -d '|' -f 2 | tr -d '[:space:]')
+    *) id=$(echo "$chosen" | cut -d '|' -f 2 | tr -d '[:space:]')
         item=$(bw list items | jq -c ".[] | select(.id == \"$id\")")
         chosen=$(item_list | ${DMENU_CMD:-dmenu})
         case "$chosen" in
-            copy)
-                echo "$item" | jq
-                username=$(echo "$item" | jq -r '.login.username')
+            copy) username=$(echo "$item" | jq -r '.login.username')
                 password=$(echo "$item" | jq -r '.login.password')
                 echo "$username" | xclip -i -selection clipboard
                 echo "$password" | xclip -i -selection primary
                 tmux set-buffer "$username"
-                tmux set-buffer "$password"
-                ;;
+                tmux set-buffer "$password" ;;
             edit) edit_item "$(edit "$item")" $id ;;
             delete) bw delete item $id ;;
-        esac
-        ;;
+        esac ;;
 esac
 bw sync -f
