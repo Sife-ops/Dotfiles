@@ -186,7 +186,7 @@
       <property name="&lt;Super&gt;8" type="string" value="workspace_8_key"/>
       <property name="&lt;Super&gt;9" type="string" value="workspace_9_key"/>
       <property name="&lt;Super&gt;f" type="string" value="maximize_window_key"/>
-      <property name="F11" type="string" value="close_window_key"/>
+      <property name="F12" type="string" value="close_window_key"/>
     </property>
   </property>
   <property name="providers" type="array">
