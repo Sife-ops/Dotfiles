@@ -11,24 +11,40 @@ main_list () {
     done | sort
 }
 
-a=$(main_list | ${DMENU_CMD:-dmenu})
-a=$(echo "$a" | cut -d ':' -f 1)
-case "$a" in
-    clipboard) a=$(xclip -o -selection clipboard) ;;
-    primary) a=$(xclip -o -selection primary) ;;
-    secondary) a=$(xclip -o -selection secondary) ;;
-    tmux) a=$(tmux show-buffer) ;;
+action_list () {
+    main_list
+    echo "edit"
+}
+
+src=$(main_list | ${DMENU_CMD:-dmenu})
+src=$(echo "$src" | cut -d ':' -f 1)
+case "$src" in
+    clipboard) content=$(xclip -o -selection clipboard) ;;
+    primary) content=$(xclip -o -selection primary) ;;
+    secondary) content=$(xclip -o -selection secondary) ;;
+    tmux) content=$(tmux show-buffer) ;;
     "") exit 1 ;;
-    *) a=$(cat ${CLIPBOARD}/${a}) ;;
+    *) content=$(cat ${CLIPBOARD}/${src}) ;;
 esac
 
-b=$(main_list | ${DMENU_CMD:-dmenu})
-b=$(echo "$b" | cut -d ':' -f 1)
-case "$b" in
-    clipboard) echo "$a" | xclip -i -selection clipboard ;;
-    primary) echo "$a" | xclip -i -selection primary ;;
-    secondary) echo "$a" | xclip -i -selection secondary ;;
-    tmux) tmux set-buffer "$a" ;;
+trg=$(action_list | ${DMENU_CMD:-dmenu})
+trg=$(echo "$trg" | cut -d ':' -f 1)
+case "$trg" in
+    clipboard) echo "$content" | xclip -i -selection clipboard ;;
+    primary) echo "$content" | xclip -i -selection primary ;;
+    secondary) echo "$content" | xclip -i -selection secondary ;;
+    tmux) tmux set-buffer "$content" ;;
+    edit) tmp=$(mktemp /tmp/clipboard_XXX)
+        echo "$content" > "$tmp"
+        ${TERMEXEC:-xterm -e} ${EDITOR:-vim} "$tmp"
+        case "$src" in
+            clipboard) cat "$tmp" | xclip -i -selection clipboard ;;
+            primary) cat "$tmp" | xclip -i -selection primary ;;
+            secondary) cat "$tmp" | xclip -i -selection secondary ;;
+            tmux) tmux set-buffer "$(cat "$tmp")" ;;
+            *) cat "$tmp" > "${CLIPBOARD}/${src}" ;;
+        esac
+        rm "$tmp" ;;
     "") exit 1 ;;
-    *) echo "$a" > "${CLIPBOARD}/${b}" ;;
+    *) echo "$content" > "${CLIPBOARD}/${trg}" ;;
 esac
