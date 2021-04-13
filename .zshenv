@@ -27,7 +27,7 @@ export FCEDIT="$editor"
 export PAGER="less"
 export READER="zathura"
 export TERMEXEC="st -e"
-export TERMINAL="xfce4-terminal"
+export TERMINAL="st"
 export VISUAL="$editor"
 #$#
 
