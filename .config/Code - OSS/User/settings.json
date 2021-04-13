@@ -1,13 +1,13 @@
 {
-    "files.exclude": {
-        "**/.classpath": true,
-        "**/.project": true,
-        "**/.settings": true,
-        "**/.factorypath": true
-    },
-    "java.home": "/usr/lib/jvm/default",
-    "editor.minimap.enabled": false,
-    "editor.lineNumbers": "off",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "java.home": "/usr/lib/jvm/default",
+  "editor.minimap.enabled": false,
+  "editor.lineNumbers": "off",
 
   "vim.handleKeys": {
 
@@ -15,23 +15,29 @@
 
   },
 
-    "vim.leader": "<space>",
+  "vim.leader": "<space>",
 
-    "vim.normalModeKeyBindingsNonRecursive": [
+  "vim.insertModeKeyBindingsNonRecursive": [
 
-        { "before": ["<C-h>"], "after": ["<C-w>", "h"] },
-        { "before": ["<C-j>"], "after": ["<C-w>", "j"] },
-        { "before": ["<C-k>"], "after": ["<C-w>", "k"] },
-        { "before": ["<C-l>"], "after": ["<C-w>", "l"] },
-        { "before": ["<leader>", ";"], "after": ["g", "c", "c", "j"] },
-        { "before": ["<leader>", "["], "commands": ["workbench.action.previousEditor"] },
-        { "before": ["<leader>", "]"], "commands": ["workbench.action.nextEditor"] },
-        { "before": ["<leader>", "m", "m"], "commands": ["editor.action.toggleMinimap"] },
-        { "before": ["<leader>", "q"], "commands": [ "workbench.action.files.saveAll", "workbench.action.closeWindow" ] },
-        { "before": ["<leader>", "w"], "commands": ["workbench.action.files.saveAll"] }
+    { "before": ["$", "$"], "after": ["<Esc>", "A"] },
 
-    ],
-    "terminal.integrated.allowChords": false,
-    "window.zoomLevel": 1
+  ],
+
+  "vim.normalModeKeyBindingsNonRecursive": [
+
+    { "before": ["<C-h>"], "after": ["<C-w>", "h"] },
+    { "before": ["<C-j>"], "after": ["<C-w>", "j"] },
+    { "before": ["<C-k>"], "after": ["<C-w>", "k"] },
+    { "before": ["<C-l>"], "after": ["<C-w>", "l"] },
+    { "before": ["<leader>", ";"], "after": ["g", "c", "c", "j"] },
+    { "before": ["<leader>", "["], "commands": ["workbench.action.previousEditor"] },
+    { "before": ["<leader>", "]"], "commands": ["workbench.action.nextEditor"] },
+    { "before": ["<leader>", "m", "m"], "commands": ["editor.action.toggleMinimap"] },
+    { "before": ["<leader>", "q"], "commands": [ "workbench.action.files.saveAll", "workbench.action.closeWindow" ] },
+    { "before": ["<leader>", "w"], "commands": ["workbench.action.files.saveAll"] }
+
+  ],
+  "terminal.integrated.allowChords": false,
+  "window.zoomLevel": 1
 
 }
