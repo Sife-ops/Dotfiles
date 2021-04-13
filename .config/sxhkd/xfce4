@@ -37,16 +37,16 @@ XF86AudioMute
 
 #^---- FUNCTION ROW ------------------------------------------------------------
 
-F2
-    password.sh
-F3
-    clipboard.sh
-F4
-    bookmarks.sh
+# F2
+#     password.sh
+# F3
+#     clipboard.sh
+# F4
+#     bookmarks.sh
 # F4
 #     url.sh
-F12
-    $TERMINAL
+# F12
+   # $TERMINAL
 
 #$
 
@@ -76,6 +76,9 @@ F12
 #$
 
 #^---- LEFT SIDE ---------------------------------------------------------------
+
+mod4 + grave
+    $TERMINAL
 
 mod4 + d; 9; 0
     dmenusnes9x.sh ~/.local/share/warez/SNES
