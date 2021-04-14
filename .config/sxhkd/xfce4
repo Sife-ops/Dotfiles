@@ -80,48 +80,6 @@ XF86AudioMute
 mod4 + grave
     $TERMINAL
 
-mod4 + d; 9; 0
-    dmenusnes9x.sh ~/.local/share/warez/SNES
-
-mod4 + d; 6; 4
-    dmenumupen.sh ~/.local/share/warez/N64
-
-# bookmark menu
-mod4 + d; b
-    bookmarks.sh
-
-# clipboard menu
-mod4 + d; c; a
-    calc.sh
-
-# clipboard menu
-mod4 + d; c; b
-    clipboard.sh
-
-# emoji menu
-mod4 + d; e
-    emoji.sh
-
-# filesystem menu
-mod4 + d; f; s
-    mount.sh
-
-# meme menu
-mod4 + d; m
-    meme.sh
-
-# password menu
-mod4 + d; p
-    password.sh
-
-# systemctl menu
-mod4 + d; s
-    systemctl.sh
-
-# url action menu
-mod4 + d; u
-    url.sh
-
 # dmenu run
 mod4 + p
     dmenu_run -i -l 20
@@ -137,6 +95,70 @@ mod4 + v
 # paste secondary register
 mod4 + shift + v
     sleep 0.25 && xdotool type --clearmodifiers "$(xclip -o -selection secondary)"
+
+#$
+
+#^---- MENUS -------------------------------------------------------------------
+
+# SNES emulator
+mod4 + d; 9; 0
+    dmenusnes9x.sh ~/.local/share/warez/SNES
+XF86Tools; 9; 0
+    dmenusnes9x.sh ~/.local/share/warez/SNES
+
+# N64 emulator
+mod4 + d; 6; 4
+    dmenumupen.sh ~/.local/share/warez/N64
+XF86Tools; 6; 4
+    dmenumupen.sh ~/.local/share/warez/N64
+
+# bookmark menu
+mod4 + d; b
+    bookmarks.sh
+XF86Tools; b
+    bookmarks.sh
+
+# clipboard menu
+mod4 + d; c; b
+    clipboard.sh
+XF86Tools; c; b
+    clipboard.sh
+
+# emoji menu
+mod4 + d; e
+    emoji.sh
+XF86Tools; e
+    emoji.sh
+
+# filesystem menu
+mod4 + d; f; s
+    mount.sh
+XF86Tools; f; s
+    mount.sh
+
+# meme menu
+mod4 + d; m
+    meme.sh
+XF86Tools; m
+    meme.sh
+
+# password menu
+mod4 + d; p
+    password.sh
+XF86Tools; p
+    password.sh
+
+# systemctl menu
+mod4 + d; s
+    systemctl.sh
+XF86Tools; s
+    systemctl.sh
+
+# url action menu
+mod4 + d; u
+    url.sh
+XF86Tools; u
+    url.sh
 
 #$
 

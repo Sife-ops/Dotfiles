@@ -3,6 +3,7 @@ bash-language-server
 coverage
 coverage-3.9
 coverage3
+emoji.sh
 escodegen
 esgenerate
 esparse
