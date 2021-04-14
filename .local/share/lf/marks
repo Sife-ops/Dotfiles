@@ -26,6 +26,7 @@ vc:/home/wyatt/.config/nvim/plugin/91-custom.vim
 vd:/home/wyatt/.config/nvim/plugin
 vf:/home/wyatt/.config/vifm
 vk:/home/wyatt/.config/nvim/plugin/80-keymap.vim
+vs:/home/wyatt/.config/nvim/skeletons
 x:/home/wyatt/.xinitrc
 za:/home/wyatt/.config/zsh/modules/60-aliasrc.zsh
 zb:/home/wyatt/.local/share/lf/marks
