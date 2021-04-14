@@ -102,6 +102,10 @@ mod4 + d; c; b
 mod4 + d; e
     emoji.sh
 
+# filesystem menu
+mod4 + d; f; s
+    mount.sh
+
 # meme menu
 mod4 + d; m
     meme.sh
@@ -109,6 +113,10 @@ mod4 + d; m
 # password menu
 mod4 + d; p
     password.sh
+
+# systemctl menu
+mod4 + d; s
+    systemctl.sh
 
 # url action menu
 mod4 + d; u
