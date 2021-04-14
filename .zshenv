@@ -38,6 +38,7 @@ export BOOKMARKS="${XDG_DATA_HOME}/bookmarks"
 export CARGO_HOME="${XDG_DATA_HOME}/cargo"
 export CLIPBOARD="${XDG_DATA_HOME}/clipboard"
 export DMENU_CMD="dmenu -i -l 20"
+export DOWNLOADS="${HOME}/Downloads"
 export FEEDS="${XDG_CONFIG_HOME}/newsboat/urls"
 export GDBHISTFILE="${XDG_DATA_HOME}/gdb/history"
 export GEM_HOME="${XDG_DATA_HOME}/gem" # remove gem: --user-install from /etc/gemrc
