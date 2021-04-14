@@ -6,7 +6,7 @@ passwordFile="${SECRETS}/bitwarden.gpg"
 
 case $(bw status | jq -r '.status') in
     unlocked) : ;;
-    *) echo "your session was locked" # change to notify-send
+    *) notify-send "$0" "Session locked. Acquiring new session key."
         password=$(gpg --decrypt "$passwordFile" 2>/dev/null)
         sessionKey=$(bw unlock $password --raw)
 
@@ -18,7 +18,7 @@ case $(bw status | jq -r '.status') in
         # final confirmation
         case $(bw status | jq -r '.status') in
             unlocked) : ;;
-            *) echo "login failed" ;; # change to notify-send
+            *) notify-send "$0" "Failed to unlock session."
         esac ;;
 esac
 
@@ -42,7 +42,7 @@ create_list () {
 }
 
 template () {
-    # $1 -> item type string, => item json
+    # $1 item type string, => item json
     # generate a template for new items
     item="$(bw get template item)"
     template="$(bw get template item."$1")"
@@ -54,7 +54,6 @@ template () {
         secureNote) item="$(echo "$item" | jq -c '.type = 2')" ;;
         card) item="$(echo "$item" | jq -c '.type = 3')" ;;
         login) item="$(echo "$item" | jq -c ".login.username = \"<++>\"")"
-            # password=$(< /dev/urandom tr -dc 'A-Za-z0-9' | head -c 16)
             password=$(< /dev/urandom tr -dc 'A-Za-z0-9!@#$%^&*()-=_+[]~{}|;:,./<>?' | head -c 16)
             item="$(echo "$item" | jq -c ".login.password = \"${password}\"")"
             uri="$(bw get template item.login.uri)"
@@ -69,7 +68,7 @@ template () {
 }
 
 edit () {
-    # $1 -> item json, => edited item json
+    # $1 item json, => edited item json
     # edit vault items in a restricted folder
     # todo: diff edited item with original
 
@@ -90,7 +89,7 @@ edit () {
 
     # never accept invalid json
     while ! cat "$item" | jq 1>/dev/null 2>&1; do
-        # message cannot parse json
+        notify-send "$0" "Cannot parse invalid JSON."
         $TERMEXEC $EDITOR $item
     done
 
@@ -108,7 +107,7 @@ edit () {
 }
 
 create_item () {
-    # $1 -> item json
+    # $1 item json
     # create a new item in your Bitwarden vault
     echo "$1" |
         bw encode |
@@ -116,7 +115,7 @@ create_item () {
 }
 
 edit_item () {
-    # $1 -> item json, $2 -> id
+    # $1 item json, $2 id
     # eidt a vault item in your Bitwarden vault
     echo "$1" |
         bw encode |
@@ -132,7 +131,7 @@ case "$chosen" in
             login) create_item "$(edit "$(template login)")" ;;
             "secure note") create_item "$(edit "$(template securenote)")" ;;
         esac ;;
-    sync) bw sync -f ;;
+    sync) : ;;
     "") exit 1 ;;
     *) id=$(echo "$chosen" | cut -d '|' -f 2 | tr -d '[:space:]')
         item=$(bw list items | jq -c ".[] | select(.id == \"$id\")")
