@@ -6,7 +6,7 @@ a:/home/wyatt/.config/dunst
 b:/mnt/wyatt/russianbot/shared/default/home/wyatt/.local/share/doc/graveyard/bin
 bi:/home/wyatt/.local/bin
 bu:/mnt/wyatt/sda1/backup
-h:/home/wyatt/
+h:/home/wyatt/.config/zsh/conf.d
 in:/home/wyatt/.config/ii/networks
 is:/home/wyatt/.local/share/ii/servers
 k:/home/wyatt/.local/share/kode

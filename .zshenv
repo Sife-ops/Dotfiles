@@ -82,6 +82,7 @@ export QT_QPA_PLATFORMTHEME="gtk2"
 export SAVEHIST=900000
 export SECRETS="${XDG_DATA_HOME}/secrets"
 export SFX="${XDG_DATA_HOME}/sfx"
+export SQLITE_HISTORY="${XDG_CACHE_HOME}/sqlite_history"
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export TODO="${XDG_DATA_HOME}/todo"
 export URL_OPENER="url.sh"
