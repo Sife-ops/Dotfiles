@@ -8,7 +8,6 @@
 .bash_profile
 .bashrc
 .bluej/
-.cache/
 .config/Bitwarden/
 .config/Bitwarden\ CLI/
 .config/BraveSoftware/
@@ -18,6 +17,7 @@
 .config/OpenSCAD/
 .config/QtProject.conf
 .config/Thunar/
+.config/Ulduzsoft/
 .config/VirtualBox/
 .config/abiword/
 .config/autostart/

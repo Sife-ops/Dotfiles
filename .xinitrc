@@ -38,7 +38,7 @@ ln -sf ${HOME}/.local/bin/menus_dmenu/* ${HOME}/.local/bin/
 
 # xset r rate 200 50
 unclutter --timeout 1 &
-dunst -always_run_script &
+# dunst -always_run_script &
 
 ln -sf ${XDG_CONFIG_HOME}/sxhkd/xfce4 \
     ${XDG_CONFIG_HOME}/sxhkd/sxhkdrc
