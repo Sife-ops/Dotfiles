@@ -107,6 +107,7 @@
 .local/share/nvim/site/autoload/plug.vim.old
 .local/share/nvim/undo/
 .local/share/nvm/
+.local/share/pictures
 .local/share/plover/
 .local/share/qutebrowser/
 .local/share/ranger/

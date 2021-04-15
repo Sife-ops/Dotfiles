@@ -40,6 +40,7 @@ export ANDROID_SDK_HOME="${XDG_CONFIG_HOME}/android"
 export BOOKMARKS="${XDG_DATA_HOME}/bookmarks"
 export CARGO_HOME="${XDG_DATA_HOME}/cargo"
 export CLIPBOARD="${XDG_DATA_HOME}/clipboard"
+export CUDA_CACHE_PATH="${XDG_CACHE_HOME}/nv"
 export DMENU_CMD="dmenu -i -l 20"
 export DOWNLOADS="${HOME}/Downloads"
 export FEEDS="${XDG_CONFIG_HOME}/newsboat/urls"
@@ -93,6 +94,7 @@ export XMONAD_CACHE_HOME="${XDG_CACHE_HOME}/xmonad"
 export XMONAD_CONFIG_HOME="${XDG_CONFIG_HOME}/xmonad"
 export XMONAD_DATA_HOME="${XDG_DATA_HOME}/xmonad"
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="${XDG_CONFIG_HOME}/java"
 #$#
 
 # vim: ft=sh fdm=marker fmr=#^#,#$#
