@@ -11,5 +11,6 @@ while true; do
         exit
     else
         cat "$message" > "./in"
+        # mpv "${SFX}/AOL/send.flac" 1>/dev/null 2>&1 &
     fi
 done
