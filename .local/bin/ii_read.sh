@@ -4,7 +4,7 @@ color1="\033[1;37m"
 color2="\033[1;32m"
 color3="\033[0;33m"
 
-tail -F -n 5 "$1" | while read time nick text; do
+tail -F -n 5 "./out" | while read time nick text; do
     case "$nick" in
         "-!-") : ;;
         *) case "$text" in

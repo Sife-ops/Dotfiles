@@ -9,25 +9,8 @@ if tmux list-sessions -F \#{session_name} | \
     exit
 fi
 
-tmux new-session -d -s "$name" -n "$name"
+tmux new-session -d -s "$name" -n "$name" "cd ${HOME}/Downloads && neomutt; $SHELL"
+tmux split-window -t "${name}" "$EDITOR $TODO; $SHELL"
+tmux split-window -t "${name}" -f -h "newsboat; $SHELL"
+tmux split-window -t "${name}" "cd ~/.local/share/ii && lf; $SHELL"
 
-tmux split-window -t "${name}:0.0" -v
-tmux split-window -t "${name}:0.0" -v
-tmux select-layout -E -t "${name}:0"
-tmux split-window -t "${name}:0.0" -h
-tmux split-window -t "${name}:0.2" -h
-
-# -------------------------
-# |     0     |     1     |
-# -------------------------
-# |     2     |     3     |
-# -------------------------
-# |           4           |
-# -------------------------
-
-tmux send-keys -t "${name}:0.0" "cd ~/Downloads && neomutt" C-m
-tmux send-keys -t "${name}:0.1" "v $TODO" C-m
-tmux send-keys -t "${name}:0.2" "newsboat" C-m
-# tmux send-keys -t "${name}:0.3" "command emacs --daemon && emacsclient -nw" C-m
-tmux send-keys -t "${name}:0.3" "cd ~/.local/share/ii" C-m
-tmux send-keys -t "${name}:0.4" "pulsemixer" C-m

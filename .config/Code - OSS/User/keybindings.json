@@ -10,8 +10,11 @@
         "when": "acceptSuggestionOnEnter && suggestWidgetVisible && suggestionMakesTextEdit && textInputFocus"
     },
     {
-        "key": "enter",
-        "command": "-acceptSelectedSuggestion",
-        "when": "acceptSuggestionOnEnter && suggestWidgetVisible && suggestionMakesTextEdit && textInputFocus"
+        "key": "ctrl+up",
+        "command": "workbench.action.terminal.focusNext"
+    },
+    {
+        "key": "ctrl+down",
+        "command": "workbench.action.terminal.focusPrevious"
     }
 ]

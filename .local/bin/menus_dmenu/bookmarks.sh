@@ -1,12 +1,6 @@
 #!/bin/sh
 # create empty database
 
-# db="./bookmarks.db"
-# dataDir="${XDG_DATA_HOME}/bookmarks"
-# db="${dataDir}/db"
-# fetchCmd="scp wyatt@soyless.xyz:/home/wyatt/${db}.tar.xz ${dataDir}"
-# pushCmd="scp  ${db}.tar.xz wyatt@soyless.xyz:/home/wyatt/${db}.tar.xz"
-
 dataDir="${XDG_DATA_HOME}/bookmarks"
 dbName="bookmarks"
 db="${dataDir}/${dbName}"
@@ -144,17 +138,17 @@ case "$chosen" in
     "create bookmark") create_bookmark ;;
     "create tag") create_tag "$(printf "" | ${DMENU_CMD:-dmenu} -p "tag name")" ;;
     "tags") chosen="$(tags_list | ${DMENU_CMD:-dmenu})"; [ "$chosen" = "" ] && exit 1
-        tag="$chosen"
-        chosen="$(filter_list | ${DMENU_CMD:-dmenu})"; [ "$chosen" = "" ] && exit 1
-        case "$chosen" in
-            "delete tag") delete_tag ;;
-            *) url="$(echo "$chosen" | cut -d '|' -f 2)"
-                bookmarkId="$(echo "$chosen" | cut -d '|' -f 3)"
-                chosen="$(action_list t | ${DMENU_CMD:-dmenu})"; [ "$chosen" = "" ] && exit 1
-                url_menu ;;
+            tag="$chosen"
+            chosen="$(filter_list | ${DMENU_CMD:-dmenu})"; [ "$chosen" = "" ] && exit 1
+            case "$chosen" in
+                "delete tag") delete_tag ;;
+                *)  url="$(echo "$chosen" | cut -d '|' -f 2)"
+                    bookmarkId="$(echo "$chosen" | cut -d '|' -f 3)"
+                    chosen="$(action_list t | ${DMENU_CMD:-dmenu})"; [ "$chosen" = "" ] && exit 1
+                    url_menu ;;
         esac ;;
     sync) upload ;;
-    *) url="$(echo "$chosen" | cut -d '|' -f 2)"
+    *)  url="$(echo "$chosen" | cut -d '|' -f 2)"
         chosen="$(action_list | ${DMENU_CMD:-dmenu})"; [ "$chosen" = "" ] && exit 1
         url_menu ;;
 esac

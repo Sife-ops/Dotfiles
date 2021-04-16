@@ -66,6 +66,7 @@
 .gitconfig
 .ipfs/
 .java/
+.kchmviewer
 .lein/
 .librewolf/
 .local/bin/virtualenv
