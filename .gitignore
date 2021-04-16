@@ -138,6 +138,7 @@
 .local/share/xorg/
 .local/share/zathura/
 .local/share/zeitgeist/
+.local/src
 .local/src/
 .local/var
 .m2/
