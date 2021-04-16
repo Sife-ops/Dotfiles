@@ -1,0 +1,2 @@
+fetchCmd="scp wyatt@soyless.xyz:/home/wyatt/${dbName}.tar.xz ${dataDir}"
+pushCmd="scp ${dbName}.tar.xz wyatt@soyless.xyz:/home/wyatt/${dbName}.tar.xz"

@@ -2,7 +2,7 @@
 1:/home/wyatt/.local/share/rosetta/c/doubly_linked_lists
 C:/home/wyatt/.config
 D:/home/wyatt/Downloads
-a:/home/wyatt/.config/dunst
+a:/home/wyatt/.local/bin
 b:/mnt/wyatt/russianbot/shared/default/home/wyatt/.local/share/doc/graveyard/bin
 bi:/home/wyatt/.local/bin
 bu:/mnt/wyatt/sda1/backup
@@ -15,7 +15,7 @@ mb:/mnt/wyatt/sdb1
 mr:/mnt/wyatt/russianbot
 p:/home/wyatt/.local/share/profiles
 q:/home/wyatt/.local/src/qmk_firmware_sife/keyboards/converter/periboard_512/keymaps/default
-r:/home/wyatt/.local/share/rosetta/README.md
+r:/home/wyatt/.local/src/rosetta
 sh:/home/wyatt/.local/share
 sk:/home/wyatt/.config/sxhkd/sxhkdrc
 sr:/home/wyatt/.local/src

@@ -13,21 +13,22 @@ main_list () {
 
 action_list () {
     main_list
+    echo "============================================================================================================================================================================================================================================================================================================================="
     echo "edit"
+    echo "open url"
 }
 
-src=$(main_list | ${DMENU_CMD:-dmenu})
+src=$(main_list | ${DMENU_CMD:-dmenu}); [ "$src" = "" ] && exit 1
 src=$(echo "$src" | cut -d ':' -f 1)
 case "$src" in
     clipboard) content=$(xclip -o -selection clipboard) ;;
     primary) content=$(xclip -o -selection primary) ;;
     secondary) content=$(xclip -o -selection secondary) ;;
     tmux) content=$(tmux show-buffer) ;;
-    "") exit 1 ;;
     *) content=$(cat ${CLIPBOARD}/${src}) ;;
 esac
 
-trg=$(action_list | ${DMENU_CMD:-dmenu})
+trg=$(action_list | ${DMENU_CMD:-dmenu}); [ "$trg" = "" ] && exit 1
 trg=$(echo "$trg" | cut -d ':' -f 1)
 case "$trg" in
     clipboard) echo "$content" | xclip -i -selection clipboard ;;
@@ -45,6 +46,13 @@ case "$trg" in
             *) cat "$tmp" > "${CLIPBOARD}/${src}" ;;
         esac
         rm "$tmp" ;;
-    "") exit 1 ;;
+    "open url")
+        case "$src" in
+            clipboard) url.sh "$(xclip -o -selection clipboard)" ;;
+            primary) url.sh "$(xclip -o -selection primary)" ;;
+            secondary) url.sh "$(xclip -o -selection secondary)" ;;
+            tmux) url.sh "$(tmux show-buffer)" ;;
+            *) url "$(cat "${CLIPBOARD}/${src}")" ;;
+        esac ;;
     *) echo "$content" > "${CLIPBOARD}/${trg}" ;;
 esac
