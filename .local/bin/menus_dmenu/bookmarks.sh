@@ -1,5 +1,5 @@
 #!/bin/sh
-# create empty database
+# bookmarks manager using sqlite3
 
 dataDir="${XDG_DATA_HOME}/bookmarks"
 dbName="bookmarks"
@@ -25,12 +25,13 @@ upload () { #^
 } #$
 
 main_list () { #^
-    sqlite3 "$db" "SELECT description,url
-        FROM bookmark;"
     echo "create bookmark"
     echo "create tag"
-    echo "tags"
     echo "sync"
+    echo "tags"
+    echo "================================================================================================================================================================================================================================================================================================================================================================================================================"
+    sqlite3 "$db" "SELECT description,url
+        FROM bookmark;"
 } #$
 
 action_list () { #^
@@ -111,7 +112,7 @@ create_bookmark () { #^
         [ "$rating" = "null" ] && \
         exit 1
     sqlite3 "$db" "INSERT INTO bookmark (url, description, rating)
-        values ('${url}', '${description}', ${rating});"
+        VALUES ('${url}', '${description}', ${rating});"
 
     rm "$tmp"
 } #$

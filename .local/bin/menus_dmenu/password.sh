@@ -23,9 +23,10 @@ case $(bw status | jq -r '.status') in
 esac
 
 main_list () {
-    bw list items | jq -r '.[] | "\(.name) | \(.id)"'
     echo "create"
     echo "sync"
+    echo "================================================================================================================================================================================================================================================================================================================================================================================================================"
+    bw list items | jq -r '.[] | "\(.name) | \(.id)"'
 }
 
 item_list () {
@@ -122,9 +123,9 @@ edit_item () {
         bw edit item "$2"
 }
 
-chosen=$(main_list | ${DMENU_CMD:-dmenu})
+chosen=$(main_list | ${DMENU_CMD:-dmenu}); [ -n "$chosen" ] || exit 1
 case "$chosen" in
-    create) chosen=$(create_list | ${DMENU_CMD:-dmenu})
+    create) chosen=$(create_list | ${DMENU_CMD:-dmenu}); [ -n "$chosen" ] || exit 1
         case "$chosen" in
             card) create_item "$(edit "$(template card)")" ;;
             identity) create_item "$(edit "$(template identity)")" ;;
@@ -132,10 +133,9 @@ case "$chosen" in
             "secure note") create_item "$(edit "$(template securenote)")" ;;
         esac ;;
     sync) : ;;
-    "") exit 1 ;;
     *) id=$(echo "$chosen" | cut -d '|' -f 2 | tr -d '[:space:]')
         item=$(bw list items | jq -c ".[] | select(.id == \"$id\")")
-        chosen=$(item_list | ${DMENU_CMD:-dmenu})
+        chosen=$(item_list | ${DMENU_CMD:-dmenu}); [ -n "$chosen" ] || exit 1
         case "$chosen" in
             copy) username=$(echo "$item" | jq -r '.login.username')
                 password=$(echo "$item" | jq -r '.login.password')

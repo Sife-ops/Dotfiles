@@ -12,4 +12,4 @@ fi
 tmux new-session -d -s "$name" -n "$name" "cd ${HOME}/Downloads && neomutt; $SHELL"
 tmux split-window -t "${name}" "$EDITOR $TODO; $SHELL"
 tmux split-window -t "${name}" -f -h "newsboat; $SHELL"
-tmux split-window -t "${name}" "cd ~/.local/share/ii && lf; $SHELL"
+tmux split-window -t "${name}" "cd ~/.local/share/ii/servers; $SHELL"

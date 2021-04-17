@@ -4,21 +4,22 @@
   <property name="configver" type="int" value="2"/>
   <property name="panels" type="array">
     <value type="int" value="1"/>
+    <value type="int" value="2"/>
     <property name="dark-mode" type="bool" value="true"/>
     <property name="panel-1" type="empty">
-      <property name="position" type="string" value="p=6;x=0;y=0"/>
+      <property name="position" type="string" value="p=8;x=720;y=2535"/>
       <property name="length" type="uint" value="100"/>
-      <property name="position-locked" type="bool" value="true"/>
+      <property name="position-locked" type="bool" value="false"/>
       <property name="icon-size" type="uint" value="0"/>
-      <property name="size" type="uint" value="48"/>
+      <property name="size" type="uint" value="64"/>
       <property name="plugin-ids" type="array">
         <value type="int" value="9"/>
         <value type="int" value="16"/>
         <value type="int" value="3"/>
+        <value type="int" value="1"/>
         <value type="int" value="15"/>
         <value type="int" value="14"/>
         <value type="int" value="10"/>
-        <value type="int" value="2"/>
         <value type="int" value="5"/>
         <value type="int" value="4"/>
         <value type="int" value="11"/>
@@ -30,6 +31,18 @@
       </property>
       <property name="nrows" type="uint" value="1"/>
       <property name="span-monitors" type="bool" value="false"/>
+      <property name="autohide-behavior" type="uint" value="0"/>
+    </property>
+    <property name="panel-2" type="empty">
+      <property name="position" type="string" value="p=6;x=720;y=24"/>
+      <property name="size" type="uint" value="64"/>
+      <property name="mode" type="uint" value="0"/>
+      <property name="span-monitors" type="bool" value="false"/>
+      <property name="position-locked" type="bool" value="false"/>
+      <property name="length" type="uint" value="100"/>
+      <property name="plugin-ids" type="array">
+        <value type="int" value="2"/>
+      </property>
     </property>
   </property>
   <property name="plugins" type="empty">
@@ -43,7 +56,7 @@
     </property>
     <property name="plugin-4" type="string" value="pager"/>
     <property name="plugin-5" type="string" value="separator">
-      <property name="style" type="uint" value="0"/>
+      <property name="style" type="uint" value="1"/>
       <property name="expand" type="bool" value="true"/>
     </property>
     <property name="plugin-6" type="string" value="systray">
@@ -65,13 +78,13 @@
       <property name="mpris-players" type="string" value="chromium.instance1047494;chromium.instance1435009;chromium.instance1457;chromium.instance19427;chromium.instance22408;chromium.instance244140;chromium.instance249369;chromium.instance339359;chromium.instance523705;chromium.instance68963;chromium.instance768503;chromium.instance84820;firefox.instance1091;firefox.instance1097;firefox.instance1103;firefox.instance1124;firefox.instance1127;firefox.instance1136;firefox.instance1236;firefox.instance13452;firefox.instance1776;firefox.instance1799;firefox.instance1831;firefox.instance1858;firefox.instance1885;firefox.instance18924;firefox.instance22435;firefox.instance274862;firefox.instance3338;firefox.instance392519;firefox.instance448948;firefox.instance480459;firefox.instance5233;firefox.instance60201;firefox.instance99178;vlc;vlc.instance1003822;vlc.instance1003841;vlc.instance1235521;vlc.instance1237593;vlc.instance1237612;vlc.instance1435475;vlc.instance1439949;vlc.instance1440590;vlc.instance31111;vlc.instance339727;vlc.instance57953;vlc.instance62053;vlc.instance62589"/>
     </property>
     <property name="plugin-11" type="string" value="separator">
-      <property name="style" type="uint" value="0"/>
+      <property name="style" type="uint" value="1"/>
     </property>
     <property name="plugin-12" type="string" value="clock">
       <property name="mode" type="uint" value="4"/>
     </property>
     <property name="plugin-13" type="string" value="separator">
-      <property name="style" type="uint" value="0"/>
+      <property name="style" type="uint" value="1"/>
     </property>
     <property name="plugin-7" type="string" value="xfce4-sensors-plugin"/>
     <property name="plugin-9" type="string" value="whiskermenu"/>
@@ -98,6 +111,11 @@
     <property name="plugin-16" type="string" value="launcher">
       <property name="items" type="array">
         <value type="string" value="16172114253.desktop"/>
+      </property>
+    </property>
+    <property name="plugin-1" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="16186383101.desktop"/>
       </property>
     </property>
   </property>
