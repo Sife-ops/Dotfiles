@@ -2,7 +2,7 @@
 # bookmarks manager using sqlite3
 
 dataDir="${XDG_DATA_HOME}/bookmarks"
-dbName="bookmarks"
+dbName="bookmarks.db"
 db="${dataDir}/${dbName}"
 
 config="${XDG_CONFIG_HOME}/bookmarks/bookmarksrc"
@@ -90,14 +90,20 @@ delete_bookmark () { #^
 } #$
 
 create_bookmark () { #^
-    template='{
-        "url": "<++>",
-        "description": "<++>",
-        "rating": "<++>",
-    }'
+    url="$(xclip -o -selection clipboard)"
 
     tmp=$(mktemp /tmp/bookmarks_XXXXX)
-    echo "$template" | jq > "$tmp"
+    curl -L "$url" -o "$tmp"
+    description="$(egrep -o '<title>.*</title>' "$tmp" | head -n 1)"
+    description="$(echo "$description" | sed -E 's/(<title>)(.*)(<\/title>)/\2/')"
+    description="$(echo "$description" | sed 's/|/:/')"
+    rm "$tmp"
+
+    tmp=$(mktemp /tmp/bookmarks_XXXXX)
+    echo "{
+        \"url\":\"$url\",
+        \"description\":\"$description\"
+    }" | jq "." > "$tmp"
 
     $TERMEXEC $EDITOR "$tmp"
     while ! cat "$tmp" | jq; do
@@ -107,14 +113,14 @@ create_bookmark () { #^
     url="$(cat "$tmp" | jq -r '.url')"
     description="$(cat "$tmp" | jq -r '.description')"
     rating="$(cat "$tmp" | jq -r '.rating')"
-    [ "$url" = "null" ] || \
-        [ "$description" = "null" ] || \
-        [ "$rating" = "null" ] && \
-        exit 1
-    sqlite3 "$db" "INSERT INTO bookmark (url, description, rating)
-        VALUES ('${url}', '${description}', ${rating});"
-
     rm "$tmp"
+
+    [ "$url" = "null" ] || \
+        [ "$description" = "null" ] && \
+        kill 0
+
+    sqlite3 "$db" "INSERT INTO bookmark (url, description)
+        VALUES ('${url}', '${description}');"
 } #$
 
 url_menu () { #^
@@ -124,7 +130,10 @@ url_menu () { #^
         'add tag') tag="$(tags_list | ${DMENU_CMD:-dmenu})"; [ "$tag" = "" ] && exit 1
             add_tag ;;
         'remove tag') remove_tag ;;
-        delete) delete_bookmark ;;
+        delete)
+            # echo "$url"
+            delete_bookmark
+            ;;
     esac
 } #$
 
