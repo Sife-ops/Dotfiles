@@ -10,6 +10,9 @@ while IFS="" read -r line; do
     eval "$line"
 done < "$config"
 
+# createDb () { #^
+# } #$
+
 download () { #^
     pushd "$dataDir"
     eval "$fetchCmd"
@@ -24,11 +27,23 @@ upload () { #^
     popd
 } #$
 
+tags_list () { #^
+    sqlite3 "$db" "SELECT name
+        FROM sqlite_master
+        WHERE type = 'table'
+        AND name
+        NOT LIKE 'sqlite_%'
+        AND name
+        NOT LIKE 'bookmark';"
+} #$
+
 main_list () { #^
     echo "create bookmark"
     echo "create tag"
+    echo "browse"
     echo "sync"
-    echo "tags"
+    echo "==== Tags ======================================================================================================================================================================================================================================================================================================================================================================================================"
+    tags_list | sort
     echo "================================================================================================================================================================================================================================================================================================================================================================================================================"
     sqlite3 "$db" "SELECT description,url
         FROM bookmark;"
@@ -40,47 +55,38 @@ action_list () { #^
     echo "delete"
 } #$
 
-tags_list () { #^
-    sqlite3 "$db" "SELECT name
-        FROM sqlite_master
-        WHERE type = 'table'
-        AND name
-        NOT LIKE 'sqlite_%'
-        AND name
-        NOT LIKE 'bookmark';"
-} #$
-
 filter_list () { #^
+    echo "delete tag"
+    echo "================================================================================================================================================================================================================================================================================================================================================================================================================"
     sqlite3 "$db" "SELECT description,url,bookmarkId
         FROM bookmark
         WHERE bookmarkId
-        IN (SELECT bookmarkId FROM ${tag});"
-    echo "delete tag"
+        IN (SELECT bookmarkId FROM '${tag}');"
 } #$
 
 create_tag () { #^
     # tag name -> $1
-    sqlite3 "$db" "CREATE TABLE '$1' (
-        '${1}Id'	INTEGER NOT NULL UNIQUE,
+    sqlite3 "$db" "CREATE TABLE '${tag}' (
+        '${tag}Id'	INTEGER NOT NULL UNIQUE,
         'bookmarkId'	INTEGER NOT NULL UNIQUE,
-        PRIMARY KEY('${1}Id' AUTOINCREMENT),
+        PRIMARY KEY('${tag}Id' AUTOINCREMENT),
         FOREIGN KEY('bookmarkId') REFERENCES 'bookmark'('bookmarkId') ON DELETE CASCADE
     );"
 } #$
 
 delete_tag () { #^
-    sqlite3 "$db" "drop table ${tag};"
+    sqlite3 "$db" "drop table '${tag}';"
 } #$
 
 add_tag () { #^
-    sqlite3 "$db" "INSERT INTO $tag (bookmarkId)
+    sqlite3 "$db" "INSERT INTO '${tag}' (bookmarkId)
     VALUES ((SELECT bookmarkId
         FROM bookmark
         WHERE url = '${url}'));"
 } #$
 
 remove_tag () { #^
-    sqlite3 "$db" "DELETE FROM $tag
+    sqlite3 "$db" "DELETE FROM '${tag}'
         WHERE bookmarkId = '${bookmarkId}';"
 } #$
 
@@ -146,9 +152,13 @@ fi
 chosen="$(main_list | ${DMENU_CMD:-dmenu})"; [ "$chosen" = "" ] && exit 1
 case "$chosen" in
     "create bookmark") create_bookmark ;;
-    "create tag") create_tag "$(printf "" | ${DMENU_CMD:-dmenu} -p "tag name")" ;;
-    "tags") chosen="$(tags_list | ${DMENU_CMD:-dmenu})"; [ "$chosen" = "" ] && exit 1
-            tag="$chosen"
+    "create tag")   tag="$(printf "" |
+                        ${DMENU_CMD:-dmenu} -p "tag name" |
+                        sed -E 's/(.*)/#\1/')"
+                    create_tag ;;
+    browse) sqlitebrowser "$db" & ;;
+    sync) upload ;;
+    '#'*)   tag="$chosen"
             chosen="$(filter_list | ${DMENU_CMD:-dmenu})"; [ "$chosen" = "" ] && exit 1
             case "$chosen" in
                 "delete tag") delete_tag ;;
@@ -156,8 +166,7 @@ case "$chosen" in
                     bookmarkId="$(echo "$chosen" | cut -d '|' -f 3)"
                     chosen="$(action_list t | ${DMENU_CMD:-dmenu})"; [ "$chosen" = "" ] && exit 1
                     url_menu ;;
-        esac ;;
-    sync) upload ;;
+            esac ;;
     *)  url="$(echo "$chosen" | cut -d '|' -f 2)"
         chosen="$(action_list | ${DMENU_CMD:-dmenu})"; [ "$chosen" = "" ] && exit 1
         url_menu ;;

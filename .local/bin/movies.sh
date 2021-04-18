@@ -65,8 +65,12 @@ _help_ () { #^
     echo "|_| |_| |_|\___/ \_/ |_|\___||___(_)___/_| |_|"
     echo
     echo commands:
+    echo "  createDb"
+    echo "  browseDb"
     echo "  newDirector NAME [COUNTRY] [YOB] [RATING]"
     echo "  newGenre NAME"
+    echo "  playMovie MOVIEID"
+    echo "  showDecade YEAR"
 }
 alias help='_help_' #$
 
@@ -102,10 +106,11 @@ newGenre () { #^
 } #$
 
 showDecade () { #^
-sqlite3 "$db" \
-    "select year,title,movieId from movie
-    where year between $1 and $(($1 + 9));" |
-        sort -g
+    echo "year|title|movieId"
+    sqlite3 "$db" \
+        "select year,title,movieId from movie
+        where year between $1 and $(($1 + 9));" 2>/dev/null |
+            sort -g
 } #$
 
 playMovie () { #^
@@ -115,79 +120,11 @@ playMovie () { #^
     mpv "${dbRoot}/${_path_}"
 } #$
 
+browseDb () {
+    sqlitebrowser "$db" &
+}
+
 clear
 help
-
-#^ zombiecode
-# # example data
-# sqlite3 "$db" \
-#     "insert into year (yearId)
-#     values (1977);"
-
-# data creation #^
-# while IFS="|" read a b; do
-#     title="$a"
-#     path="$b"
-#     # echo $path
-#     sqlite3 "$db" "INSERT INTO movie (title,path)
-#     VALUES (\"$title\",\"$path\");"
-# done < "./raw01"
-
-# while IFS="|" read a b; do
-#     year=$(echo "$b" | sed -E 's/^(.*)(\()([0-9]{4})(\))(.*)$/\3/')
-#     echo "${year}|${a}|${b}"
-# done < "./raw01" > "./raw02"
-
-# while IFS="|" read year title path; do
-#     sqlite3 "$db" "INSERT INTO movie (yearId,title,path)
-#     VALUES (${year},\"${title}\",\"${path}\");"
-# done < "./raw02"
-
-#$
-
-# # year table
-# sqlite3 "$db" \
-#     "CREATE TABLE 'year' (
-#     'yearId'	INTEGER NOT NULL UNIQUE,
-#     'rating'	NUMERIC,
-#     PRIMARY KEY('yearId')
-# );"
-
-
-# # # update record
-# sqlite3 "$db" \
-#     "update movie
-#     set yearId = 1977
-#     where title = 'Star Wars';"
-
-
-# # alter table
-# sqlite3 "$db" \
-#     "alter table movie
-#     add column 'yearId' integer;"
-
-
-# # example data
-# sqlite3 "$db" \
-#     "insert into director (name,country)
-#     values ('Quentin Tarantino', 'United States of America');"
-
-
-# # example data
-# sqlite3 "$db" \
-#     "insert into 'space' (movieId)
-#     values ((select movieId
-#         from movie
-#         where title = 'Star Wars'));"
-
-
-# relateAToB () {
-#     sqlite3 "$db" \
-#         "INSERT INTO '$2' (movieId)
-#         VALUES ((SELECT movieId
-#                 FROM movie
-#                 WHERE title=\"$1\"));"
-# }
-#$
 
 # vim: fdm=marker fmr=#^,#$
