@@ -57,30 +57,25 @@ esac
 host_profile="${PROFILES}/${host}"
 
 install_profile(){ #^#
-    if [ -d "$1" ]; then
-        find "$1" -type f | while IFS= read -r file; do
-	    target="${file##${1}}"
-	    directory="$(dirname "$target")"
+    [ -d "$1" ] || exit 1
+    find "$1" -type f |
+        while IFS= read -r file; do
+            target="${file##${1}}"
+            directory="$(dirname "$target")"
 
-	    if [ ! -d "$directory" ]; then
-	        # mkdir -p "$directory" || \
-	        mkdir -p "$directory" 2>/dev/null || \
-	    	sudo mkdir -p "$directory"; fi
+            if [ ! -d "$directory" ]; then
+                mkdir -p "$directory" 2>/dev/null || \
+                    sudo mkdir -p "$directory"; fi
 
-	    if [ -e "$target" ] && \
-	    	! readlink "$target" 1>/dev/null && \
-            [ ! -f "${target}_bu" ]; then
-	        # mv "$target" "${target}_bu" || \
-	    	# sudo mv "$target" "${target}_bu"; fi
-	        mv "$target" "${target}_bu" 2>/dev/null || \
-	    	sudo mv "$target" "${target}_bu"; fi
+            if [ -e "$target" ] && \
+                ! readlink "$target" 1>/dev/null && \
+                [ ! -f "${target}_bu" ]; then
+                    mv "$target" "${target}_bu" 2>/dev/null || \
+                    sudo mv "$target" "${target}_bu"; fi
 
-	    # ln -sfn "$file" "$target" || \
-	    #     sudo cp "$file" "$target"
-	    ln -sfn "$file" "$target" 2>/dev/null || \
-	        sudo cp "$file" "$target" 2>/dev/null
+            ln -sfn "$file" "$target" 2>/dev/null || \
+                sudo cp "$file" "$target" 2>/dev/null
         done
-    fi
 } #$#
 
 install_profile "$default_profile"
