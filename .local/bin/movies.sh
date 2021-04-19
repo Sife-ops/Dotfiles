@@ -8,12 +8,18 @@ _help_ () { #^
     echo "|_| |_| |_|\___/ \_/ |_|\___||___(_)___/_| |_|"
     echo
     echo "commands:"
-    echo "  createDb"
     echo "  browseDb"
+    echo "  createDb"
+    echo "  listDecade YEAR"
+    echo "  listDirector NAME"
+    echo "  listDirectors"
+    echo "  listMovies"
     echo "  newDirector NAME [COUNTRY] [YOB] [RATING]"
     echo "  newGenre NAME"
     echo "  playMovie MOVIEID"
-    echo "  listDecade YEAR"
+    echo "  updateDirector NAME"
+    echo "  updateDirectorRating NAME RATING"
+    echo "  updateMovieRating TITLE RATING"
 }
 alias help='_help_' #$
 
@@ -21,6 +27,106 @@ dataDir="${XDG_DATA_HOME}/movies"
 dbRoot="/mnt/wyatt/russianbot/shared/default/home/wyatt/.local/share/games/Video/Movies"
 dbName="movies.db"
 db="${dataDir}/${dbName}"
+
+browseDb () { #^
+    sqlitebrowser "$db" &
+} #$
+
+listDecade () { #^
+    echo "year|title|movieId"
+    sqlite3 "$db" \
+        "select year,title,movieId from movie
+        where year between $1 and $(($1 + 9));" 2>/dev/null |
+            sort -g
+} #$
+
+listDirector () { #^
+    # name -> $1
+    sqlite3 "$db" \
+        "SELECT title,year,rating,movieId
+        FROM movie
+        WHERE directorId = (SELECT directorId
+            FROM director
+            WHERE name = \"${1}\");"
+} #$
+
+listDirectors () { #^
+    sqlite3 "$db" \
+        "SELECT *
+        FROM director;"
+} #$
+
+listMovies () { #^
+    echo "title|year|movieId"
+    sqlite3 "$db" \
+        "SELECT title,year,movieId
+        FROM movie" |
+            sort
+} #$
+
+newDirector () { #^
+    if [ -z "$2" ]; then
+        sqlite3 "$db" \
+            "INSERT INTO director (name)
+                    VALUES (\"${1}\");"
+    elif [ -z "$3" ]; then
+        sqlite3 "$db" \
+            "INSERT INTO director (name, country)
+                VALUES (\"${1}\", \"${2}\");"
+    elif [ -z "$4" ]; then
+        sqlite3 "$db" \
+            "INSERT INTO director (name, country, yob)
+                VALUES (\"${1}\", \"${2}\", ${3});"
+    else
+        sqlite3 "$db" \
+            "INSERT INTO director (name, country, yob, rating)
+                VALUES (\"${1}\", \"${2}\", ${3}, ${4});"
+    fi
+} #$
+
+newGenre () { #^
+    # genre table
+    sqlite3 "$db" \
+        "CREATE TABLE '${1}' (
+        '${1}Id'	INTEGER NOT NULL UNIQUE,
+        'movieId'	INTEGER NOT NULL,
+        PRIMARY KEY('${1}Id' AUTOINCREMENT),
+        FOREIGN KEY('movieId') REFERENCES 'movie'('movieId') ON DELETE CASCADE
+    );"
+} #$
+
+playMovie () { #^
+    _path_="$(sqlite3 "$db" \
+        "select path from movie
+        where movieId = $1;")"
+    mpv "${dbRoot}/${_path_}"
+} #$
+
+updateDirector () { #^
+    # name -> $1, title -> $2
+    sqlite3 "$db" \
+        "UPDATE movie
+            SET directorId = (SELECT directorId
+                FROM director
+                WHERE name = \"${1}\")
+            WHERE title = \"${2}\";"
+} #$
+
+updateDirectorRating () { #^
+    # name -> $1, rating -> $2
+    sqlite3 "$db" \
+        "UPDATE director
+        SET rating = $2
+        WHERE title = \"${1}\";"
+} #$
+
+updateMovieRating () { #^
+    # title -> $1, rating -> $2
+    sqlite3 "$db" \
+        "UPDATE movie
+        SET rating = $2
+        WHERE title = \"${1}\";"
+} #$
 
 createDb () { #^
     sqlite3 "$db" ".databases"
@@ -58,6 +164,7 @@ createDb () { #^
     #     FOREIGN KEY('movieId') REFERENCES 'movie'('movieId') ON DELETE CASCADE
     # );"
 
+    # index movie folder
     find "$dbRoot" -type f \
         -iregex '^.*\.mp4$' -or \
         -iregex '^.*\.mkv$' -or \
@@ -71,111 +178,7 @@ createDb () { #^
                 VALUES (\"${title}\", ${year}, \"${_path_}\");"
     done
 
-} #$
-
-listMovies () {
-    echo "title|year|movieId"
-    sqlite3 "$db" \
-        "SELECT title,year,movieId
-        FROM movie" |
-            sort
-}
-
-newDirector () { #^
-    if [ -z "$2" ]; then
-        sqlite3 "$db" \
-            "INSERT INTO director (name)
-                    VALUES (\"${1}\");"
-    elif [ -z "$3" ]; then
-        sqlite3 "$db" \
-            "INSERT INTO director (name, country)
-                VALUES (\"${1}\", \"${2}\");"
-    elif [ -z "$4" ]; then
-        sqlite3 "$db" \
-            "INSERT INTO director (name, country, yob)
-                VALUES (\"${1}\", \"${2}\", ${3});"
-    else
-        sqlite3 "$db" \
-            "INSERT INTO director (name, country, yob, rating)
-                VALUES (\"${1}\", \"${2}\", ${3}, ${4});"
-    fi
-} #$
-
-updateDirector () {
-    # name -> $1, title -> $2
-    sqlite3 "$db" \
-        "UPDATE movie
-            SET directorId = (SELECT directorId
-                FROM director
-                WHERE name = \"${1}\")
-            WHERE title = \"${2}\";"
-}
-
-listDirectors () {
-    sqlite3 "$db" \
-        "SELECT *
-        FROM director;"
-}
-
-updateMovieRating () {
-    # title -> $1, rating -> $2
-    sqlite3 "$db" \
-        "UPDATE movie
-        SET rating = $2
-        WHERE title = \"${1}\";"
-}
-
-updateDirectorRating () {
-    # title -> $1, rating -> $2
-    sqlite3 "$db" \
-        "UPDATE director
-        SET rating = $2
-        WHERE title = \"${1}\";"
-}
-
-listDirector () {
-    sqlite3 "$db" \
-        "SELECT title,year,rating,movieId
-        FROM movie
-        WHERE directorId = (SELECT directorId
-            FROM director
-            WHERE name = \"${1}\");"
-}
-
-newGenre () { #^
-    # genre table
-    sqlite3 "$db" \
-        "CREATE TABLE '${1}' (
-        '${1}Id'	INTEGER NOT NULL UNIQUE,
-        'movieId'	INTEGER NOT NULL,
-        PRIMARY KEY('${1}Id' AUTOINCREMENT),
-        FOREIGN KEY('movieId') REFERENCES 'movie'('movieId') ON DELETE CASCADE
-    );"
-} #$
-
-listDecade () { #^
-    echo "year|title|movieId"
-    sqlite3 "$db" \
-        "select year,title,movieId from movie
-        where year between $1 and $(($1 + 9));" 2>/dev/null |
-            sort -g
-} #$
-
-playMovie () { #^
-    _path_="$(sqlite3 "$db" \
-        "select path from movie
-        where movieId = $1;")"
-    mpv "${dbRoot}/${_path_}"
-} #$
-
-browseDb () {
-    sqlitebrowser "$db" &
-}
-
-clear
-help
-
-scrape () {
+    # scrape director names from imdb
     sqlite3 "$db" \
         "SELECT title
         FROM movie" |
@@ -189,8 +192,8 @@ scrape () {
                     head -n 1 | tr -d '[:space:]')"
                 director="$(grep -A 2 -i "director" "$parsed" | head -n 3 |
                     tail -n 1)"
-                echo "${title}|${director}|${metascore}"
                 rm "$raw" "$parsed"
+                printf "%s|%s|%s\n" "$title" "$director" "$metascore"
             done |  while IFS="|" read title director metascore; do
                         case "$director" in
                             "") : ;;
@@ -202,6 +205,10 @@ scrape () {
                                 esac ;;
                         esac
                     done
-}
+
+} #$
+
+clear
+help
 
 # vim: fdm=marker fmr=#^,#$
