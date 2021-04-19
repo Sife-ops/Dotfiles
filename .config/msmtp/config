@@ -14,33 +14,15 @@ tls_starttls    off
 logfile         ~/.config/msmtp/msmtp.log
 #$
 
-#^---- wyattgoettsch@gmx.us ----------------------------------------------------
-account         wyattgoettschatgmxdotus
-host            mail.gmx.com
+#^---- example@example.com ----------------------------------------------------
+account         exampleatexampledotcom
+host            mail.example.com
 port            465
-from            wyattgoettsch@gmx.us
-user            wyattgoettsch@gmx.us
-passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ${SECRETS}/wyattgoettschatgmxdotus.gpg"
+from            example@example.us
+user            example@example.us
+passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ${SECRETS}/exampleatexampledotcom.gpg"
 #$
 
-#^---- elonbust@gmx.com ----------------------------------------------------
-account         elonbustatgmxdotcom
-host            mail.gmx.com
-port            465
-from            elonbust@gmx.com
-user            elonbust@gmx.com
-passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ${SECRETS}/elonbustatgmxdotcom.gpg"
-#$
-
-#^---- yukiskitchen@gmx.com ----------------------------------------------------
-account         yukiskitchenatgmxdotcom
-host            mail.gmx.com
-port            465
-from            yukiskitchen@gmx.com
-user            yukiskitchen@gmx.com
-passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ${SECRETS}/elonbustatgmxdotcom.gpg"
-#$
-
-account default: wyattgoettschatgmxdotus
+account default: exampleatexampledotcom
 
 # vim: fdm=marker fmr=#^,#$

@@ -2,7 +2,7 @@
 # Sife's muttrc
 #
 
-source ~/.config/mutt/account.d/wyattgoettschatgmxdotus.conf
+source ~/.config/mutt/account.d/example.conf
 source ~/.config/mutt/conf.d/accounts.conf
 source ~/.config/mutt/conf.d/auto-view.conf
 source ~/.config/mutt/conf.d/set.conf
