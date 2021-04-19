@@ -1,0 +1,2 @@
+xinput --set-prop 14 305 1
+exec startlxde

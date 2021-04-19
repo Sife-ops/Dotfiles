@@ -41,8 +41,6 @@ ln -sf ${XDG_CONFIG_HOME}/sxhkd/xfce4 \
     ${XDG_CONFIG_HOME}/sxhkd/sxhkdrc
 sxhkd &
 
-exec startxfce4
-
-# . "${XDG_CONFIG_HOME}/xinitrc"
+. "${XDG_CONFIG_HOME}/xinitrc"
 
 # vim: fdm=marker fmr=#^,#$
