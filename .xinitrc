@@ -19,10 +19,10 @@ export XMODIFIERS=@im=fcitx
 
 xrdb ~/.Xresources
 
-if [ ! -f "$WALLPAPER" ]; then
-    ln -sf "$WALLPAPERS/waves.jpg" "$WALLPAPER"
-fi
-xwallpaper --zoom "$WALLPAPER"
+# if [ ! -f "$WALLPAPER" ]; then
+#     ln -sf "$WALLPAPERS/waves.jpg" "$WALLPAPER"
+# fi
+# xwallpaper --zoom "$WALLPAPER"
 
 xmodmap="${XMODMAPS}/$(cat /etc/hostname)" # need os detection
 if [ -f "$xmodmap" ]; then
