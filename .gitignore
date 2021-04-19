@@ -27,7 +27,6 @@
 .config/discord/
 .config/discordcanary/
 .config/doom/
-.config/emacs_/
 .config/fcitx/
 .config/gh/
 .config/gtk-2.0/
@@ -162,7 +161,6 @@
 .yarnrc
 Documents
 Downloads
-Mail/
 Mail/
 Pictures
 bookmarks.db.tar.xz
