@@ -1,5 +1,22 @@
 #!/bin/sh
 
+_help_ () { #^
+    echo "                      _                 _     "
+    echo " _ __ ___   _____   _(_) ___  ___   ___| |__  "
+    echo "| '_ \` _ \ / _ \ \ / / |/ _ \/ __| / __| '_ \ "
+    echo "| | | | | | (_) \ V /| |  __/\__ \_\__ \ | | |"
+    echo "|_| |_| |_|\___/ \_/ |_|\___||___(_)___/_| |_|"
+    echo
+    echo "commands:"
+    echo "  createDb"
+    echo "  browseDb"
+    echo "  newDirector NAME [COUNTRY] [YOB] [RATING]"
+    echo "  newGenre NAME"
+    echo "  playMovie MOVIEID"
+    echo "  listDecade YEAR"
+}
+alias help='_help_' #$
+
 dataDir="${XDG_DATA_HOME}/movies"
 dbRoot="/mnt/wyatt/russianbot/shared/default/home/wyatt/.local/share/games/Video/Movies"
 dbName="movies.db"
@@ -56,23 +73,13 @@ createDb () { #^
 
 } #$
 
-_help_ () { #^
-
-    echo "                      _                 _     "
-    echo " _ __ ___   _____   _(_) ___  ___   ___| |__  "
-    echo "| '_ \` _ \ / _ \ \ / / |/ _ \/ __| / __| '_ \ "
-    echo "| | | | | | (_) \ V /| |  __/\__ \_\__ \ | | |"
-    echo "|_| |_| |_|\___/ \_/ |_|\___||___(_)___/_| |_|"
-    echo
-    echo commands:
-    echo "  createDb"
-    echo "  browseDb"
-    echo "  newDirector NAME [COUNTRY] [YOB] [RATING]"
-    echo "  newGenre NAME"
-    echo "  playMovie MOVIEID"
-    echo "  showDecade YEAR"
+listMovies () {
+    echo "title|year|movieId"
+    sqlite3 "$db" \
+        "SELECT title,year,movieId
+        FROM movie" |
+            sort
 }
-alias help='_help_' #$
 
 newDirector () { #^
     if [ -z "$2" ]; then
@@ -94,6 +101,47 @@ newDirector () { #^
     fi
 } #$
 
+updateDirector () {
+    # name -> $1, title -> $2
+    sqlite3 "$db" \
+        "UPDATE movie
+            SET directorId = (SELECT directorId
+                FROM director
+                WHERE name = \"${1}\")
+            WHERE title = \"${2}\";"
+}
+
+listDirectors () {
+    sqlite3 "$db" \
+        "SELECT *
+        FROM director;"
+}
+
+updateMovieRating () {
+    # title -> $1, rating -> $2
+    sqlite3 "$db" \
+        "UPDATE movie
+        SET rating = $2
+        WHERE title = \"${1}\";"
+}
+
+updateDirectorRating () {
+    # title -> $1, rating -> $2
+    sqlite3 "$db" \
+        "UPDATE director
+        SET rating = $2
+        WHERE title = \"${1}\";"
+}
+
+listDirector () {
+    sqlite3 "$db" \
+        "SELECT title,year,rating,movieId
+        FROM movie
+        WHERE directorId = (SELECT directorId
+            FROM director
+            WHERE name = \"${1}\");"
+}
+
 newGenre () { #^
     # genre table
     sqlite3 "$db" \
@@ -105,7 +153,7 @@ newGenre () { #^
     );"
 } #$
 
-showDecade () { #^
+listDecade () { #^
     echo "year|title|movieId"
     sqlite3 "$db" \
         "select year,title,movieId from movie
@@ -126,5 +174,34 @@ browseDb () {
 
 clear
 help
+
+scrape () {
+    sqlite3 "$db" \
+        "SELECT title
+        FROM movie" |
+            while IFS="" read -r title; do
+                search="$(echo "$1" | tr ' ' '+' )"
+                raw="$(mktemp /tmp/movies_XXXXXX)"
+                curl "https://www.imdb.com/search/title/?title=${search}" > "$raw"
+                parsed="$(mktemp /tmp/movies_XXXXXX)"
+                python ${dataDir}/parser.py "$raw" > "$parsed"
+                metascore="$(grep -B 2 -i "metascore" "$parsed" | head -n 3 |
+                    head -n 1 | tr -d '[:space:]')"
+                director="$(grep -A 2 -i "director" "$parsed" | head -n 3 |
+                    tail -n 1)"
+                echo "${title}|${director}|${metascore}"
+                rm "$raw" "$parsed"
+            done |  while IFS="|" read title director metascore; do
+                        case "$director" in
+                            "") : ;;
+                            *)  newDirector "$director"
+                                case "$metascore" in
+                                    "") updateDirector "$director" "$title" ;;
+                                    *)  updateDirector "$director" "$title"
+                                        updateMovieRating "$title" "$metascore" ;;
+                                esac ;;
+                        esac
+                    done
+}
 
 # vim: fdm=marker fmr=#^,#$
