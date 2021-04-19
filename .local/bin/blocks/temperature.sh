@@ -1,1 +1,0 @@
-/home/wyatt/.local/share/profiles/casper/home/wyatt/.local/bin/blocks/temperature.sh
