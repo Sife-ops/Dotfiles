@@ -2,6 +2,7 @@ acorn
 bash-language-server
 blocks/temperature.sh
 bookmarks.sh
+clipboard.sh
 coverage
 coverage-3.9
 coverage3
