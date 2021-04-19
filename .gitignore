@@ -46,6 +46,7 @@
 .config/pcmanfm/
 .config/pulse/
 .config/qmk/
+.config/qt5ct/
 .config/rofi/
 .config/skypeforlinux/
 .config/spacefm/
@@ -58,6 +59,7 @@
 .config/vimb/
 .config/vivaldi/
 .config/vlc/
+.config/xfce4/
 .config/xinitrc
 .config/yarn/
 .config/zsh_bookmarks
@@ -87,7 +89,6 @@
 .local/share/emoji
 .local/share/fonts/
 .local/share/games
-.local/share/gnupg/
 .local/share/go/
 .local/share/history
 .local/share/ii/

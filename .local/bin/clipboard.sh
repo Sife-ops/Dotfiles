@@ -1,1 +1,0 @@
-/home/wyatt/.local/bin/menus_dmenu/clipboard.sh
