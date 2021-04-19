@@ -19,10 +19,10 @@ export XMODIFIERS=@im=fcitx
 
 xrdb ~/.Xresources
 
-if [ ! -f "$WALLPAPER" ]; then
-    ln -sf "$WALLPAPERS/waves.jpg" "$WALLPAPER"
-fi
-xwallpaper --zoom "$WALLPAPER"
+# if [ ! -f "$WALLPAPER" ]; then
+#     ln -sf "$WALLPAPERS/waves.jpg" "$WALLPAPER"
+# fi
+# xwallpaper --zoom "$WALLPAPER"
 
 xmodmap="${XMODMAPS}/$(cat /etc/hostname)" # need os detection
 if [ -f "$xmodmap" ]; then
@@ -41,8 +41,6 @@ ln -sf ${XDG_CONFIG_HOME}/sxhkd/xfce4 \
     ${XDG_CONFIG_HOME}/sxhkd/sxhkdrc
 sxhkd &
 
-exec startxfce4
-
-# . "${XDG_CONFIG_HOME}/xinitrc"
+. "${XDG_CONFIG_HOME}/xinitrc"
 
 # vim: fdm=marker fmr=#^,#$

@@ -48,3 +48,4 @@ passwd name
 
 # dotfiles
 git clone --recurse-submodules --branch sife https://github.com/Sife-ops/dotfiles.git
+git remote set-url origin git@github.com:Sife-ops/dotfiles.git
