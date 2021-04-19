@@ -27,7 +27,7 @@ fi
 #---- EVERY TIME A NEW USER LOGS IN --------------------------------------------
 firstLoginFile="${XDG_CACHE_HOME:-${HOME}/.cache}/zsh_firstlogin"
 mkdir -p "$(dirname "$firstLoginFile")"
-if [ -f "$firstLoginFile" ]; then
+if [ ! -f "$firstLoginFile" ]; then
     touch "$firstLoginFile"
 
 #^#---- CLIPBOARD --------------------------------------------------------------
