@@ -1,0 +1,6 @@
+python <(cat <<EoF
+
+<++>
+
+EoF
+)

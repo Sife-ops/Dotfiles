@@ -1,0 +1,13 @@
+while getopts "<++>" o; do
+    case "${o}" in
+        <++>) <++>="$OPTARG" ;;
+        <++>) <++>="$OPTARG" ;;
+        <++>) <++>="true" ;;
+        <++>) <++>="true" ;;
+        h) msg_help ;;
+        *) printf "Invalid option: -%s\n" "$o" ;;
+    esac
+done
+shift $((OPTIND - 1))
+
+<++>

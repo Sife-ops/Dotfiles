@@ -120,7 +120,6 @@
 .local/share/sarbs/aurlist
 .local/share/sarbs/paclist
 .local/share/secrets/
-.local/share/skeletons
 .local/share/statusbar
 .local/share/steam
 .local/share/tig/

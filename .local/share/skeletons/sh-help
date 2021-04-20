@@ -1,0 +1,10 @@
+function msg_help() { echo \
+"Usage:
+    <++> [<++>] <++>
+Options:
+    -<++>    <++>
+    -<++>    <++>
+    -<++>    <++>
+    -<++>    <++>
+    -h		print this message"
+}
