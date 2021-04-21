@@ -17,7 +17,7 @@ main () {
                         "$color1" "$time" \
                         "$color2" "$nick" \
                         "$color3" "$text"
-                    [ -n "$1" ] && notify-send "${0##/*/}" "$nick $text"
+                    [ -n "$1" ] && notify-send "$(basename $PWD)" "$nick $text"
                     # [ -n "$1" ] && mpv "${SFX}/AOL/receive.flac" 1>/dev/null 2>&1 & ;;
             esac ;;
         esac
@@ -25,7 +25,6 @@ main () {
 }
 
 refresh () {
-    clear
     main
 }
 
