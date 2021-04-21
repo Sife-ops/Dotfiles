@@ -52,6 +52,7 @@ main_list () { #^
 } #$
 
 action_list () { #^
+    echo "open in browser"
     echo "open with url.sh"
     [ -n "$1" ] && echo "remove tag" || echo "add tag"
     echo "delete"
@@ -153,6 +154,7 @@ create_bookmark () { #^ #^
 
 url_menu () { #^
     case "$chosen" in
+        "open in browser") $BROWSER "$url" ;;
         "open with url.sh") url.sh "$url" ;;
         "add tag") tag="$(tags_list | ${DMENU_CMD:-dmenu})"; [ "$tag" = "" ] && exit 1
             add_tag ;;
