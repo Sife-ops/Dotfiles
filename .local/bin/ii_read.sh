@@ -4,7 +4,6 @@ color1="\033[1;37m"
 color2="\033[1;32m"
 color3="\033[0;33m"
 
-
 main () {
     tail ${1:+-F} -n ${1:-100} "./out" | while read time nick text; do
         case "$nick" in
@@ -25,5 +24,14 @@ main () {
     done
 }
 
+refresh () {
+    clear
+    main
+}
+
+trap refresh SIGINT
+
 main
-main 0
+while true; do
+    main 0
+done
