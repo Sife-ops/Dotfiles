@@ -29,9 +29,13 @@ main () {
 }
 
 refresh () {
-    [ "$snd_enable" = "t" ] && snd_enable="f"
-    main
-    [ "$snd_enable" = "f" ] && snd_enable="t"
+    if [ "$snd_enable" = "f" ]; then
+        main
+        snd_enable="t"
+    else
+        snd_enable="f"
+        main
+    fi
 }
 
 trap refresh SIGINT
