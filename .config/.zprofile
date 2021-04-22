@@ -82,6 +82,18 @@ install_profile "$default_profile"
 install_profile "$host_profile"
 #$#
 
+#^#---- MISCELLANEOUS ----------------------------------------------------------
+# create doas configuration
+sudo printf "permit nopass :wheel" > /etc/doas.conf
+
+# set non-retarded timeout length of 30 seconds for systemd
+sudo sed -i '/DefaultTimeout.*Sec/ s/90/30/' /etc/systemd/system.conf
+
+# enable pacman colors
+grep 'ILoveCandy' /etc/pacman.conf ||
+    sudo sed -i '/^# Misc options/a Color\nILoveCandy' /etc/pacman.conf
+#$#
+
 fi
 
 # vim: ft=sh fdm=marker fmr=#^#,#$#
