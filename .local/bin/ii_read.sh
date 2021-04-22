@@ -31,10 +31,12 @@ main () {
 refresh () {
     if [ "$snd_enable" = "f" ]; then
         main
+        printf "SOUND ON\n"
         snd_enable="t"
     else
         snd_enable="f"
         main
+        printf "SOUND OFF\n"
     fi
 }
 
