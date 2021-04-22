@@ -4,6 +4,7 @@ color1="\033[1;37m"
 color2="\033[1;32m"
 color3="\033[0;33m"
 
+snd_enable="f"
 
 main () {
     tail ${1:+-F} -n ${1:-100} "./out" | while read time nick text; do
@@ -18,12 +19,28 @@ main () {
                         "$color1" "$time" \
                         "$color2" "$nick" \
                         "$color3" "$text"
-                    [ -n "$1" ] && notify-send "${0##/*/}" "$nick $text"
-                    # [ -n "$1" ] && mpv "${SFX}/AOL/receive.flac" 1>/dev/null 2>&1 & ;;
+                    [ -n "$1" ] &&
+                        notify-send "$(basename $PWD)" "$nick $text"
+                    [ "$snd_enable" = "t" ] &&
+                        mpv "${SFX}/AOL/receive.flac" 1>/dev/null 2>&1 & ;;
             esac ;;
         esac
     done
 }
 
+refresh () {
+    if [ "$snd_enable" = "f" ]; then
+        main
+        snd_enable="t"
+    else
+        snd_enable="f"
+        main
+    fi
+}
+
+trap refresh SIGINT
+
 main
-main 0
+while true; do
+    main 0
+done
