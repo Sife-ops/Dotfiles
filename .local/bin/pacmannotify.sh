@@ -21,6 +21,7 @@ while true; do
         notify-send 'pacman updates' "$(cat $updates)"
         mpv "${SFX}/win95/DA_EXCLA.WAV" 1>/dev/null 2>&1 &
         yad --notification \
+            --text="pacman updates" \
             --command="sh -c on_click" \
             --image="system-software-update" &
         echo $! >> $pidfile
