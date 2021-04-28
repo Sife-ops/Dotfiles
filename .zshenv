@@ -20,7 +20,7 @@ export PATH="${PATH}:${XDG_CONFIG_HOME}/emacs/bin"
 command -v nvim >/dev/null 2>&1 \
 	&& editor="nvim" \
 	|| editor="vim"
-export ALTEDITOR="emacsclient -nw"
+export ALTEDITOR="code"
 export BROWSER="${BROWSER:-lynx}"
 export EDITOR="$editor"
 export FCEDIT="$editor"
