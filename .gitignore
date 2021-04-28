@@ -74,6 +74,7 @@
 .local/bin/virtualenv
 .local/lib/
 .local/share/.vivaldi_reporting_data
+.local/share/Steam
 .local/share/Trash/
 .local/share/addressbook
 .local/share/addressbook~
@@ -130,6 +131,7 @@
 .local/share/virt
 .local/share/virtualenv/
 .local/share/vlc/
+.local/share/vulkan/
 .local/share/wallpaper
 .local/share/warez
 .local/share/warez/
@@ -151,7 +153,11 @@
 .pki
 .plover-lock-casper-0
 .psql_history
+.pulse-cookie
 .ssh/
+.steam/
+.steampath
+.steampid
 .sudo_as_admin_successful
 .viminfo
 .vscode
@@ -165,3 +171,4 @@ Downloads
 Mail/
 Pictures
 bookmarks.db.tar.xz
+steam.desktop
