@@ -44,11 +44,13 @@
 .config/mozc/
 .config/neofetch
 .config/nordvpn/
+.config/obs-studio/
 .config/pavucontrol.ini
 .config/pcmanfm/
 .config/pulse/
 .config/qmk/
 .config/qt5ct/
+.config/rbw/
 .config/rofi/
 .config/skypeforlinux/
 .config/spacefm/
@@ -117,6 +119,7 @@
 .local/share/plover/
 .local/share/qutebrowser/
 .local/share/ranger/
+.local/share/rbw/
 .local/share/recently-used.xbel
 .local/share/rosetta/
 .local/share/sarbs/
