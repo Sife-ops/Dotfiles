@@ -4,37 +4,24 @@
 
         "login": {
             ".login.username": [
-                "xclip -i selection clipboard",
-                "tmux set-buffer"
+                "echo \"$value\" | xclip -i -selection clipboard",
+                "tmux set-buffer \"$value\""
             ],
             ".login.password": [
-                "xclip -i selection secondary",
-                "tmux set-buffer"
+                "echo \"$value\" | xclip -i -selection primary",
+                "tmux set-buffer \"$value\""
             ]
         },
 
-        "secure_note": {
-            "property1": [
-                "commands1",
-                "command2"
-            ],
-            "property2": [
-                "commands1",
-                "command2"
-            ]
-        },
+        "secure_note": {},
 
-        "card": {
-            "property": []
-        },
+        "card": {},
 
-        "identity": {
-            "property": ["commands"]
-        }
+        "identity": {}
 
     },
 
     "editCmd":"st -e nvim",
-    "sessionKeyFile":"/home/wyatt/.config/zsh/conf.d/99-bitwarden.zsh",
-    "sepStr":"="
+    "sessionKeyFile":"/home/wyatt/.config/zsh/conf.d/99-bitwarden.zsh"
+
 }
