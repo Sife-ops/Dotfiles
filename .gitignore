@@ -11,6 +11,7 @@
 .config/Bitwarden/
 .config/Bitwarden\ CLI/
 .config/BraveSoftware/
+.config/Code\ -\ OSS/
 .config/Electron/
 .config/Element
 .config/GIMP/
