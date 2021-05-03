@@ -17,7 +17,11 @@
 
         "card": {},
 
-        "identity": {}
+        "identity": {
+            ".": [
+                "echo \"$value\" > /tmp/bar"
+            ]
+        }
 
     },
 
