@@ -201,4 +201,41 @@ case "$chosen" in
         url_menu ;;
 esac
 
+#^ The Categorization Script:
+##!/bin/bash
+
+#db="./bookmarks.db"
+
+#tags="$(
+
+#        sqlite3 "$db" "SELECT name
+#            FROM sqlite_master
+#            WHERE type = 'table'
+#            AND name
+#            NOT LIKE 'sqlite_%'
+#            AND name
+#            NOT LIKE 'bookmark';" | nl
+
+#)"
+
+#while IFS="|" read a url c; do
+#    # url="$(echo "$url" | tr -d '[:space:]')" # breaks everything
+#    while true; do
+#        echo "$tags"
+#        echo "=============================================================================="
+#        echo "${url}"
+#        echo "$c"
+#        read -p "n:next " act </dev/tty
+#        case "$act" in
+#            n) break ;;
+#            *)  tag="$(echo "$tags" | sed -n "${act}p" | awk '{print $2}')"
+#                sqlite3 "$db" "INSERT INTO '${tag}' (bookmarkId)
+#                VALUES ((SELECT bookmarkId
+#                    FROM bookmark
+#                    WHERE url = '${url}'));" ;;
+#        esac
+#    done
+#done < <(sqlite3 "$db" "select * from bookmark;")
+#$
+
 # vim: fdm=marker fmr=#^,#$

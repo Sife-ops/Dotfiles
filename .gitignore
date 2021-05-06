@@ -7,6 +7,7 @@
 .bash_logout
 .bash_profile
 .bashrc
+.bitmonero/
 .bluej/
 .config/Bitwarden/
 .config/Bitwarden\ CLI/
@@ -42,6 +43,7 @@
 .config/libreoffice/
 .config/lxqt/
 .config/microsoft-edge-dev/
+.config/monero-project/
 .config/mozc/
 .config/neofetch
 .config/nordvpn/
@@ -79,6 +81,8 @@
 .local/bin/virtualenv
 .local/lib/
 .local/share/.vivaldi_reporting_data
+.local/share/Monero
+.local/share/Monero/
 .local/share/Steam
 .local/share/Trash/
 .local/share/addressbook
@@ -160,6 +164,7 @@
 .plover-lock-casper-0
 .psql_history
 .pulse-cookie
+.shared-ringdb/
 .steam/
 .steampath
 .steampid

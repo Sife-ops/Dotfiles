@@ -13,7 +13,7 @@
             ]
         },
 
-        "secure_note": {},
+        "securenote": {},
 
         "card": {},
 
@@ -25,7 +25,9 @@
 
     },
 
+    "dmenuOpts":"-i -l 20",
     "editCmd":"st -e nvim",
+    "passwordGenCmd":"tr -dc 'a-zA-Z0-9!@#$%^&*()-=_+[]~{}|;:,./<>?' < /dev/urandom | head -c 16",
     "sessionKeyFile":"/home/wyatt/.config/zsh/conf.d/99-bitwarden.zsh"
 
 }

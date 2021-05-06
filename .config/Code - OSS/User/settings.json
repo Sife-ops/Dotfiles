@@ -38,12 +38,12 @@
 
   ],
   "terminal.integrated.allowChords": false,
-  "window.zoomLevel": 1,
   "editor.minimap.enabled": false,
   "editor.rulers": [
     80,
     120
   ],
-  "breadcrumbs.enabled": false
+  "breadcrumbs.enabled": false,
+  "workbench.activityBar.visible": false
 
 }
