@@ -71,6 +71,7 @@
 .config/yarn/
 .config/zsh_bookmarks
 .dbus/
+.dmrc
 .gitconfig
 .hhexen
 .ipfs/

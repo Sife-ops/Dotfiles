@@ -13,7 +13,7 @@ if [ ! -f "$oneShotFile" ]; then
     touch "$oneShotFile"
 
 #^#--- INSTALL MENUS -----------------------------------------------------------
-ln -sf ${HOME}/.local/bin/menus_fzf/* ${HOME}/.local/bin/ 1>/dev/null 2>&1
+# ln -sf ${HOME}/.local/bin/menus_fzf/* ${HOME}/.local/bin/ 1>/dev/null 2>&1
 #$#
 
 ##^#---- VCONSOLE ---------------------------------------------------------------
