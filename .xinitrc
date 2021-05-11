@@ -8,7 +8,7 @@
 
 #---- ENVIRONMENT VARIABLES ----------------------------------------------------
 
-export BROWSER="librewolf"
+export BROWSER="chromium"
 export URL_OPENER="url.sh"
 
 export GTK_IM_MODULE=fcitx
