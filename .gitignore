@@ -37,6 +37,7 @@
 .config/higan/
 .config/hiro/
 .config/inkscape/
+.config/jgit/
 .config/leafpad/
 .config/libfm/
 .config/libreoffice/
@@ -71,6 +72,7 @@
 .config/zsh_bookmarks
 .dbus/
 .dmrc
+.eclipse/
 .gitconfig
 .hhexen
 .ipfs/
@@ -169,6 +171,7 @@
 .steampath
 .steampid
 .sudo_as_admin_successful
+.swt/
 .viminfo
 .vscode
 .vscode-oss
