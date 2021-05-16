@@ -156,7 +156,6 @@
 .local/share/zeitgeist/
 .local/src
 .local/src/
-.local/var
 .m2/
 .minecraft/
 .mozilla/
