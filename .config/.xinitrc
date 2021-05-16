@@ -8,7 +8,7 @@
 
 #---- ENVIRONMENT VARIABLES ----------------------------------------------------
 
-export BROWSER="librewolf"
+export BROWSER="chromium"
 export URL_OPENER="url.sh"
 
 export GTK_IM_MODULE=fcitx
@@ -19,11 +19,6 @@ export XMODIFIERS=@im=fcitx
 
 xrdb ~/.Xresources
 
-# if [ ! -f "$WALLPAPER" ]; then
-#     ln -sf "$WALLPAPERS/waves.jpg" "$WALLPAPER"
-# fi
-# xwallpaper --zoom "$WALLPAPER"
-
 xmodmap="${XMODMAPS}/$(cat /etc/hostname)" # need os detection
 if [ -f "$xmodmap" ]; then
     ln -sf "$xmodmap" "$XMODMAP"
@@ -31,15 +26,15 @@ if [ -f "$xmodmap" ]; then
     setxmodmap.sh
 fi
 
-ln -sf ${HOME}/.local/bin/menus_dmenu/* ${HOME}/.local/bin/
-
-xset r rate 200 50
-unclutter --timeout 1 &
-dunst &
-
 ln -sf ${XDG_CONFIG_HOME}/sxhkd/xfce4 \
     ${XDG_CONFIG_HOME}/sxhkd/sxhkdrc
 sxhkd &
+
+ln -sf ${HOME}/.local/bin/menus_dmenu/* ${HOME}/.local/bin/
+
+dunst &
+pacmannotify.sh 3600 &
+unclutter --timeout 1 &
 
 exec startxfce4
 

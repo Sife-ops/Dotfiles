@@ -10,3 +10,11 @@
     path = .config/zsh
     url = https://github.com/Sife-ops/xyZSH.git
     update = merge
+[submodule ".local/var/dmenu"]
+	path = .local/var/dmenu
+	url = https://github.com/Sife-ops/dmenu.git
+    update = merge
+[submodule ".local/var/st"]
+	path = .local/var/st
+	url = https://github.com/Sife-ops/st.git
+    update = merge

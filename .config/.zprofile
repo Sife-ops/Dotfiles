@@ -13,7 +13,7 @@ if [ ! -f "$oneShotFile" ]; then
     touch "$oneShotFile"
 
 #^#--- INSTALL MENUS -----------------------------------------------------------
-ln -sf ${HOME}/.local/bin/menus_fzf/* ${HOME}/.local/bin/
+# ln -sf ${HOME}/.local/bin/menus_fzf/* ${HOME}/.local/bin/ 1>/dev/null 2>&1
 #$#
 
 ##^#---- VCONSOLE ---------------------------------------------------------------
@@ -44,8 +44,6 @@ chmod 600 $NOTIFICATIONS
 #$#
 
 #^#---- HOST PROFILE INSTALLER -------------------------------------------------
-default_profile="${PROFILES}/default"
-
 case "$(uname)" in
     FreeBSD) host="$(grep 'hostname' /etc/rc.conf |
         sed -E 's/(^.*=")(.*\.)(.*$)/\2/')" ;;
@@ -55,31 +53,34 @@ case "$(uname)" in
 esac
 
 host_profile="${PROFILES}/${host}"
+echo hi
+while IFS= read -r file; do
+    target="${file##${host_profile}}"
+    directory="$(dirname "$target")"
 
-install_profile(){ #^#
-    [ -d "$1" ] || exit 1
-    find "$1" -type f |
-        while IFS= read -r file; do
-            target="${file##${1}}"
-            directory="$(dirname "$target")"
+    if [ ! -d "$directory" ]; then
+        mkdir -p "$directory" 2>/dev/null || \
+            sudo mkdir -p "$directory"; fi
 
-            if [ ! -d "$directory" ]; then
-                mkdir -p "$directory" 2>/dev/null || \
-                    sudo mkdir -p "$directory"; fi
+    if [ -e "$target" ] && \
+        ! readlink "$target" 1>/dev/null && \
+        [ ! -f "${target}_bu" ]; then
+            mv "$target" "${target}_bu" 2>/dev/null || \
+            sudo mv "$target" "${target}_bu"; fi
 
-            if [ -e "$target" ] && \
-                ! readlink "$target" 1>/dev/null && \
-                [ ! -f "${target}_bu" ]; then
-                    mv "$target" "${target}_bu" 2>/dev/null || \
-                    sudo mv "$target" "${target}_bu"; fi
+    ln -sfn "$file" "$target" 2>/dev/null || \
+        sudo cp "$file" "$target" 2>/dev/null
+done < <(find "$host_profile" -type f)
+#$#
 
-            ln -sfn "$file" "$target" 2>/dev/null || \
-                sudo cp "$file" "$target" 2>/dev/null
-        done
-} #$#
+#^#---- MISCELLANEOUS ----------------------------------------------------------
+# set non-retarded timeout length of 30 seconds for systemd
+sudo sed -i -E '/DefaultTimeout.*Sec/ s/(^#)(.*)(90)(.*)/\230\4/' \
+    /etc/systemd/system.conf
 
-install_profile "$default_profile"
-install_profile "$host_profile"
+# enable pacman colors
+grep 'ILoveCandy' /etc/pacman.conf ||
+    sudo sed -i '/^# Misc options/a Color\nILoveCandy' /etc/pacman.conf
 #$#
 
 fi

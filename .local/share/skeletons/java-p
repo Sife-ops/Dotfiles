@@ -1,1 +1,1 @@
-out.print("<++>");
+System.out.println(<++>);

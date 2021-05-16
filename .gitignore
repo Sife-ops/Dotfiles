@@ -7,10 +7,13 @@
 .bash_logout
 .bash_profile
 .bashrc
+.bitmonero/
 .bluej/
 .config/Bitwarden/
 .config/Bitwarden\ CLI/
 .config/BraveSoftware/
+.config/Code\ -\ OSS/
+.config/Electron/
 .config/Element
 .config/GIMP/
 .config/Kitware/
@@ -20,7 +23,6 @@
 .config/Ulduzsoft/
 .config/VirtualBox/
 .config/abiword/
-.config/autostart/
 .config/blender/
 .config/chromium/
 .config/configstore
@@ -35,19 +37,23 @@
 .config/higan/
 .config/hiro/
 .config/inkscape/
+.config/jgit/
 .config/leafpad/
 .config/libfm/
 .config/libreoffice/
 .config/lxqt/
 .config/microsoft-edge-dev/
+.config/monero-project/
 .config/mozc/
 .config/neofetch
 .config/nordvpn/
+.config/obs-studio/
 .config/pavucontrol.ini
 .config/pcmanfm/
 .config/pulse/
 .config/qmk/
 .config/qt5ct/
+.config/rbw/
 .config/rofi/
 .config/skypeforlinux/
 .config/spacefm/
@@ -65,7 +71,10 @@
 .config/yarn/
 .config/zsh_bookmarks
 .dbus/
+.dmrc
+.eclipse/
 .gitconfig
+.hhexen
 .ipfs/
 .java/
 .kchmviewer
@@ -74,6 +83,9 @@
 .local/bin/virtualenv
 .local/lib/
 .local/share/.vivaldi_reporting_data
+.local/share/Monero
+.local/share/Monero/
+.local/share/Steam
 .local/share/Trash/
 .local/share/addressbook
 .local/share/addressbook~
@@ -114,6 +126,7 @@
 .local/share/plover/
 .local/share/qutebrowser/
 .local/share/ranger/
+.local/share/rbw/
 .local/share/recently-used.xbel
 .local/share/rosetta/
 .local/share/sarbs/
@@ -130,6 +143,7 @@
 .local/share/virt
 .local/share/virtualenv/
 .local/share/vlc/
+.local/share/vulkan/
 .local/share/wallpaper
 .local/share/warez
 .local/share/warez/
@@ -142,7 +156,6 @@
 .local/share/zeitgeist/
 .local/src
 .local/src/
-.local/var
 .m2/
 .minecraft/
 .mozilla/
@@ -151,8 +164,13 @@
 .pki
 .plover-lock-casper-0
 .psql_history
-.ssh/
+.pulse-cookie
+.shared-ringdb/
+.steam/
+.steampath
+.steampid
 .sudo_as_admin_successful
+.swt/
 .viminfo
 .vscode
 .vscode-oss
@@ -165,3 +183,4 @@ Downloads
 Mail/
 Pictures
 bookmarks.db.tar.xz
+steam.desktop

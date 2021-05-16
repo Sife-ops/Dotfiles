@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=xcape
+Comment=swap keys
+Exec=/usr/bin/xcape -e 'Alt_L=Tab;Control_L=Escape;Alt_R=backslash;Control_R=BackSpace'
+Terminal=false
+Type=Application

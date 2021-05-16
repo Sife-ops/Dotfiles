@@ -1,0 +1,18 @@
+#!/bin/sh
+
+#                            __ _ _
+#     __  ___ __  _ __ ___  / _(_) | ___
+#     \ \/ / '_ \| '__/ _ \| |_| | |/ _ \
+#    _ >  <| |_) | | | (_) |  _| | |  __/
+#   (_)_/\_\ .__/|_|  \___/|_| |_|_|\___|
+#          |_|
+
+[ -f ${HOME}/.cache/bwsession ] &&
+    source ${HOME}/.cache/bwsession
+[ -f ${HOME}/.zshenv ] &&
+    source ${HOME}/.zshenv
+
+export BROWSER="chromium"
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx

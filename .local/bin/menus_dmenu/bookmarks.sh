@@ -1,6 +1,8 @@
 #!/bin/sh
 # bookmarks manager using sqlite3
 
+self=$(basename "${0##/*/}")
+
 dataDir="${XDG_DATA_HOME}/bookmarks"
 dbName="bookmarks.db"
 db="${dataDir}/${dbName}"
@@ -15,7 +17,9 @@ done < "$config"
 
 download () { #^
     pushd "$dataDir"
-    eval "$fetchCmd"
+    eval "$fetchCmd" &&
+        notify-send "$self" "Download successful." ||
+        notify-send "$self" "Download failed."
     tar xf "${dbName}.tar.xz"
     popd
 } #$
@@ -23,7 +27,9 @@ download () { #^
 upload () { #^
     pushd "$dataDir"
     tar caf ${dbName}.tar.xz  ${dbName}
-    eval "$pushCmd"
+    eval "$pushCmd" &&
+        notify-send "$self" "Upload successful." ||
+        notify-send "$self" "Upload failed."
     popd
 } #$
 
@@ -59,6 +65,8 @@ action_list () { #^
 } #$
 
 filter_list () { #^
+    # echo "open all in browser"
+    # echo "================================================================================================================================================================================================================================================================================================================================================================================================================"
     sqlite3 "$db" "SELECT description,url,bookmarkId
         FROM bookmark
         WHERE bookmarkId
@@ -190,6 +198,7 @@ case "$chosen" in
     '#'*)   tag="$chosen"
             chosen="$(filter_list | ${DMENU_CMD:-dmenu})"; [ "$chosen" = "" ] && exit 1
             case "$chosen" in
+                # "open all in browser") delete_tag ;;
                 "delete tag") delete_tag ;;
                 *)  url="$(echo "$chosen" | cut -d '|' -f 2)"
                     bookmarkId="$(echo "$chosen" | cut -d '|' -f 3)"
@@ -200,5 +209,42 @@ case "$chosen" in
         chosen="$(action_list | ${DMENU_CMD:-dmenu})"; [ "$chosen" = "" ] && exit 1
         url_menu ;;
 esac
+
+#^ The Categorization Script:
+##!/bin/bash
+
+#db="./bookmarks.db"
+
+#tags="$(
+
+#        sqlite3 "$db" "SELECT name
+#            FROM sqlite_master
+#            WHERE type = 'table'
+#            AND name
+#            NOT LIKE 'sqlite_%'
+#            AND name
+#            NOT LIKE 'bookmark';" | nl
+
+#)"
+
+#while IFS="|" read a url c; do
+#    # url="$(echo "$url" | tr -d '[:space:]')" # breaks everything
+#    while true; do
+#        echo "$tags"
+#        echo "=============================================================================="
+#        echo "${url}"
+#        echo "$c"
+#        read -p "n:next " act </dev/tty
+#        case "$act" in
+#            n) break ;;
+#            *)  tag="$(echo "$tags" | sed -n "${act}p" | awk '{print $2}')"
+#                sqlite3 "$db" "INSERT INTO '${tag}' (bookmarkId)
+#                VALUES ((SELECT bookmarkId
+#                    FROM bookmark
+#                    WHERE url = '${url}'));" ;;
+#        esac
+#    done
+#done < <(sqlite3 "$db" "select * from bookmark;")
+#$
 
 # vim: fdm=marker fmr=#^,#$

@@ -1,0 +1,33 @@
+{
+
+    "copyCmds": {
+
+        "login": {
+            ".login.username": [
+                "echo \"$value\" | xclip -i -selection clipboard",
+                "tmux set-buffer \"$value\""
+            ],
+            ".login.password": [
+                "echo \"$value\" | xclip -i -selection primary",
+                "tmux set-buffer \"$value\""
+            ]
+        },
+
+        "securenote": {},
+
+        "card": {},
+
+        "identity": {
+            ".": [
+                "echo \"$value\" > /tmp/bar"
+            ]
+        }
+
+    },
+
+    "dmenuOpts":"-i -l 20",
+    "editCmd":"st -e nvim",
+    "passwordGenCmd":"tr -dc 'a-zA-Z0-9!@#$%^&*()-=_+[]~{}|;:,./<>?' < /dev/urandom | head -c 16",
+    "sessionKeyFile":"/home/wyatt/.cache/bwsession"
+
+}

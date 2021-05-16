@@ -144,9 +144,9 @@ XF86Tools; m
 
 # password menu
 mod4 + d; p
-    password.sh
+    dmenu_bw
 XF86Tools; p
-    password.sh
+    dmenu_bw
 
 # systemctl menu
 mod4 + d; s
