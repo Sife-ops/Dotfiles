@@ -25,7 +25,8 @@ if [ ! -f "$oneShotFile" ]; then
 fi
 
 #---- EVERY TIME A NEW USER LOGS IN --------------------------------------------
-firstLoginFile="${XDG_CACHE_HOME:-${HOME}/.cache}/zsh_firstlogin"
+# firstLoginFile="${XDG_CACHE_HOME:-${HOME}/.cache}/zsh_firstlogin"
+firstLoginFile="${XDG_CACHE_HOME}/zsh_firstlogin"
 mkdir -p "$(dirname "$firstLoginFile")"
 if [ ! -f "$firstLoginFile" ]; then
     touch "$firstLoginFile"
@@ -37,41 +38,75 @@ chmod 700 $CLIPBOARD
 chmod 600 ${CLIPBOARD}/*
 #$#
 
-#^#---- NOTIFICATIONS ----------------------------------------------------------
-mkdir -p $(dirname $NOTIFICATIONS)
-touch $NOTIFICATIONS
-chmod 600 $NOTIFICATIONS
-#$#
-
 #^#---- HOST PROFILE INSTALLER -------------------------------------------------
-case "$(uname)" in
-    FreeBSD) host="$(grep 'hostname' /etc/rc.conf |
-        sed -E 's/(^.*=")(.*\.)(.*$)/\2/')" ;;
-    Linux) host="$(cat /etc/hostname)" ;;
-    OpenBSD) host="$(cat /etc/myname | cut -d '.' -f 1)" ;;
-    *) host="$(hostname)" ;;
+case $(cat /etc/hostname) in
+    45savage)
+        sudo cp -b "${PROFILES}/$(cat /etc/hostname)/etc/hosts" /etc/hosts
+        ;;
+    casper)
+        sudo cp -b "${PROFILES}/$(cat /etc/hostname)/etc/hosts" /etc/hosts
+        ln -sf \
+            "${PROFILES}/$(cat /etc/hostname)/home/$(id-un)/.local/bin/blocks/temperature.sh" \
+            "${HOME}/.local/bin/blocks/temperature.sh"
+        ln -sf \
+            "${PROFILES}/$(cat /etc/hostname)/home/$(id-un)/.local/share/barrier/.barrier.conf" \
+            "${XDG_DATA_HOME}/barrier/.barrier.conf"
+        ;;
+    eltreum)
+        sudo cp -b "${PROFILES}/$(cat /etc/hostname)/etc/hosts" /etc/hosts
+        sudo cp -b "${PROFILES}/$(cat /etc/hostname)/etc/bitlbee" /etc/
+        sudo cp -b "${PROFILES}/$(cat /etc/hostname)/etc/nginx" /etc/
+        ;;
+    nothingburger)
+        sudo cp -b "${PROFILES}/$(cat /etc/hostname)/etc/hosts" /etc/hosts
+        sudo cp -b "${PROFILES}/$(cat /etc/hostname)/etc/modules-load.d" /etc/
+        ln -sf \
+            "${PROFILES}/$(cat /etc/hostname)/home/$(id-un)/.config/autostart/xcape.desktop" \
+            "${XDG_CONFIG_HOME}/autostart/xcape.desktop"
+        ln -sf \
+            "${PROFILES}/$(cat /etc/hostname)/home/$(id-un)/.local/bin/blocks/temperature.sh" \
+            "${HOME}/.local/bin/blocks/temperature.sh"
+        ln -sf \
+            "${PROFILES}/$(cat /etc/hostname)/home/$(id-un)/.local/share/barrier/.barrier.conf" \
+            "${XDG_DATA_HOME}/barrier/.barrier.conf"
+        ;;
+    russianbot)
+        sudo cp -b "${PROFILES}/$(cat /etc/hostname)/etc/hosts" /etc/hosts
+        ;;
+    # *)
+    #     ;;
 esac
-
-host_profile="${PROFILES}/${host}"
-echo hi
-while IFS= read -r file; do
-    target="${file##${host_profile}}"
-    directory="$(dirname "$target")"
-
-    if [ ! -d "$directory" ]; then
-        mkdir -p "$directory" 2>/dev/null || \
-            sudo mkdir -p "$directory"; fi
-
-    if [ -e "$target" ] && \
-        ! readlink "$target" 1>/dev/null && \
-        [ ! -f "${target}_bu" ]; then
-            mv "$target" "${target}_bu" 2>/dev/null || \
-            sudo mv "$target" "${target}_bu"; fi
-
-    ln -sfn "$file" "$target" 2>/dev/null || \
-        sudo cp "$file" "$target" 2>/dev/null
-done < <(find "$host_profile" -type f)
 #$#
+
+##^#---- HOST PROFILE INSTALLER (OLD) ------------------------------------------
+#case "$(uname)" in
+#    FreeBSD) host="$(grep 'hostname' /etc/rc.conf |
+#        sed -E 's/(^.*=")(.*\.)(.*$)/\2/')" ;;
+#    Linux) host="$(cat /etc/hostname)" ;;
+#    OpenBSD) host="$(cat /etc/myname | cut -d '.' -f 1)" ;;
+#    *) host="$(hostname)" ;;
+#esac
+
+#host_profile="${PROFILES}/${host}"
+#echo hi
+#while IFS= read -r file; do
+#    target="${file##${host_profile}}"
+#    directory="$(dirname "$target")"
+
+#    if [ ! -d "$directory" ]; then
+#        mkdir -p "$directory" 2>/dev/null || \
+#            sudo mkdir -p "$directory"; fi
+
+#    if [ -e "$target" ] && \
+#        ! readlink "$target" 1>/dev/null && \
+#        [ ! -f "${target}_bu" ]; then
+#            mv "$target" "${target}_bu" 2>/dev/null || \
+#            sudo mv "$target" "${target}_bu"; fi
+
+#    ln -sfn "$file" "$target" 2>/dev/null || \
+#        sudo cp "$file" "$target" 2>/dev/null
+#done < <(find "$host_profile" -type f)
+##$#
 
 #^#---- MISCELLANEOUS ----------------------------------------------------------
 # set non-retarded timeout length of 30 seconds for systemd

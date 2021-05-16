@@ -17,9 +17,7 @@ export XMODIFIERS=@im=fcitx
 
 #---- STARTUP ------------------------------------------------------------------
 
-xrdb ~/.Xresources
-
-xmodmap="${XMODMAPS}/$(cat /etc/hostname)" # need os detection
+xmodmap="${XMODMAPS}/$(cat /etc/hostname)"
 if [ -f "$xmodmap" ]; then
     ln -sf "$xmodmap" "$XMODMAP"
     sleep 1
@@ -29,12 +27,6 @@ fi
 ln -sf ${XDG_CONFIG_HOME}/sxhkd/xfce4 \
     ${XDG_CONFIG_HOME}/sxhkd/sxhkdrc
 sxhkd &
-
-ln -sf ${HOME}/.local/bin/menus_dmenu/* ${HOME}/.local/bin/
-
-dunst &
-pacmannotify.sh 3600 &
-unclutter --timeout 1 &
 
 exec startxfce4
 

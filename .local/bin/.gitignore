@@ -1,12 +1,9 @@
 acorn
 bash-language-server
 blocks/temperature.sh
-bookmarks.sh
-clipboard.sh
 coverage
 coverage-3.9
 coverage3
-emoji.sh
 escodegen
 esgenerate
 esparse
@@ -18,7 +15,6 @@ hjson
 hjson.cmd
 installServerIntoExtension
 lf
-mount.sh
 node_modules/
 nose2
 nose2-3.6
@@ -31,8 +27,6 @@ shfm
 sshpk-conv
 sshpk-sign
 sshpk-verify
-systemctl.sh
 tags
-url.sh
 uuid
 yapf
