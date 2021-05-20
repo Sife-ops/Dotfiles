@@ -1,4 +1,5 @@
 acorn
+activate-global-python-argcomplete
 bash-language-server
 blocks/temperature.sh
 coverage
@@ -22,7 +23,10 @@ package-lock.json
 password.sh
 pycodestyle
 pyflakes
+python-argcomplete-check-easy-install-script
+python-argcomplete-tcsh
 qmk
+register-python-argcomplete
 shfm
 sshpk-conv
 sshpk-sign

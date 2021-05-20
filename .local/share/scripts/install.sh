@@ -12,7 +12,6 @@ pacstrap /mnt \
     grub \
     networkmanager \
     man \
-    doas \
     tmux \
     openssh
 
@@ -33,7 +32,7 @@ echo '127.0.0.1	localhost
 passwd
 systemctl enable NetworkManager
 systemctl enable sshd
-echo 'PermitRootLogin yes' > /etc/ssh/sshd_config
+echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
 
 ### UEFI only
 grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=sarbs

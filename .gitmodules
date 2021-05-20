@@ -1,7 +1,3 @@
-# [submodule ".config/emacs"]
-#     path = .config/emacs
-#     url = https://github.com/Sife-ops/SoyFreEmacs.git
-#     update = merge
 [submodule ".config/nvim"]
     path = .config/nvim
     url = https://github.com/Sife-ops/SoyFreeVim.git
