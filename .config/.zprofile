@@ -116,6 +116,10 @@ sudo sed -i -E '/DefaultTimeout.*Sec/ s/(^#)(.*)(90)(.*)/\230\4/' \
 # enable pacman colors
 grep 'ILoveCandy' /etc/pacman.conf ||
     sudo sed -i '/^# Misc options/a Color\nILoveCandy' /etc/pacman.conf
+
+# install cht.sh
+curl "https://cht.sh/:cht.sh" | sudo tee /usr/local/bin/cht.sh
+sudo chmod +x /usr/local/bin/cht.sh
 #$#
 
 fi
