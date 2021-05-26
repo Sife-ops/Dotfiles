@@ -184,3 +184,4 @@ Mail/
 Pictures
 bookmarks.db.tar.xz
 steam.desktop
+.local/share/node_repl_history
