@@ -100,64 +100,64 @@ mod4 + shift + v
 
 #^---- MENUS -------------------------------------------------------------------
 
-# SNES emulator
-mod4 + d; 9; 0
-    dmenusnes9x.sh ~/.local/share/warez/SNES
-XF86Tools; 9; 0
-    dmenusnes9x.sh ~/.local/share/warez/SNES
+# # SNES emulator
+# mod4 + d; 9; 0
+#     dmenusnes9x.sh ~/.local/share/warez/SNES
+# mod4 + mod1 + ctrl + 0
+#     dmenusnes9x.sh ~/.local/share/warez/SNES
 
-# N64 emulator
-mod4 + d; 6; 4
-    dmenumupen.sh ~/.local/share/warez/N64
-XF86Tools; 6; 4
-    dmenumupen.sh ~/.local/share/warez/N64
+# # N64 emulator
+# mod4 + d; 6; 4
+#     dmenumupen.sh ~/.local/share/warez/N64
+# mod4 + mod1 + ctrl + 0
+#     dmenumupen.sh ~/.local/share/warez/N64
 
 # bookmark menu
 mod4 + d; b
     bookmarks.sh
-XF86Tools; b
+mod4 + mod1 + ctrl + b
     bookmarks.sh
 
 # clipboard menu
 mod4 + d; c; b
     clipboard.sh
-XF86Tools; c; b
+mod4 + mod1 + ctrl + c
     clipboard.sh
 
 # emoji menu
 mod4 + d; e
     emoji.sh
-XF86Tools; e
+mod4 + mod1 + ctrl + e
     emoji.sh
 
 # filesystem menu
 mod4 + d; f; s
     mount.sh
-XF86Tools; f; s
+mod4 + mod1 + ctrl + f
     mount.sh
 
 # meme menu
 mod4 + d; m
     meme.sh
-XF86Tools; m
+mod4 + mod1 + ctrl + m
     meme.sh
 
 # password menu
 mod4 + d; p
     dmenu_bw
-XF86Tools; p
+mod4 + mod1 + ctrl + p
     dmenu_bw
 
 # systemctl menu
 mod4 + d; s
     systemctl.sh
-XF86Tools; s
+mod4 + mod1 + ctrl + s
     systemctl.sh
 
 # url action menu
 mod4 + d; u
     url.sh
-XF86Tools; u
+mod4 + mod1 + ctrl + u
     url.sh
 
 #$
