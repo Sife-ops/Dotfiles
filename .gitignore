@@ -3,6 +3,7 @@
 .ICEauthority
 .Xauthority
 .Xmodmap
+.arduino15/
 .bash_history
 .bash_logout
 .bash_profile
@@ -85,6 +86,7 @@
 .local/share/.vivaldi_reporting_data
 .local/share/Monero
 .local/share/Monero/
+.local/share/RepetierHost/
 .local/share/Steam
 .local/share/Trash/
 .local/share/addressbook
@@ -113,6 +115,7 @@
 .local/share/movies/
 .local/share/mupen64plus/
 .local/share/newsboat/
+.local/share/node_repl_history
 .local/share/notes
 .local/share/notifications
 .local/share/nvim/.netrwhist
@@ -158,6 +161,7 @@
 .local/src/
 .m2/
 .minecraft/
+.mono/
 .mozilla/
 .npm/
 .offlineimap/
@@ -178,10 +182,10 @@
 .xsession-errors
 .xsession-errors.old
 .yarnrc
+Arduino/
 Documents
 Downloads
 Mail/
 Pictures
 bookmarks.db.tar.xz
 steam.desktop
-.local/share/node_repl_history

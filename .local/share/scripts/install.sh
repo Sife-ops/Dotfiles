@@ -1,5 +1,7 @@
 #!/bin/sh
 
+timedatectl set-ntp true
+
 # after partitioning
 pacstrap /mnt \
     base \
@@ -12,7 +14,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 
 # after chroot
-ln -sf /usr/share/zoneinfo/US/Pacific /etc/localtime
+ln -sf /usr/share/zoneinfo/US/Pacific/etc/localtime
 
 hwclock --systohc
 
