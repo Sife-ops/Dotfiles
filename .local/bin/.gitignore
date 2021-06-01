@@ -1,4 +1,5 @@
 acorn
+flake8
 activate-global-python-argcomplete
 bash-language-server
 blocks/temperature.sh

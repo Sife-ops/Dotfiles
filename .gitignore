@@ -19,6 +19,7 @@
 .config/GIMP/
 .config/Kitware/
 .config/OpenSCAD/
+.config/Printrun
 .config/QtProject.conf
 .config/Thunar/
 .config/Ulduzsoft/
