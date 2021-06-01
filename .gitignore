@@ -20,6 +20,7 @@
 .config/Kitware/
 .config/OpenSCAD/
 .config/Printrun
+.config/PrusaSlicer/
 .config/QtProject.conf
 .config/Thunar/
 .config/Ulduzsoft/
@@ -80,6 +81,7 @@
 .ipfs/
 .java/
 .kchmviewer
+.kodi/
 .lein/
 .librewolf/
 .local/bin/virtualenv
