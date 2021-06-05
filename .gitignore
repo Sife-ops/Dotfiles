@@ -54,6 +54,7 @@
 .config/pavucontrol.ini
 .config/pcmanfm/
 .config/pulse/
+.config/qBittorrent/
 .config/qmk/
 .config/qt5ct/
 .config/rbw/
@@ -130,6 +131,7 @@
 .local/share/nvm/
 .local/share/pictures
 .local/share/plover/
+.local/share/qBittorrent/
 .local/share/qutebrowser/
 .local/share/ranger/
 .local/share/rbw/
