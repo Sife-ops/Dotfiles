@@ -24,6 +24,7 @@
 .config/QtProject.conf
 .config/Thunar/
 .config/Ulduzsoft/
+.config/Unknown Organization/
 .config/VirtualBox/
 .config/abiword/
 .config/blender/
@@ -73,6 +74,7 @@
 .config/xfce4/
 .config/xinitrc
 .config/yarn/
+.config/zoomus.conf
 .config/zsh_bookmarks
 .dbus/
 .dmrc
@@ -187,6 +189,7 @@
 .xsession-errors
 .xsession-errors.old
 .yarnrc
+.zoom/
 Arduino/
 Documents
 Downloads
