@@ -37,16 +37,6 @@ XF86AudioMute
 
 #^---- FUNCTION ROW ------------------------------------------------------------
 
-# F2
-#     password.sh
-# F3
-#     clipboard.sh
-# F4
-#     bookmarks.sh
-# F4
-#     url.sh
-# F12
-   # $TERMINAL
 
 #$
 
@@ -143,6 +133,8 @@ mod4 + mod1 + ctrl + m
     meme.sh
 
 # password menu
+F9
+    dmenu_bw
 mod4 + d; p
     dmenu_bw
 mod4 + mod1 + ctrl + p
