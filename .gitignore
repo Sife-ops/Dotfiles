@@ -1,6 +1,7 @@
 *#*
 *~*
 .ICEauthority
+.Slic3r/
 .Xauthority
 .Xmodmap
 .arduino15/
@@ -17,11 +18,13 @@
 .config/Electron/
 .config/Element
 .config/GIMP/
+.config/JetBrains/
 .config/Kitware/
 .config/OpenSCAD/
 .config/Printrun
 .config/PrusaSlicer/
 .config/QtProject.conf
+.config/Slack/
 .config/Thunar/
 .config/Ulduzsoft/
 .config/Unknown Organization/
@@ -91,8 +94,10 @@
 .local/bin/virtualenv
 .local/lib/
 .local/share/.vivaldi_reporting_data
+.local/share/JetBrains/
 .local/share/Monero
 .local/share/Monero/
+.local/share/OpenSCAD/
 .local/share/RepetierHost/
 .local/share/Steam
 .local/share/Trash/
