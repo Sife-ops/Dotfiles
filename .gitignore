@@ -152,6 +152,7 @@
 .local/share/secrets/
 .local/share/statusbar
 .local/share/steam
+.local/share/stl
 .local/share/tig/
 .local/share/todo
 .local/share/torbrowser/
