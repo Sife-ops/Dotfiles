@@ -91,9 +91,11 @@
 .kodi/
 .lein/
 .librewolf/
+.local/bin/milc-color
 .local/bin/virtualenv
 .local/lib/
 .local/share/.vivaldi_reporting_data
+.local/share/DBeaverData/
 .local/share/JetBrains/
 .local/share/Monero
 .local/share/Monero/
@@ -104,6 +106,7 @@
 .local/share/addressbook
 .local/share/addressbook~
 .local/share/ahk/
+.local/share/applications/_usr_lib_dbeaver_.desktop
 .local/share/bookmarks
 .local/share/cargo/
 .local/share/clipboard
