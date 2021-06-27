@@ -44,6 +44,7 @@
     120
   ],
   "breadcrumbs.enabled": false,
-  "workbench.activityBar.visible": false
+  "window.zoomLevel": 1,
+  "editor.fontFamily": "'Ubuntu Mono', 'monospace', monospace, 'Droid Sans Fallback'"
 
 }
