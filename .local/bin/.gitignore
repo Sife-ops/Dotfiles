@@ -1,5 +1,4 @@
 acorn
-flake8
 activate-global-python-argcomplete
 bash-language-server
 blocks/temperature.sh
@@ -13,6 +12,7 @@ esvalidate
 extract_canvas
 fdsa.conf
 fdsa.sh
+flake8
 hjson
 hjson.cmd
 installServerIntoExtension
@@ -20,6 +20,7 @@ lf
 node_modules/
 nose2
 nose2-3.6
+nvim
 package-lock.json
 password.sh
 pycodestyle
