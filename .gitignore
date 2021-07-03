@@ -177,6 +177,7 @@
 .local/share/zeitgeist/
 .local/src
 .local/src/
+.local/tmp/
 .m2/
 .minecraft/
 .mono/
