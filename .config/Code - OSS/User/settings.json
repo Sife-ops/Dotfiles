@@ -16,6 +16,12 @@
 
   "vim.leader": "<space>",
 
+  "vim.insertModeKeyBindings": [
+
+      { "before": ["j", "k"], "after": ["<Esc>"] }
+
+  ],
+
   "vim.normalModeKeyBindingsNonRecursive": [
 
     { "before": ["<C-h>"], "after": ["<C-w>", "h"] },
@@ -23,8 +29,8 @@
     { "before": ["<C-k>"], "after": ["<C-w>", "k"] },
     { "before": ["<C-l>"], "after": ["<C-w>", "l"] },
     { "before": ["<leader>", ";"], "after": ["g", "c", "c", "j"] },
-    { "before": ["<leader>", "]"], "commands": ["workbench.action.nextEditor"] },
     { "before": ["<leader>", "["], "commands": ["workbench.action.previousEditor"] },
+    { "before": ["<leader>", "]"], "commands": ["workbench.action.nextEditor"] },
     { "before": ["<leader>", "i"], "commands": ["editor.action.showHover"] },
     { "before": ["<leader>", "m", "m"], "commands": ["editor.action.toggleMinimap"] },
     { "before": ["<leader>", "q"], "commands": [ "workbench.action.files.saveAll", "workbench.action.closeWindow" ] },
@@ -32,13 +38,13 @@
 
   ],
   "terminal.integrated.allowChords": false,
-  "editor.minimap.enabled": false,
   "editor.rulers": [
     80,
     120
   ],
   "breadcrumbs.enabled": false,
   "window.zoomLevel": 1,
-  "editor.fontFamily": "'Ubuntu Mono', 'monospace', monospace, 'Droid Sans Fallback'"
+  "editor.fontFamily": "'Ubuntu Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.minimap.enabled": false
 
 }
