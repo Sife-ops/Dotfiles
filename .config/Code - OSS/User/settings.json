@@ -46,6 +46,7 @@
   "window.zoomLevel": 1,
   "editor.fontFamily": "'Ubuntu Mono', 'monospace', monospace, 'Droid Sans Fallback'",
   "editor.minimap.enabled": false,
-  "redhat.telemetry.enabled": false
+  "redhat.telemetry.enabled": false,
+  "workbench.activityBar.visible": false
 
 }
