@@ -16,12 +16,6 @@
 
   "vim.leader": "<space>",
 
-  "vim.insertModeKeyBindingsNonRecursive": [
-
-    { "before": ["$", "$"], "after": ["<Esc>", "A"] },
-
-  ],
-
   "vim.normalModeKeyBindingsNonRecursive": [
 
     { "before": ["<C-h>"], "after": ["<C-w>", "h"] },

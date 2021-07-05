@@ -1,15 +1,6 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
     {
-        "key": "ctrl+m",
-        "command": "-editor.action.toggleTabFocusMode"
-    },
-    {
-        "key": "ctrl+m",
-        "command": "acceptSelectedSuggestion",
-        "when": "acceptSuggestionOnEnter && suggestWidgetVisible && suggestionMakesTextEdit && textInputFocus"
-    },
-    {
         "key": "ctrl+up",
         "command": "workbench.action.terminal.focusNext"
     },
