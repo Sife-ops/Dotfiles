@@ -1,0 +1,70 @@
+#^ view
+map . set hidden!
+map <c-r> reload
+#$
+
+#^ actions
+map <c-c> fzfcd
+map <c-d> $nvim -d $fx
+map <c-n> push :mkdir<space>
+map <c-s> $ln -sf $fs ./
+map <c-t> push :$touch<space>
+map <c-w> $setwallpaper.sh $f
+map D &dragon-drag-and-drop $fx
+map E $$ALTEDITOR ./
+map r $vidir
+map u preview
+map x extract
+#$
+
+#^ git
+map gap $git add -p $fx
+map gb !git branch
+map gch push :!git<space>checkout<space>
+map gcm push :!git<space>commit<space>-m<space>" #"
+map gg $tig
+map gs $tig status
+#$
+
+#^ trash-cli
+map te $trash-empty
+map tl !trash-list
+map tp $trash-put $f
+map tr $trash-restore
+#$
+
+#^ tar
+map <c-a>g $tar czf archive.tar.gz $fx
+map <c-a>b $tar cjf archive.tar.bz2 $fx
+map <c-a>x $tar cJf archive.tar.xz $fx
+map <c-a>t $tar cf archive.tar $f
+#$
+
+#^ chmod
+map <c-c>a-r $chmod a-r $fx
+map <c-c>a-w $chmod a-w $fx
+map <c-c>a-x $chmod a-x $fx
+map <c-c>u-r $chmod u-r $fx
+map <c-c>u-w $chmod u-w $fx
+map <c-c>u-x $chmod u-x $fx
+map <c-c>g-r $chmod g-r $fx
+map <c-c>g-w $chmod g-w $fx
+map <c-c>g-x $chmod g-x $fx
+map <c-c>o-r $chmod o-r $fx
+map <c-c>o-w $chmod o-w $fx
+map <c-c>o-x $chmod o-x $fx
+map <c-c>a+r $chmod a+r $fx
+map <c-c>a+w $chmod a+w $fx
+map <c-c>a+x $chmod a+x $fx
+map <c-c>u+r $chmod u+r $fx
+map <c-c>u+w $chmod u+w $fx
+map <c-c>u+x $chmod u+x $fx
+map <c-c>g+r $chmod g+r $fx
+map <c-c>g+w $chmod g+w $fx
+map <c-c>g+x $chmod g+x $fx
+map <c-c>o+r $chmod o+r $fx
+map <c-c>o+w $chmod o+w $fx
+map <c-c>o+x $chmod o+x $fx
+#$
+
+# vim: ft=sh fdm=marker fmr=#^,#$
