@@ -47,6 +47,5 @@
     "editor.guides.bracketPairs": "active",
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
-    "workbench.sideBar.location": "right",
-    "window.zoomLevel": 2
+    "workbench.sideBar.location": "right"
 }
