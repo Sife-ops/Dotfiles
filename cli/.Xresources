@@ -1,0 +1,47 @@
+*.borderpx: 0
+
+! gruvbox
+
+/* *.background: #282828 */
+/* *.color0: #282828 */
+/* *.color10: #b8bb26 */
+/* *.color11: #fabd2f */
+/* *.color12: #83a598 */
+/* *.color13: #d3869b */
+/* *.color14: #8ec07c */
+/* *.color15: #ebdbb2 */
+/* *.color1: #cc241d */
+/* *.color2: #98971a */
+/* *.color3: #d79921 */
+/* *.color4: #458588 */
+/* *.color5: #b16286 */
+/* *.color6: #689d6a */
+/* *.color7: #a89984 */
+/* *.color8: #928374 */
+/* *.color9: #fb4934 */
+/* *.cursorColor: #ebdbb2 */
+/* *.foreground: #ebdbb2 */
+
+
+! monokai
+
+/* *.background:   #272822 */
+*.background:   #1e1e1e
+*.color0:       #48483e
+*.color10:      #a7e22e
+*.color11:      #e7db75
+*.color12:      #66d9ee
+*.color13:      #ae82ff
+*.color14:      #66efd5
+*.color15:      #cfd0c2
+*.color1:       #dc2566
+*.color2:       #8fc029
+*.color3:       #d4c96e
+*.color4:       #55bcce
+*.color5:       #9358fe
+*.color6:       #56b7a5
+*.color7:       #acada1
+*.color8:       #76715e
+*.color9:       #fa2772
+*.cursorColor:  #f1ebeb
+*.foreground:   #f1ebeb

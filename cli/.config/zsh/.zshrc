@@ -14,7 +14,7 @@
 
 #^---- PLUGINS -----------------------------------------------------------------
 
-# default values
+# default location
 zshplugins="/usr/share/zsh/plugins"
 fzfplugins="/usr/share/fzf"
 
