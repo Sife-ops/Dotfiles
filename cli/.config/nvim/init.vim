@@ -41,6 +41,7 @@ syntax enable
 "$
 
 "^ plugin
+
 call plug#begin()
 
 Plug 'RyanMillerC/better-vim-tmux-resizer'
@@ -265,6 +266,9 @@ let g:airline_theme = 'codedark'
 
 "^ map
 
+" todo: <leader>q doesn't close coc-explorer
+" todo: implement pairs
+
 let mapleader = " "
 nmap <bs> <space>
 vmap <bs> <space>
@@ -295,13 +299,13 @@ vnoremap <leader>@ :norm @q<cr>
 vnoremap <leader>r :!rev<cr>
 vnoremap <leader>s :sort<cr>
 
-inoremap "" <c-g>u""<++><esc>F"i
-inoremap '' <c-g>u''<++><esc>F'i
-inoremap (( <c-g>u()<++><esc>F)i
-inoremap ()) <c-g>u<esc>m0a<space>=><space><++><esc>`0a
-inoremap [[ <c-g>u[]<++><esc>F]i
-inoremap {{ <c-g>u{}<++><esc>F}i
-inoremap {{{ <c-g>u{<cr>}<esc>O
+" inoremap \"" <c-g>u""<++><esc>F"i
+" inoremap '' <c-g>u''<++><esc>F'i
+" inoremap (( <c-g>u()<++><esc>F)i
+" inoremap ()) <c-g>u<esc>m0a<space>=><space><++><esc>`0a
+" inoremap [[ <c-g>u[]<++><esc>F]i
+" inoremap {{ <c-g>u{}<++><esc>F}i
+" inoremap {{{ <c-g>u{<cr>}<esc>O
 
 "$
 
