@@ -4,11 +4,7 @@
 #    _ / /\__ \ | | |  __/ | | \ V /
 #   (_)___|___/_| |_|\___|_| |_|\_/
 
-#^#---- XDG --------------------------------------------------------------------
-export XDG_CONFIG_HOME="${HOME}/.config"
-export XDG_DATA_HOME="${HOME}/.local/share"
-export XDG_CACHE_HOME="${HOME}/.cache"
-#$#
+# todo: why some properties are not read
 
 #^#---- PATH -------------------------------------------------------------------
 export PATH="${PATH}:${HOME}/.local/bin"
@@ -27,14 +23,13 @@ unset editor
 #$#
 
 #^#---- OPTIONS ----------------------------------------------------------------
-export DMENU_OPTS="-i -l 20"
-export HISTFILE="${XDG_DATA_HOME}/history"
+export HISTFILE="${HOME}/.local/share/history"
 export HISTSIZE=1000000
 export KEYTIMEOUT=1
 export LESSHISTFILE="-"
+export NVM_DIR="${HOME}/.nvm"
 export SAVEHIST=900000
-export TODO="${XDG_DATA_HOME}/todo"
-export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
+export ZDOTDIR="${HOME}/.config/zsh"
 #$#
 
 # vim: ft=sh fdm=marker fmr=#^#,#$#

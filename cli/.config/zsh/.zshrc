@@ -13,6 +13,7 @@
 #$
 
 #^---- PLUGINS -----------------------------------------------------------------
+# todo: this is retarded
 
 # default location
 zshplugins="/usr/share/zsh/plugins"
