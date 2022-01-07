@@ -10,6 +10,7 @@
 set clipboard+=unnamedplus
 set colorcolumn=80
 set nowrap
+set number
 set splitbelow splitright
 set termguicolors
 
@@ -46,12 +47,12 @@ call plug#begin()
 
 Plug 'RyanMillerC/better-vim-tmux-resizer'
 Plug 'Sife-ops/vim-code-dark'
+Plug 'Sife-ops/vim-monokai'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'gruvbox-community/gruvbox'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'sickill/vim-monokai'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -245,8 +246,8 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " codedark
 
-colorscheme codedark
-let g:airline_theme = 'codedark'
+" colorscheme codedark
+" let g:airline_theme = 'codedark'
 
 " gruvbox
 
@@ -256,7 +257,7 @@ let g:airline_theme = 'codedark'
 
 " monokai
 
-" colorscheme monokai
+colorscheme monokai
 
 "$
 
