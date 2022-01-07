@@ -27,13 +27,13 @@ if [ -f /etc/os-release ]; then
     case $NAME in
         Ubuntu*|Debian*|Raspbian*)
             zshplugins="/usr/share"
-            fzfplugins="/usr/share/doc/fzf/examples" ;;
+            fzfplugins="${zshplugins}/doc/fzf/examples" ;;
     esac
 else
     case $(uname) in
         Darwin)
             zshplugins="/usr/local/opt"
-            fzfplugins="/usr/local/opt/fzf/shell" ;;
+            fzfplugins="${zshplugins}/fzf/shell" ;;
     esac
 fi
 
