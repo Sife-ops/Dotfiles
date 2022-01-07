@@ -1,3 +1,5 @@
+! todo: move to xorg
+
 *.borderpx: 0
 
 ! gruvbox
@@ -25,8 +27,12 @@
 
 ! monokai
 
-/* *.background:   #272822 */
-*.background:   #1e1e1e
+/* monokai */
+*.background:   #272822
+
+/* vim-code-dark */
+/* *.background:   #1e1e1e */
+
 *.color0:       #48483e
 *.color10:      #a7e22e
 *.color11:      #e7db75
