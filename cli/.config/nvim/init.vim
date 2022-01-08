@@ -53,6 +53,7 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tomasr/molokai'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -244,20 +245,33 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 "^ theme
 
-" codedark
+"^ codedark
 
 colorscheme codedark
 let g:airline_theme = 'codedark'
 
-" gruvbox
+"$
+
+"^ gruvbox
 
 " colorscheme gruvbox
 " set background=dark
 " hi Normal guibg=0
 
-" monokai
+"$
+
+"^ molokai
+
+" colorscheme molokai
+" let g:airline_theme = 'base16_monokai'
+
+"$
+
+"^ monokai
 
 " colorscheme monokai
+
+"$
 
 "$
 

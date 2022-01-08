@@ -27,7 +27,10 @@ esac
 #^ Files
 
 alias \
-    vc="$EDITOR ~/.dotfiles/cli/.config/nvim/init.vim"
+    tc="cd ~/.local/src/st && $EDITOR config.def.h" \
+    vc="cd ~/.dotfiles/cli/.config/nvim && $EDITOR init.vim" \
+    xc="$EDITOR ~/.Xresources" \
+    zc="cd ~/.dotfiles/cli/.config/zsh && lfcd"
 
 #$
 
