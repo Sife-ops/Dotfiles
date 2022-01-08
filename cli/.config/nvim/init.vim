@@ -246,8 +246,8 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " codedark
 
-" colorscheme codedark
-" let g:airline_theme = 'codedark'
+colorscheme codedark
+let g:airline_theme = 'codedark'
 
 " gruvbox
 
@@ -257,7 +257,7 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " monokai
 
-colorscheme monokai
+" colorscheme monokai
 
 "$
 
