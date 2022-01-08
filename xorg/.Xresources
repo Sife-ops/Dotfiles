@@ -68,14 +68,5 @@
 *.cursorColor:#CCCCCC
 *.foreground:#CCCCCC
 
-! background override
-
-/* monokai */
-/* *.background:   #272822 */
-
-/* molokai */
-/* *.background:   #1B1D1E */
-
-/* vim-code-dark */
-/* *.background:   #1e1e1e */
+#include ".Xresources-override"
 
