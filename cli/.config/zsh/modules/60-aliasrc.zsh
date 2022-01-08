@@ -24,6 +24,13 @@ esac
 
 #$
 
+#^ Files
+
+alias \
+    vc="$EDITOR ~/.dotfiles/cli/.config/nvim/init.vim"
+
+#$
+
 #^ Git
 
 alias \
