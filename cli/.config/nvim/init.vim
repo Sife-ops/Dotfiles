@@ -55,6 +55,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tomasr/molokai'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
@@ -288,10 +289,6 @@ let mapleader = " "
 nmap <bs> <space>
 vmap <bs> <space>
 
-inoremap << <c-g>u<><++><esc>F>i
-inoremap <C-j> <esc>:call InsertSkeleton()<cr>
-inoremap <C-k> <c-g>u<esc>/<++><cr>cgn
-inoremap KK <c-g>u<esc>/<++><cr>Nhm0:s/<++>//g<cr>`0a
 inoremap jk <esc>
 inoremap modeline vim: ft= fdm= fmr=
 nnoremap <C-f> :exe ":cd " . system('git rev-parse --show-toplevel')<cr>:Rg<cr>
@@ -314,11 +311,16 @@ vnoremap <leader>@ :norm @q<cr>
 vnoremap <leader>r :!rev<cr>
 vnoremap <leader>s :sort<cr>
 
-" inoremap \"" <c-g>u""<++><esc>F"i
+" inoremap <C-j> <esc>:call InsertSkeleton()<cr>
+" inoremap <C-k> <c-g>u<esc>/<++><cr>cgn
+" inoremap KK <c-g>u<esc>/<++><cr>Nhm0:s/<++>//g<cr>`0a
+
 " inoremap '' <c-g>u''<++><esc>F'i
 " inoremap (( <c-g>u()<++><esc>F)i
 " inoremap ()) <c-g>u<esc>m0a<space>=><space><++><esc>`0a
+" inoremap << <c-g>u<><++><esc>F>i
 " inoremap [[ <c-g>u[]<++><esc>F]i
+" inoremap \"" <c-g>u""<++><esc>F"i
 " inoremap {{ <c-g>u{}<++><esc>F}i
 " inoremap {{{ <c-g>u{<cr>}<esc>O
 
