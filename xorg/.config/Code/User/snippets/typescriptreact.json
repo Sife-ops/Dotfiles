@@ -12,13 +12,13 @@
   // 	],
   // 	"description": "Log output to console"
   // }
-  "Typescript React function component": {
-    "prefix": "rc",
+  "function component": {
+    "prefix": "fc",
     "body": [
       "import React from 'react';",
       "",
       "export const $1: React.FC = () => {",
-      "  return ($2)",
+      "  return ($2);",
       "};"
     ],
     "description": "function component"
