@@ -27,7 +27,8 @@ esac
 #^ Files
 
 alias \
-    tc="cd ~/.local/src/st && $EDITOR config.def.h" \
+    stc="cd ~/.local/src/st && $EDITOR config.def.h" \
+    tc="$EDITOR ~/.dotfiles/cli/.config/tmux/tmux.conf" \
     vc="cd ~/.dotfiles/cli/.config/nvim && $EDITOR init.vim" \
     xc="$EDITOR ~/.Xresources" \
     zc="cd ~/.dotfiles/cli/.config/zsh && lfcd"
