@@ -1,0 +1,37 @@
+! Microsoft Sculpt
+
+!^ CLEAR MOD GROUPS ------------------------------------------------------------
+clear Lock
+clear Mod1
+clear Mod4
+!$
+
+!^ LEFT HAND -------------------------------------------------------------------
+! Escape
+keycode   9 = Caps_Lock
+
+! Caps Lock
+keycode  66 = Escape
+
+! Left Win
+keycode 133 = Alt_L
+
+! Left Alt
+keycode  64 = Super_L
+!$
+
+!^ RIGHT HAND ------------------------------------------------------------------
+! Right Alt
+keycode 108 = Super_R
+
+! Menu
+keycode 135 = Henkan
+!$
+
+!^ ADD MOD GROUPS --------------------------------------------------------------
+add Lock    = Caps_Lock
+add Mod1    = Alt_L Alt_R
+add Mod4    = Super_L Super_R
+!$
+
+! vim: ft=xmodmap fdm=marker fmr=!^,!$

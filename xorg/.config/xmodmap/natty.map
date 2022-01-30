@@ -1,0 +1,97 @@
+! Microsoft Natural Elite / Periboard 512
+
+!^ CLEAR MOD GROUPS ------------------------------------------------------------
+clear Lock
+clear Control
+clear Mod1
+clear Mod3
+clear Mod4
+!$
+
+!^ LEFT HAND -------------------------------------------------------------------
+! Escape
+keycode   9 = Caps_Lock
+
+! Tab
+keycode  23 = Alt_L
+
+! Caps Lock
+keycode  66 = Control_L
+
+! Left Control
+keycode  37 = Mode_switch
+
+! Left Win
+keycode 133 = Hyper_L
+
+! Left Alt
+keycode  64 = Super_L
+!$
+
+!^ RIGHT HAND ------------------------------------------------------------------
+! BackSpace
+keycode  22 = bar
+
+! Backslash
+keycode  51 = Alt_R
+
+! Return
+keycode  36 = Control_R
+
+! Right Alt
+keycode 108 = Super_R
+
+! Right Win
+keycode 134 = Hyper_R
+
+! Menu
+keycode 135 = Henkan
+
+! Right Control
+keycode 105 = Mode_switch
+!$
+
+!^ SPECIAL ---------------------------------------------------------------------
+! Henkan
+! keycode 100 = Escape
+
+! Hirigana
+keycode 101 = Escape
+
+! Print Screen
+keycode 107 = Tab
+
+! Scroll Lock
+keycode  78 = BackSpace
+
+! Pause / Break
+keycode 127 = backslash
+!$
+
+!^ MODE SHIFT ------------------------------------------------------------------
+! Numpad
+keycode  30 = u U NoSymbol 7
+keycode  31 = i I NoSymbol 8
+keycode  32 = o O NoSymbol 9
+keycode  33 = p P Up NoSymbol
+keycode  43 = h H Left NoSymbol
+keycode  44 = j J Down 4
+keycode  45 = k K Up 5
+keycode  46 = l L Right 6
+keycode  57 = n N Down 1
+keycode  58 = m M Return 2
+keycode  59 = comma less NoSymbol 3
+keycode  60 = period greater period period
+keycode  61 = slash question BackSpace question
+keycode  65 = space NoSymbol NoSymbol 0
+!$
+
+!^ ADD MOD GROUPS --------------------------------------------------------------
+add Lock    = Caps_Lock
+add Control = Control_L Control_R
+add Mod1    = Alt_L Alt_R
+add Mod3    = Hyper_L Hyper_R
+add Mod4    = Super_L Super_R
+!$
+
+! vim: ft=xmodmap fdm=marker fmr=!^,!$
