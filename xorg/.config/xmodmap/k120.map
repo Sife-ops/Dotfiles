@@ -1,0 +1,35 @@
+!! Logitech K120
+
+clear Lock
+clear Control
+clear Mod1
+clear Mod4
+
+!! Left Hand
+! Escape
+keycode   9 = Caps_Lock
+
+! Caps Lock
+keycode  66 = Control_L
+
+!! Right Hand
+! BackSpace
+keycode  22 = Return
+
+! Return
+keycode  36 = Control_R
+
+!! Special
+! Print Screen
+keycode 107 = Escape
+
+! Scroll Lock
+keycode  78 = BackSpace
+
+add Lock    = Caps_Lock
+add Control = Control_L
+add Control = Control_R
+add Mod1    = Alt_L
+add Mod1    = Alt_R
+add Mod4    = Super_L
+add Mod4    = Super_R

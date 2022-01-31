@@ -295,7 +295,7 @@ nnoremap <C-f> :exe ":cd " . system('git rev-parse --show-toplevel')<cr>:Rg<cr>
 nnoremap <C-p> :GFiles<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>e :CocCommand explorer --no-focus --position right<cr>
-nnoremap <leader>i :CocCommand prettier.formatFile<cr>
+nnoremap <leader>f :call CocAction('format')<cr>
 nnoremap <leader>mch :set cursorline! cursorcolumn!<cr>
 nnoremap <leader>mhl :set hlsearch!<cr>
 nnoremap <leader>mln :set number!<cr>

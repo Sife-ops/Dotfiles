@@ -7,7 +7,7 @@ setxkbmap -option
 if [ ! "$1" = "default" ]; then
     # setxkbmap -option caps:escape
     # xcape -e 'Alt_L=Tab;Control_L=Escape;Alt_R=backslash;Control_R=BackSpace' &
-    xmodmap "$XMODMAP"
+    xmodmap "${HOME}/.Xmodmap"
 fi
 
 # xset r rate 300 50
