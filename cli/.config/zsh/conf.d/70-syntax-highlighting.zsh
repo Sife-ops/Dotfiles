@@ -1,1 +1,0 @@
-../modules/70-syntax-highlighting.zsh
