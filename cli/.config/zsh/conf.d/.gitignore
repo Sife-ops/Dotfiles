@@ -1,3 +1,4 @@
 *-prompt-starship.zsh
-*-autosuggestions-arch.zsh
-*-syntax-highlighting-arch.zsh
+*-fzf-*
+*-autosuggestions-*
+*-syntax-highlighting-*
