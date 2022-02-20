@@ -11,6 +11,8 @@ export PATH="${PATH}:${HOME}/.local/bin"
 
 export EDITOR=vim
 
+set -o vi
+
 lfcd () {
     tmp="$(mktemp)"
     lf -last-dir-path="$tmp" "$@"
@@ -27,3 +29,7 @@ lfcd () {
 
 alias f='lfcd'
 alias ls='ls --color=auto'
+
+source "/usr/share/fzf/completion.bash" 2>/dev/null
+source "/usr/share/fzf/key-bindings.bash" 2>/dev/null
+
