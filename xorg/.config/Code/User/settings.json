@@ -59,6 +59,5 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "workbench.sideBar.location": "right",
-    "editor.minimap.enabled": false,
-    "window.zoomLevel": -1
+    "editor.minimap.enabled": false
 }

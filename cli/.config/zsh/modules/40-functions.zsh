@@ -65,6 +65,12 @@ dka(){ #^
     docker rm $(docker ps -a -f status=exited -q)
 } #$
 
+#^
+ds(){
+    docker exec -it $1 sh
+}
+#$
+
 #$
 
 #^ Git
