@@ -29,7 +29,6 @@
         80,
         120
     ],
-    "editor.minimap.enabled": false,
     "java.project.importOnFirstTimeStartup": "automatic",
     "javaTests.template.junitDefaultVersion": "alwaysAsk",
     "[javascript]": {
@@ -47,7 +46,6 @@
     "editor.guides.bracketPairs": "active",
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
-    "workbench.sideBar.location": "right",
     "[typescriptreact]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -60,5 +58,6 @@
     "[jsonc]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "window.zoomLevel": 1
+    "workbench.sideBar.location": "right",
+    "editor.minimap.enabled": false
 }

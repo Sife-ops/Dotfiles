@@ -24,6 +24,15 @@ esac
 
 #$
 
+#^ Docker
+
+alias \
+    dcl='docker container list' \
+    dcl='docker container ls -a' \
+    di='docker images -a'
+
+#$
+
 #^ Files
 
 alias \
@@ -101,7 +110,6 @@ alias \
     c='clear' \
     chx='chmod +x' \
     d='dragon-drag-and-drop' \
-    dc='docker-compose' \
     f='lfcd' \
     fcl='fc-list : family style | less' \
     fvm='sudo fuser -vm' \
@@ -117,3 +125,4 @@ alias \
 #$
 
 # vim: fdm=marker fmr=#^,#$
+
