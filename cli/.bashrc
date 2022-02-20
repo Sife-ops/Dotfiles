@@ -33,3 +33,4 @@ alias ls='ls --color=auto'
 source "/usr/share/fzf/completion.bash" 2>/dev/null
 source "/usr/share/fzf/key-bindings.bash" 2>/dev/null
 
+export FZF_CTRL_R_OPTS="--reverse"
