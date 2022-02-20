@@ -7,6 +7,8 @@
 
 PS1='[\u@\h \W]\$ '
 
+export PATH="${PATH}:${HOME}/.local/bin"
+
 export EDITOR=vim
 
 lfcd () {
