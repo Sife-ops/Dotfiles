@@ -12,6 +12,7 @@ export XDG_CACHE_HOME="${HOME}/.cache"
 
 #^#---- PATH -------------------------------------------------------------------
 export PATH="${PATH}:${HOME}/.local/bin"
+export PATH="${PATH}:${HOME}/.deno/bin"
 #$#
 
 #^#---- DEFAULT PROGRAMS -------------------------------------------------------
