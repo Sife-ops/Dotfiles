@@ -80,8 +80,18 @@ alias \
 
 #^ Tmux
 
+# todo: move to functions.zsh
+tmux_config=${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf
+tmux-with-name() {
+    if [ -z $1 ]; then
+        tmux -f $tmux_config
+    else
+        tmux -f $tmux_config new -s $1
+    fi
+}
+
 alias \
-	t="tmux -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf" \
+	t='tmux-with-name' \
 	tmux="tmux -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf" \
     ta='tmux attach-session -t' \
     tbl='tmux list-buffers' \

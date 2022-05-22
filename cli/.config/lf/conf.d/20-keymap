@@ -27,44 +27,11 @@ map gs $tig status
 #$
 
 #^ trash-cli
+map t
 map te $trash-empty
 map tl !trash-list
 map tp $trash-put $f
 map tr $trash-restore
-#$
-
-#^ tar
-map <c-a>g $tar czf archive.tar.gz $fx
-map <c-a>b $tar cjf archive.tar.bz2 $fx
-map <c-a>x $tar cJf archive.tar.xz $fx
-map <c-a>t $tar cf archive.tar $f
-#$
-
-#^ chmod
-map <c-c>a-r $chmod a-r $fx
-map <c-c>a-w $chmod a-w $fx
-map <c-c>a-x $chmod a-x $fx
-map <c-c>u-r $chmod u-r $fx
-map <c-c>u-w $chmod u-w $fx
-map <c-c>u-x $chmod u-x $fx
-map <c-c>g-r $chmod g-r $fx
-map <c-c>g-w $chmod g-w $fx
-map <c-c>g-x $chmod g-x $fx
-map <c-c>o-r $chmod o-r $fx
-map <c-c>o-w $chmod o-w $fx
-map <c-c>o-x $chmod o-x $fx
-map <c-c>a+r $chmod a+r $fx
-map <c-c>a+w $chmod a+w $fx
-map <c-c>a+x $chmod a+x $fx
-map <c-c>u+r $chmod u+r $fx
-map <c-c>u+w $chmod u+w $fx
-map <c-c>u+x $chmod u+x $fx
-map <c-c>g+r $chmod g+r $fx
-map <c-c>g+w $chmod g+w $fx
-map <c-c>g+x $chmod g+x $fx
-map <c-c>o+r $chmod o+r $fx
-map <c-c>o+w $chmod o+w $fx
-map <c-c>o+x $chmod o+x $fx
 #$
 
 # vim: ft=sh fdm=marker fmr=#^,#$

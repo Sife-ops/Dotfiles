@@ -1,6 +1,7 @@
 #!/bin/sh
 
 mv ~/.bashrc ~/.bashrc_
+touch ~/.bashrc-override
 
 mkdir -p ~/.config/Code/User
 mkdir -p ~/.config/newsboat
