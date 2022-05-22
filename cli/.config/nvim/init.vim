@@ -300,7 +300,7 @@ nnoremap <leader>mch :set cursorline! cursorcolumn!<cr>
 nnoremap <leader>mhl :set hlsearch!<cr>
 nnoremap <leader>mln :set number!<cr>
 nnoremap <leader>mwr :set wrap!<cr>
-nnoremap <leader>q :q!<cr>
+nnoremap <leader>q :qa!<cr>
 nnoremap <leader>sa ggVG
 nnoremap <leader>so :source ~/.config/nvim/init.vim<cr>
 nnoremap <leader>w :wa<cr>

@@ -59,5 +59,8 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "workbench.sideBar.location": "right",
-    "editor.minimap.enabled": false
+    "markdown-preview-enhanced.previewTheme": "atom-dark.css",
+    "editor.minimap.enabled": false,
+    "window.zoomLevel": 1,
+    "workbench.colorTheme": "Gruvbox Dark (Hard)",
 }

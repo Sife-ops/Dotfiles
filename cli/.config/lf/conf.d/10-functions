@@ -26,11 +26,6 @@ cmd extract ${{ #^
 	esac
 }} #$
 
-cmd fzfcd ${{ #^
-    dir="$(cat /var/lib/relocate/relocated.db | fzf || true)"
-    lf -remote "send $id cd \"$dir\""
-}} #$
-
 cmd tar ${{ #^
 	set -f
 	mkdir $1
