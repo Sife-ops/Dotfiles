@@ -1,9 +1,0 @@
-#     _  __
-#    | |/ _|_ __ ___
-#    | | |_| '__/ __|
-#    | |  _| | | (__
-#    |_|_| |_|  \___|
-
-source ~/.config/lf/conf.d/00-options
-source ~/.config/lf/conf.d/10-functions
-source ~/.config/lf/conf.d/20-keymap
