@@ -1,0 +1,10 @@
+set hidden on
+set ifs "\n"
+set ratios '1:2:3'
+set scrolloff 10
+set shell sh
+set shellopts '-eu'
+set sortby ext
+set truncatechar '-'
+set wrapscan on
+set wrapscroll on

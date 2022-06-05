@@ -1,0 +1,23 @@
+#     _   _                   _                 _
+#    | \ | | _____      _____| |__   ___   __ _| |_
+#    |  \| |/ _ \ \ /\ / / __| '_ \ / _ \ / _` | __|
+#    | |\  |  __/\ V  V /\__ \ |_) | (_) | (_| | |_
+#    |_| \_|\___| \_/\_/ |___/_.__/ \___/ \__,_|\__|
+
+auto-reload yes
+confirm-exit yes
+feed-sort-order lastupdated-desc
+notify-always no
+reload-time 10
+
+browser "url.sh %u"
+external-url-viewer "urlscan -dc -r 'url.sh {}'"
+
+notify-format "newsboat: %n unread articles."
+notify-program "notify-send"
+
+bind-key j down
+bind-key k up
+
+color listnormal_unread magenta black bold
+color article cyan black
