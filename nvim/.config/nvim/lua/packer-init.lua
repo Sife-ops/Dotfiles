@@ -41,14 +41,14 @@ return packer.startup(function(use)
   use 'tpope/vim-commentary'
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
-  use 'vim-airline/vim-airline'
-  use 'vim-airline/vim-airline-themes'
+  -- use 'vim-airline/vim-airline'
+  -- use 'vim-airline/vim-airline-themes'
   use 'wellle/targets.vim'
 
-  use {
-     'feline-nvim/feline.nvim',
-     requires = { 'kyazdani42/nvim-web-devicons' },
-  }
+  -- use {
+  --    'feline-nvim/feline.nvim',
+  --    requires = { 'kyazdani42/nvim-web-devicons' },
+  -- }
 
   use {
      'nvim-lualine/lualine.nvim',

@@ -1,5 +1,5 @@
 # todo
 
 - add newline
-- status bar
-- tree-sitter
+- update buffers
+- lspconfig
