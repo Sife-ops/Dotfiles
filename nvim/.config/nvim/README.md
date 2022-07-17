@@ -1,4 +1,5 @@
 # todo
 
 - add newline
-- lspconfig
+- balance windows
+- show buffers in tree
