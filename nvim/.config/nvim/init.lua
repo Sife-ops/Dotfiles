@@ -1,6 +1,6 @@
 -- Reference: https://github.com/brainfucksec/neovim-lua
 
-require('packer_init')
+require('packer-init')
 require('core/keymap')
 require('core/option')
 -- require('core/color')

@@ -18,7 +18,7 @@ end
 vim.cmd [[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost packer_init.lua source <afile> | PackerSync
+    autocmd BufWritePost packer-init.lua source <afile> | PackerSync
   augroup end
 ]]
 
@@ -34,6 +34,8 @@ return packer.startup(function(use)
 
   use 'RyanMillerC/better-vim-tmux-resizer'
   use 'christoomey/vim-tmux-navigator'
+  use 'junegunn/fzf'
+  use 'junegunn/fzf.vim'
   use 'kyazdani42/nvim-tree.lua'
   use 'kyazdani42/nvim-web-devicons'
   use 'tpope/vim-commentary'
@@ -44,6 +46,13 @@ return packer.startup(function(use)
   use {
      'feline-nvim/feline.nvim',
      requires = { 'kyazdani42/nvim-web-devicons' },
+  }
+
+  use {
+   'windwp/nvim-autopairs',
+   config = function()
+     require('nvim-autopairs').setup{}
+   end
   }
 
   -- LSP
@@ -66,25 +75,8 @@ return packer.startup(function(use)
   use 'tanvirtin/monokai.nvim'
   -- Plug 'Sife-ops/vim-monokai'
 
-  use 'junegunn/fzf'
-  use 'junegunn/fzf.vim'
-  -- Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  -- Plug 'tomasr/molokai'
-  -- Plug 'tpope/vim-fugitive'
-  -- Plug 'vim-airline/vim-airline'
-  -- Plug 'vim-airline/vim-airline-themes'
-
-  --
   --  -- Indent line
   --  use 'lukas-reineke/indent-blankline.nvim'
-  --
-  --  -- Autopair
-  --  use {
-  --    'windwp/nvim-autopairs',
-  --    config = function()
-  --      require('nvim-autopairs').setup{}
-  --    end
-  --  }
   --
   --  -- Tag viewer
   -- use 'preservim/tagbar'
