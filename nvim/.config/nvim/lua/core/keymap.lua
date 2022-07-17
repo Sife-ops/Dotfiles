@@ -11,6 +11,7 @@ vim.api.nvim_set_keymap('n', '<bs>', '<space>', {noremap = false, silent = true}
 vim.api.nvim_set_keymap('v', '<bs>', '<space>', {noremap = false, silent = true})
 
 map('i', 'jk', '<esc>')
+map('n', '<leader>R', ':edit!<cr>')
 map('n', '<leader>mch', ':set cursorline! cursorcolumn!<cr>')
 map('n', '<leader>mhl', ':set hlsearch!<cr>')
 map('n', '<leader>mln', ':set number!<cr>')
@@ -27,8 +28,8 @@ map('v', '<leader>s', ':sort<cr>')
 -- NvimTree
 -- map('n', '<C-n>', ':NvimTreeToggle<CR>')            -- open/close
 -- map('n', '<leader>f', ':NvimTreeRefresh<CR>')       -- refresh
--- map('n', '<leader>n', ':NvimTreeFindFile<CR>')      -- search file
-map('n', '<leader>e', ':NvimTreeToggle<CR>')            -- open/close
+map('n', '<leader>E', ':NvimTreeToggle<CR>')            -- open/close
+map('n', '<leader>e', ':NvimTreeFindFile<CR>')      -- search file
 
 -- FzF
 map('n', '<C-f>', ':exe ":cd " . system("git rev-parse --show-toplevel")<cr>:Rg<cr>')

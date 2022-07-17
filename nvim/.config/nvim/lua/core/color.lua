@@ -1,7 +1,7 @@
-local status_ok, color_scheme = pcall(require, 'onedark')
-if not status_ok then
-  return
-end
+-- local status_ok, color_scheme = pcall(require, 'onedark')
+-- if not status_ok then
+--   return
+-- end
 
 -- Note: The instruction to load the color scheme may vary.
 -- e.g.: require('color_scheme').setup{}, vim.cmd('color_scheme')

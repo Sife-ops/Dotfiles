@@ -6,6 +6,7 @@ opt.mouse = 'a'                       		      -- Enable mouse support
 opt.clipboard = 'unnamedplus'         		      -- Copy/paste to system clipboard
 opt.swapfile = false                  		      -- Don't use swapfile
 opt.completeopt = 'menuone,noinsert,noselect' 	-- Autocomplete options
+opt.autoread = true
 
 -- Neovim UI
 opt.number = true           -- Show line number

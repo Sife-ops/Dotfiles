@@ -84,7 +84,7 @@ return packer.startup(function(use)
 
   -- Themes
   use 'Sife-ops/vim-code-dark'
-  use 'gruvbox-community/gruvbox'
+  -- use 'gruvbox-community/gruvbox'
   use 'navarasu/onedark.nvim'
   use 'tanvirtin/monokai.nvim'
   use 'ellisonleao/gruvbox.nvim'

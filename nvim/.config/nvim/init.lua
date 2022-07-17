@@ -3,7 +3,7 @@
 require('packer-init')
 require('core/keymap')
 require('core/option')
-require('core/color')
+-- require('plugin/color')
 -- require('plugin/feline')
 -- require('plugin/vim-airline')
 require('plugin/lualine')
