@@ -34,10 +34,3 @@ map('n', '<C-f>', ':exe ":cd " . system("git rev-parse --show-toplevel")<cr>:Rg<
 map('n', '<C-p>', ':GFiles<cr>')
 map('n', '<leader>b', ':Buffers<cr>')
 
--- inoremap modeline vim: ft= fdm= fmr=
--- nnoremap <leader>e :CocCommand explorer --no-focus --position right<cr>
--- nnoremap <leader>f :call CocAction('format')<cr>
--- nnoremap <leader>sa ggVG
--- nnoremap <leader>so :source ~/.config/nvim/init.vim<cr>
--- nnoremap <leader>x :wincmd q<cr>
-
