@@ -56,6 +56,11 @@ return packer.startup(function(use)
   }
 
   -- LSP
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
+
   use 'neovim/nvim-lspconfig'
   use {
     'hrsh7th/nvim-cmp',
@@ -80,9 +85,6 @@ return packer.startup(function(use)
   --
   --  -- Tag viewer
   -- use 'preservim/tagbar'
-  --
-  --  -- Treesitter interface
-  --  use 'nvim-treesitter/nvim-treesitter'
   --
   --  -- Color schemes
   --  use 'navarasu/onedark.nvim'
