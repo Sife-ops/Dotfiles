@@ -6,12 +6,15 @@ end
 -- Note: The instruction to load the color scheme may vary.
 -- e.g.: require('color_scheme').setup{}, vim.cmd('color_scheme')
 
--- OneDark styles: dark, darker, cool, deep, warm, warmer, light
-require('onedark').setup {
-  style = 'darker',
-  colors = { fg = '#b2bbcc' }, --default: #a0a8b7
-}
-require('onedark').load()
+vim.o.background = 'dark'
+vim.cmd([[colorscheme gruvbox]])
+
+-- -- OneDark styles: dark, darker, cool, deep, warm, warmer, light
+-- require('onedark').setup {
+--   style = 'darker',
+--   colors = { fg = '#b2bbcc' }, --default: #a0a8b7
+-- }
+-- require('onedark').load()
 
 -- -- statusline color schemes:
 -- -- import with: require('colors').colorscheme_name

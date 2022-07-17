@@ -12,4 +12,7 @@ nvim_treesitter.setup {
     enable = true, -- `false` will disable the whole extension
     disable = {''},
   },
+  playground = {
+    enable = true
+  }
 }

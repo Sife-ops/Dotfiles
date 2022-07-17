@@ -41,6 +41,8 @@ return packer.startup(function(use)
   use 'tpope/vim-commentary'
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
+  -- use 'vim-airline/vim-airline'
+  -- use 'vim-airline/vim-airline-themes'
   use 'wellle/targets.vim'
 
   use {
@@ -55,11 +57,13 @@ return packer.startup(function(use)
    end
   }
 
+
   -- LSP
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   }
+  use 'nvim-treesitter/playground'
 
   use 'neovim/nvim-lspconfig'
   use {
@@ -78,18 +82,17 @@ return packer.startup(function(use)
   use 'gruvbox-community/gruvbox'
   use 'navarasu/onedark.nvim'
   use 'tanvirtin/monokai.nvim'
+  use 'ellisonleao/gruvbox.nvim'
   -- Plug 'Sife-ops/vim-monokai'
+  -- use 'navarasu/onedark.nvim'
+  -- use 'tanvirtin/monokai.nvim'
+  -- use { 'rose-pine/neovim', as = 'rose-pine' }
 
   --  -- Indent line
   --  use 'lukas-reineke/indent-blankline.nvim'
   --
   --  -- Tag viewer
   -- use 'preservim/tagbar'
-  --
-  --  -- Color schemes
-  --  use 'navarasu/onedark.nvim'
-  --  use 'tanvirtin/monokai.nvim'
-  --  use { 'rose-pine/neovim', as = 'rose-pine' }
   --
   --  -- git labels
   --  use {
