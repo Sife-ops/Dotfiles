@@ -10,6 +10,7 @@ vim.g.mapleader = ' '
 vim.api.nvim_set_keymap('n', '<bs>', '<space>', {noremap = false, silent = true})
 vim.api.nvim_set_keymap('v', '<bs>', '<space>', {noremap = false, silent = true})
 
+-- Core
 map('i', 'jk', '<esc>')
 map('n', '<leader>R', ':edit!<cr>')
 map('n', '<leader>mch', ':set cursorline! cursorcolumn!<cr>')
@@ -38,3 +39,5 @@ map('n', '<C-f>', ':exe ":cd " . system("git rev-parse --show-toplevel")<cr>:Rg<
 map('n', '<C-p>', ':GFiles<cr>')
 map('n', '<leader>b', ':Buffers<cr>')
 
+-- Hop
+map('n', '<leader><leader>', "<cmd>lua require'hop'.hint_words()<cr>", {})

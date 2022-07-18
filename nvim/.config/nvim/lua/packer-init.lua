@@ -41,14 +41,15 @@ return packer.startup(function(use)
   use 'tpope/vim-commentary'
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
-  -- use 'vim-airline/vim-airline'
-  -- use 'vim-airline/vim-airline-themes'
   use 'wellle/targets.vim'
 
-  -- use {
-  --    'feline-nvim/feline.nvim',
-  --    requires = { 'kyazdani42/nvim-web-devicons' },
-  -- }
+  use {
+    'phaazon/hop.nvim',
+    branch = 'v2',
+    config = function()
+      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+    end
+  }
 
   use {
      'nvim-lualine/lualine.nvim',
@@ -62,8 +63,6 @@ return packer.startup(function(use)
    end
   }
 
-
-  -- LSP
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
@@ -82,32 +81,24 @@ return packer.startup(function(use)
     },
   }
 
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('gitsigns').setup{}
+    end
+  }
+
   -- Themes
-  use 'Sife-ops/vim-code-dark'
-  -- use 'gruvbox-community/gruvbox'
-  use 'navarasu/onedark.nvim'
-  use 'tanvirtin/monokai.nvim'
   use 'ellisonleao/gruvbox.nvim'
-  -- Plug 'Sife-ops/vim-monokai'
-  -- use 'navarasu/onedark.nvim'
-  -- use 'tanvirtin/monokai.nvim'
-  -- use { 'rose-pine/neovim', as = 'rose-pine' }
+  use 'folke/tokyonight.nvim'
 
   --  -- Indent line
   --  use 'lukas-reineke/indent-blankline.nvim'
-  --
+
   --  -- Tag viewer
   -- use 'preservim/tagbar'
-  --
-  --  -- git labels
-  --  use {
-  --    'lewis6991/gitsigns.nvim',
-  --    requires = { 'nvim-lua/plenary.nvim' },
-  --    config = function()
-  --      require('gitsigns').setup{}
-  --    end
-  --  }
-  --
+
   --  -- Dashboard (start screen)
   --  use {
   --    'goolord/alpha-nvim',

@@ -38,9 +38,9 @@ alias \
 alias \
     stc="cd ~/.local/src/st && $EDITOR config.def.h" \
     tc="$EDITOR ~/.dotfiles/cli/.config/tmux/tmux.conf" \
-    vc="cd ~/.dotfiles/cli/.config/nvim && $EDITOR init.vim" \
+    vc="cd ~/.dotfiles/nvim/.config/nvim && $EDITOR init.lua" \
     xc="$EDITOR ~/.Xresources" \
-    zc="cd ~/.dotfiles/cli/.config/zsh && lfcd"
+    zc="cd ~/.dotfiles/zsh/.config/zsh && lfcd"
 
 #$
 

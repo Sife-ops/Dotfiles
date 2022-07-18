@@ -3,5 +3,8 @@ if not status_ok then
   return
 end
 
-require("lualine").setup()
-
+require('lualine').setup {
+  options = {
+    theme = 'tokyonight'
+  }
+}
