@@ -15,12 +15,12 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- Autocommand that reloads neovim whenever you save the packer_init.lua file
-vim.cmd [[
+vim.cmd([[
   augroup packer_user_config
     autocmd!
     autocmd BufWritePost packer-init.lua source <afile> | PackerSync
   augroup end
-]]
+]])
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, 'packer')
@@ -34,6 +34,15 @@ return packer.startup(function(use)
 
   use 'RyanMillerC/better-vim-tmux-resizer'
   use 'christoomey/vim-tmux-navigator'
+  use 'tpope/vim-commentary'
+  use 'tpope/vim-repeat'
+  use 'tpope/vim-surround'
+  use 'wellle/targets.vim'
+
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+  }
 
   use {
     'nvim-treesitter/playground',
@@ -60,11 +69,6 @@ return packer.startup(function(use)
       })
     end
   }
-
-  use 'tpope/vim-commentary'
-  use 'tpope/vim-repeat'
-  use 'tpope/vim-surround'
-  use 'wellle/targets.vim'
 
   use {
     'phaazon/hop.nvim',
