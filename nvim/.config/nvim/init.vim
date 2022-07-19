@@ -6,13 +6,14 @@
 
 "^ option
 
-" set cursorline cursorcolumn
+set cursorline cursorcolumn
 set clipboard+=unnamedplus
 set colorcolumn=80
 set nowrap
 set number
 set splitbelow splitright
 set termguicolors
+set mouse=a
 
 set expandtab
 set shiftwidth=2
@@ -47,6 +48,8 @@ call plug#begin()
 
 Plug 'RyanMillerC/better-vim-tmux-resizer'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -245,8 +248,23 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 "^ molokai
 
-colorscheme molokai
-let g:airline_theme = 'base16_monokai'
+" colorscheme molokai
+" let g:airline_theme = 'molokai'
+
+"$
+
+"^ tokyonight
+
+" let g:tokyonight_style = 'night'
+" let g:airline_theme = 'base16_monokai'
+" colorscheme tokyonight
+
+"$
+
+"^ onedark
+
+let g:airline_theme = 'onedark'
+colorscheme onedark
 
 "$
 
@@ -266,13 +284,13 @@ nmap <bs> <space>
 vmap <bs> <space>
 
 inoremap jk <esc>
-inoremap modeline vim: ft= fdm= fmr=
 nnoremap <C-f> :exe ":cd " . system('git rev-parse --show-toplevel')<cr>:Rg<cr>
 nnoremap <C-p> :GFiles<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>e :CocCommand explorer --no-focus --position right<cr>
 nnoremap <leader>f :call CocAction('format')<cr>
 nnoremap <leader>mch :set cursorline! cursorcolumn!<cr>
+nnoremap <leader>mdln ivim: ft= fdm= fmr=
 nnoremap <leader>mhl :set hlsearch!<cr>
 nnoremap <leader>mln :set number!<cr>
 nnoremap <leader>mwr :set wrap!<cr>
