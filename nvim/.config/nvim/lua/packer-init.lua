@@ -34,10 +34,40 @@ return packer.startup(function(use)
 
   use 'RyanMillerC/better-vim-tmux-resizer'
   use 'christoomey/vim-tmux-navigator'
-  use 'junegunn/fzf'
-  use 'junegunn/fzf.vim'
-  use 'kyazdani42/nvim-tree.lua'
-  use 'kyazdani42/nvim-web-devicons'
+
+  use {
+    'nvim-treesitter/playground',
+    requires = {
+      'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate',
+    },
+    config = function ()
+      require('core.keymap').tree_sitter()
+    end
+  }
+
+  use {
+    'junegunn/fzf.vim',
+    requires = {
+      'junegunn/fzf'
+    },
+    config = function() 
+      require('core.keymap').fzf()
+    end
+  }
+
+  use {
+    'kyazdani42/nvim-tree.lua',
+    config = function()
+      require('nvim-tree').setup({
+        view = {
+          side = 'right'
+        }
+      })
+      require('core.keymap').nvim_tree()
+    end
+  }
+
   use 'tpope/vim-commentary'
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
@@ -52,24 +82,14 @@ return packer.startup(function(use)
   }
 
   use {
-     'nvim-lualine/lualine.nvim',
-     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-  }
-
-  use {
    'windwp/nvim-autopairs',
    config = function()
      require('nvim-autopairs').setup{}
    end
   }
 
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate'
-  }
-  use 'nvim-treesitter/playground'
-
   use 'neovim/nvim-lspconfig'
+
   use {
     'hrsh7th/nvim-cmp',
     requires = {
@@ -79,6 +99,56 @@ return packer.startup(function(use)
       -- 'L3MON4D3/LuaSnip',
       -- 'saadparwaiz1/cmp_luasnip',
     },
+
+    --config = function()
+    --  require('cmp').setup({
+    --    -- Completion settings
+    --    completion = {
+    --      --completeopt = 'menu,menuone,noselect'
+    --      keyword_length = 2
+    --    },
+    --    -- Key mapping
+    --    mapping = {
+    --      ['<C-n>'] = cmp.mapping.select_next_item(),
+    --      ['<C-p>'] = cmp.mapping.select_prev_item(),
+    --      ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    --      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    --      ['<C-Space>'] = cmp.mapping.complete(),
+    --      ['<C-e>'] = cmp.mapping.close(),
+    --      ['<CR>'] = cmp.mapping.confirm {
+    --        behavior = cmp.ConfirmBehavior.Replace,
+    --        select = true,
+    --      },
+    --      -- Tab mapping
+    --      ['<Tab>'] = function(fallback)
+    --        if cmp.visible() then
+    --          cmp.select_next_item()
+    --        -- elseif luasnip.expand_or_jumpable() then
+    --        --   luasnip.expand_or_jump()
+    --        else
+    --          fallback()
+    --        end
+    --      end,
+    --      ['<S-Tab>'] = function(fallback)
+    --        if cmp.visible() then
+    --          cmp.select_prev_item()
+    --        -- elseif luasnip.jumpable(-1) then
+    --        --   luasnip.jump(-1)
+    --        else
+    --          fallback()
+    --        end
+    --      end
+    --    },
+    --    -- Load sources
+    --    sources = {
+    --      -- { name = 'nvim_lsp' },
+    --      -- { name = 'luasnip' },
+    --      { name = 'path' },
+    --      { name = 'buffer' },
+    --    },
+    --  })
+    --end
+
   }
 
   use {
@@ -89,9 +159,30 @@ return packer.startup(function(use)
     end
   }
 
-  -- Themes
-  use 'ellisonleao/gruvbox.nvim'
-  use 'folke/tokyonight.nvim'
+  -- THEME
+
+  use {
+     'nvim-lualine/lualine.nvim',
+     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+  }
+
+  -- use {
+  --   'ellisonleao/gruvbox.nvim',
+  --   config = function()
+  --     vim.o.background = 'dark'
+  --     vim.cmd([[colorscheme gruvbox]])
+  --   end
+  -- }
+  
+  use {
+    'folke/tokyonight.nvim',
+    config = function()
+      vim.g.tokyonight_style = "storm"
+      vim.cmd([[colorscheme tokyonight]])
+    end
+  }
+
+  -- THEME
 
   --  -- Indent line
   --  use 'lukas-reineke/indent-blankline.nvim'
