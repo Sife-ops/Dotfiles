@@ -54,6 +54,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 Plug 'tomasr/molokai'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -320,6 +321,7 @@ nnoremap <leader>p :tabp<cr>
 nnoremap <leader>q :qa!<cr>
 nnoremap <leader>sa ggVG
 nnoremap <leader>so :source ~/.config/nvim/init.vim<cr>
+nnoremap <leader>t :TSPlaygroundToggle<cr>
 nnoremap <leader>w :wa<cr>
 nnoremap <leader>x :wincmd q<cr>
 nnoremap <leader>z :wqa!<cr>
