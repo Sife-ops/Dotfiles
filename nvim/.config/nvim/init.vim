@@ -58,6 +58,7 @@ Plug 'nvim-treesitter/playground'
 Plug 'tomasr/molokai'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
@@ -323,7 +324,7 @@ nnoremap <leader>sa ggVG
 nnoremap <leader>so :source ~/.config/nvim/init.vim<cr>
 nnoremap <leader>t :TSPlaygroundToggle<cr>
 nnoremap <leader>w :wa<cr>
-nnoremap <leader>x :wincmd q<cr>
+nnoremap <leader>x :bdelete<cr>
 nnoremap <leader>z :wqa!<cr>
 nnoremap Y yy
 vnoremap <leader>@ :norm @q<cr>
