@@ -53,6 +53,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tomasr/molokai'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -267,6 +268,26 @@ let g:airline_theme = 'onedark'
 colorscheme onedark
 
 "$
+
+"$
+
+"^ treesitter
+
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = 'all',
+  sync_install = true,
+  auto_install = true,
+
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = true,
+  },
+  indent = {
+    enable = true,
+  },
+}
+EOF
 
 "$
 
