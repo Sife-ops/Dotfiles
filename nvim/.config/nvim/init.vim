@@ -287,13 +287,15 @@ inoremap jk <esc>
 nnoremap <C-f> :exe ":cd " . system('git rev-parse --show-toplevel')<cr>:Rg<cr>
 nnoremap <C-p> :GFiles<cr>
 nnoremap <leader>b :Buffers<cr>
-nnoremap <leader>e :CocCommand explorer --no-focus --position right<cr>
+nnoremap <leader>e :CocCommand explorer --position right<cr>
 nnoremap <leader>f :call CocAction('format')<cr>
 nnoremap <leader>mch :set cursorline! cursorcolumn!<cr>
 nnoremap <leader>mdln ivim: ft= fdm= fmr=
 nnoremap <leader>mhl :set hlsearch!<cr>
 nnoremap <leader>mln :set number!<cr>
 nnoremap <leader>mwr :set wrap!<cr>
+nnoremap <leader>n :tabn<cr>
+nnoremap <leader>p :tabp<cr>
 nnoremap <leader>q :qa!<cr>
 nnoremap <leader>sa ggVG
 nnoremap <leader>so :source ~/.config/nvim/init.vim<cr>
