@@ -46,6 +46,9 @@ syntax enable
 
 call plug#begin()
 
+Plug 'nvim-lua/plenary.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+
 Plug 'RyanMillerC/better-vim-tmux-resizer'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
@@ -54,15 +57,14 @@ Plug 'jreybert/vimagit'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'norcalli/nvim-colorizer.lua'
-Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'phaazon/hop.nvim'
+Plug 'sindrets/diffview.nvim'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'tomasr/molokai'
 Plug 'tpope/vim-commentary'
@@ -373,6 +375,7 @@ nnoremap <leader>mG :MagitOnly<cr>
 nnoremap <leader>mbl :ToggleBlameLine<cr>
 nnoremap <leader>mch :set cursorline! cursorcolumn!<cr>
 nnoremap <leader>mdln ivim: ft= fdm= fmr=
+nnoremap <leader>mfh :DiffviewFileHistory %<cr>
 nnoremap <leader>mg :Magit<cr>
 nnoremap <leader>mhl :set hlsearch!<cr>
 nnoremap <leader>mln :set number!<cr>
