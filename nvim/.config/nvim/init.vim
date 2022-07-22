@@ -368,6 +368,7 @@ nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>co :GBranches checkout<cr>
 nnoremap <leader>e :NvimTreeFindFile<cr>
 nnoremap <leader>f :call CocAction('format')<cr>
+nnoremap <leader>G :MagitOnly<cr>
 nnoremap <leader>g :Magit<cr>
 nnoremap <leader>mch :set cursorline! cursorcolumn!<cr>
 nnoremap <leader>mdln ivim: ft= fdm= fmr=

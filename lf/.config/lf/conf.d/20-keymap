@@ -13,6 +13,7 @@ map <c-w> $setwallpaper.sh $f
 map D &dragon-drag-and-drop $fx
 map E $$ALTEDITOR ./
 map r $vidir
+map s $$EDITOR -S $f
 map u preview
 map x extract
 #$
