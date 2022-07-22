@@ -8,7 +8,7 @@
 
 set cursorline cursorcolumn
 set clipboard+=unnamedplus
-set colorcolumn=80
+" set colorcolumn=80
 set nowrap
 set number
 set splitbelow splitright
