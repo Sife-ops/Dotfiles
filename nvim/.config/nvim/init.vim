@@ -46,27 +46,29 @@ syntax enable
 
 call plug#begin()
 
+" Plug 'lewis6991/gitsigns.nvim'
 Plug 'RyanMillerC/better-vim-tmux-resizer'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'joshdick/onedark.vim'
+Plug 'jreybert/vimagit'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'phaazon/hop.nvim'
+Plug 'tanvirtin/vgit.nvim',
 Plug 'tomasr/molokai'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 Plug 'wellle/targets.vim'
 
 call plug#end()
@@ -318,13 +320,25 @@ require('nvim-tree').setup({
 
 -- "$
 
--- "^ hop
+-- "^ lualine
 
 require'lualine'.setup {
   options = {
     theme = 'tokyonight'
   }
 }
+
+-- "$
+
+-- "^ gitsigns
+
+-- require'gitsigns'.setup()
+
+-- "$
+
+-- "^ vgit
+
+require'vgit'.setup()
 
 -- "$
 
