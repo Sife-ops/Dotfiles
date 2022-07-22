@@ -65,6 +65,8 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'wellle/targets.vim'
+Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
+Plug 'kyazdani42/nvim-tree.lua'
 
 call plug#end()
 
@@ -299,7 +301,19 @@ require'nvim-treesitter.configs'.setup {
 -- "^ hop
 
 require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-vim.api.nvim_set_keymap('n', '<leader><leader>', "<cmd>lua require'hop'.hint_words()<cr>", {})
+
+-- "$
+
+-- "^ nvim-tree
+
+require('nvim-tree').setup({
+  view = {
+    side = 'right',
+  },
+  filters = {
+    dotfiles = false,
+  },
+})
 
 -- "$
 
@@ -323,8 +337,9 @@ vmap <bs> <space>
 inoremap jk <esc>
 nnoremap <C-f> :exe ":cd " . system('git rev-parse --show-toplevel')<cr>:Rg<cr>
 nnoremap <C-p> :GFiles<cr>
+nnoremap <leader><leader> <cmd>lua require'hop'.hint_words()<cr>
 nnoremap <leader>b :Buffers<cr>
-nnoremap <leader>e :CocCommand explorer --position right<cr>
+nnoremap <leader>e :NvimTreeFindFile<cr>
 nnoremap <leader>f :call CocAction('format')<cr>
 nnoremap <leader>mch :set cursorline! cursorcolumn!<cr>
 nnoremap <leader>mdln ivim: ft= fdm= fmr=
