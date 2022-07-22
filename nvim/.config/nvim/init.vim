@@ -55,6 +55,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
+Plug 'phaazon/hop.nvim'
 Plug 'tomasr/molokai'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -273,9 +274,12 @@ colorscheme onedark
 
 "$
 
-"^ treesitter
+"^ lua
 
 lua << EOF
+
+-- "^ treesitter
+
 require'nvim-treesitter.configs'.setup {
   ensure_installed = 'all',
   sync_install = true,
@@ -289,6 +293,16 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
   },
 }
+
+-- "$
+
+-- "^ hop
+
+require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+vim.api.nvim_set_keymap('n', '<leader><leader>', "<cmd>lua require'hop'.hint_words()<cr>", {})
+
+-- "$
+
 EOF
 
 "$
@@ -334,7 +348,6 @@ vnoremap <leader>s :sort<cr>
 " inoremap <C-j> <esc>:call InsertSkeleton()<cr>
 " inoremap <C-k> <c-g>u<esc>/<++><cr>cgn
 " inoremap KK <c-g>u<esc>/<++><cr>Nhm0:s/<++>//g<cr>`0a
-
 " inoremap '' <c-g>u''<++><esc>F'i
 " inoremap (( <c-g>u()<++><esc>F)i
 " inoremap ()) <c-g>u<esc>m0a<space>=><space><++><esc>`0a
