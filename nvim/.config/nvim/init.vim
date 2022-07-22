@@ -64,13 +64,13 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'phaazon/hop.nvim'
 Plug 'stsewd/fzf-checkout.vim'
-Plug 'tanvirtin/vgit.nvim',
 Plug 'tomasr/molokai'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'tveskag/nvim-blame-line'
 Plug 'wellle/targets.vim'
 
 call plug#end()
@@ -334,13 +334,7 @@ require'lualine'.setup {
 
 -- "^ gitsigns
 
--- require'gitsigns'.setup()
-
--- "$
-
--- "^ vgit
-
-require'vgit'.setup()
+require'gitsigns'.setup()
 
 -- "$
 
@@ -375,10 +369,11 @@ nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>co :GBranches checkout<cr>
 nnoremap <leader>e :NvimTreeFindFile<cr>
 nnoremap <leader>f :call CocAction('format')<cr>
-nnoremap <leader>G :MagitOnly<cr>
-nnoremap <leader>g :Magit<cr>
+nnoremap <leader>mG :MagitOnly<cr>
+nnoremap <leader>mbl :ToggleBlameLine<cr>
 nnoremap <leader>mch :set cursorline! cursorcolumn!<cr>
 nnoremap <leader>mdln ivim: ft= fdm= fmr=
+nnoremap <leader>mg :Magit<cr>
 nnoremap <leader>mhl :set hlsearch!<cr>
 nnoremap <leader>mln :set number!<cr>
 nnoremap <leader>mwr :set wrap!<cr>
