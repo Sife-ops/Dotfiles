@@ -52,7 +52,10 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'phaazon/hop.nvim'
@@ -62,11 +65,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 Plug 'wellle/targets.vim'
-Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
-Plug 'kyazdani42/nvim-tree.lua'
 
 call plug#end()
 
@@ -261,16 +262,16 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 "^ tokyonight
 
-" let g:tokyonight_style = 'night'
+let g:tokyonight_style = 'night'
 " let g:airline_theme = 'base16_monokai'
-" colorscheme tokyonight
+colorscheme tokyonight
 
 "$
 
 "^ onedark
 
-let g:airline_theme = 'onedark'
-colorscheme onedark
+" let g:airline_theme = 'onedark'
+" colorscheme onedark
 
 "$
 
@@ -314,6 +315,16 @@ require('nvim-tree').setup({
     dotfiles = false,
   },
 })
+
+-- "$
+
+-- "^ hop
+
+require'lualine'.setup {
+  options = {
+    theme = 'tokyonight'
+  }
+}
 
 -- "$
 
