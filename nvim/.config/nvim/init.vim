@@ -62,6 +62,7 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'phaazon/hop.nvim'
+Plug 'stsewd/fzf-checkout.vim'
 Plug 'tanvirtin/vgit.nvim',
 Plug 'tomasr/molokai'
 Plug 'tpope/vim-commentary'
@@ -310,9 +311,9 @@ require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
 -- "^ nvim-tree
 
 require('nvim-tree').setup({
-  view = {
-    side = 'right',
-  },
+  -- view = {
+  --   side = 'right',
+  -- },
   filters = {
     dotfiles = false,
   },
@@ -364,8 +365,10 @@ nnoremap <C-f> :exe ":cd " . system('git rev-parse --show-toplevel')<cr>:Rg<cr>
 nnoremap <C-p> :GFiles<cr>
 nnoremap <leader><leader> <cmd>lua require'hop'.hint_words()<cr>
 nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>co :GBranches checkout<cr>
 nnoremap <leader>e :NvimTreeFindFile<cr>
 nnoremap <leader>f :call CocAction('format')<cr>
+nnoremap <leader>g :Magit<cr>
 nnoremap <leader>mch :set cursorline! cursorcolumn!<cr>
 nnoremap <leader>mdln ivim: ft= fdm= fmr=
 nnoremap <leader>mhl :set hlsearch!<cr>
