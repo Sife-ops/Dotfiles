@@ -387,7 +387,8 @@ nnoremap <leader>sa ggVG
 nnoremap <leader>so :source ~/.config/nvim/init.vim<cr>
 nnoremap <leader>t :TSPlaygroundToggle<cr>
 nnoremap <leader>w :wa<cr>
-nnoremap <leader>x :bdelete<cr>
+nnoremap <leader>xb :bdelete<cr>
+nnoremap <leader>xt :tabc<cr>
 nnoremap <leader>z :wqa!<cr>
 nnoremap Y yy
 vnoremap <leader>@ :norm @q<cr>
