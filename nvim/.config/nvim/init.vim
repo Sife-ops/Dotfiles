@@ -374,8 +374,9 @@ nnoremap <leader>f :call CocAction('format')<cr>
 nnoremap <leader>mG :MagitOnly<cr>
 nnoremap <leader>mbl :ToggleBlameLine<cr>
 nnoremap <leader>mch :set cursorline! cursorcolumn!<cr>
+nnoremap <leader>mdf :DiffviewFileHistory %<cr>
 nnoremap <leader>mdln ivim: ft= fdm= fmr=
-nnoremap <leader>mfh :DiffviewFileHistory %<cr>
+nnoremap <leader>mdv :DiffviewOpen 
 nnoremap <leader>mg :Magit<cr>
 nnoremap <leader>mhl :set hlsearch!<cr>
 nnoremap <leader>mln :set number!<cr>
