@@ -57,6 +57,7 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'norcalli/nvim-colorizer.lua'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -340,6 +341,12 @@ require'lualine'.setup {
 -- "^ vgit
 
 require'vgit'.setup()
+
+-- "$
+
+-- "^ nvim-colorizer
+
+require'colorizer'.setup()
 
 -- "$
 
