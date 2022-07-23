@@ -6,5 +6,5 @@ require('nvim-tree').setup({
     dotfiles = false,
   },
 })
-keymap.nvim_tree()
+require('keymap').nvim_tree()
 

@@ -5,8 +5,6 @@ if not status_ok then
   return
 end
 
-keymap = require('keymap')
-
 return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
@@ -36,7 +34,7 @@ return packer.startup(function(use)
   --^ vimagit
   use {
     'jreybert/vimagit',
-    config = function() keymap.magit() end,
+    config = function() require('keymap').magit() end,
   }
   --$
 
@@ -44,7 +42,7 @@ return packer.startup(function(use)
   use {
     'junegunn/fzf.vim',
     requires = { use 'junegunn/fzf' },
-    config = function() keymap.fzf() end
+    config = function() require('keymap').fzf() end
   }
   --$
 
@@ -89,7 +87,7 @@ return packer.startup(function(use)
     'phaazon/hop.nvim',
     config = function()
       require('hop').setup { keys = 'etovxqpdygfblzhckisuran' }
-      keymap.hop()
+      require('keymap').hop()
     end
   }
   --$
