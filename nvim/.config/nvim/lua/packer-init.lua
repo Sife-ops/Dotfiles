@@ -6,7 +6,12 @@ if not status_ok then
 end
 
 return packer.startup(function(use)
-  use 'wbthomason/packer.nvim'
+  --^ packer
+  use {
+    'wbthomason/packer.nvim',
+    config = function() require('keymap').packer() end,
+  }
+  --$
 
   use 'RyanMillerC/better-vim-tmux-resizer'
 

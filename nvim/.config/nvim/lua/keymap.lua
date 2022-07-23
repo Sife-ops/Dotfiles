@@ -52,6 +52,10 @@ return {
     map('n', '<leader>e', ':NvimTreeFindFile<cr>')
   end,
 
+  packer = function()
+    map('n', '<leader>ss', ':source ~/.config/nvim/init.lua | PackerSync<cr>')
+  end,
+
   treesitter = function()
     map('n', '<leader>t', ':TSPlaygroundToggle<cr>')
   end,
