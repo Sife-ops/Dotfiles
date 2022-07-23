@@ -5,7 +5,7 @@ if not status_ok then
   return
 end
 
-local keymap = require('keymap')
+keymap = require('keymap')
 
 return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
@@ -30,7 +30,6 @@ return packer.startup(function(use)
   use {
     'jreybert/vimagit',
     config = function()
-      -- vim.cmd('source $HOME/.config/nvim/core/keymap/magit.vim')
       keymap.magit()
     end,
   }
@@ -41,7 +40,6 @@ return packer.startup(function(use)
       use 'junegunn/fzf'
     },
     config = function()
-      -- vim.cmd('source $HOME/.config/nvim/core/keymap/fzf.vim')
       keymap.fzf()
     end
   }
@@ -57,7 +55,6 @@ return packer.startup(function(use)
           dotfiles = false,
         },
       })
-      -- vim.cmd('source $HOME/.config/nvim/core/keymap/nvim-tree.vim')
       keymap.nvim_tree()
     end
   }
@@ -108,7 +105,6 @@ return packer.startup(function(use)
           enable = true,
         },
       }
-      -- vim.cmd('source $HOME/.config/nvim/core/keymap/treesitter.vim')
       keymap.treesitter()
     end
   }
@@ -117,7 +113,6 @@ return packer.startup(function(use)
     'phaazon/hop.nvim',
     config = function()
       require('hop').setup { keys = 'etovxqpdygfblzhckisuran' }
-      -- vim.cmd('source $HOME/.config/nvim/core/keymap/hop.vim')
       keymap.hop()
     end
   }

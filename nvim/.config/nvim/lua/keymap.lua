@@ -34,9 +34,9 @@ return {
   end,
 
   fzf = function()
-    map('nnoremap', '<C-f>', ':exe ":cd " . system("git rev-parse --show-toplevel")<cr>:Rg<cr>')
-    map('nnoremap', '<C-p>', ':GFiles<cr>')
-    map('nnoremap', '<leader>b', ':Buffers<cr>')
+    map('n', '<C-f>', ':exe ":cd " . system("git rev-parse --show-toplevel")<cr>:Rg<cr>')
+    map('n', '<C-p>', ':GFiles<cr>')
+    map('n', '<leader>b', ':Buffers<cr>')
   end,
 
   hop = function()
@@ -44,16 +44,16 @@ return {
   end,
 
   magit = function()
-    map('nnoremap', '<leader>mG', ':MagitOnly<cr>')
-    map('nnoremap', '<leader>mg', ':Magit<cr>')
+    map('n', '<leader>mG', ':MagitOnly<cr>')
+    map('n', '<leader>mg', ':Magit<cr>')
   end,
 
   nvim_tree = function()
-    map('nnoremap', '<leader>e', ':NvimTreeFindFile<cr>')
+    map('n', '<leader>e', ':NvimTreeFindFile<cr>')
   end,
 
   treesitter = function()
-    map('nnoremap', '<leader>t', ':TSPlaygroundToggle<cr>')
+    map('n', '<leader>t', ':TSPlaygroundToggle<cr>')
   end,
 }
 
