@@ -5,6 +5,8 @@ if not status_ok then
   return
 end
 
+local keymap = require('test')
+
 return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
@@ -21,32 +23,26 @@ return packer.startup(function(use)
     'folke/tokyonight.nvim',
     config = function()
       vim.g.tokyonight_style = "night"
-      vim.cmd([[colorscheme tokyonight]])
+      vim.cmd('colorscheme tokyonight')
     end
   }
 
   use {
-    'norcalli/nvim-colorizer.lua',
+    'jreybert/vimagit',
     config = function()
-      require('colorizer').setup()
-    end
+      -- vim.cmd('source $HOME/.config/nvim/core/keymap/magit.vim')
+      keymap.magit()
+    end,
   }
 
   use {
-    'lewis6991/gitsigns.nvim',
+    'junegunn/fzf.vim',
+    requires = {
+      use 'junegunn/fzf'
+    },
     config = function()
-      require('gitsigns').setup()
-    end
-  }
-
-  use {
-    'nvim-lualine/lualine.nvim',
-    config = function()
-      require('lualine').setup {
-        options = {
-          theme = 'tokyonight'
-        }
-      }
+      -- vim.cmd('source $HOME/.config/nvim/core/keymap/fzf.vim')
+      keymap.fzf()
     end
   }
 
@@ -61,32 +57,33 @@ return packer.startup(function(use)
           dotfiles = false,
         },
       })
-      vim.cmd('source $HOME/.config/nvim/core/keymap/nvim-tree.vim')
+      -- vim.cmd('source $HOME/.config/nvim/core/keymap/nvim-tree.vim')
+      keymap.nvim_tree()
     end
   }
 
   use {
-    'phaazon/hop.nvim',
+    'lewis6991/gitsigns.nvim',
     config = function()
-      require('hop').setup { keys = 'etovxqpdygfblzhckisuran' }
-      vim.cmd('source $HOME/.config/nvim/core/keymap/hop.vim')
+      require('gitsigns').setup()
     end
   }
 
-  -- use {
-  --   'tveskag/nvim-blame-line',
-  --   config = function()
-  --     vim.cmd('source $HOME/.config/nvim/core/keymap/nvim-blame.vim')
-  --   end,
-  -- }
+  use {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require('colorizer').setup()
+    end
+  }
 
   use {
-    'junegunn/fzf.vim',
-    requires = {
-      use 'junegunn/fzf'
-    },
+    'nvim-lualine/lualine.nvim',
     config = function()
-      vim.cmd('source $HOME/.config/nvim/core/keymap/fzf.vim')
+      require('lualine').setup {
+        options = {
+          theme = 'tokyonight'
+        }
+      }
     end
   }
 
@@ -111,16 +108,26 @@ return packer.startup(function(use)
           enable = true,
         },
       }
-      vim.cmd('source $HOME/.config/nvim/core/keymap/treesitter.vim')
+      -- vim.cmd('source $HOME/.config/nvim/core/keymap/treesitter.vim')
+      keymap.treesitter()
     end
   }
 
   use {
-    'jreybert/vimagit',
+    'phaazon/hop.nvim',
     config = function()
-      vim.cmd('source $HOME/.config/nvim/core/keymap/magit.vim')
-    end,
+      require('hop').setup { keys = 'etovxqpdygfblzhckisuran' }
+      -- vim.cmd('source $HOME/.config/nvim/core/keymap/hop.vim')
+      keymap.hop()
+    end
   }
+
+  -- use {
+  --   'tveskag/nvim-blame-line',
+  --   config = function()
+  --     vim.cmd('source $HOME/.config/nvim/core/keymap/nvim-blame.vim')
+  --   end,
+  -- }
 
   --   use {
   --    'windwp/nvim-autopairs',
