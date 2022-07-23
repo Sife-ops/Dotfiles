@@ -60,4 +60,5 @@
     },
     "workbench.sideBar.location": "right",
     "markdown-preview-enhanced.previewTheme": "atom-dark.css",
+    "window.zoomLevel": 1,
 }
