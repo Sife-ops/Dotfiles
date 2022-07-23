@@ -29,7 +29,7 @@ return packer.startup(function(use)
   --^ tokyonight
   use {
     'folke/tokyonight.nvim',
-    config = require('config/tokyonight')()
+    config = function() require('config/tokyonight') end,
   }
   --$
 
@@ -51,7 +51,7 @@ return packer.startup(function(use)
   --^ nvim-tree
   use {
     'kyazdani42/nvim-tree.lua',
-    config = require('config/nvim-tree')()
+    config = function() require('config/nvim-tree') end,
   }
   --$
 
@@ -72,7 +72,7 @@ return packer.startup(function(use)
   --^ lualine
   use {
     'nvim-lualine/lualine.nvim',
-    config = require('config/lualine')()
+    config = function() require('config/lualine') end,
   }
   --$
 
@@ -80,7 +80,7 @@ return packer.startup(function(use)
   use {
     'nvim-treesitter/playground',
     requires = { use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } },
-    config = require('config/treesitter')(),
+    config = function() require('config/treesitter') end,
   }
   --$
 
