@@ -6,13 +6,6 @@ if not status_ok then
 end
 
 return packer.startup(function(use)
-  --^ packer
-  use {
-    'wbthomason/packer.nvim',
-    config = function() require('keymap').packer() end,
-  }
-  --$
-
   use 'RyanMillerC/better-vim-tmux-resizer'
 
   use 'christoomey/vim-tmux-navigator'
@@ -76,6 +69,13 @@ return packer.startup(function(use)
   use {
     'nvim-lualine/lualine.nvim',
     config = function() require('config/lualine') end,
+  }
+  --$
+
+  --^ packer
+  use {
+    'wbthomason/packer.nvim',
+    config = function() require('keymap').packer() end,
   }
   --$
 
