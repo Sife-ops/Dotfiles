@@ -39,6 +39,10 @@ return {
     map('n', '<leader>b', ':Buffers<cr>')
   end,
 
+  git_blame = function()
+    map('n', '<leader>mbl', ':GitBlameToggle<cr>')
+  end,
+
   hop = function()
     map('n', '<leader><leader>', "<cmd>lua require'hop'.hint_words()<cr>", {})
   end,
@@ -53,7 +57,7 @@ return {
   end,
 
   packer = function()
-    map('n', '<leader>ss', ':source ~/.config/nvim/init.lua | PackerSync<cr>')
+    map('n', '<leader>ss', ':source $HOME/.config/nvim/init.lua | PackerSync<cr>')
   end,
 
   treesitter = function()

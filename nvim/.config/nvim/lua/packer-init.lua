@@ -22,20 +22,6 @@ return packer.startup(function(use)
 
   use 'wellle/targets.vim'
 
-  --^ tokyonight
-  use {
-    'folke/tokyonight.nvim',
-    config = function() require('config/tokyonight') end,
-  }
-  --$
-
-  --^ vimagit
-  use {
-    'jreybert/vimagit',
-    config = function() require('keymap').magit() end,
-  }
-  --$
-
   --^ fzf
   use {
     'junegunn/fzf.vim',
@@ -44,10 +30,12 @@ return packer.startup(function(use)
   }
   --$
 
-  --^ nvim-tree
+  --^ git-blame
   use {
-    'kyazdani42/nvim-tree.lua',
-    config = function() require('config/nvim-tree') end,
+    'f-person/git-blame.nvim',
+    config = function() 
+      require('keymap').git_blame() 
+    end,
   }
   --$
 
@@ -58,10 +46,13 @@ return packer.startup(function(use)
   }
   --$
 
-  --^ nvim-colorizer
+  --^ hop
   use {
-    'norcalli/nvim-colorizer.lua',
-    config = function() require('colorizer').setup() end,
+    'phaazon/hop.nvim',
+    config = function()
+      require('hop').setup { keys = 'etovxqpdygfblzhckisuran' }
+      require('keymap').hop()
+    end
   }
   --$
 
@@ -72,10 +63,31 @@ return packer.startup(function(use)
   }
   --$
 
+  --^ nvim-colorizer
+  use {
+    'norcalli/nvim-colorizer.lua',
+    config = function() require('colorizer').setup() end,
+  }
+  --$
+
+  --^ nvim-tree
+  use {
+    'kyazdani42/nvim-tree.lua',
+    config = function() require('config/nvim-tree') end,
+  }
+  --$
+
   --^ packer
   use {
     'wbthomason/packer.nvim',
     config = function() require('keymap').packer() end,
+  }
+  --$
+
+  --^ tokyonight
+  use {
+    'folke/tokyonight.nvim',
+    config = function() require('config/tokyonight') end,
   }
   --$
 
@@ -87,13 +99,10 @@ return packer.startup(function(use)
   }
   --$
 
-  --^ hop
+  --^ vimagit
   use {
-    'phaazon/hop.nvim',
-    config = function()
-      require('hop').setup { keys = 'etovxqpdygfblzhckisuran' }
-      require('keymap').hop()
-    end
+    'jreybert/vimagit',
+    config = function() require('keymap').magit() end,
   }
   --$
 
