@@ -21,92 +21,44 @@ return packer.startup(function(use)
 
   use {
     'folke/tokyonight.nvim',
-    config = function()
-      vim.g.tokyonight_style = "night"
-      vim.cmd('colorscheme tokyonight')
-    end
+    config = require('config/tokyonight')()
   }
 
   use {
     'jreybert/vimagit',
-    config = function()
-      keymap.magit()
-    end,
+    config = function() keymap.magit() end,
   }
 
   use {
     'junegunn/fzf.vim',
-    requires = {
-      use 'junegunn/fzf'
-    },
-    config = function()
-      keymap.fzf()
-    end
+    requires = { use 'junegunn/fzf' },
+    config = function() keymap.fzf() end
   }
 
   use {
     'kyazdani42/nvim-tree.lua',
-    config = function()
-      require('nvim-tree').setup({
-        -- view = {
-        --   side = 'right',
-        -- },
-        filters = {
-          dotfiles = false,
-        },
-      })
-      keymap.nvim_tree()
-    end
+    config = require('config/nvim-tree')()
   }
 
   use {
     'lewis6991/gitsigns.nvim',
-    config = function()
-      require('gitsigns').setup()
-    end
+    config = function() require('gitsigns').setup() end,
   }
 
   use {
     'norcalli/nvim-colorizer.lua',
-    config = function()
-      require('colorizer').setup()
-    end
+    config = function() require('colorizer').setup() end,
   }
 
   use {
     'nvim-lualine/lualine.nvim',
-    config = function()
-      require('lualine').setup {
-        options = {
-          theme = 'tokyonight'
-        }
-      }
-    end
+    config = require('config/lualine')()
   }
 
   use {
     'nvim-treesitter/playground',
-    requires = {
-      use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate',
-      },
-    },
-    config = function()
-      require('nvim-treesitter.configs').setup {
-        ensure_installed = 'all',
-        sync_install = true,
-        auto_install = true,
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = true,
-        },
-        indent = {
-          enable = true,
-        },
-      }
-      keymap.treesitter()
-    end
+    requires = { use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } },
+    config = require('config/treesitter')(),
   }
 
   use {
