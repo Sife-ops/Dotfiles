@@ -5,7 +5,7 @@ if not status_ok then
   return
 end
 
-local keymap = require('test')
+local keymap = require('keymap')
 
 return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
