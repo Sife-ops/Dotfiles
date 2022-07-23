@@ -11,56 +11,80 @@ return packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use 'RyanMillerC/better-vim-tmux-resizer'
+
   use 'christoomey/vim-tmux-navigator'
+
   use 'tpope/vim-commentary'
+
   use 'tpope/vim-fugitive'
+
   use 'tpope/vim-obsession'
+
   use 'tpope/vim-repeat'
+
   use 'tpope/vim-surround'
+
   use 'wellle/targets.vim'
 
+  --^ tokyonight
   use {
     'folke/tokyonight.nvim',
     config = require('config/tokyonight')()
   }
+  --$
 
+  --^ vimagit
   use {
     'jreybert/vimagit',
     config = function() keymap.magit() end,
   }
+  --$
 
+  --^ fzf
   use {
     'junegunn/fzf.vim',
     requires = { use 'junegunn/fzf' },
     config = function() keymap.fzf() end
   }
+  --$
 
+  --^ nvim-tree
   use {
     'kyazdani42/nvim-tree.lua',
     config = require('config/nvim-tree')()
   }
+  --$
 
+  --^ gitsigns
   use {
     'lewis6991/gitsigns.nvim',
     config = function() require('gitsigns').setup() end,
   }
+  --$
 
+  --^ nvim-colorizer
   use {
     'norcalli/nvim-colorizer.lua',
     config = function() require('colorizer').setup() end,
   }
+  --$
 
+  --^ lualine
   use {
     'nvim-lualine/lualine.nvim',
     config = require('config/lualine')()
   }
+  --$
 
+  --^ treesitter
   use {
     'nvim-treesitter/playground',
     requires = { use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } },
     config = require('config/treesitter')(),
   }
+  --$
 
+  --^ hop
   use {
     'phaazon/hop.nvim',
     config = function()
@@ -68,6 +92,7 @@ return packer.startup(function(use)
       keymap.hop()
     end
   }
+  --$
 
   -- use {
   --   'tveskag/nvim-blame-line',
@@ -108,3 +133,4 @@ return packer.startup(function(use)
   end
 end)
 
+-- vim: fdm=marker fmr=--^,--$

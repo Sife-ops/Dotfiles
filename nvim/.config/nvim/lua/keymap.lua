@@ -14,7 +14,7 @@ return {
 
     map('i', 'jk', '<esc>')
     map('n', '<leader>mch', ':set cursorline! cursorcolumn!<cr>')
-    map('n', '<leader>mdln', 'ivim: ft= fdm= fmr=')
+    map('n', '<leader>mdln', 'ivim: fdm= fmr=')
     map('n', '<leader>mhl', ':set hlsearch!<cr>')
     map('n', '<leader>mln', ':set number!<cr>')
     map('n', '<leader>mwr', ':set wrap!<cr>')
