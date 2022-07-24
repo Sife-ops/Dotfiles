@@ -8,33 +8,44 @@ end
 
 return {
   core = function()
+
     vim.g.mapleader = ' '
     vim.api.nvim_set_keymap('n', '<bs>', '<space>', {noremap = false, silent = true})
     vim.api.nvim_set_keymap('v', '<bs>', '<space>', {noremap = false, silent = true})
 
     map('i', 'jk', '<esc>')
-    map('n', '<leader>mch', ':set cursorline! cursorcolumn!<cr>')
-    map('n', '<leader>mdln', 'ivim: fdm= fmr=')
-    map('n', '<leader>mhl', ':set hlsearch!<cr>')
-    map('n', '<leader>mln', ':set number!<cr>')
-    map('n', '<leader>mwr', ':set wrap!<cr>')
-    map('n', '<leader>n', ':tabn<cr>')
-    map('n', '<leader>p', ':tabp<cr>')
     map('n', '<leader>q', ':qa!<cr>')
     map('n', '<leader>sa', 'ggVG')
     map('n', '<leader>so', ':source $HOME/.config/nvim/init.lua<cr>', { silent = false }) -- bs leader wtf?
     map('n', '<leader>w', ':wa<cr>')
-    map('n', '<leader>xb', ':bdelete<cr>')
-    map('n', '<leader>xt', ':tabc<cr>')
     map('n', '<leader>z', ':wqa!<cr>')
     map('n', 'Y', 'yy')
     map('v', '<leader>@', ':norm @q<cr>')
     map('v', '<leader>r', ':!rev<cr>')
     map('v', '<leader>s', ':sort<cr>')
+
+    map('n', '<leader>n', ':tabn<cr>')
+    map('n', '<leader>p', ':tabp<cr>')
+    map('n', '<leader>xb', ':bdelete<cr>')
+    map('n', '<leader>xt', ':tabc<cr>')
+
+    map('n', '<leader>mch', ':set cursorcolumn!<cr>')
+    map('n', '<leader>mdln', 'ivim: fdm= fmr=')
+    map('n', '<leader>mhl', ':set hlsearch!<cr>')
+    map('n', '<leader>mln', ':set number!<cr>')
+    map('n', '<leader>mwr', ':set wrap!<cr>')
+
+    map('n', '#', ':keepjumps normal! mi#`i<cr>')
+    map('n', '*', ':keepjumps normal! mi*`i<cr>')
+    map('n', 'N', 'Nzzzv')
+    map('n', 'n', 'nzzzv')
+    map('x', '#', ':call GetSelectedText()<cr>?<C-R>=@/<cr><cr>')
+    map('x', '*', ':call GetSelectedText()<cr>/<C-R>=@/<cr><cr>')
+
   end,
 
   fzf = function()
-    map('n', '<C-f>', ':exe ":cd " . system("git rev-parse --show-toplevel")<cr>:Rg<cr>')
+    -- map('n', '<C-f>', ':exe ":cd " . system("git rev-parse --show-toplevel")<cr>:Rg<cr>')
     map('n', '<C-p>', ':GFiles<cr>')
     map('n', '<leader>b', ':Buffers<cr>')
   end,

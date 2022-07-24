@@ -1,4 +1,5 @@
-set cursorline cursorcolumn
+" set cursorline cursorcolumn
+set cursorcolumn
 set clipboard+=unnamedplus
 " set colorcolumn=80
 set nowrap
@@ -18,7 +19,7 @@ set cmdheight=1
 
 set ignorecase
 set incsearch
-set nohlsearch
+" set nohlsearch
 set smartcase
 
 set nobackup
