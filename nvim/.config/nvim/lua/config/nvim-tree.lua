@@ -11,7 +11,3 @@ require('nvim-tree').setup({
   }
 })
 
-require('keymap').nvim_tree()
-
--- vim.cmd('NvimTreeOpen')
-

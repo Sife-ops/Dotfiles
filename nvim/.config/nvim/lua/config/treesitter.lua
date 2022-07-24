@@ -20,5 +20,3 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
-require('keymap').treesitter()
-
