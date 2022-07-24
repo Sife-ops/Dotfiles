@@ -32,6 +32,7 @@ return packer.startup(function(use)
           }
       })
       require('telescope').load_extension('fzf')
+      require('keymap').telescope()
     end
   }
 

@@ -44,12 +44,6 @@ return {
 
   end,
 
-  fzf = function()
-    map('n', '<C-p>', ':GFiles<cr>')
-    map('n', '<leader>b', ':Buffers<cr>')
-    map('n', '<leader>f', ':exe ":cd " . system("git rev-parse --show-toplevel")<cr>:Rg<cr>')
-  end,
-
   git_blame = function()
     map('n', '<leader>mbl', ':GitBlameToggle<cr>')
   end,
@@ -73,6 +67,51 @@ return {
 
   packer = function()
     map('n', '<leader>ss', ':source $HOME/.config/nvim/lua/packer-init.lua | PackerSync<cr>')
+  end,
+
+  telescope = function()
+    vim.cmd([[
+      nnoremap ;/    :lua require('telescope.builtin').search_history()<cr>
+      nnoremap ;;    :lua require('telescope.builtin').command_history()<cr>
+      xnoremap ;;    :lua require('telescope.builtin').command_history()<cr>
+      nnoremap ;a    :lua require('telescope.builtin').autocommands()<cr>
+      nnoremap ;b    :lua require('telescope.builtin').buffers({sort_mru=true})<cr>
+      nnoremap ;B    :lua require('telescope.builtin').builtin()<cr>
+      nnoremap ;c    :lua require('telescope.builtin').commands()<cr>
+      nnoremap ;f    :lua require('telescope.builtin').find_files({hidden=true})<cr>
+      nnoremap ;gc   :lua require('telescope.builtin').git_bcommits()<cr>
+      nnoremap ;gC   :lua require('telescope.builtin').git_commits()<cr>
+      nnoremap ;gb   :lua require('telescope.builtin').git_branches()<cr>
+      nnoremap ;gf   :lua require('telescope.builtin').git_files()<cr>
+      nnoremap ;gg   :lua require('telescope.builtin').live_grep()<cr>
+      nnoremap ;gs   :lua require('telescope.builtin').grep_string({use_regex=true, search=''})<left><left><left>
+      nnoremap ;gS   :lua require('telescope.builtin').git_stash()<cr>
+      nnoremap ;h    :lua require('telescope.builtin').help_tags()<cr>
+      nnoremap ;j    :lua require('telescope.builtin').jumplist({ignore_filename=false})<cr>
+      nnoremap ;k    :lua require('telescope.builtin').keymaps()<cr>
+      nnoremap ;ll   :lua require('telescope.builtin').loclist()<cr>
+      nnoremap ;la   :lua require('telescope.builtin').lsp_code_actions()<cr>
+      " TODO: Figure out why this is not working with visual selection
+      " vnoremap ;la   :lua require('telescope.builtin').lsp_range_code_actions()<cr>
+      nnoremap ;ld   :lua require('telescope.builtin').diagnostics({bufnr=0})<cr>
+      nnoremap ;lm   :lua require('telescope.builtin').man_pages()<cr>
+      nnoremap ;ls   :lua require('telescope.builtin').lsp_document_symbols()<cr>
+      nnoremap ;lD   :lua require('telescope.builtin').diagnostics()<cr>
+      nnoremap ;lS   :lua require('telescope.builtin').lsp_workspace_symbols({query=''})<left><left><left>
+      nnoremap ;m    :lua require('telescope.builtin').marks()<cr>
+      nnoremap ;n    :lua require('telescope').extensions.neoclip.default()<cr>
+      nnoremap ;of   :lua require('telescope.builtin').oldfiles()<cr>
+      nnoremap ;p    :lua require('telescope.builtin').pickers()<cr>
+      nnoremap ;q    :lua require('telescope.builtin').quickfix()<cr>
+      nnoremap ;r    :lua require('telescope.builtin').resume()<cr>
+      nnoremap ;R    :lua require('telescope.builtin').registers()<cr>
+      nnoremap ;s    :lua require('telescope.builtin').current_buffer_fuzzy_find({skip_empty_lines=true})<cr>
+      nnoremap ;t    :lua require('telescope.builtin').treesitter()<cr>
+      nnoremap ;vf   :lua require('telescope.builtin').filetypes()<cr>
+      nnoremap ;vo   :lua require('telescope.builtin').vim_options()<cr>
+      nnoremap ;w    :Telescope grep_string<cr>
+      xnoremap ;w    :call GetSelectedText()<cr>:Telescope grep_string additional_args={'-F'} use_regex=false search=<C-R>=@/<cr><cr>
+    ]])
   end,
 
   treesitter = function()
