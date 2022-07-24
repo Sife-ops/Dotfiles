@@ -22,7 +22,7 @@ return {
     map('n', '<leader>p', ':tabp<cr>')
     map('n', '<leader>q', ':qa!<cr>')
     map('n', '<leader>sa', 'ggVG')
-    map('n', '<leader>so', ':source ~/.config/nvim/init.lua<cr>')
+    map('n', '<leader>so', ':source $HOME/.config/nvim/init.lua<cr>', { silent = false }) -- bs leader wtf?
     map('n', '<leader>w', ':wa<cr>')
     map('n', '<leader>xb', ':bdelete<cr>')
     map('n', '<leader>xt', ':tabc<cr>')
@@ -54,6 +54,10 @@ return {
 
   nvim_tree = function()
     map('n', '<leader>e', ':NvimTreeFindFile<cr>')
+  end,
+
+  obsession = function()
+    map('n', '<leader>mo', ':Obsession $PWD/Session.vim', { silent = false })
   end,
 
   packer = function()

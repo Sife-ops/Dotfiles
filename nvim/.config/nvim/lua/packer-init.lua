@@ -14,8 +14,6 @@ return packer.startup(function(use)
 
   use 'tpope/vim-fugitive'
 
-  use 'tpope/vim-obsession'
-
   use 'tpope/vim-repeat'
 
   use 'tpope/vim-surround'
@@ -74,6 +72,13 @@ return packer.startup(function(use)
   use {
     'kyazdani42/nvim-tree.lua',
     config = function() require('config/nvim-tree') end,
+  }
+  --$
+
+  --^ obsession
+  use {
+    'tpope/vim-obsession',
+    config = function() require('keymap').obsession() end,
   }
   --$
 
