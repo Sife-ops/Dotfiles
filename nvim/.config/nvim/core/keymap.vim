@@ -4,7 +4,7 @@ let mapleader = " "
 nmap <bs> <space>
 vmap <bs> <space>
 
-"^ Splits/Windows
+"^ splits/windows
 
 " Only split
 nnoremap ss <C-w>o
@@ -32,19 +32,55 @@ nnoremap <C-w>h <C-w>H
 
 "$
 
+"^ buffers
+
+" Move between buffers easily
+nnoremap su :bprevious<cr>
+nnoremap si :bnext<cr>
+
+" Quickly delete buffer
+nnoremap sd :bdelete<cr>
+" Delete unpinned buffers
+nnoremap sD :bufdo if get(b:, 'is_buffer_pinned', 0) == 0 \| exec 'bd' \| endif<cr>
+
+" pin buffer
+nnoremap sp  :call Toggle('is_buffer_pinned', 'Buffer pinned: ')<cr>
+nnoremap sP  mZ:bufdo call ToggleOff('is_buffer_pinned', 'Buffer pinned: ')<cr>`Z
+
+"$
+
 "^ tabs
 
-nnoremap <leader>n :tabn<cr>
-nnoremap <leader>p :tabp<cr>
-nnoremap <leader>xb :bdelete<cr>
-nnoremap <leader>xt :tabc<cr>
+" nnoremap <leader>n :tabn<cr>
+" nnoremap <leader>p :tabp<cr>
+" nnoremap <leader>xb :bdelete<cr>
+" nnoremap <leader>xt :tabc<cr>
+
+" Move between tabs easily
+nnoremap sy gT
+nnoremap so gt
+" Move a window into a new tabpage
+nnoremap <leader>tw <C-w>T
+" Move tabs around
+nnoremap <leader>tj :-1tabm<cr>
+nnoremap <leader>tk :+1tabm<cr>
+" Only keep current tab
+nnoremap <leader>to :tabo<cr>
+" Create a new tab at the end
+nnoremap <leader>tn :tabnew<cr>:tabmove<cr>
+" Create a new scratch buffer tab at the end
+nnoremap <leader>ts :tabnew +setl\ buftype=nofile<cr>:tabmove<cr>
+" Close the tab
+nnoremap <leader>tc :tabclose<cr>
+" Go to last visited tab
+let g:lastTab = 1
+nnoremap <leader>tp :exec "tabn " . g:lastTab<cr>
 
 "$
 
 "^ modes
 
 nnoremap <leader>mch :set cursorcolumn!<cr>
-nnoremap <leader>mdln ivim: fdm= fmr=
 nnoremap <leader>mhl :set hlsearch!<cr>
 nnoremap <leader>mln :set number!<cr>
 nnoremap <leader>mwr :set wrap!<cr>
@@ -64,9 +100,12 @@ xnoremap * :call GetSelectedText()<cr>/<C-R>=@/<cr><cr>
 
 "^ misc.
 
+" nnoremap J mzJ`z
 inoremap jk <esc>
+inoremap mdln vim: fdm= fmr=
+nnoremap <leader><enter> :noh<cr>
 nnoremap <leader>q :qa!<cr>
-nnoremap <leader>so :source $HOME/.config/nvim/init.lua<cr>, { silent = false } " bs leader wtf?
+nnoremap <leader>so :source $HOME/.config/nvim/init.lua<cr> " bs leader wtf?
 nnoremap <leader>w :wa<cr>
 nnoremap <leader>z :wqa!<cr>
 nnoremap Y yy
@@ -96,7 +135,7 @@ nnoremap <leader>sk :lua require("harpoon.ui").nav_file(5)<cr>
 nnoremap <leader>sl :lua require("harpoon.ui").nav_file(6)<cr>
 nnoremap <leader>su :lua require("harpoon.ui").nav_file(7)<cr>
 nnoremap <leader>si :lua require("harpoon.ui").nav_file(8)<cr>
-nnoremap <leader>so :lua require("harpoon.ui").nav_file(9)<cr>
+" nnoremap <leader>so :lua require("harpoon.ui").nav_file(9)<cr>
 
 "$
 
@@ -121,13 +160,25 @@ nnoremap <leader>e :NvimTreeFindFile<cr>
 
 "^ obsession
 
-nnoremap <leader>mo :Obsession $PWD/Session.vim
+nnoremap <leader>ss :Obsession $PWD/Session.vim
+nnoremap <leader>sS :Obsession $HOME/.local/share/nvim/session/.vim<Left><Left><Left><Left>
+nnoremap <leader>sd :wall \| call LoadSession('default')<cr>
+
+"$
+
+"^ surround
+
+nmap <leader>' ysiw'
+nmap <leader>" ysiw"
+nmap <leader>` ysiw`
+nmap <leader>) ysiw)
+nmap <leader>} ysiw}
 
 "$
 
 "^ packer 
 
-" nnoremap <leader>ss :source $HOME/.config/nvim/lua/packer-init.lua | PackerSync<cr>
+nnoremap <leader>ps :source $HOME/.config/nvim/lua/packer-init.lua \| PackerSync<cr>
 
 "$
 
