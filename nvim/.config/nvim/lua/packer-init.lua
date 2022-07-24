@@ -6,6 +6,25 @@ if not status_ok then
 end
 
 return packer.startup(function(use)
+
+  use {
+    'neovim/nvim-lspconfig',
+    config = function()
+      require('config/nvim-lspconfig')
+    end,
+  }
+
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      {'quangnguyen30192/cmp-nvim-ultisnips'}, {'hrsh7th/cmp-buffer'},
+      {'hrsh7th/cmp-nvim-lsp'}, {'hrsh7th/cmp-path'}
+    },
+    config = function()
+      require('config/nvim-cmp')
+    end,
+  }
+
   use 'RyanMillerC/better-vim-tmux-resizer'
 
   use 'christoomey/vim-tmux-navigator'
@@ -24,7 +43,9 @@ return packer.startup(function(use)
   use {
     'junegunn/fzf.vim',
     requires = { use 'junegunn/fzf' },
-    config = function() require('keymap').fzf() end
+    config = function()
+      require('keymap').fzf()
+    end
   }
   --$
 
@@ -40,7 +61,9 @@ return packer.startup(function(use)
   --^ gitsigns
   use {
     'lewis6991/gitsigns.nvim',
-    config = function() require('gitsigns').setup() end,
+    config = function()
+      require('gitsigns').setup()
+    end,
   }
   --$
 
@@ -57,42 +80,54 @@ return packer.startup(function(use)
   --^ lualine
   use {
     'nvim-lualine/lualine.nvim',
-    config = function() require('config/lualine') end,
+    config = function()
+      require('config/lualine')
+    end,
   }
   --$
 
   --^ nvim-colorizer
   use {
     'norcalli/nvim-colorizer.lua',
-    config = function() require('colorizer').setup() end,
+    config = function()
+      require('colorizer').setup()
+    end,
   }
   --$
 
   --^ nvim-tree
   use {
     'kyazdani42/nvim-tree.lua',
-    config = function() require('config/nvim-tree') end,
+    config = function()
+      require('config/nvim-tree')
+    end,
   }
   --$
 
   --^ obsession
   use {
     'tpope/vim-obsession',
-    config = function() require('keymap').obsession() end,
+    config = function()
+      require('keymap').obsession()
+    end,
   }
   --$
 
   --^ packer
   use {
     'wbthomason/packer.nvim',
-    config = function() require('keymap').packer() end,
+    config = function()
+      require('keymap').packer()
+    end,
   }
   --$
 
   --^ tokyonight
   use {
     'folke/tokyonight.nvim',
-    config = function() require('config/tokyonight') end,
+    config = function()
+      require('config/tokyonight')
+    end,
   }
   --$
 
@@ -100,14 +135,18 @@ return packer.startup(function(use)
   use {
     'nvim-treesitter/playground',
     requires = { use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } },
-    config = function() require('config/treesitter') end,
+    config = function()
+      require('config/treesitter')
+    end,
   }
   --$
 
   --^ vimagit
   use {
     'jreybert/vimagit',
-    config = function() require('keymap').magit() end,
+    config = function()
+      require('keymap').magit()
+    end,
   }
   --$
 
