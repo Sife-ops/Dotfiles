@@ -7,12 +7,7 @@ end
 
 return packer.startup(function(use)
 
-  use {
-    'neovim/nvim-lspconfig',
-    config = function()
-      require('config/nvim-lspconfig')
-    end,
-  }
+  use 'sirver/ultisnips'
 
   use {
     'hrsh7th/nvim-cmp',
@@ -22,6 +17,13 @@ return packer.startup(function(use)
     },
     config = function()
       require('config/nvim-cmp')
+    end,
+  }
+
+  use {
+    'neovim/nvim-lspconfig',
+    config = function()
+      require('config/nvim-lspconfig')
     end,
   }
 
