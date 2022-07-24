@@ -7,7 +7,7 @@ function map(mode, lhs, rhs, opts)
 end
 
 return {
-  core = function()
+  core = function() --^
 
     vim.g.mapleader = ' '
     vim.api.nvim_set_keymap('n', '<bs>', '<space>', {noremap = false, silent = true})
@@ -15,7 +15,7 @@ return {
 
     map('i', 'jk', '<esc>')
     map('n', '<leader>q', ':qa!<cr>')
-    map('n', '<leader>sa', 'ggVG')
+    -- map('n', '<leader>sa', 'ggVG')
     map('n', '<leader>so', ':source $HOME/.config/nvim/init.lua<cr>', { silent = false }) -- bs leader wtf?
     map('n', '<leader>w', ':wa<cr>')
     map('n', '<leader>z', ':wqa!<cr>')
@@ -42,11 +42,27 @@ return {
     map('x', '#', ':call GetSelectedText()<cr>?<C-R>=@/<cr><cr>')
     map('x', '*', ':call GetSelectedText()<cr>/<C-R>=@/<cr><cr>')
 
-  end,
+  end, --$
 
   git_blame = function()
     map('n', '<leader>mbl', ':GitBlameToggle<cr>')
   end,
+
+  harpoon = function() --^
+    vim.cmd([[
+      nnoremap <leader>sa :lua require("harpoon.mark").add_file()<cr>
+      nnoremap <leader>sA :lua require("harpoon.ui").toggle_quick_menu()<cr>
+      nnoremap <leader>sm :lua require("harpoon.ui").nav_file(1)<cr>
+      nnoremap <leader>s, :lua require("harpoon.ui").nav_file(2)<cr>
+      nnoremap <leader>s. :lua require("harpoon.ui").nav_file(3)<cr>
+      nnoremap <leader>sj :lua require("harpoon.ui").nav_file(4)<cr>
+      nnoremap <leader>sk :lua require("harpoon.ui").nav_file(5)<cr>
+      nnoremap <leader>sl :lua require("harpoon.ui").nav_file(6)<cr>
+      nnoremap <leader>su :lua require("harpoon.ui").nav_file(7)<cr>
+      nnoremap <leader>si :lua require("harpoon.ui").nav_file(8)<cr>
+      nnoremap <leader>so :lua require("harpoon.ui").nav_file(9)<cr>
+    ]])
+  end, --$
 
   hop = function()
     map('n', '<leader><leader>', "<cmd>lua require'hop'.hint_words()<cr>", {})
@@ -69,7 +85,9 @@ return {
     map('n', '<leader>ss', ':source $HOME/.config/nvim/lua/packer-init.lua | PackerSync<cr>')
   end,
 
-  telescope = function()
+  telescope = function() --^
+    -- todo: golbal find file
+    -- todo: replace all 'map' calls
     vim.cmd([[
       nnoremap ;/    :lua require('telescope.builtin').search_history()<cr>
       nnoremap ;;    :lua require('telescope.builtin').command_history()<cr>
@@ -112,10 +130,11 @@ return {
       nnoremap ;w    :Telescope grep_string<cr>
       xnoremap ;w    :call GetSelectedText()<cr>:Telescope grep_string additional_args={'-F'} use_regex=false search=<C-R>=@/<cr><cr>
     ]])
-  end,
+  end, --$
 
   treesitter = function()
     map('n', '<leader>t', ':TSPlaygroundToggle<cr>')
   end,
 }
 
+-- vim: fdm=marker fmr=--^,--$

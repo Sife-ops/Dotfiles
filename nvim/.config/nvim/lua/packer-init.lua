@@ -7,6 +7,21 @@ end
 
 return packer.startup(function(use)
 
+  use 'kana/vim-textobj-entire'
+  use 'kana/vim-textobj-user'
+
+  use {
+    'ThePrimeagen/harpoon',
+    requires = {'nvim-lua/plenary.nvim'},
+    -- module = {'harpoon.mark', 'harpoon.ui'},
+    config = function()
+      require('harpoon').setup({
+        menu = {width = vim.api.nvim_win_get_width(0) - 4}
+      })
+      require('keymap').harpoon()
+    end
+  }
+
   use {
     'nvim-telescope/telescope.nvim',
     requires = {
