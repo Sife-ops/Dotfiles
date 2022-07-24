@@ -5,11 +5,15 @@ if not status_ok then
   return
 end
 
+-- todo: move configurations
+-- todo: formatter
 return packer.startup(function(use)
 
   use 'kana/vim-textobj-entire'
+
   use 'kana/vim-textobj-user'
 
+  --^ harpoon
   use {
     'ThePrimeagen/harpoon',
     requires = {'nvim-lua/plenary.nvim'},
@@ -21,7 +25,9 @@ return packer.startup(function(use)
       require('keymap').harpoon()
     end
   }
+  --$
 
+  --^ telescope
   use {
     'nvim-telescope/telescope.nvim',
     requires = {
@@ -50,6 +56,7 @@ return packer.startup(function(use)
       require('keymap').telescope()
     end
   }
+  --$
 
   use {'raimondi/delimitmate', event = {'InsertEnter'}}
 
@@ -95,6 +102,22 @@ return packer.startup(function(use)
     config = function()
       require('config/nvim-lspconfig')
     end,
+  }
+
+  use {
+      "williamboman/nvim-lsp-installer",
+      config = function()
+        require("nvim-lsp-installer").setup({
+            automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
+            -- ui = {
+            --     icons = {
+            --         server_installed = "✓",
+            --         server_pending = "➜",
+            --         server_uninstalled = "✗"
+            --     }
+            -- }
+        })
+      end
   }
 
   use 'RyanMillerC/better-vim-tmux-resizer'
@@ -251,6 +274,7 @@ return packer.startup(function(use)
   if packer_bootstrap then
     require('packer').sync()
   end
+
 end)
 
 -- vim: fdm=marker fmr=--^,--$
