@@ -1,7 +1,7 @@
 local lspconfig = require('lspconfig')
 local utility = require('utility')
 
-local opts = {noremap = true, silent = false}
+local opts = { noremap = true, silent = false }
 
 -- vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
@@ -57,19 +57,18 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 --   debounce_text_changes = 150,
 -- }
 
-lspconfig.tsserver.setup{
-    cmd = {
-        utility.lsp_dir ..
-            '/tsserver/node_modules/.bin/typescript-language-server', '--stdio'
-    },
-    capabilities = capabilities,
-    -- on_attach = on_attach,
-    on_attach = function(client, bufnr)
-        -- client.resolved_capabilities.document_formatting = false
-        on_attach(client, bufnr)
-    end,
-    -- flags = lsp_flags,
-    flags = {debounce_text_changes = 150}
+lspconfig.tsserver.setup {
+  cmd = {
+    utility.lsp_dir .. '/tsserver/node_modules/.bin/typescript-language-server', '--stdio'
+  },
+  capabilities = capabilities,
+  -- on_attach = on_attach,
+  on_attach = function(client, bufnr)
+    -- client.resolved_capabilities.document_formatting = false
+    on_attach(client, bufnr)
+  end,
+  -- flags = lsp_flags,
+  flags = { debounce_text_changes = 150 }
 }
 
 local runtime_path = vim.split(package.path, ';')
@@ -77,19 +76,20 @@ table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 lspconfig.sumneko_lua.setup {
   on_attach = function(client, bufnr)
-      -- client.resolved_capabilities.document_formatting = false
-      on_attach(client, bufnr)
+    -- client.resolved_capabilities.document_formatting = false
+    on_attach(client, bufnr)
   end,
   settings = {
     Lua = {
       runtime = {
         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
         version = 'LuaJIT',
+        path = runtime_path
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
         -- globals = {'vim'},
-        globals = {'vim', 'use'}
+        globals = { 'vim', 'use' }
       },
       workspace = {
         -- Make the server aware of Neovim runtime files

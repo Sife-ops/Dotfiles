@@ -8,40 +8,71 @@ end
 
 return {
   core = function() --^
+    vim.cmd([[
 
-    vim.g.mapleader = ' '
-    vim.api.nvim_set_keymap('n', '<bs>', '<space>', {noremap = false, silent = true})
-    vim.api.nvim_set_keymap('v', '<bs>', '<space>', {noremap = false, silent = true})
+      let mapleader = " "
+      nmap <bs> <space>
+      vmap <bs> <space>
 
-    map('i', 'jk', '<esc>')
-    map('n', '<leader>q', ':qa!<cr>')
-    -- map('n', '<leader>sa', 'ggVG')
-    map('n', '<leader>so', ':source $HOME/.config/nvim/init.lua<cr>', { silent = false }) -- bs leader wtf?
-    map('n', '<leader>w', ':wa<cr>')
-    map('n', '<leader>z', ':wqa!<cr>')
-    map('n', 'Y', 'yy')
-    map('v', '<leader>@', ':norm @q<cr>')
-    map('v', '<leader>r', ':!rev<cr>')
-    map('v', '<leader>s', ':sort<cr>')
+      """""""""""""""""""""""""""""""""""""""""""""""""
+      "" Splits/Windows
+      """""""""""""""""""""""""""""""""""""""""""""""""
 
-    map('n', '<leader>n', ':tabn<cr>')
-    map('n', '<leader>p', ':tabp<cr>')
-    map('n', '<leader>xb', ':bdelete<cr>')
-    map('n', '<leader>xt', ':tabc<cr>')
+      " Only split
+      nnoremap ss <C-w>o
 
-    map('n', '<leader>mch', ':set cursorcolumn!<cr>')
-    map('n', '<leader>mdln', 'ivim: fdm= fmr=')
-    map('n', '<leader>mhl', ':set hlsearch!<cr>')
-    map('n', '<leader>mln', ':set number!<cr>')
-    map('n', '<leader>mwr', ':set wrap!<cr>')
+      " Tab split
+      nnoremap st :tab split<cr>
 
-    map('n', '#', ':keepjumps normal! mi#`i<cr>')
-    map('n', '*', ':keepjumps normal! mi*`i<cr>')
-    map('n', 'N', 'Nzzzv')
-    map('n', 'n', 'nzzzv')
-    map('x', '#', ':call GetSelectedText()<cr>?<C-R>=@/<cr><cr>')
-    map('x', '*', ':call GetSelectedText()<cr>/<C-R>=@/<cr><cr>')
+      " Vertical split
+      nnoremap sv <C-w>v
 
+      " Close split
+      nnoremap sc <C-w>c
+
+     " Move between windows easily
+      nnoremap sk <C-w><C-k>
+      nnoremap sj <C-w><C-j>
+      nnoremap sl <C-w><C-l>
+      nnoremap sh <C-w><C-h>
+
+      " Move windows easily
+      nnoremap <C-w>j <C-w>J
+      nnoremap <C-w>k <C-w>K
+      nnoremap <C-w>l <C-w>L
+      nnoremap <C-w>h <C-w>H
+
+      inoremap jk <esc>
+      nnoremap <leader>q :qa!<cr>
+      " map('n', '<leader>sa', 'ggVG')
+      nnoremap <leader>so :source $HOME/.config/nvim/init.lua<cr>, { silent = false } -- bs leader wtf?
+      nnoremap <leader>w :wa<cr>
+
+      nnoremap <leader>z :wqa!<cr>
+      nnoremap Y yy
+      vnoremap <leader>@ :norm @q<cr>
+      vnoremap <leader>r :!rev<cr>
+      vnoremap <leader>s :sort<cr>
+
+      nnoremap <leader>n :tabn<cr>
+      nnoremap <leader>p :tabp<cr>
+      nnoremap <leader>xb :bdelete<cr>
+      nnoremap <leader>xt :tabc<cr>
+
+      nnoremap <leader>mch :set cursorcolumn!<cr>
+      nnoremap <leader>mdln ivim: fdm= fmr=
+      nnoremap <leader>mhl :set hlsearch!<cr>
+      nnoremap <leader>mln :set number!<cr>
+      nnoremap <leader>mwr :set wrap!<cr>
+
+      nnoremap # :keepjumps normal! mi#`i<cr>
+      nnoremap * :keepjumps normal! mi*`i<cr>
+      nnoremap N Nzzzv
+      nnoremap n nzzzv
+      xnoremap # :call GetSelectedText()<cr>?<C-R>=@/<cr><cr>
+      xnoremap * :call GetSelectedText()<cr>/<C-R>=@/<cr><cr>
+
+    ]])
   end, --$
 
   git_blame = function()
@@ -135,6 +166,7 @@ return {
   treesitter = function()
     map('n', '<leader>t', ':TSPlaygroundToggle<cr>')
   end,
+
 }
 
 -- vim: fdm=marker fmr=--^,--$

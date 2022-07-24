@@ -16,11 +16,11 @@ return packer.startup(function(use)
   --^ harpoon
   use {
     'ThePrimeagen/harpoon',
-    requires = {'nvim-lua/plenary.nvim'},
+    requires = { 'nvim-lua/plenary.nvim' },
     -- module = {'harpoon.mark', 'harpoon.ui'},
     config = function()
       require('harpoon').setup({
-        menu = {width = vim.api.nvim_win_get_width(0) - 4}
+        menu = { width = vim.api.nvim_win_get_width(0) - 4 }
       })
       require('keymap').harpoon()
     end
@@ -32,25 +32,25 @@ return packer.startup(function(use)
     'nvim-telescope/telescope.nvim',
     requires = {
       use 'nvim-lua/plenary.nvim',
-      use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
+      use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
       use {
         'AckslD/nvim-neoclip.lua',
         -- module = {'telescope'},
         config = function() require('neoclip').setup({}) end
       }
     },
-    config = function() 
+    config = function()
       require('telescope').setup({
-          defaults = {
-              cache_picker = {num_pickers = 20},
-              layout_strategy = 'flex',
-              layout_config = {
-                  height = 0.95,
-                  width = 0.95,
-                  vertical = {preview_height = 0.45},
-                  horizontal = {preview_width = 0.50}
-              }
+        defaults = {
+          cache_picker = { num_pickers = 20 },
+          layout_strategy = 'flex',
+          layout_config = {
+            height = 0.95,
+            width = 0.95,
+            vertical = { preview_height = 0.45 },
+            horizontal = { preview_width = 0.50 }
           }
+        }
       })
       require('telescope').load_extension('fzf')
       require('keymap').telescope()
@@ -58,14 +58,22 @@ return packer.startup(function(use)
   }
   --$
 
-  use {'raimondi/delimitmate', event = {'InsertEnter'}}
+  use { 'raimondi/delimitmate', event = { 'InsertEnter' } }
 
   use {
     'numToStr/Comment.nvim',
     config = function() require('Comment').setup({}) end
   }
 
-  -- use 'mg979/vim-visual-multi'
+  use {
+    'mg979/vim-visual-multi',
+    config = function()
+      vim.cmd([[
+        let g:VM_theme = 'neon'
+        let g:VM_silent_exit = v:true
+      ]])
+    end,
+  }
 
   -- use {
   --   'karb94/neoscroll.nvim',
@@ -89,8 +97,8 @@ return packer.startup(function(use)
   use {
     'hrsh7th/nvim-cmp',
     requires = {
-      {'quangnguyen30192/cmp-nvim-ultisnips'}, {'hrsh7th/cmp-buffer'},
-      {'hrsh7th/cmp-nvim-lsp'}, {'hrsh7th/cmp-path'}
+      { 'quangnguyen30192/cmp-nvim-ultisnips' }, { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-nvim-lsp' }, { 'hrsh7th/cmp-path' }
     },
     config = function()
       require('config/nvim-cmp')
@@ -105,19 +113,19 @@ return packer.startup(function(use)
   }
 
   use {
-      "williamboman/nvim-lsp-installer",
-      config = function()
-        require("nvim-lsp-installer").setup({
-            automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
-            -- ui = {
-            --     icons = {
-            --         server_installed = "✓",
-            --         server_pending = "➜",
-            --         server_uninstalled = "✗"
-            --     }
-            -- }
-        })
-      end
+    "williamboman/nvim-lsp-installer",
+    config = function()
+      require("nvim-lsp-installer").setup({
+        automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
+        -- ui = {
+        --     icons = {
+        --         server_installed = "✓",
+        --         server_pending = "➜",
+        --         server_uninstalled = "✗"
+        --     }
+        -- }
+      })
+    end
   }
 
   use 'RyanMillerC/better-vim-tmux-resizer'
@@ -147,9 +155,9 @@ return packer.startup(function(use)
   --^ git-blame
   use {
     'f-person/git-blame.nvim',
-    config = function() 
+    config = function()
       vim.cmd([[ let g:gitblame_enabled = 0 ]])
-      require('keymap').git_blame() 
+      require('keymap').git_blame()
     end,
   }
   --$
@@ -247,7 +255,7 @@ return packer.startup(function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
-    requires = { 
+    requires = {
       use 'p00f/nvim-ts-rainbow',
       use 'nvim-treesitter/playground',
       use {
