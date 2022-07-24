@@ -7,6 +7,7 @@ set number
 set splitbelow splitright
 set termguicolors
 set mouse=a
+set completeopt=menu,menuone,noselect
 
 set expandtab
 set shiftwidth=2
@@ -28,7 +29,7 @@ set undodir=~/.cache/nvim/undo
 set undofile
 
 set path+=**
-set wildmenu
+" set wildmenu
 
 filetype indent plugin on
-syntax enable
+" syntax enable
