@@ -45,9 +45,9 @@ return {
   end,
 
   fzf = function()
-    -- map('n', '<C-f>', ':exe ":cd " . system("git rev-parse --show-toplevel")<cr>:Rg<cr>')
     map('n', '<C-p>', ':GFiles<cr>')
     map('n', '<leader>b', ':Buffers<cr>')
+    map('n', '<leader>f', ':exe ":cd " . system("git rev-parse --show-toplevel")<cr>:Rg<cr>')
   end,
 
   git_blame = function()

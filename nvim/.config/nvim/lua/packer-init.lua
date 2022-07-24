@@ -55,6 +55,7 @@ return packer.startup(function(use)
   use {
     'f-person/git-blame.nvim',
     config = function() 
+      vim.cmd([[ let g:gitblame_enabled = 0 ]])
       require('keymap').git_blame() 
     end,
   }
@@ -85,6 +86,17 @@ return packer.startup(function(use)
     config = function()
       require('config/lualine')
     end,
+  }
+  --$
+
+  --^ nvim-autopairs
+  use {
+   'windwp/nvim-autopairs',
+   config = function()
+     require('nvim-autopairs').setup({
+       check_ts = true,
+     })
+   end
   }
   --$
 
@@ -151,39 +163,6 @@ return packer.startup(function(use)
     end,
   }
   --$
-
-  -- use {
-  --   'tveskag/nvim-blame-line',
-  --   config = function()
-  --     vim.cmd('source $HOME/.config/nvim/core/keymap/nvim-blame.vim')
-  --   end,
-  -- }
-
-  --   use {
-  --    'windwp/nvim-autopairs',
-  --    config = function()
-  --      require('nvim-autopairs').setup({})
-  --    end
-  --   }
-
-  --   use 'neovim/nvim-lspconfig'
-
-  --   use {
-  --     'hrsh7th/nvim-cmp',
-  --     requires = {
-  --       'hrsh7th/cmp-nvim-lsp',
-  --       'hrsh7th/cmp-path',
-  --       'hrsh7th/cmp-buffer',
-  --       'saadparwaiz1/cmp_luasnip',
-  --       'L3MON4D3/LuaSnip',
-  --     },
-  --   }
-
-  --  -- Dashboard (start screen)
-  --  use {
-  --    'goolord/alpha-nvim',
-  --    requires = { 'kyazdani42/nvim-web-devicons' },
-  --  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   if packer_bootstrap then
