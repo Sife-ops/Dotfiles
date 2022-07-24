@@ -72,7 +72,7 @@ return {
   end,
 
   packer = function()
-    map('n', '<leader>ss', ':source $HOME/.config/nvim/init.lua | PackerSync<cr>')
+    map('n', '<leader>ss', ':source $HOME/.config/nvim/lua/packer-init.lua | PackerSync<cr>')
   end,
 
   treesitter = function()

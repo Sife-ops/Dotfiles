@@ -7,6 +7,60 @@ end
 
 return packer.startup(function(use)
 
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = {
+      use 'nvim-lua/plenary.nvim',
+      use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
+      use {
+        'AckslD/nvim-neoclip.lua',
+        -- module = {'telescope'},
+        config = function() require('neoclip').setup({}) end
+      }
+    },
+    config = function() 
+      require('telescope').setup({
+          defaults = {
+              cache_picker = {num_pickers = 20},
+              layout_strategy = 'flex',
+              layout_config = {
+                  height = 0.95,
+                  width = 0.95,
+                  vertical = {preview_height = 0.45},
+                  horizontal = {preview_width = 0.50}
+              }
+          }
+      })
+      require('telescope').load_extension('fzf')
+    end
+  }
+
+  use {'raimondi/delimitmate', event = {'InsertEnter'}}
+
+  use {
+    'numToStr/Comment.nvim',
+    config = function() require('Comment').setup({}) end
+  }
+
+  -- use 'mg979/vim-visual-multi'
+
+  -- use {
+  --   'karb94/neoscroll.nvim',
+  --   config = function() require('neoscroll').setup() end
+  -- }
+
+  -- http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
+  use 'godlygeek/tabular'
+
+  use 'benmills/vimux'
+
+  use 'chrisbra/NrrwRgn'
+
+  use {
+    'j-hui/fidget.nvim',
+    config = function() require('fidget').setup({}) end
+  }
+
   use 'sirver/ultisnips'
 
   use {
@@ -31,7 +85,7 @@ return packer.startup(function(use)
 
   use 'christoomey/vim-tmux-navigator'
 
-  use 'tpope/vim-commentary'
+  -- use 'tpope/vim-commentary'
 
   use 'tpope/vim-fugitive'
 
@@ -41,15 +95,15 @@ return packer.startup(function(use)
 
   use 'wellle/targets.vim'
 
-  --^ fzf
-  use {
-    'junegunn/fzf.vim',
-    requires = { use 'junegunn/fzf' },
-    config = function()
-      require('keymap').fzf()
-    end
-  }
-  --$
+  -- --^ fzf
+  -- use {
+  --   'junegunn/fzf.vim',
+  --   requires = { use 'junegunn/fzf' },
+  --   config = function()
+  --     require('keymap').fzf()
+  --   end
+  -- }
+  -- --$
 
   --^ git-blame
   use {
@@ -89,16 +143,16 @@ return packer.startup(function(use)
   }
   --$
 
-  --^ nvim-autopairs
-  use {
-   'windwp/nvim-autopairs',
-   config = function()
-     require('nvim-autopairs').setup({
-       check_ts = true,
-     })
-   end
-  }
-  --$
+  -- --^ nvim-autopairs
+  -- use {
+  --  'windwp/nvim-autopairs',
+  --  config = function()
+  --    require('nvim-autopairs').setup({
+  --      check_ts = true,
+  --    })
+  --  end
+  -- }
+  -- --$
 
   --^ nvim-colorizer
   use {
@@ -145,10 +199,23 @@ return packer.startup(function(use)
   }
   --$
 
+  -- use {
+  --   'windwp/nvim-ts-autotag',
+  --   config = function() require('nvim-ts-autotag').setup({}) end
+  -- }
+
   --^ treesitter
   use {
-    'nvim-treesitter/playground',
-    requires = { use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' } },
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    requires = { 
+      use 'p00f/nvim-ts-rainbow',
+      use 'nvim-treesitter/playground',
+      use {
+        'windwp/nvim-ts-autotag',
+        config = function() require('nvim-ts-autotag').setup({}) end
+      }
+    },
     config = function()
       require('config/treesitter')
     end,
