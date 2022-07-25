@@ -7,8 +7,8 @@ vmap <bs> <space>
 "^ buffers
 
 " Move between buffers easily
-nnoremap su :bprevious<cr>
-nnoremap si :bnext<cr>
+nnoremap sk :bprevious<cr>
+nnoremap sj :bnext<cr>
 
 " Quickly delete buffer
 nnoremap sd :bdelete<cr>
@@ -44,7 +44,7 @@ xnoremap * :call GetSelectedText()<cr>/<C-R>=@/<cr><cr>
 "^ splits/windows
 
 " Only split
-nnoremap ss <C-w>o
+nnoremap so <C-w>o
 
 " Tab split
 nnoremap st :tab split<cr>
@@ -55,11 +55,11 @@ nnoremap sv <C-w>v
 " Close split
 nnoremap sc <C-w>c
 
-" Move between windows easily
-nnoremap sk <C-w><C-k>
-nnoremap sj <C-w><C-j>
-nnoremap sl <C-w><C-l>
-nnoremap sh <C-w><C-h>
+" " Move between windows easily
+" nnoremap sk <C-w><C-k>
+" nnoremap sj <C-w><C-j>
+" nnoremap sl <C-w><C-l>
+" nnoremap sh <C-w><C-h>
 
 " Move windows easily
 nnoremap <C-w>j <C-w>J
@@ -77,21 +77,21 @@ nnoremap <C-w>h <C-w>H
 " nnoremap <leader>xt :tabc<cr>
 
 " Move between tabs easily
-nnoremap sy gT
-nnoremap so gt
+nnoremap tj gT
+nnoremap tk gt
 " Move a window into a new tabpage
 nnoremap <leader>tw <C-w>T
 " Move tabs around
 nnoremap <leader>tj :-1tabm<cr>
 nnoremap <leader>tk :+1tabm<cr>
 " Only keep current tab
-nnoremap <leader>to :tabo<cr>
+nnoremap to :tabo<cr>
 " Create a new tab at the end
-nnoremap <leader>tn :tabnew<cr>:tabmove<cr>
+nnoremap tn :tabnew<cr>:tabmove<cr>
 " Create a new scratch buffer tab at the end
-nnoremap <leader>ts :tabnew +setl\ buftype=nofile<cr>:tabmove<cr>
+nnoremap ts :tabnew +setl\ buftype=nofile<cr>:tabmove<cr>
 " Close the tab
-nnoremap <leader>tc :tabclose<cr>
+nnoremap tc :tabclose<cr>
 " Go to last visited tab
 let g:lastTab = 1
 nnoremap <leader>tp :exec "tabn " . g:lastTab<cr>
@@ -119,7 +119,7 @@ vnoremap <leader>s :sort<cr>
 
 "^ far
 
-nnoremap <>f :F  **/*<left><left><left><left><left>
+nnoremap <leader>f :F  **/*<left><left><left><left><left>
 
 "$
 
