@@ -5,12 +5,13 @@ if not status_ok then
   return
 end
 
--- todo: formatter
 return packer.startup(function(use)
 
   use 'RyanMillerC/better-vim-tmux-resizer'
 
   use 'benmills/vimux'
+
+  use 'brooth/far.vim'
 
   use 'chrisbra/NrrwRgn'
 

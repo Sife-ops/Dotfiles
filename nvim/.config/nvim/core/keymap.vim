@@ -4,6 +4,43 @@ let mapleader = " "
 nmap <bs> <space>
 vmap <bs> <space>
 
+"^ buffers
+
+" Move between buffers easily
+nnoremap su :bprevious<cr>
+nnoremap si :bnext<cr>
+
+" Quickly delete buffer
+nnoremap sd :bdelete<cr>
+" Delete unpinned buffers
+nnoremap sD :bufdo if get(b:, 'is_buffer_pinned', 0) == 0 \| exec 'bd' \| endif<cr>
+
+" pin buffer
+nnoremap sp  :call Toggle('is_buffer_pinned', 'Buffer pinned: ')<cr>
+nnoremap sP  mZ:bufdo call ToggleOff('is_buffer_pinned', 'Buffer pinned: ')<cr>`Z
+
+"$
+
+"^ modes
+
+nnoremap <leader>mch :set cursorcolumn!<cr>
+nnoremap <leader>mhl :set hlsearch!<cr>
+nnoremap <leader>mln :set number!<cr>
+nnoremap <leader>mwr :set wrap!<cr>
+
+"$
+
+"^ search
+
+nnoremap # :keepjumps normal! mi#`i<cr>
+nnoremap * :keepjumps normal! mi*`i<cr>
+nnoremap N Nzzzv
+nnoremap n nzzzv
+xnoremap # :call GetSelectedText()<cr>?<C-R>=@/<cr><cr>
+xnoremap * :call GetSelectedText()<cr>/<C-R>=@/<cr><cr>
+
+"$
+
 "^ splits/windows
 
 " Only split
@@ -29,23 +66,6 @@ nnoremap <C-w>j <C-w>J
 nnoremap <C-w>k <C-w>K
 nnoremap <C-w>l <C-w>L
 nnoremap <C-w>h <C-w>H
-
-"$
-
-"^ buffers
-
-" Move between buffers easily
-nnoremap su :bprevious<cr>
-nnoremap si :bnext<cr>
-
-" Quickly delete buffer
-nnoremap sd :bdelete<cr>
-" Delete unpinned buffers
-nnoremap sD :bufdo if get(b:, 'is_buffer_pinned', 0) == 0 \| exec 'bd' \| endif<cr>
-
-" pin buffer
-nnoremap sp  :call Toggle('is_buffer_pinned', 'Buffer pinned: ')<cr>
-nnoremap sP  mZ:bufdo call ToggleOff('is_buffer_pinned', 'Buffer pinned: ')<cr>`Z
 
 "$
 
@@ -78,26 +98,6 @@ nnoremap <leader>tp :exec "tabn " . g:lastTab<cr>
 
 "$
 
-"^ modes
-
-nnoremap <leader>mch :set cursorcolumn!<cr>
-nnoremap <leader>mhl :set hlsearch!<cr>
-nnoremap <leader>mln :set number!<cr>
-nnoremap <leader>mwr :set wrap!<cr>
-
-"$
-
-"^ search
-
-nnoremap # :keepjumps normal! mi#`i<cr>
-nnoremap * :keepjumps normal! mi*`i<cr>
-nnoremap N Nzzzv
-nnoremap n nzzzv
-xnoremap # :call GetSelectedText()<cr>?<C-R>=@/<cr><cr>
-xnoremap * :call GetSelectedText()<cr>/<C-R>=@/<cr><cr>
-
-"$
-
 "^ misc.
 
 " nnoremap J mzJ`z
@@ -116,6 +116,12 @@ vnoremap <leader>s :sort<cr>
 "$
 
 " plugin
+
+"^ far
+
+nnoremap <>f :F  **/*<left><left><left><left><left>
+
+"$
 
 "^ git-blame
 
@@ -145,13 +151,6 @@ nnoremap <leader><leader> <cmd>lua require('hop').hint_words()<cr>
 
 "$
 
-"^ vimagit
-
-nnoremap <leader>mG :MagitOnly<cr>
-nnoremap <leader>mg :Magit<cr>
-
-"$
-
 "^ nvim-tree
 
 nnoremap <leader>e :NvimTreeFindFile<cr>
@@ -166,6 +165,12 @@ nnoremap <leader>sd :wall \| call LoadSession('default')<cr>
 
 "$
 
+"^ packer 
+
+nnoremap <leader>ps :source $HOME/.config/nvim/lua/packer-init.lua \| PackerSync<cr>
+
+"$
+
 "^ surround
 
 nmap <leader>' ysiw'
@@ -176,14 +181,10 @@ nmap <leader>} ysiw}
 
 "$
 
-"^ packer 
-
-nnoremap <leader>ps :source $HOME/.config/nvim/lua/packer-init.lua \| PackerSync<cr>
-
-"$
-
 "^ telescope 
 
+" nnoremap <C-f> :exe ":cd " . system('git rev-parse --show-toplevel')<cr>:Rg<cr>
+" nnoremap <C-p> :GFiles<cr>
 nnoremap <leader>;/    :lua require('telescope.builtin').search_history()<cr>
 nnoremap <leader>;;    :lua require('telescope.builtin').command_history()<cr>
 xnoremap <leader>;;    :lua require('telescope.builtin').command_history()<cr>
@@ -230,6 +231,13 @@ xnoremap <leader>;w    :call GetSelectedText()<cr>:Telescope grep_string additio
 "^ treesitter playground 
 
 nnoremap <leader>t :TSPlaygroundToggle<cr>
+
+"$
+
+"^ vimagit
+
+nnoremap <leader>mG :MagitOnly<cr>
+nnoremap <leader>mg :Magit<cr>
 
 "$
 
