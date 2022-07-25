@@ -3,6 +3,7 @@ set cursorcolumn
 set clipboard+=unnamedplus
 " set colorcolumn=80
 set nowrap
+set lazyredraw
 set number
 set splitbelow splitright
 set termguicolors
