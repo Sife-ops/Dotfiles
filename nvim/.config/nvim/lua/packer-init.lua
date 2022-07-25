@@ -25,7 +25,9 @@ return packer.startup(function(use)
 
   use 'kana/vim-textobj-user'
 
-  use 'sirver/ultisnips'
+  use 'hrsh7th/vim-vsnip'
+
+  -- use 'sirver/ultisnips'
 
   use 'tpope/vim-fugitive'
 
@@ -163,8 +165,11 @@ return packer.startup(function(use)
   use {
     'hrsh7th/nvim-cmp',
     requires = {
-      { 'quangnguyen30192/cmp-nvim-ultisnips' }, { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-nvim-lsp' }, { 'hrsh7th/cmp-path' }
+      -- { 'quangnguyen30192/cmp-nvim-ultisnips' },
+      { 'hrsh7th/cmp-vsnip' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-path' }
     },
     config = function() require('config/nvim-cmp') end,
   }
