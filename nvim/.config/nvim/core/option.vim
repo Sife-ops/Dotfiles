@@ -30,7 +30,7 @@ set undodir=~/.cache/nvim/undo
 set undofile
 
 set path+=**
-" set wildmenu
+set wildmenu
 
 filetype indent plugin on
 " syntax enable

@@ -35,7 +35,7 @@ return packer.startup(function(use)
 
   use 'tpope/vim-surround'
 
-  -- use 'tpope/vim-obsession'
+  use 'tpope/vim-obsession'
 
   use 'wbthomason/packer.nvim'
 
@@ -129,24 +129,6 @@ return packer.startup(function(use)
         'AckslD/nvim-neoclip.lua',
         config = function() require('neoclip').setup({}) end
       },
-      use {
-        'rmagatti/session-lens',
-        requires = {
-          use {
-            'rmagatti/auto-session',
-            config = function()
-              vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
-              require('auto-session').setup {
-                auto_session_create_enabled = false,
-                -- auto_save_enabled = true,
-              }
-            end
-          }
-        },
-        config = function()
-          require('session-lens').setup({})
-        end
-      }
     },
     config = function()
       require('telescope').setup({
@@ -162,7 +144,6 @@ return packer.startup(function(use)
         }
       })
       require('telescope').load_extension('fzf')
-      require('telescope').load_extension('session-lens')
     end
   }
   --$

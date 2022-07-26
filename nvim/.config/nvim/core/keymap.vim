@@ -117,6 +117,12 @@ vnoremap <leader>s :sort<cr>
 
 " plugin
 
+"^ vimux
+
+nnoremap <leader>~ :VimuxOpenRunner<cr>
+
+"$
+
 "^ twilight
 
 nnoremap <leader>mtw :Twilight<cr>
@@ -163,10 +169,10 @@ nnoremap <leader>e :NvimTreeFindFile<cr>
 
 "$
 
-"^ auto-session
+"^ obsession
 
-nnoremap <leader>ss :SaveSession<cr>
-nnoremap <leader>sS :SaveSession $HOME/.local/share/nvim/sessions/.vim<Left><Left><Left><Left>
+nnoremap <leader>ss :Obsession $HOME/.local/share/nvim/session/.vim<Left><Left><Left><Left>
+nnoremap <leader>sS :Obsession .vim<Left><Left><Left><Left>
 
 "$
 
@@ -228,7 +234,7 @@ nnoremap <leader>;s    :lua require('telescope.builtin').current_buffer_fuzzy_fi
 nnoremap <leader>;t    :lua require('telescope.builtin').treesitter()<cr>
 nnoremap <leader>;vf   :lua require('telescope.builtin').filetypes()<cr>
 nnoremap <leader>;vo   :lua require('telescope.builtin').vim_options()<cr>
-nnoremap <leader>;vs   :lua require('session-lens').search_session()<cr>
+" nnoremap <leader>;vs   :lua require('session-lens').search_session()<cr>
 " nnoremap <leader>;w    :Telescope grep_string<cr>
 " xnoremap <leader>;w    :call GetSelectedText()<cr>:Telescope grep_string additional_args={'-F'} use_regex=false search=<C-R>=@/<cr><cr>
 
