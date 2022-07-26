@@ -124,6 +124,7 @@ return packer.startup(function(use)
     'nvim-telescope/telescope.nvim',
     requires = {
       use 'nvim-lua/plenary.nvim',
+      use 'BurntSushi/ripgrep',
       use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
       use {
         'AckslD/nvim-neoclip.lua',
