@@ -211,6 +211,12 @@ return packer.startup(function(use)
       use {
         'windwp/nvim-ts-autotag',
         config = function() require('nvim-ts-autotag').setup({}) end
+      },
+      use {
+        "folke/twilight.nvim",
+        config = function()
+          require("twilight").setup({})
+        end
       }
     },
     config = function() require('config/treesitter') end,

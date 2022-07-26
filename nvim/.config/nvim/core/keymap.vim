@@ -117,6 +117,12 @@ vnoremap <leader>s :sort<cr>
 
 " plugin
 
+"^
+
+nnoremap <leader>mtw :Twilight<cr>
+
+"$
+
 "^ far
 
 nnoremap <leader>f :F  **/*<left><left><left><left><left>
