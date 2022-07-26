@@ -166,8 +166,6 @@ nnoremap <leader>e :NvimTreeFindFile<cr>
 "^ auto-session
 
 nnoremap <leader>ss :SaveSession $HOME/.local/share/nvim/sessions/.vim<Left><Left><Left><Left>
-" nnoremap <leader>sS :Obsession $HOME/.local/share/nvim/session/.vim<Left><Left><Left><Left>
-" nnoremap <leader>sd :wall \| call LoadSession('default')<cr>
 
 "$
 
