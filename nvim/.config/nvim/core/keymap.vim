@@ -163,11 +163,11 @@ nnoremap <leader>e :NvimTreeFindFile<cr>
 
 "$
 
-"^ obsession
+"^ auto-session
 
-nnoremap <leader>ss :Obsession $PWD/Session.vim
-nnoremap <leader>sS :Obsession $HOME/.local/share/nvim/session/.vim<Left><Left><Left><Left>
-nnoremap <leader>sd :wall \| call LoadSession('default')<cr>
+nnoremap <leader>ss :SaveSession $HOME/.local/share/nvim/sessions/.vim<Left><Left><Left><Left>
+" nnoremap <leader>sS :Obsession $HOME/.local/share/nvim/session/.vim<Left><Left><Left><Left>
+" nnoremap <leader>sd :wall \| call LoadSession('default')<cr>
 
 "$
 
@@ -229,7 +229,8 @@ nnoremap <leader>;s    :lua require('telescope.builtin').current_buffer_fuzzy_fi
 nnoremap <leader>;t    :lua require('telescope.builtin').treesitter()<cr>
 nnoremap <leader>;vf   :lua require('telescope.builtin').filetypes()<cr>
 nnoremap <leader>;vo   :lua require('telescope.builtin').vim_options()<cr>
-nnoremap <leader>;vs   :Telescope sessions_picker<cr>
+" nnoremap <leader>;vs   :Telescope sessions_picker<cr>
+nnoremap <leader>;vs   :lua require('session-lens').search_session()<cr>
 " nnoremap <leader>;w    :Telescope grep_string<cr>
 " xnoremap <leader>;w    :call GetSelectedText()<cr>:Telescope grep_string additional_args={'-F'} use_regex=false search=<C-R>=@/<cr><cr>
 

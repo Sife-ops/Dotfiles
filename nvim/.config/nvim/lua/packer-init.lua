@@ -31,8 +31,6 @@ return packer.startup(function(use)
 
   use 'tpope/vim-fugitive'
 
-  use 'tpope/vim-obsession'
-
   use 'tpope/vim-repeat'
 
   use 'tpope/vim-surround'
@@ -125,21 +123,28 @@ return packer.startup(function(use)
     requires = {
       use 'nvim-lua/plenary.nvim',
       use 'BurntSushi/ripgrep',
-      use 'JoseConseco/telescope_sessions_picker.nvim',
       use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
       use {
         'AckslD/nvim-neoclip.lua',
-        -- module = {'telescope'},
         config = function() require('neoclip').setup({}) end
+      },
+      use {
+        'rmagatti/session-lens',
+        requires = {
+          use {
+            'rmagatti/auto-session',
+            config = function()
+              require('auto-session').setup {
+                auto_session_create_enabled = false,
+              }
+            end
+          }
+        },
+        config = function() require('session-lens').setup({}) end
       }
     },
     config = function()
       require('telescope').setup({
-        extensions = {
-          sessions_picker = {
-            sessions_dir = vim.fn.stdpath('data') ..'/session/',
-          }
-        },
         defaults = {
           cache_picker = { num_pickers = 20 },
           layout_strategy = 'flex',
@@ -152,7 +157,7 @@ return packer.startup(function(use)
         }
       })
       require('telescope').load_extension('fzf')
-      require('telescope').load_extension('sessions_picker')
+      require('telescope').load_extension('session-lens')
     end
   }
   --$
