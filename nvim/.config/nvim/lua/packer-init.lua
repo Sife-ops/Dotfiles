@@ -35,7 +35,7 @@ return packer.startup(function(use)
 
   use 'tpope/vim-surround'
 
-  use 'tpope/vim-obsession'
+  -- use 'tpope/vim-obsession'
 
   use 'wbthomason/packer.nvim'
 
@@ -110,7 +110,6 @@ return packer.startup(function(use)
   use {
     'ThePrimeagen/harpoon',
     requires = { 'nvim-lua/plenary.nvim' },
-    -- module = {'harpoon.mark', 'harpoon.ui'},
     config = function()
       require('harpoon').setup({
         menu = { width = vim.api.nvim_win_get_width(0) - 4 }
@@ -136,6 +135,7 @@ return packer.startup(function(use)
           use {
             'rmagatti/auto-session',
             config = function()
+              vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
               require('auto-session').setup {
                 auto_session_create_enabled = false,
                 -- auto_save_enabled = true,
@@ -143,7 +143,9 @@ return packer.startup(function(use)
             end
           }
         },
-        config = function() require('session-lens').setup({}) end
+        config = function()
+          require('session-lens').setup({})
+        end
       }
     },
     config = function()
