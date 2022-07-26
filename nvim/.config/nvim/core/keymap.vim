@@ -117,7 +117,7 @@ vnoremap <leader>s :sort<cr>
 
 " plugin
 
-"^
+"^ twilight
 
 nnoremap <leader>mtw :Twilight<cr>
 
@@ -229,8 +229,9 @@ nnoremap <leader>;s    :lua require('telescope.builtin').current_buffer_fuzzy_fi
 nnoremap <leader>;t    :lua require('telescope.builtin').treesitter()<cr>
 nnoremap <leader>;vf   :lua require('telescope.builtin').filetypes()<cr>
 nnoremap <leader>;vo   :lua require('telescope.builtin').vim_options()<cr>
-nnoremap <leader>;w    :Telescope grep_string<cr>
-xnoremap <leader>;w    :call GetSelectedText()<cr>:Telescope grep_string additional_args={'-F'} use_regex=false search=<C-R>=@/<cr><cr>
+nnoremap <leader>;vs   :Telescope sessions_picker<cr>
+" nnoremap <leader>;w    :Telescope grep_string<cr>
+" xnoremap <leader>;w    :call GetSelectedText()<cr>:Telescope grep_string additional_args={'-F'} use_regex=false search=<C-R>=@/<cr><cr>
 
 "$
 

@@ -125,6 +125,7 @@ return packer.startup(function(use)
     requires = {
       use 'nvim-lua/plenary.nvim',
       use 'BurntSushi/ripgrep',
+      use 'JoseConseco/telescope_sessions_picker.nvim',
       use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
       use {
         'AckslD/nvim-neoclip.lua',
@@ -134,6 +135,11 @@ return packer.startup(function(use)
     },
     config = function()
       require('telescope').setup({
+        extensions = {
+          sessions_picker = {
+            sessions_dir = vim.fn.stdpath('data') ..'/session/',
+          }
+        },
         defaults = {
           cache_picker = { num_pickers = 20 },
           layout_strategy = 'flex',
@@ -146,6 +152,7 @@ return packer.startup(function(use)
         }
       })
       require('telescope').load_extension('fzf')
+      require('telescope').load_extension('sessions_picker')
     end
   }
   --$
