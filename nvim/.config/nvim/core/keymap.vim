@@ -165,7 +165,8 @@ nnoremap <leader>e :NvimTreeFindFile<cr>
 
 "^ auto-session
 
-nnoremap <leader>ss :SaveSession $HOME/.local/share/nvim/sessions/.vim<Left><Left><Left><Left>
+" nnoremap <leader>ss :SaveSession $HOME/.local/share/nvim/sessions/.vim<Left><Left><Left><Left>
+nnoremap <leader>ss :Obsession $HOME/.local/share/nvim/sessions/.vim<Left><Left><Left><Left>
 
 "$
 

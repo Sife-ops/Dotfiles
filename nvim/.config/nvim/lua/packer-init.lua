@@ -35,6 +35,8 @@ return packer.startup(function(use)
 
   use 'tpope/vim-surround'
 
+  use 'tpope/vim-obsession'
+
   use 'wbthomason/packer.nvim'
 
   use 'wellle/targets.vim'
