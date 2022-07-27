@@ -197,8 +197,7 @@ nmap <leader>} ysiw}
 " nnoremap <C-f> :exe ":cd " . system('git rev-parse --show-toplevel')<cr>:Rg<cr>
 " nnoremap <C-p> :GFiles<cr>
 nnoremap <leader>;/    :lua require('telescope.builtin').search_history()<cr>
-nnoremap <leader>;;    :lua require('telescope.builtin').command_history()<cr>
-xnoremap <leader>;;    :lua require('telescope.builtin').command_history()<cr>
+nnoremap <leader>;:    :lua require('telescope.builtin').command_history()<cr>
 nnoremap <leader>;a    :lua require('telescope.builtin').autocommands()<cr>
 nnoremap <leader>;b    :lua require('telescope.builtin').buffers({sort_mru=true})<cr>
 nnoremap <leader>;B    :lua require('telescope.builtin').builtin()<cr>
@@ -248,8 +247,8 @@ nnoremap <leader>t :TSPlaygroundToggle<cr>
 
 "^ vimagit
 
-nnoremap <leader>mG :MagitOnly<cr>
-nnoremap <leader>mg :Magit<cr>
+nnoremap <leader>mg :MagitOnly<cr>
+" nnoremap <leader>mg :Magit<cr>
 
 "$
 
