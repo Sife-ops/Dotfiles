@@ -1,5 +1,8 @@
 " set cursorline cursorcolumn
 set cursorcolumn
+" set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set list
+set listchars=eol:↴
 set clipboard+=unnamedplus
 " set colorcolumn=80
 set nowrap
