@@ -1,4 +1,4 @@
-require('packer-install')
+require('sife-ops/packer-init')
 
 local status_ok, packer = pcall(require, 'packer')
 if not status_ok then
@@ -78,7 +78,7 @@ return packer.startup(function(use)
   --^ lualine
   use {
     'nvim-lualine/lualine.nvim',
-    config = function() require('config/lualine') end,
+    config = function() require('sife-ops/config/lualine') end,
   }
   --$
 
@@ -92,14 +92,14 @@ return packer.startup(function(use)
   --^ nvim-tree
   use {
     'kyazdani42/nvim-tree.lua',
-    config = function() require('config/nvim-tree') end,
+    config = function() require('sife-ops/config/nvim-tree') end,
   }
   --$
 
   --^ tokyonight
   use {
     'folke/tokyonight.nvim',
-    config = function() require('config/tokyonight') end,
+    config = function() require('sife-ops/config/tokyonight') end,
   }
   --$
 
@@ -181,14 +181,14 @@ return packer.startup(function(use)
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-path' }
     },
-    config = function() require('config/nvim-cmp') end,
+    config = function() require('sife-ops/config/nvim-cmp') end,
   }
   --$
 
   --^ nvim-lspconfig
   use {
     'neovim/nvim-lspconfig',
-    config = function() require('config/nvim-lspconfig') end,
+    config = function() require('sife-ops/config/nvim-lspconfig') end,
   }
   --$
 
@@ -228,7 +228,7 @@ return packer.startup(function(use)
         end
       }
     },
-    config = function() require('config/treesitter') end,
+    config = function() require('sife-ops/config/treesitter') end,
   }
   --$
 
