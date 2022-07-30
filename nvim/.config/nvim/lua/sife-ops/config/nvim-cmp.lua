@@ -16,7 +16,7 @@ cmp.setup({
     { name = 'nvim_lsp', preselect = true },
     { name = 'vsnip' }, -- For vsnip users.
     -- { name = 'ultisnips', preselect = true },
-    { 
+    {
       name = 'buffer' ,
       preselect = true,
       max_item_count = 20,
@@ -32,7 +32,7 @@ cmp.setup({
 
   mapping = cmp.mapping.preset.insert({
 
-    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), {'i'}),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete({}), {'i'}),
     ['<CR>'] = cmp.mapping(cmp.mapping.confirm({select = true}), {'i'}),
 
     -- sucks
