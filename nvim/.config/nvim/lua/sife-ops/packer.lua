@@ -65,7 +65,13 @@ return packer.startup(function(use)
   --^ lualine
   use {
     'nvim-lualine/lualine.nvim',
-    config = function() require('sife-ops/config/lualine') end,
+    config = function()
+      require('lualine').setup {
+        options = {
+          theme = 'tokyonight'
+        }
+      }
+    end,
   }
   --$
 
@@ -79,14 +85,39 @@ return packer.startup(function(use)
   --^ nvim-tree
   use {
     'kyazdani42/nvim-tree.lua',
-    config = function() require('sife-ops/config/nvim-tree') end,
+    config = function()
+      require('nvim-tree').setup({
+        filters = { dotfiles = false, },
+        git = { ignore = false, },
+        actions = {
+          change_dir = { global = true }
+        },
+        update_cwd = true,
+        -- view = {mappings = {custom_only = true, list = list}},
+        renderer = {
+          group_empty = true,
+          indent_markers = { enable = true },
+          icons = {
+            show = {
+              git = true,
+              folder = true,
+              file = true,
+              folder_arrow = false
+            }
+          }
+        }
+      })
+    end
   }
   --$
 
   --^ tokyonight
   use {
     'folke/tokyonight.nvim',
-    config = function() require('sife-ops/config/tokyonight') end,
+    config = function()
+      vim.g.tokyonight_style = "night"
+      vim.cmd('colorscheme tokyonight')
+    end
   }
   --$
 
@@ -228,7 +259,29 @@ return packer.startup(function(use)
         end
       }
     },
-    config = function() require('sife-ops/config/treesitter') end,
+    config = function()
+      require('nvim-treesitter.configs').setup {
+        -- ensure_installed = 'all',
+        ensure_installed = { 'lua', 'typescript', 'javascript' },
+        sync_install = false,
+        auto_install = true,
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = false,
+        },
+        indent = {
+          enable = true,
+        },
+        rainbow = {
+          enable = true,
+          extended_mode = true,
+          max_file_lines = 1000,
+        },
+        autotag = {
+          enable = true,
+        },
+      }
+    end
   }
   --$
 
