@@ -7,6 +7,19 @@ end
 
 return packer.startup(function(use)
 
+  use "EdenEast/nightfox.nvim"
+
+  use 'folke/tokyonight.nvim'
+
+  use 'nvim-lualine/lualine.nvim'
+
+  use {
+    "nanozuki/tabby.nvim",
+    config = function()
+      require('tabby').setup({})
+    end
+  }
+
   use 'RyanMillerC/better-vim-tmux-resizer'
 
   use 'benmills/vimux'
@@ -62,19 +75,6 @@ return packer.startup(function(use)
   }
   --$
 
-  --^ lualine
-  use {
-    'nvim-lualine/lualine.nvim',
-    config = function()
-      require('lualine').setup {
-        options = {
-          theme = 'tokyonight'
-        }
-      }
-    end,
-  }
-  --$
-
   --^ nvim-colorizer
   use {
     'norcalli/nvim-colorizer.lua',
@@ -107,16 +107,6 @@ return packer.startup(function(use)
           }
         }
       })
-    end
-  }
-  --$
-
-  --^ tokyonight
-  use {
-    'folke/tokyonight.nvim',
-    config = function()
-      vim.g.tokyonight_style = "night"
-      vim.cmd('colorscheme tokyonight')
     end
   }
   --$
@@ -325,7 +315,7 @@ return packer.startup(function(use)
   --$
 
   -- Automatically set up your configuration after cloning packer.nvim
-  if packer_bootstrap then
+  if Packer_bootstrap then
     require('packer').sync()
   end
 
