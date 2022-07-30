@@ -111,3 +111,10 @@ lspconfig.sumneko_lua.setup {
 --       ["rust-analyzer"] = {}
 --     }
 -- }
+
+lspconfig.gopls.setup({
+    cmd = {utility.lsp_dir .. '/gopls/gopls'},
+    capabilities = capabilities,
+    on_attach = on_attach
+})
+
