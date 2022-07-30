@@ -7,52 +7,34 @@ end
 
 return packer.startup(function(use)
 
+  --^ theme
   use "EdenEast/nightfox.nvim"
-
+  use "nanozuki/tabby.nvim"
+  use "savq/melange"
+  use 'bluz71/vim-nightfly-guicolors'
   use 'folke/tokyonight.nvim'
-
   use 'nvim-lualine/lualine.nvim'
+  --$
 
-  use {
-    "nanozuki/tabby.nvim",
-    config = function()
-      require('tabby').setup({})
-    end
-  }
-
+  --^ miscellaneous
   use 'RyanMillerC/better-vim-tmux-resizer'
-
   use 'benmills/vimux'
-
   use 'brooth/far.vim'
-
   use 'chrisbra/NrrwRgn'
-
   use 'christoomey/vim-tmux-navigator'
-
   use 'godlygeek/tabular' -- http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
-
-  use 'jreybert/vimagit'
-
-  use 'kana/vim-textobj-entire'
-
-  use 'kana/vim-textobj-user'
-
   use 'hrsh7th/vim-vsnip'
-
+  use 'jreybert/vimagit'
+  use 'kana/vim-textobj-entire'
+  use 'kana/vim-textobj-user'
   use 'tpope/vim-fugitive'
-
-  use 'tpope/vim-repeat'
-
-  use 'tpope/vim-surround'
-
   use 'tpope/vim-obsession'
-
+  use 'tpope/vim-repeat'
+  use 'tpope/vim-surround'
   use 'wbthomason/packer.nvim'
-
   use 'wellle/targets.vim'
-
   use { 'raimondi/delimitmate', event = { 'InsertEnter' } }
+  --$
 
   --^ git-blame
   use {
