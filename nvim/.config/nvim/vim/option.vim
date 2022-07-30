@@ -2,7 +2,7 @@
 set cursorcolumn
 " set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 set list
-set listchars=eol:↴
+set listchars=eol:↴,tab:>
 set clipboard+=unnamedplus
 " set colorcolumn=80
 set nowrap

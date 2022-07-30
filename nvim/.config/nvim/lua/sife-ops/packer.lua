@@ -27,20 +27,7 @@ return packer.startup(function(use)
 
   use 'hrsh7th/vim-vsnip'
 
-  -- use 'sirver/ultisnips'
-
   use 'tpope/vim-fugitive'
-
-  use {
-    "lukas-reineke/indent-blankline.nvim",
-    config = function()
-      require("indent_blankline").setup {
-        show_current_context = true,
-        show_current_context_start = true,
-        show_end_of_line = true,
-      }
-    end
-  }
 
   use 'tpope/vim-repeat'
 
@@ -114,6 +101,19 @@ return packer.startup(function(use)
   use {
     'j-hui/fidget.nvim',
     config = function() require('fidget').setup({}) end
+  }
+  --$
+
+  --^ indent-blankline
+  use {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("indent_blankline").setup {
+        show_current_context = true,
+        show_current_context_start = true,
+        show_end_of_line = true,
+      }
+    end
   }
   --$
 

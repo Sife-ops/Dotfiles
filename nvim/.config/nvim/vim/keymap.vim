@@ -181,7 +181,7 @@ nnoremap <leader>sS :Obsession .vim<Left><Left><Left><Left>
 "^ packer 
 
 nnoremap <leader>pr :lua require('plenary.reload').reload_module('sife-ops', true)<cr>:source $HOME/.config/nvim/init.lua<cr>
-" nnoremap <leader>ps :source $HOME/.config/nvim/lua/packer-init.lua \| PackerSync<cr>
+" nnoremap <leader>ps :source $HOME/.config/nvim/lua/packer.lua \| PackerSync<cr>
 nnoremap <leader>ps :PackerSync<cr>
 nnoremap <leader>pc :PackerCompile<cr>
 
