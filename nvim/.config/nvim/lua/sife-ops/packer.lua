@@ -13,6 +13,7 @@ return packer.startup(function(use)
   use "savq/melange"
   use 'bluz71/vim-nightfly-guicolors'
   use 'folke/tokyonight.nvim'
+  use 'kyazdani42/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
   --$
 
