@@ -67,4 +67,5 @@
     },
     "workbench.colorTheme": "Gruvbox Dark (Hard)",
     "editor.fontFamily": "'Liberation Mono', 'monospace', monospace",
+    "window.zoomLevel": 1,
 }

@@ -1,1 +1,1 @@
-require('sife-ops')
+require('sife-ops/config')
