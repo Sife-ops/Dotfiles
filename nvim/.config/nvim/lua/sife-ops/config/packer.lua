@@ -1,4 +1,4 @@
-require('sife-ops/packer-init')
+require('sife-ops/config/packer-init')
 
 local status_ok, packer = pcall(require, 'packer')
 if not status_ok then
@@ -8,10 +8,7 @@ end
 return packer.startup(function(use)
 
   --^ theme
-  use "EdenEast/nightfox.nvim"
-  use "nanozuki/tabby.nvim"
-  use "savq/melange"
-  use 'bluz71/vim-nightfly-guicolors'
+  -- use "nanozuki/tabby.nvim"
   use 'folke/tokyonight.nvim'
   use 'kyazdani42/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
@@ -19,12 +16,12 @@ return packer.startup(function(use)
 
   --^ miscellaneous
   use 'RyanMillerC/better-vim-tmux-resizer'
-  use 'benmills/vimux'
-  use 'brooth/far.vim'
-  use 'chrisbra/NrrwRgn'
+  -- use 'benmills/vimux'
+  -- use 'brooth/far.vim'
+  -- use 'chrisbra/NrrwRgn'
   use 'christoomey/vim-tmux-navigator'
-  use 'godlygeek/tabular' -- http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
-  use 'hrsh7th/vim-vsnip'
+  -- use 'godlygeek/tabular' -- http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
+  -- use 'hrsh7th/vim-vsnip'
   use 'jreybert/vimagit'
   use 'kana/vim-textobj-entire'
   use 'kana/vim-textobj-user'
@@ -34,7 +31,7 @@ return packer.startup(function(use)
   use 'tpope/vim-surround'
   use 'wbthomason/packer.nvim'
   use 'wellle/targets.vim'
-  use { 'raimondi/delimitmate', event = { 'InsertEnter' } }
+  -- use { 'raimondi/delimitmate', event = { 'InsertEnter' } }
   --$
 
   --^ git-blame
@@ -175,83 +172,83 @@ return packer.startup(function(use)
   }
   --$
 
-  --^ nvim-cmp
-  use {
-    'hrsh7th/nvim-cmp',
-    requires = {
-      -- { 'quangnguyen30192/cmp-nvim-ultisnips' },
-      { 'hrsh7th/cmp-vsnip' },
-      { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-path' }
-    },
-    config = function()
-      local cmp = require('cmp')
-      cmp.setup({
-        experimental = { ghost_text = true },
+  -- --^ nvim-cmp
+  -- use {
+  --   'hrsh7th/nvim-cmp',
+  --   requires = {
+  --     -- { 'quangnguyen30192/cmp-nvim-ultisnips' },
+  --     { 'hrsh7th/cmp-vsnip' },
+  --     { 'hrsh7th/cmp-buffer' },
+  --     { 'hrsh7th/cmp-nvim-lsp' },
+  --     { 'hrsh7th/cmp-path' }
+  --   },
+  --   config = function()
+  --     local cmp = require('cmp')
+  --     cmp.setup({
+  --       experimental = { ghost_text = true },
 
-        snippet = {
-          expand = function(args)
-            -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-            vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-          end,
-        },
+  --       snippet = {
+  --         expand = function(args)
+  --           -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+  --           vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+  --         end,
+  --       },
 
-        sources = cmp.config.sources({
-          { name = 'nvim_lsp', preselect = true },
-          { name = 'vsnip' }, -- For vsnip users.
-          -- { name = 'ultisnips', preselect = true },
-          {
-            name = 'buffer',
-            preselect = true,
-            max_item_count = 20,
-            option = { keyword_pattern = [[\k\k\k\+]] }
-          },
-          { name = 'path' },
-        }),
+  --       sources = cmp.config.sources({
+  --         { name = 'nvim_lsp', preselect = true },
+  --         { name = 'vsnip' }, -- For vsnip users.
+  --         -- { name = 'ultisnips', preselect = true },
+  --         {
+  --           name = 'buffer',
+  --           preselect = true,
+  --           max_item_count = 20,
+  --           option = { keyword_pattern = [[\k\k\k\+]] }
+  --         },
+  --         { name = 'path' },
+  --       }),
 
-        window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
-        },
+  --       window = {
+  --         completion = cmp.config.window.bordered(),
+  --         documentation = cmp.config.window.bordered(),
+  --       },
 
-        mapping = cmp.mapping.preset.insert({
-          ['<C-Space>'] = cmp.mapping(cmp.mapping.complete({}), { 'i' }),
-          ['<CR>'] = cmp.mapping(cmp.mapping.confirm({ select = true }), { 'i' }),
+  --       mapping = cmp.mapping.preset.insert({
+  --         ['<C-Space>'] = cmp.mapping(cmp.mapping.complete({}), { 'i' }),
+  --         ['<CR>'] = cmp.mapping(cmp.mapping.confirm({ select = true }), { 'i' }),
 
-          -- sucks
-          ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        }),
-      })
-    end
-  }
-  --$
+  --         -- sucks
+  --         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+  --         ['<C-f>'] = cmp.mapping.scroll_docs(4),
+  --       }),
+  --     })
+  --   end
+  -- }
+  -- --$
 
-  --^ nvim-lspconfig
-  use {
-    'neovim/nvim-lspconfig',
-    config = function() require('sife-ops/nvim-lspconfig') end,
-  }
-  --$
+  -- --^ nvim-lspconfig
+  -- use {
+  --   'neovim/nvim-lspconfig',
+  --   config = function() require('sife-ops/nvim-lspconfig') end,
+  -- }
+  -- --$
 
-  --^ nvim-lsp-installer
-  use {
-    "williamboman/nvim-lsp-installer",
-    config = function()
-      require("nvim-lsp-installer").setup({
-        automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
-        -- ui = {
-        --     icons = {
-        --         server_installed = "✓",
-        --         server_pending = "➜",
-        --         server_uninstalled = "✗"
-        --     }
-        -- }
-      })
-    end
-  }
-  --$
+  -- --^ nvim-lsp-installer
+  -- use {
+  --   "williamboman/nvim-lsp-installer",
+  --   config = function()
+  --     require("nvim-lsp-installer").setup({
+  --       automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
+  --       -- ui = {
+  --       --     icons = {
+  --       --         server_installed = "✓",
+  --       --         server_pending = "➜",
+  --       --         server_uninstalled = "✗"
+  --       --     }
+  --       -- }
+  --     })
+  --   end
+  -- }
+  -- --$
 
   --^ treesitter
   use {
