@@ -7,10 +7,13 @@
     },
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "editor.fontFamily": "'Liberation Mono', 'monospace', monospace, 'Droid Sans Fallback'",
 
     "vim.handleKeys": {
-        "<C-b>": false
+        "<C-b>": false,
+        "<C-h>": false,
+        "<C-l>": false,
+        "<C-j>": false,
+        "<C-k>": false
     },
 
     "vim.leader": "<space>",
@@ -20,8 +23,8 @@
     ],
 
     "vim.normalModeKeyBindingsNonRecursive": [
-        { "before": ["<leader>", "["], "commands": ["workbench.action.previousEditor"] },
-        { "before": ["<leader>", "]"], "commands": ["workbench.action.nextEditor"] },
+        { "before": ["<leader>", "j"], "commands": ["workbench.action.previousEditor"] },
+        { "before": ["<leader>", "k"], "commands": ["workbench.action.nextEditor"] },
         { "before": ["<leader>", "w"], "commands": ["workbench.action.files.saveAll"] }
     ],
     "terminal.integrated.allowChords": false,
@@ -58,7 +61,10 @@
     "[jsonc]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "workbench.sideBar.location": "right",
     "markdown-preview-enhanced.previewTheme": "atom-dark.css",
-    "window.zoomLevel": 1,
+    "[css]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
+    },
+    "workbench.colorTheme": "Gruvbox Dark (Hard)",
+    "editor.fontFamily": "'Liberation Mono', 'monospace', monospace",
 }
