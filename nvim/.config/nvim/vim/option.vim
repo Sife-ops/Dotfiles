@@ -1,5 +1,5 @@
 " set cursorline cursorcolumn
-set cursorcolumn
+" set cursorcolumn
 set list
 set listchars=eol:↴,tab:>-,trail:~,extends:>,precedes:<
 set clipboard+=unnamedplus

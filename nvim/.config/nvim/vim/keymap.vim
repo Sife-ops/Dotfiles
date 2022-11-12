@@ -23,7 +23,7 @@ nnoremap sP  mZ:bufdo call ToggleOff('is_buffer_pinned', 'Buffer pinned: ')<cr>`
 
 "^ modes
 
-nnoremap <leader>mch :set cursorcolumn!<cr>
+nnoremap <leader>mch :set cursorcolumn! cursorline!<cr>
 nnoremap <leader>mhl :set hlsearch!<cr>
 nnoremap <leader>mln :set number!<cr>
 nnoremap <leader>mwr :set wrap!<cr>

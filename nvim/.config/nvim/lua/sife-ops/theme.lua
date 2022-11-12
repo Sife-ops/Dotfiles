@@ -10,22 +10,22 @@
 -- tokyonight
 --------------------------------------------------------------------------------
 
--- vim.g.tokyonight_style = "night"
--- vim.cmd('colorscheme tokyonight')
+vim.g.tokyonight_style = "night"
+vim.cmd('colorscheme tokyonight')
 
--- require('lualine').setup({
---   options = {
---     theme = 'tokyonight'
---   }
--- })
+require('lualine').setup({
+  options = {
+    theme = 'tokyonight'
+  }
+})
 
 --------------------------------------------------------------------------------
 -- nightfly
 --------------------------------------------------------------------------------
 
-vim.cmd('colorscheme nightfly')
-
-require('lualine').setup({ })
+-- vim.cmd('colorscheme nightfly')
+--
+-- require('lualine').setup({ })
 
 --------------------------------------------------------------------------------
 -- melage
@@ -37,4 +37,4 @@ require('lualine').setup({ })
 -- tabby
 --------------------------------------------------------------------------------
 
-require('tabby').setup({})
+-- require('tabby').setup({})
