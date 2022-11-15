@@ -166,6 +166,10 @@ rangercd () { #^
     rm -f -- "$temp_file"
 } #$
 
+rn () { #^
+    rittle --prefix wg --project $1 new | xargs code
+} #$
+
 #$
 
 # vim: ft=sh fdm=marker fmr=#^,#$

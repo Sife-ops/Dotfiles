@@ -131,6 +131,7 @@ alias \
     p="sudo pacman" \
     pg='pgrep' \
     pk='pkill' \
+    rs='rittle save --project' \
     r='rangercd'
 
 #$
