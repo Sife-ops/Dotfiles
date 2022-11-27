@@ -65,7 +65,11 @@
     "[css]": {
         "editor.defaultFormatter": "vscode.css-language-features"
     },
-    "workbench.colorTheme": "Gruvbox Dark (Hard)",
     "editor.fontFamily": "'Liberation Mono', 'monospace', monospace",
+    "editor.minimap.enabled": false,
+    "rust-analyzer.diagnostics.disabled": [
+        "unresolved-proc-macro"
+    ],
     "window.zoomLevel": 1,
+    "workbench.colorTheme": "GitHub Dark"
 }

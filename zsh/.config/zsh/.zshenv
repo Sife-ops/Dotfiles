@@ -28,13 +28,12 @@ unset editor
 #$#
 
 #^#---- OPTIONS ----------------------------------------------------------------
-export DMENU_OPTS="-i -l 20"
+# todo: remove references to XDG
 export HISTFILE="${XDG_DATA_HOME}/history"
 export HISTSIZE=1000000
 export KEYTIMEOUT=1
 export LESSHISTFILE="-"
 export SAVEHIST=900000
-export TODO="${XDG_DATA_HOME}/todo"
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 #$#
 
