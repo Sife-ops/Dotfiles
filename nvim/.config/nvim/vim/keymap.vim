@@ -173,8 +173,8 @@ nnoremap <leader>e :NvimTreeFindFile<cr>
 
 "^ obsession
 
-nnoremap <leader>ss :Obsession $HOME/.local/share/nvim/session/.vim<Left><Left><Left><Left>
-nnoremap <leader>sS :Obsession .vim<Left><Left><Left><Left>
+" nnoremap <leader>ss :Obsession $HOME/.local/share/nvim/session/.vim<Left><Left><Left><Left>
+nnoremap <leader>ss :Obsession wg-.vim<Left><Left><Left><Left>
 
 "$
 
@@ -212,7 +212,7 @@ nnoremap <leader>;gc   :lua require('telescope.builtin').git_bcommits()<cr>
 nnoremap <leader>;gC   :lua require('telescope.builtin').git_commits()<cr>
 nnoremap <leader>;gb   :lua require('telescope.builtin').git_branches()<cr>
 nnoremap <leader>;gf   :lua require('telescope.builtin').git_files()<cr>
-nnoremap <leader>;gg   :lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>;F   :lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>;gs   :lua require('telescope.builtin').grep_string({use_regex=true, search=''})<left><left><left>
 nnoremap <leader>;gS   :lua require('telescope.builtin').git_stash()<cr>
 nnoremap <leader>;h    :lua require('telescope.builtin').help_tags()<cr>

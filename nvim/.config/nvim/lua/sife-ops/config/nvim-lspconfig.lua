@@ -1,5 +1,5 @@
 local lspconfig = require('lspconfig')
-local utility = require('sife-ops/utility')
+local utility = require('sife-ops/config/utility')
 
 local opts = { noremap = true, silent = false }
 
