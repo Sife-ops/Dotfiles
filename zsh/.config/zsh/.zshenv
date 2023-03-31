@@ -15,7 +15,7 @@ export PATH="${PATH}:${HOME}/.local/bin"
 export PATH="${PATH}:${HOME}/.deno/bin"
 #$#
 
-#^#---- DEFAULT PROGRAMS -------------------------------------------------------
+#^#---- EDITOR -----------------------------------------------------------------
 command -v nvim >/dev/null 2>&1 \
 	&& editor="nvim" \
 	|| editor="vim"
@@ -27,8 +27,7 @@ export VISUAL="$editor"
 unset editor
 #$#
 
-#^#---- OPTIONS ----------------------------------------------------------------
-# todo: remove references to XDG
+#^#---- SHELL ------------------------------------------------------------------
 export HISTFILE="${XDG_DATA_HOME}/history"
 export HISTSIZE=1000000
 export KEYTIMEOUT=1

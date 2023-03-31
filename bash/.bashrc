@@ -7,9 +7,12 @@
 
 PS1='[\u@\h \W]\$ '
 
+export HISTSIZE=9999999
+
 export PATH="${PATH}:${HOME}/.local/bin"
 
 export EDITOR=vim
+export ALTEDITOR=code
 
 set -o vi
 
@@ -35,4 +38,6 @@ source "/usr/share/fzf/key-bindings.bash" 2>/dev/null
 
 export FZF_CTRL_R_OPTS="--reverse"
 
-source ~/.bashrc-override
+# source ~/.bashrc-override
+
+# fish
