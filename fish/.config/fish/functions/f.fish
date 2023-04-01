@@ -1,4 +1,4 @@
-function lfcd
+function f
 	set -l tmp "$(mktemp)"
 	lf -last-dir-path="$tmp"
 	if test -f "$tmp"
@@ -12,4 +12,3 @@ function lfcd
 	end
 end
 
-alias f="lfcd"
