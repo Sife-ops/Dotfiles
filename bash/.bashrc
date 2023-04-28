@@ -11,7 +11,10 @@ export HISTSIZE=9999999
 
 export PATH="${PATH}:${HOME}/.local/bin"
 
-export EDITOR=vim
+which nvim >/dev/null 2>&1 \
+	&& editor="nvim" \
+	|| editor="vim"
+export EDITOR="$editor"
 export ALTEDITOR=code
 
 set -o vi
@@ -33,11 +36,6 @@ lfcd () {
 alias f='lfcd'
 alias ls='ls --color=auto'
 
-source "/usr/share/fzf/completion.bash" 2>/dev/null
-source "/usr/share/fzf/key-bindings.bash" 2>/dev/null
-
-export FZF_CTRL_R_OPTS="--reverse"
-
-# source ~/.bashrc-override
+# source ~/.bash_ext
 
 # fish
