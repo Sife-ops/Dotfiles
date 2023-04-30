@@ -28,7 +28,7 @@ unset editor
 #$#
 
 #^#---- SHELL ------------------------------------------------------------------
-export HISTFILE="${XDG_DATA_HOME}/history"
+export HISTFILE="${HOME}/.zsh_history"
 export HISTSIZE=1000000
 export KEYTIMEOUT=1
 export LESSHISTFILE="-"

@@ -15,6 +15,7 @@ which nvim >/dev/null 2>&1 \
 	&& editor="nvim" \
 	|| editor="vim"
 export EDITOR="$editor"
+export VISUAL="$editor"
 export ALTEDITOR=code
 
 set -o vi
