@@ -21,14 +21,11 @@ chpwd () { #^
 
     # Use zshconfig.zsh
     [ -e "./zshconfig.zsh" ] && source "./zshconfig.zsh"
-
 } #$
 
 preexec () { #^
-
     # Use beam shape cursor on startup and for each new prompt.
     echo -ne '\e[5 q'
-
 } #$
 
 #$
@@ -65,11 +62,9 @@ dka(){ #^
     docker rm $(docker ps -a -f status=exited -q)
 } #$
 
-#^
-ds(){
+ds(){ #^
     docker exec -it $1 sh
-}
-#$
+} #$
 
 #$
 
