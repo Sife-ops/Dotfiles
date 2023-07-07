@@ -1,1 +1,0 @@
-require('sife-ops/config')
