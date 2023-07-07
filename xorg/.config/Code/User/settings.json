@@ -1,75 +1,77 @@
 {
-    "files.exclude": {
-        "**/.classpath": true,
-        "**/.project": true,
-        "**/.settings": true,
-        "**/.factorypath": true
-    },
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "editor.suggestSelection": "first",
 
-    "vim.handleKeys": {
-        "<C-b>": false,
-        "<C-h>": false,
-        "<C-l>": false,
-        "<C-j>": false,
-        "<C-k>": false
-    },
+  "vim.handleKeys": {
+    "<C-b>": false,
+    "<C-h>": false,
+    "<C-l>": false,
+    "<C-j>": false,
+    "<C-k>": false
+  },
 
-    "vim.leader": "<space>",
+  "vim.leader": "<space>",
 
-    "vim.insertModeKeyBindings": [
-        { "before": ["j", "k"], "after": ["<Esc>"] }
-    ],
+  "vim.insertModeKeyBindings": [{ "before": ["j", "k"], "after": ["<Esc>"] }],
 
-    "vim.normalModeKeyBindingsNonRecursive": [
-        { "before": ["<leader>", "j"], "commands": ["workbench.action.previousEditor"] },
-        { "before": ["<leader>", "k"], "commands": ["workbench.action.nextEditor"] },
-        { "before": ["<leader>", "w"], "commands": ["workbench.action.files.saveAll"] }
-    ],
-    "terminal.integrated.allowChords": false,
-    "editor.rulers": [
-        80,
-        120
-    ],
-    "java.project.importOnFirstTimeStartup": "automatic",
-    "javaTests.template.junitDefaultVersion": "alwaysAsk",
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "j"],
+      "commands": ["workbench.action.previousEditor"]
     },
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    {
+      "before": ["<leader>", "k"],
+      "commands": ["workbench.action.nextEditor"]
     },
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "explorer.confirmDelete": false,
-    "keyboard.dispatch": "keyCode",
-    "editor.bracketPairColorization.enabled": true,
-    "editor.guides.bracketPairs": "active",
-    "files.insertFinalNewline": true,
-    "files.trimTrailingWhitespace": true,
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[javascriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[jsonc]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "markdown-preview-enhanced.previewTheme": "atom-dark.css",
-    "[css]": {
-        "editor.defaultFormatter": "vscode.css-language-features"
-    },
-    "editor.fontFamily": "'Liberation Mono', 'monospace', monospace",
-    "editor.minimap.enabled": false,
-    "rust-analyzer.diagnostics.disabled": [
-        "unresolved-proc-macro"
-    ],
-    "window.zoomLevel": 1,
-    "workbench.colorTheme": "GitHub Dark"
+    {
+      "before": ["<leader>", "w"],
+      "commands": ["workbench.action.files.saveAll"]
+    }
+  ],
+  "terminal.integrated.allowChords": false,
+  "editor.rulers": [80, 120],
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "explorer.confirmDelete": false,
+  "keyboard.dispatch": "keyCode",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "files.insertFinalNewline": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "editor.fontFamily": "'Iosevka Nerd Font Mono', 'monospace', monospace",
+  "rust-analyzer.diagnostics.disabled": [
+    "unresolved-proc-macro"
+  ],
+  "workbench.sideBar.location": "right",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+},
+"window.zoomLevel": 1,
+"workbench.colorTheme": "GitHub Dark Default"
 }

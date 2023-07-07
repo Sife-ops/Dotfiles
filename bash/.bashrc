@@ -37,6 +37,6 @@ lfcd () {
 alias f='lfcd'
 alias ls='ls --color=auto'
 
-# source ~/.bash_ext
+source ~/.bash_ext
 
 # fish
