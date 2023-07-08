@@ -8,6 +8,6 @@ opt.clipboard = "unnamedplus"
 
 opt.expandtab = true
 opt.smartindent = true
-opt.shiftwidth = 2
-opt.tabstop = 2
-opt.softtabstop = 2
+opt.shiftwidth = 4
+opt.tabstop = 4
+opt.softtabstop = 4

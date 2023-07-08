@@ -5,4 +5,5 @@ return {
     require("plugin.nvimtree"),
     require("plugin.mason"),
     require("plugin.lspconfig"),
+    require("plugin.whichkey"),
 }
