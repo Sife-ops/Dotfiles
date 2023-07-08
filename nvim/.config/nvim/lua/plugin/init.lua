@@ -3,4 +3,6 @@ return {
     require("plugin.treesitter"),
     require("plugin.telescope"),
     require("plugin.nvimtree"),
+    require("plugin.mason"),
+    require("plugin.lspconfig"),
 }

@@ -1,9 +1,14 @@
 local shortcuts = {
     native = {
+	i = {
+            ["jk"] = { "<esc>" },
+            ["fd"] = { "<esc>" },
+	},
+
         n = {
             -- ["<C-s>"] = { "<cmd> w <CR>", "Save file" },
             ["<leader>w"] = { "<cmd> wa <CR>" },
-            ["<leader>q"] = { "<cmd> qa! <CR>" },
+            ["<leader>z"] = { "<cmd> qa! <CR>" },
         },
     },
 
@@ -31,6 +36,16 @@ local shortcuts = {
         n = {
             ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "Focus nvimtree" },
         },
+    },
+
+    lspconfig = {
+        n = {
+            ["<leader>fm"] = {
+                function()
+                  vim.lsp.buf.format { async = true }
+                end
+            },
+        }
     }
 }
 
