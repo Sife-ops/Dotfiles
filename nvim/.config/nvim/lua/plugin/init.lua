@@ -10,4 +10,5 @@ return {
     require("plugin.surround"),
     require("plugin.completion"),
     require("plugin.tmux"),
+    require("plugin.onedark"),
 }

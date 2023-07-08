@@ -1,5 +1,8 @@
 -- todo: magit
 -- todo: moving tab/split
+-- todo: nvimtree update after commit
+-- todo: treesitter block colors
+-- todo: sessions
 
 require("option")
 require("shortcuts").set_shortcuts("native")
