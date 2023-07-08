@@ -1,8 +1,5 @@
--- todo: whichkey
--- todo: comment
--- todo: surround
--- todo: autopair
 -- todo: cmp/snippet
+-- todo: magit
 
 require("option")
 require("shortcuts").set_shortcuts("native")

@@ -6,4 +6,7 @@ return {
     require("plugin.mason"),
     require("plugin.lspconfig"),
     require("plugin.whichkey"),
+    require("plugin.comment"),
+    require("plugin.surround"),
+    require("plugin.autopairs"),
 }
