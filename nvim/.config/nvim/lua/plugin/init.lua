@@ -9,4 +9,5 @@ return {
     require("plugin.comment"),
     require("plugin.surround"),
     require("plugin.completion"),
+    require("plugin.tmux"),
 }

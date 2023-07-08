@@ -5,9 +5,8 @@ local shortcuts = {
         },
 
         n = {
-            -- ["<C-s>"] = { "<cmd> w <CR>", "Save file" },
             ["<leader>w"] = { "<cmd> wa <CR>" },
-            ["<leader>z"] = { "<cmd> qa! <CR>" },
+            ["<leader>z"] = { "<cmd> wqa <CR>" },
         },
     },
 

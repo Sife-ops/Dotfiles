@@ -1,5 +1,5 @@
--- todo: cmp/snippet
 -- todo: magit
+-- todo: moving tab/split
 
 require("option")
 require("shortcuts").set_shortcuts("native")
