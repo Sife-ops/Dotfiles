@@ -8,5 +8,5 @@ return {
     require("plugin.whichkey"),
     require("plugin.comment"),
     require("plugin.surround"),
-    require("plugin.autopairs"),
+    require("plugin.completion"),
 }
