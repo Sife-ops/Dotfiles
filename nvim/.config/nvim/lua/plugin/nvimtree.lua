@@ -1,7 +1,9 @@
 return {
     "nvim-tree/nvim-tree.lua",
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-    init = function() require("shortcuts").set_shortcuts("nvimtree") end,
+    init = function()
+        require("shortcuts").set_shortcuts("nvimtree")
+    end,
     -- opts = function()
     -- end,
     config = function(_, opts)

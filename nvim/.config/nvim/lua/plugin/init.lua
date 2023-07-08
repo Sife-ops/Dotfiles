@@ -11,4 +11,5 @@ return {
     require("plugin.completion"),
     require("plugin.tmux"),
     require("plugin.onedark"),
+    require("plugin.session"),
 }

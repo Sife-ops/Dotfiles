@@ -19,6 +19,11 @@ local shortcuts = {
             ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>" },
             -- ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
             ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>" },
+            ["<leader>fs"] = {
+                function()
+                    require("auto-session.session-lens").search_session()
+                end
+            },
 
             ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>" },
             ["<leader>gt"] = { "<cmd> Telescope git_status <CR>" },
