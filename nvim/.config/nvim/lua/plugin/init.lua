@@ -4,7 +4,7 @@ return {
     require("plugin.telescope"),
     require("plugin.nvimtree"),
     require("plugin.mason"),
-    require("plugin.lspconfig"),
+    require("plugin.lsp"),
     require("plugin.whichkey"),
     require("plugin.comment"),
     require("plugin.surround"),
