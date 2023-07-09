@@ -5,8 +5,18 @@ local shortcuts = {
         },
 
         n = {
-            ["<leader>w"] = { "<cmd> wa <CR>" },
+            -- save/quit
+            ["<leader>s"] = { "<cmd> wa <CR>" },
             ["<leader>z"] = { "<cmd> wqa <CR>" },
+            ["<leader>q"] = { "<cmd> qa! <CR>" },
+
+            -- tab/window
+            ["<leader>ww"] = { "<cmd> wincmd w <CR>" },
+            ["<leader>wc"] = { "<cmd> close <CR>" },
+            ["<leader>ws"] = { "<cmd> split <CR>" },
+            ["<leader>wv"] = { "<cmd> vsplit <CR>" },
+            ["<leader>n"] = { "<cmd> tabn <CR>" },
+            ["<leader>p"] = { "<cmd> tabp <CR>" },
         },
     },
 
@@ -33,7 +43,7 @@ local shortcuts = {
 
     nvimtree = {
         n = {
-            ["<leader>t"] = { "<cmd> NvimTreeFocus <CR>" },
+            ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>" },
         },
     },
 
