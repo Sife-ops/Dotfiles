@@ -92,8 +92,7 @@ M.set_shortcuts = function(plugin_name, opts)
             if type(values[2]) == "string" then
                 o2.desc = values[2]
             end
-            local o = vim.tbl_deep_extend("force", o1, o2)
-            vim.keymap.set(mode, mode_shortcut, values[1], o)
+            vim.keymap.set(mode, mode_shortcut, values[1], vim.tbl_deep_extend("force", o1, o2))
         end
     end
 end

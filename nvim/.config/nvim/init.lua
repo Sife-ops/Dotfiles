@@ -1,7 +1,4 @@
--- todo: magit
--- todo: moving tab/split
--- todo: nvimtree update after commit
--- todo: treesitter block colors
+-- todo: treesitter block colors?
 -- todo: sessions
 
 require("option")
