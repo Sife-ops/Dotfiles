@@ -1,6 +1,7 @@
 -- todo: treesitter block colors?
 -- todo: sessions
 -- todo: git gutter
+-- todo: undotree
 
 require("option")
 require("shortcuts").set_shortcuts("native")
