@@ -1,4 +1,6 @@
 {
+  "html.validate.scripts": false,
+  "html.validate.styles": false,
   "files.exclude": {
     "**/.classpath": true,
     "**/.project": true,
@@ -56,7 +58,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.html-language-features"
   },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -72,6 +74,5 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
 },
-"window.zoomLevel": 1,
-"workbench.colorTheme": "GitHub Dark Default"
+"window.zoomLevel": 1
 }
