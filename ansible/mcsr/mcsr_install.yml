@@ -89,14 +89,14 @@
 
     - name: create ninjabrain folder
       ansible.builtin.file:
-        path: "../tmp/ninjabrain"
+        path: "./tmp/ninjabrain"
         state: directory
         recurse: yes
 
     - name: download ninjabrain
       ansible.builtin.get_url:
         url: "https://github.com/Ninjabrain1/Ninjabrain-Bot/releases/download/{{ ninjabrain_version }}/Ninjabrain-Bot-{{ ninjabrain_version }}.jar"
-        dest: ../tmp/ninjabrain/
+        dest: ./tmp/ninjabrain/
       when: download
       register: ninjabrain
 
@@ -110,18 +110,19 @@
 
     - name: create multimc download folder
       ansible.builtin.file:
-        path: ../tmp/multimc
+        path: ./tmp/multimc
         state: directory
         recurse: yes
 
     - name: download multimc
       ansible.builtin.get_url:
         url: https://files.multimc.org/downloads/mmc-develop-lin64.tar.gz
-        dest: ../tmp/multimc/
+        dest: ./tmp/multimc/
       when: download
       register: multimc
 
     - name: unpack multimc
       ansible.builtin.shell:
-        chdir: ../tmp/multimc
+        chdir: ./tmp/multimc
         cmd: tar -xf mmc-develop-lin64.tar.gz
+      when: download

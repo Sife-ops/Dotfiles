@@ -5,6 +5,33 @@
   tasks:
 
 ###############################################################################
+## change theme
+
+    # todo detect xfce
+
+    - name: check border options
+      ansible.builtin.set_fact:
+        border: False
+      when: border is undefined
+
+    - name: enable window borders
+      ansible.builtin.shell:
+        cmd: xfconf-query -c xfwm4 -p /general/theme -s Gelly
+      when: border
+    
+    - name: end
+      meta: end_play
+      when: border
+
+    - name: disable window borders
+      ansible.builtin.shell:
+        cmd: xfconf-query -c xfwm4 -p /general/theme -s empty
+
+    - name: disable window borders
+      ansible.builtin.shell:
+        cmd: xfconf-query -c xfwm4 -p /general/theme -s empty
+
+###############################################################################
 ## sxhkd
 
     - name: check if sxhkd is running
@@ -32,7 +59,7 @@
 
     - name: start nb
       ansible.builtin.shell:
-        chdir: ../tmp/ninjabrain
+        chdir: ./tmp/ninjabrain
         cmd: "setsid -f java -jar Ninjabrain-Bot-{{ ninjabrain_version }}.jar >/dev/null 2>&1"
       # when: nb.stdout == ""
 
@@ -46,6 +73,6 @@
 
     - name: start mmc
       ansible.builtin.shell:
-        chdir: ../tmp/multimc/MultiMC
+        chdir: ./tmp/multimc/MultiMC
         cmd: setsid -f ./MultiMC >/dev/null 2>&1
       when: mmc.stdout == ""
