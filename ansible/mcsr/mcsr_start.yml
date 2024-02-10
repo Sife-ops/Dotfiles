@@ -1,0 +1,51 @@
+---
+- name: run mcsr
+  hosts: self
+  remote_user: "{{ username }}"
+  tasks:
+
+###############################################################################
+## sxhkd
+
+    - name: check if sxhkd is running
+      ansible.builtin.shell:
+        cmd: "echo $(pgrep -x sxhkd)"
+      register: mmc
+
+    - name: start sxhkd
+      ansible.builtin.shell:
+        cmd: setsid -f sxhkd >/dev/null 2>&1
+      when: mmc.stdout == ""
+
+    - name: restart sxhkd
+      ansible.builtin.shell:
+        cmd: pkill -usr1 -x sxhkd
+      when: mmc.stdout != ""
+
+###############################################################################
+## ninjabrain
+
+    # - name: check if nb is running
+    #   ansible.builtin.shell:
+    #     cmd: "echo $(pgrep -x MultiMC)"
+    #   register: nb
+
+    - name: start nb
+      ansible.builtin.shell:
+        chdir: ../tmp/ninjabrain
+        cmd: "setsid -f java -jar Ninjabrain-Bot-{{ ninjabrain_version }}.jar >/dev/null 2>&1"
+      # when: nb.stdout == ""
+
+###############################################################################
+## multimc
+
+    - name: check if mmc is running
+      ansible.builtin.shell:
+        cmd: "echo $(pgrep -x MultiMC)"
+      register: mmc
+
+    - name: start mmc
+      ansible.builtin.shell:
+        chdir: ../tmp/multimc/MultiMC
+        cmd: setsid -f ./MultiMC >/dev/null 2>&1
+      when: mmc.stdout == ""

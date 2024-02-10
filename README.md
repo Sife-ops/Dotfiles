@@ -3,4 +3,5 @@
 ## Todo
 
 - lf installer
-- todo install deps for mcsr bash_macros
+- install deps for mcsr bash_macros
+- move `tmp` into mcsr dir

@@ -1,9 +1,13 @@
 ---
-- name: mcsr stuff
+- name: install mcsr
   hosts: self
   remote_user: "{{ username }}"
-  gather_facts: no
   tasks:
+
+    - name: check options
+      ansible.builtin.set_fact:
+        download: True
+      when: download is undefined
 
 ###############################################################################
 ## debug
@@ -17,6 +21,16 @@
 
 ###############################################################################
 ## install bash macros
+
+    - name: install xdotool
+      ansible.builtin.package:
+        name: xdotool
+        state: present
+
+    - name: install wmctrl
+      ansible.builtin.package:
+        name: xdotool
+        state: present
 
     # todo move to common
     - name: create user scripts folder
@@ -43,7 +57,8 @@
 ## sxhkd
 
     - name: install sxhkd
-      community.general.pacman:
+      # community.general.pacman:
+      ansible.builtin.package:
         name: sxhkd
         state: present
 
@@ -69,24 +84,44 @@
           super+g
               mcsr_tile.sh
 
-    - name: check if sxhkd is running
-      ansible.builtin.shell:
-        cmd: "echo $(pgrep -x sxhkd)"
-      register: pgrep
-
-    # - name: debug
-    #   debug:
-    #     var: pgrep
-
-    - name: start sxhkd
-      ansible.builtin.shell:
-        cmd: setsid -f sxhkd >/dev/null 2>&1
-      when: pgrep.stdout == ""
-
-    - name: restart sxhkd
-      ansible.builtin.shell:
-        cmd: pkill -usr1 -x sxhkd
-      when: pgrep.stdout != ""
-
 ###############################################################################
 ## ninjabrian
+
+    - name: create ninjabrain folder
+      ansible.builtin.file:
+        path: "../tmp/ninjabrain"
+        state: directory
+        recurse: yes
+
+    - name: download ninjabrain
+      ansible.builtin.get_url:
+        url: "https://github.com/Ninjabrain1/Ninjabrain-Bot/releases/download/{{ ninjabrain_version }}/Ninjabrain-Bot-{{ ninjabrain_version }}.jar"
+        dest: ../tmp/ninjabrain/
+      when: download
+      register: ninjabrain
+
+###############################################################################
+## multimc
+
+    - name: install qt5-base
+      ansible.builtin.package:
+        name: qt5-base
+        state: present
+
+    - name: create multimc download folder
+      ansible.builtin.file:
+        path: ../tmp/multimc
+        state: directory
+        recurse: yes
+
+    - name: download multimc
+      ansible.builtin.get_url:
+        url: https://files.multimc.org/downloads/mmc-develop-lin64.tar.gz
+        dest: ../tmp/multimc/
+      when: download
+      register: multimc
+
+    - name: unpack multimc
+      ansible.builtin.shell:
+        chdir: ../tmp/multimc
+        cmd: tar -xf mmc-develop-lin64.tar.gz
