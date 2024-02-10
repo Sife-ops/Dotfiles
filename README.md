@@ -2,5 +2,5 @@
 
 ## Todo
 
-- one stow per utility
 - lf installer
+- todo install deps for mcsr bash_macros

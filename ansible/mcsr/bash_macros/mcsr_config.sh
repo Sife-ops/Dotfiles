@@ -1,0 +1,10 @@
+screen_w=2560
+screen_h=1440
+offset_x=0
+offset_y=1440
+cols=3
+rows=3
+inst_w=$((screen_w / cols))
+inst_h=$((screen_h / rows))
+title_pat="Minecraft*"
+measure_resize_factor=11 # use odd number

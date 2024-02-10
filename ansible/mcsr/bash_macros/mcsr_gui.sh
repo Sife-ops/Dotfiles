@@ -1,0 +1,11 @@
+options="1066 2164"
+fov_30="667 1668"
+fov_qp="1247 1668"
+controls="1608 1984"
+mouse_settings="964 1551"
+yawn="672 1621"
+sense="990 1622"
+video_settings="942 1981"
+rd_8="1434 1825"
+ed_8="668 2523"
+

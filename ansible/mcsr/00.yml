@@ -1,0 +1,94 @@
+---
+- name: mcsr stuff
+  hosts: self
+  remote_user: "{{ lookup('env', 'USER') }}"
+  gather_facts: no
+  vars:
+    envUser: "{{  lookup('env', 'USER') }}"
+  tasks:
+
+###############################################################################
+## debug
+
+    # - name: debug
+    #   debug:
+    #     var: to_copy
+
+    # - name: end
+    #   meta: end_play
+
+###############################################################################
+## install bash macros
+
+    # todo move to common
+    - name: create user scripts folder
+      ansible.builtin.file:
+        path: "/home/{{ envUser }}/.local/bin"
+        state: directory
+        recurse: yes
+
+    - name: find bash macros
+      ansible.builtin.find:
+        paths: ./bash_macros
+        # recurse: true
+        patterns: "mcsr_*"
+      register: to_copy
+
+    - name: copy bash macros
+      ansible.builtin.copy:
+        src: "{{ item.path }}"
+        dest: "/home/{{ envUser }}/.local/bin"
+        mode: +x
+      loop: "{{ to_copy.files }}"
+
+###############################################################################
+## sxhkd
+
+    - name: install sxhkd
+      community.general.pacman:
+        name: sxhkd
+        state: present
+
+    - name: configure sxhkd
+      ansible.builtin.blockinfile:
+        path: "/home/{{ envUser }}/.config/sxhkd/sxhkdrc"
+        marker: "# {mark} mcsr hotkeys"
+        create: true
+        backup: yes
+        block: |
+          F1
+              mcsr_microlense_on.sh
+          F7
+              mcsr_microlense_off.sh
+          F8
+              mcsr_measure_on.sh
+          F9
+              mcsr_measure_off.sh
+          F10
+              mcsr_preemptive.sh
+          super+f
+              mcsr_enlarge.sh
+          super+g
+              mcsr_tile.sh
+
+    - name: check if sxhkd is running
+      ansible.builtin.shell:
+        cmd: "echo $(pgrep -x sxhkd)"
+      register: pgrep
+
+    # - name: debug
+    #   debug:
+    #     var: pgrep
+
+    - name: start sxhkd
+      ansible.builtin.shell:
+        cmd: setsid -f sxhkd >/dev/null 2>&1
+      when: pgrep.stdout == ""
+
+    - name: restart sxhkd
+      ansible.builtin.shell:
+        cmd: pkill -usr1 -x sxhkd
+      when: pgrep.stdout != ""
+
+###############################################################################
+## sxhkd
