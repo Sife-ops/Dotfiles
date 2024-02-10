@@ -27,10 +27,6 @@
       ansible.builtin.shell:
         cmd: xfconf-query -c xfwm4 -p /general/theme -s empty
 
-    - name: disable window borders
-      ansible.builtin.shell:
-        cmd: xfconf-query -c xfwm4 -p /general/theme -s empty
-
 ###############################################################################
 ## sxhkd
 
