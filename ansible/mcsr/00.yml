@@ -1,10 +1,8 @@
 ---
 - name: mcsr stuff
   hosts: self
-  remote_user: "{{ lookup('env', 'USER') }}"
+  remote_user: "{{ username }}"
   gather_facts: no
-  vars:
-    envUser: "{{  lookup('env', 'USER') }}"
   tasks:
 
 ###############################################################################
@@ -23,7 +21,7 @@
     # todo move to common
     - name: create user scripts folder
       ansible.builtin.file:
-        path: "/home/{{ envUser }}/.local/bin"
+        path: "/home/{{ username }}/.local/bin"
         state: directory
         recurse: yes
 
@@ -37,7 +35,7 @@
     - name: copy bash macros
       ansible.builtin.copy:
         src: "{{ item.path }}"
-        dest: "/home/{{ envUser }}/.local/bin"
+        dest: "/home/{{ username }}/.local/bin"
         mode: +x
       loop: "{{ to_copy.files }}"
 
@@ -51,7 +49,7 @@
 
     - name: configure sxhkd
       ansible.builtin.blockinfile:
-        path: "/home/{{ envUser }}/.config/sxhkd/sxhkdrc"
+        path: "/home/{{ username }}/.config/sxhkd/sxhkdrc"
         marker: "# {mark} mcsr hotkeys"
         create: true
         backup: yes
@@ -91,4 +89,4 @@
       when: pgrep.stdout != ""
 
 ###############################################################################
-## sxhkd
+## ninjabrian

@@ -1,0 +1,7 @@
+---
+self:
+  hosts:
+    localhost:
+      ansible_connection: local
+  vars:
+    username: "{{ lookup('env', 'USER') }}"
