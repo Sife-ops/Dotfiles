@@ -126,3 +126,8 @@
         chdir: ./tmp/multimc
         cmd: tar -xf mmc-develop-lin64.tar.gz
       when: download
+
+    - name: copy standardoptions.txt
+      ansible.builtin.copy:
+        src: ./standardoptions.txt
+        dest: ./tmp/multimc/MultiMC/instances/
