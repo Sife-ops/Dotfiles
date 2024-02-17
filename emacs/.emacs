@@ -35,11 +35,19 @@
         use-package-expand-minimally t))
 (require 'use-package)
 
+(use-package magit)
+
 (use-package yaml-mode
   :mode ("\\.yml\\'" . yaml-mode))
 
 (use-package go-mode
   :mode ("\\.go\\'" . go-mode))
+
+(use-package which-key
+  :init
+  (setq which-key-idle-delay 0.3)
+  :config
+  (which-key-mode))
 
 ;; https://old.reddit.com/r/emacs/comments/726p7i/evil_mode_and_use_package/dnh3338/
 ;; https://stackoverflow.com/a/18851955
@@ -54,19 +62,12 @@
   :config
   (evil-commentary-mode))
 
-(use-package which-key
-  :init
-  (setq which-key-idle-delay 0.3)
-  :config
-  (which-key-mode))
-
 ;; https://github.com/jwiegley/use-package-examples?tab=readme-ov-file#company
 (use-package company
   :config
   (global-company-mode))
 
 (use-package flycheck
-  :ensure t
   :config
   (add-hook 'after-init-hook #'global-flycheck-mode))
 
