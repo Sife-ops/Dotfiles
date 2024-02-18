@@ -54,6 +54,7 @@
 (use-package evil
   :init
   (setq evil-want-C-u-scroll t)
+  (setq evil-search-module 'evil-search)
   :config
   (evil-mode 1)
   (evil-set-undo-system 'undo-redo))
