@@ -7,7 +7,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(wombat))
+ '(custom-enabled-themes '(modus-vivendi))
  '(package-selected-packages
    '(evil-commentary flycheck company which-key lsp-ui lsp-mode go-mode yaml-mode evil)))
 (custom-set-faces
@@ -15,7 +15,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Iosevka Nerd Font" :foundry "UKWN" :slant normal :weight regular :height 143 :width normal)))))
+ '(default ((t (:family "Iosevka Nerd Font" :foundry "UKWN" :slant normal :weight light :height 158 :width normal)))))
 
 (set-default 'truncate-lines t)
 
