@@ -9,7 +9,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(modus-vivendi))
  '(package-selected-packages
-   '(evil-commentary flycheck company which-key lsp-ui lsp-mode go-mode yaml-mode evil)))
+   '(git-gutter evil-commentary flycheck company which-key lsp-ui lsp-mode go-mode yaml-mode evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -21,7 +21,6 @@
 
 ;; https://ianyepan.github.io/posts/setting-up-use-package/
 ;; https://emacs-lsp.github.io/lsp-mode/page/installation/
-
 (require 'package)
 (add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
@@ -36,6 +35,10 @@
 (require 'use-package)
 
 (use-package magit)
+
+(use-package git-gutter
+  :config
+  (global-git-gutter-mode +1))
 
 (use-package yaml-mode
   :mode ("\\.yml\\'" . yaml-mode))
