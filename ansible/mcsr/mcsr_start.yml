@@ -49,6 +49,7 @@
 ###############################################################################
 ## ninjabrain
 
+    # # todo
     # - name: check if nb is running
     #   ansible.builtin.shell:
     #     cmd: "echo $(pgrep -x MultiMC)"
