@@ -11,7 +11,6 @@ export HISTSIZE=9999999
 
 export PATH="${PATH}:${HOME}/.local/bin"
 export PATH="${PATH}:${HOME}/go/bin"
-export PATH="${PATH}:${HOME}/.local/bin/mcsrmacros"
 
 which nvim >/dev/null 2>&1 \
 	&& editor="nvim" \
@@ -40,5 +39,3 @@ alias f='lfcd'
 alias ls='ls --color=auto'
 
 source ~/.bash_ext
-
-# fish
