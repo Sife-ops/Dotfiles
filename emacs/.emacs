@@ -23,6 +23,11 @@
 
 (add-hook 'dired-mode-hook 'dired-hide-details-mode)
 
+(global-set-key (kbd "C-x C-b") 'buffer-menu)
+(global-set-key (kbd "C-x C-i") 'ibuffer)
+(global-set-key (kbd "C-c s") 'desktop-save)
+(global-set-key (kbd "C-c r") 'desktop-read)
+
 ;; https://stackoverflow.com/a/1819405
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
@@ -69,8 +74,6 @@
   :mode ("\\.yml\\'" . yaml-mode))
 
 (use-package go-mode
-  :config
-  (add-to-list 'exec-path (format "%s/go/bin" (getenv "HOME")))
   :mode ("\\.go\\'" . go-mode))
 
 (use-package rust-mode
@@ -90,6 +93,8 @@
   (setq evil-search-module 'evil-search)
   :config
   (evil-mode 1)
+  (define-key evil-normal-state-map (kbd "C-z") 'evil-mode)
+  (global-set-key (kbd "C-z") 'evil-mode)
   (evil-set-undo-system 'undo-redo))
 
 (use-package evil-commentary
@@ -109,6 +114,7 @@
 (use-package lsp-mode
   :init
   (setq lsp-keymap-prefix "C-c l")
+  (add-to-list 'exec-path (format "%s/go/bin" (getenv "HOME")))
   :hook (((go-mode rust-mode) . lsp))
   :commands lsp)
 
