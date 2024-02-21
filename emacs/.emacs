@@ -24,7 +24,7 @@
 (add-hook 'dired-mode-hook 'dired-hide-details-mode)
 
 (global-set-key (kbd "C-x C-b") 'buffer-menu)
-(global-set-key (kbd "C-x C-i") 'ibuffer)
+(global-set-key (kbd "C-c C-i") 'ibuffer)
 (global-set-key (kbd "C-c s") 'desktop-save)
 (global-set-key (kbd "C-c r") 'desktop-read)
 
