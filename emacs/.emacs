@@ -29,6 +29,7 @@
 (global-set-key (kbd "C-c r") 'desktop-read)
 (global-set-key (kbd "C-c c") 'make-frame-command)
 (global-set-key (kbd "C-c x") 'delete-frame)
+(global-set-key (kbd "C-SPC") 'completion-at-point)
 
 ;; https://stackoverflow.com/a/1819405
 (setq-default indent-tabs-mode nil)
@@ -131,8 +132,10 @@
 
 ;; https://github.com/emacs-lsp/lsp-mode
 (use-package lsp-mode
-  :init
-  (setq lsp-keymap-prefix "C-c l")
+  :custom
+  (lsp-completion-provider :none)
+  (lsp-keymap-prefix "C-c l")
+  ;; :init
   ;; (add-to-list 'exec-path (format "%s/.opam/default/bin" (getenv "HOME")))
   ;; (add-to-list 'exec-path (format "%s/go/bin" (getenv "HOME")))
   :hook (((go-mode rust-mode tuareg-mode) . lsp))
