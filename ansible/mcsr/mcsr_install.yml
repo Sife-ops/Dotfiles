@@ -5,11 +5,6 @@
   remote_user: "{{ username }}"
   tasks:
 
-    - name: check options
-      ansible.builtin.set_fact:
-        download: True
-      when: download is undefined
-
 ###############################################################################
 ## debug
 
@@ -98,7 +93,7 @@
       ansible.builtin.get_url:
         url: "https://github.com/Ninjabrain1/Ninjabrain-Bot/releases/download/{{ ninjabrain_version }}/Ninjabrain-Bot-{{ ninjabrain_version }}.jar"
         dest: ./tmp/ninjabrain/
-      when: download
+      when: download | default(True)
       register: ninjabrain
 
 ###############################################################################
@@ -119,14 +114,14 @@
       ansible.builtin.get_url:
         url: https://files.multimc.org/downloads/mmc-develop-lin64.tar.gz
         dest: ./tmp/multimc/
-      when: download
+      when: download | default(True)
       register: multimc
 
     - name: unpack multimc
       ansible.builtin.shell:
         chdir: ./tmp/multimc
         cmd: tar -xf mmc-develop-lin64.tar.gz
-      when: download
+      when: download | default(True)
 
     - name: copy standardoptions.txt
       ansible.builtin.copy:
