@@ -110,21 +110,22 @@
   :config
   (add-hook 'after-init-hook #'global-flycheck-mode))
 
-(defun format-on-save()
-  "Format buffer on save."
-  (add-hook 'before-save-hook 'lsp-format-buffer))
-
 ;; https://emacs-lsp.github.io/lsp-mode/page/installation/#use-package
 (use-package lsp-mode
   :custom
   (lsp-completion-provider :none)
   (lsp-keymap-prefix "C-c l")
   (lsp-enable-snippet nil)
-  ;; :hook ((go-mode rust-mode tuareg-mode) . lsp)
-  :hook (lsp-mode . format-on-save)
+  ;; :hook (lsp-mode . format-on-save)
   :hook (go-mode . lsp)
   :hook (rust-mode . lsp)
   :hook (tuareg-mode . lsp))
+
+(defun format-on-save()
+  "Format buffer on save."
+  (if (bound-and-true-p lsp-mode) (lsp-format-buffer)))
+
+(add-hook 'before-save-hook 'format-on-save)
 
 (use-package lsp-ui :commands lsp-ui-mode)
 
