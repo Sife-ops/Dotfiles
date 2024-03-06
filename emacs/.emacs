@@ -51,15 +51,7 @@
         use-package-expand-minimally t))
 (require 'use-package)
 
-;; https://github.com/Fuco1/dired-hacks
-;; (use-package dired-subtree)
-
 (use-package doom-themes)
-;; (use-package spacemacs-theme
-;;   :pin melpa-stable
-;;   :ensure t
-;;   :defer t
-;;   :init (load-theme spacemacs-dark-theme t))
 
 (use-package vertico
   :init
@@ -110,36 +102,29 @@
   (evil-commentary-mode))
 
 ;; https://github.com/jwiegley/use-package-examples?tab=readme-ov-file#company
-;; (use-package company
-;;   :config
-;;   (global-company-mode))
-
-(use-package corfu
-  :custom
-  (corfu-cycle t)
-  (corfu-auto t)
-  (corfu-quit-no-match 'separator)
-  :bind
-  (:map corfu-map
-   ("C-n" . corfu-next)
-   ("C-p" . corfu-previous))
-  :init
-  (global-corfu-mode))
+(use-package company
+  :config
+  (global-company-mode))
 
 (use-package flycheck
   :config
   (add-hook 'after-init-hook #'global-flycheck-mode))
 
-;; https://github.com/emacs-lsp/lsp-mode
+(defun format-on-save()
+  "Format buffer on save."
+  (add-hook 'before-save-hook 'lsp-format-buffer))
+
+;; https://emacs-lsp.github.io/lsp-mode/page/installation/#use-package
 (use-package lsp-mode
   :custom
   (lsp-completion-provider :none)
   (lsp-keymap-prefix "C-c l")
-  ;; :init
-  ;; (add-to-list 'exec-path (format "%s/.opam/default/bin" (getenv "HOME")))
-  ;; (add-to-list 'exec-path (format "%s/go/bin" (getenv "HOME")))
-  :hook (((go-mode rust-mode tuareg-mode) . lsp))
-  :commands lsp)
+  (lsp-enable-snippet nil)
+  ;; :hook ((go-mode rust-mode tuareg-mode) . lsp)
+  :hook (lsp-mode . format-on-save)
+  :hook (go-mode . lsp)
+  :hook (rust-mode . lsp)
+  :hook (tuareg-mode . lsp))
 
 (use-package lsp-ui :commands lsp-ui-mode)
 
