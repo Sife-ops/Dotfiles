@@ -86,17 +86,17 @@
 ;; https://old.reddit.com/r/emacs/comments/726p7i/evil_mode_and_use_package/dnh3338/
 ;; https://stackoverflow.com/a/18851955
 (use-package evil
+  :commands evil-set-undo-system
   :init
   (setq evil-want-C-u-scroll t)
   (setq evil-search-module 'evil-search)
-  :commands evil-set-undo-system
-  :config
-  (evil-mode 1)
-  (define-key evil-normal-state-map (kbd "C-z") 'evil-mode)
+  (evil-set-undo-system 'undo-redo)
   (global-set-key (kbd "C-z") 'evil-mode)
+  (define-key evil-normal-state-map (kbd "C-z") 'evil-mode)
   (define-key evil-insert-state-map (kbd "C-n") nil)
   (define-key evil-insert-state-map (kbd "C-p") nil)
-  (evil-set-undo-system 'undo-redo))
+  :config
+  (evil-mode 1))
 
 (use-package evil-commentary
   :config
