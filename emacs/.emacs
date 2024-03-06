@@ -89,6 +89,7 @@
   :init
   (setq evil-want-C-u-scroll t)
   (setq evil-search-module 'evil-search)
+  :commands evil-set-undo-system
   :config
   (evil-mode 1)
   (define-key evil-normal-state-map (kbd "C-z") 'evil-mode)
@@ -112,20 +113,19 @@
 
 ;; https://emacs-lsp.github.io/lsp-mode/page/installation/#use-package
 (use-package lsp-mode
+  :commands lsp-format-buffer
+  :init
+  (defun format-on-save()
+    "Format buffer on save."
+    (if (bound-and-true-p lsp-mode) (lsp-format-buffer)))
+  (add-hook 'before-save-hook 'format-on-save)
   :custom
   (lsp-completion-provider :none)
   (lsp-keymap-prefix "C-c l")
   (lsp-enable-snippet nil)
-  ;; :hook (lsp-mode . format-on-save)
   :hook (go-mode . lsp)
   :hook (rust-mode . lsp)
   :hook (tuareg-mode . lsp))
-
-(defun format-on-save()
-  "Format buffer on save."
-  (if (bound-and-true-p lsp-mode) (lsp-format-buffer)))
-
-(add-hook 'before-save-hook 'format-on-save)
 
 (use-package lsp-ui :commands lsp-ui-mode)
 
