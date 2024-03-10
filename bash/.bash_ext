@@ -11,3 +11,5 @@ eval "$(starship init bash)"
 
 # opam configuration
 test -r /home/wyatt/.opam/opam-init/init.sh && . /home/wyatt/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+
+export PATH=${PATH}:${HOME}/.local/share/nvim/mason/bin
