@@ -3,6 +3,8 @@ local g = vim.g
 
 g.mapleader = " "
 
+opt.swapfile = false
+opt.wrap = false
 opt.clipboard = "unnamedplus"
 -- opt.cursorline = true
 

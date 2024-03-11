@@ -1,5 +1,8 @@
 return {
     "nvim-tree/nvim-tree.lua",
+    dependencies = {
+        "nvim-tree/nvim-web-devicons",
+    },
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     init = function()
         require("shortcuts").set_shortcuts("nvimtree")
@@ -10,7 +13,7 @@ return {
         },
         view = {
             side = "right"
-        }
+        },
     },
     config = function(_, opts)
         require("nvim-tree").setup(opts)

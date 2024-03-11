@@ -1,0 +1,24 @@
+#!/usr/bin/env ansible-playbook
+---
+- name: setup
+  hosts: self
+  remote_user: root
+  tasks:
+
+# todo backup ssh
+# clone st
+
+###############################################################################
+# fonts
+
+    - name: iosevka
+      community.general.pacman:
+        name: ttf-iosevka-nerd
+
+    - name: terminus
+      community.general.pacman:
+        name: ttf-terminus-nerd
+
+    - name: ipafont
+      community.general.pacman:
+        name: otf-ipafont

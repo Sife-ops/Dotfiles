@@ -12,9 +12,9 @@ map <c-t> push :$touch<space>
 map <c-w> $setwallpaper.sh $f
 map D &dragon-drag-and-drop $fx
 map e $neovide "$f"
-map E $$ALTEDITOR ./
+map s &st -e nvim "$f"
+map E $code ./
 map r $vidir
-map s $$EDITOR -S $f
 map u preview
 map x extract
 #$
