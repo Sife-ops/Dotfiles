@@ -1,5 +1,5 @@
 #!/bin/bash
-find . -name \*.pkl -type f -print0 |
+find ./ -type f -regex "^.*\.pkl$" -not -path "./pkl/*" -print0 |
     while IFS= read -d '' file; do
         b=$(basename $file)
         o=$(dirname $file)/${b%.pkl}.yml

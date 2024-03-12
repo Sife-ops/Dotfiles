@@ -1,21 +1,18 @@
+import "../pkl/Ansible.pkl"
+
 plays {
-    new {
+    new Ansible.Play {
         name = "example"
         hosts = "self"
         remote_user = "root"
-        tasks {
-            new {
+
+        tasks = List(
+            new Ansible.TaskPacman {
                 name = "neovide"
-                ["community.general.pacman"] {
+                `community.general.pacman` = new Ansible.Pacman {
                     name = "neovide"
                 }
             }
-            new {
-                name = "ipafont"
-                ["community.general.pacman"] {
-                    name = "otf-ipafont"
-                }
-            }
-        }
+        )
     }
 }

@@ -1,4 +1,4 @@
 .PHONY: pkl
 
 pkl:
-	./pkl.sh
+	./pkl/make.sh

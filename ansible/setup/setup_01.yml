@@ -7,6 +7,3 @@
   - name: neovide
     community.general.pacman:
       name: neovide
-  - name: ipafont
-    community.general.pacman:
-      name: otf-ipafont
