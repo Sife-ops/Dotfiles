@@ -1,0 +1,21 @@
+plays {
+    new {
+        name = "example"
+        hosts = "self"
+        remote_user = "root"
+        tasks {
+            new {
+                name = "neovide"
+                ["community.general.pacman"] {
+                    name = "neovide"
+                }
+            }
+            new {
+                name = "ipafont"
+                ["community.general.pacman"] {
+                    name = "otf-ipafont"
+                }
+            }
+        }
+    }
+}
