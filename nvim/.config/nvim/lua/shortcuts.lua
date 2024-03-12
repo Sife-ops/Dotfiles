@@ -28,17 +28,15 @@ local shortcuts = {
             ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>" },
             ["<leader>fb"] = { "<cmd> Telescope buffers <CR>" },
             ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>" },
-            -- ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
             ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>" },
             ["<leader>fs"] = { function() require("auto-session.session-lens").search_session() end },
+            ["<leader>ma"] = { "<cmd> Telescope marks <CR>" },
 
-            ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>" },
-            ["<leader>gt"] = { "<cmd> Telescope git_status <CR>" },
-
+            -- ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>" },
+            -- ["<leader>gt"] = { "<cmd> Telescope git_status <CR>" },
+            -- ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
             -- ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "Pick hidden term" },
             -- ["<leader>th"] = { "<cmd> Telescope themes <CR>", "Nvchad themes" },
-
-            ["<leader>ma"] = { "<cmd> Telescope marks <CR>" },
         },
     },
 
@@ -47,19 +45,22 @@ local shortcuts = {
             ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>" },
         },
     },
+
+    lsp = {
+        n = {
+            ["gL"] = { vim.diagnostic.setloclist },
+        },
+    },
 }
 
 local M = {}
 
-M.set_shortcuts = function(plugin_name, opts)
+M.set_shortcuts = function(group, opts)
     local o1 = opts or {}
-    local plugin_shortcuts = shortcuts[plugin_name]
-    for mode, mode_shortcuts in pairs(plugin_shortcuts) do
+    local group_shortcuts = shortcuts[group]
+    for mode, mode_shortcuts in pairs(group_shortcuts) do
         for mode_shortcut, values in pairs(mode_shortcuts) do
             local o2 = values.opts or {}
-            if type(values[2]) == "string" then
-                o2.desc = values[2]
-            end
             vim.keymap.set(mode, mode_shortcut, values[1], vim.tbl_deep_extend("force", o1, o2))
         end
     end

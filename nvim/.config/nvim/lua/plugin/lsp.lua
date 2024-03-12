@@ -2,10 +2,13 @@ return {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v3.x',
     dependencies = {
-        { 'neovim/nvim-lspconfig' },
-        { 'hrsh7th/cmp-nvim-lsp' },
-        { 'hrsh7th/nvim-cmp' },
-        { 'L3MON4D3/LuaSnip' },
+        { "L3MON4D3/LuaSnip" },
+        { "hrsh7th/cmp-buffer" },
+        { "hrsh7th/cmp-nvim-lsp" },
+        { "hrsh7th/cmp-nvim-lua" },
+        { "hrsh7th/cmp-path" },
+        { "hrsh7th/nvim-cmp" },
+        { "neovim/nvim-lspconfig" },
         {
             "windwp/nvim-autopairs",
             opts = {
@@ -25,8 +28,8 @@ return {
 
         lz.on_attach(function(_, bufnr)
             -- see :help lsp-zero-keybindings
-            -- to learn the available actions
             lz.default_keymaps({ buffer = bufnr })
+            require("shortcuts").set_shortcuts("lsp")
         end)
 
         require("lspconfig").lua_ls.setup({

@@ -6,7 +6,11 @@
   tasks:
 
 # todo backup ssh
-# clone st
+# todo clone st
+#
+    - name: neovide
+      community.general.pacman:
+        name: neovide
 
 ###############################################################################
 # fonts

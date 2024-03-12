@@ -3,7 +3,6 @@
 
 if vim.g.neovide then
     -- vim.o.guifont = "Terminess Nerd Font Mono:h16"
-
     vim.api.nvim_set_keymap("n", "<C-+>", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>",
         { silent = true })
     vim.api.nvim_set_keymap("n", "<C-->", ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>",
