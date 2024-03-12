@@ -1,0 +1,7 @@
+amends "pkl:Project"
+
+// https://pkl-lang.org/main/current/language-reference/index.html#local-dependencies
+// https://pkl-lang.org/main/current/pkl-cli/index.html#command-project-package
+dependencies {
+    ["Ansible"] = import("./pkl/Ansible/PklProject")
+}

@@ -1,4 +1,4 @@
-import "../pkl/Ansible.pkl"
+import "@Ansible/Ansible.pkl"
 
 plays {
     new Ansible.Play {
@@ -11,6 +11,12 @@ plays {
                 name = "neovide"
                 `community.general.pacman` = new Ansible.Pacman {
                     name = "neovide"
+                }
+            },
+            new Ansible.TaskPacman {
+                name = "ipafont"
+                `community.general.pacman` = new Ansible.Pacman {
+                    name = "otf-ipafont"
                 }
             }
         )

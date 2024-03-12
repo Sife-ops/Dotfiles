@@ -1,0 +1,8 @@
+amends "pkl:Project"
+
+package {
+    name = "Ansible"
+    baseUri = "package://todo.com/Ansible"
+    version = "0.0.0"
+    packageZipUrl = "https://todo.com/Ansible@\(version).zip"
+}
