@@ -1,0 +1,20 @@
+#!/usr/bin/env ansible-playbook
+---
+- name: play_01
+  remote_user: root
+  hosts: self
+  tasks:
+  - name: more packages
+    community.general.pacman:
+      name:
+      - wireguard
+      - hexchat
+- name: play_02
+  remote_user: root
+  hosts: self
+  tasks:
+  - name: more more packages
+    community.general.pacman:
+      name:
+      - gimp
+      - inkscape

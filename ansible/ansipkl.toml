@@ -1,0 +1,7 @@
+[options]
+exclude = [
+    "^mcsr/.*"
+]
+executables = [
+    "^.*_pb$"
+]

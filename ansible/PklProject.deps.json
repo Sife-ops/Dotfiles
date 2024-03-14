@@ -1,10 +1,12 @@
 {
   "schemaVersion": 1,
   "resolvedDependencies": {
-    "package://todo.com/Ansible@0": {
-      "type": "local",
-      "uri": "projectpackage://todo.com/Ansible@0.0.0",
-      "path": "pkl/Ansible"
+    "package://github.com/Sife-ops/ansipkl/releases/download/v0.0.3/ansipkl@0": {
+      "type": "remote",
+      "uri": "projectpackage://github.com/Sife-ops/ansipkl/releases/download/v0.0.3/ansipkl@0.0.3",
+      "checksums": {
+        "sha256": "30cad67d17641f55972e77d35d7c243f1dd06e84298a5fb3124e420576cc5a1b"
+      }
     }
   }
 }

@@ -1,7 +1,7 @@
 amends "pkl:Project"
 
-// https://pkl-lang.org/main/current/language-reference/index.html#local-dependencies
-// https://pkl-lang.org/main/current/pkl-cli/index.html#command-project-package
 dependencies {
-    ["Ansible"] = import("./pkl/Ansible/PklProject")
+    ["ansipkl"] { 
+        uri = "package://github.com/Sife-ops/ansipkl/releases/download/v0.0.3/ansipkl@0.0.3"
+    }
 }

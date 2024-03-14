@@ -1,0 +1,64 @@
+import "@ansipkl/playbook.pkl"
+import "@ansipkl/builtin.pkl"
+import "@ansipkl/community.general.pkl"
+
+setup_00_pb = new Listing<playbook.play> {
+    new {
+        name = "play_00"
+        hosts = "self"
+        remote_user = "root"
+
+        tasks {
+            new `community.general`.pacman {
+                name = "packages"
+                options {
+                    name { 
+                        "neovide" 
+                        "ttf-iosevka-nerd"
+                        "ttf-terminus-nerd"
+                        "otf-ipafont"
+                    }
+                }
+            }.into()
+        }
+    }
+}
+
+setup_01_pb = new Listing<playbook.play> {
+    new {
+        name = "play_01"
+        hosts = "self"
+        remote_user = "root"
+
+        tasks {
+            new `community.general`.pacman {
+                name = "more packages"
+                options {
+                    name { 
+                        "wireguard" 
+                        "hexchat" 
+                    }
+                }
+            }.into()
+        }
+    }
+
+    new {
+        name = "play_02"
+        hosts = "self"
+        remote_user = "root"
+
+        tasks {
+            new `community.general`.pacman {
+                name = "more more packages"
+                options {
+                    name { 
+                        "gimp" 
+                        "inkscape" 
+                    }
+                }
+            }.into()
+        }
+    }
+}
+

@@ -1,4 +1,4 @@
-.PHONY: pkl
+.PHONY: ansipkl
 
-pkl:
-	./pkl/make.sh
+ansipkl:
+	ansipkl
