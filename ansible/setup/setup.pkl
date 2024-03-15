@@ -1,15 +1,15 @@
-import "@ansipkl/playbook.pkl"
-import "@ansipkl/builtin.pkl"
-import "@ansipkl/community.general.pkl"
+import "@ansipkl/Playbook.pkl"
+// import "@ansipkl/AnsibleBuiltin.pkl"
+import "@ansipkl/CommunityGeneral.pkl"
 
-setup_00_pb = new Listing<playbook.play> {
+setup_00_pb = new Listing<Playbook.Play> {
     new {
-        name = "play_00"
+        name = "play_20X6"
         hosts = "self"
         remote_user = "root"
 
         tasks {
-            new `community.general`.pacman {
+            new CommunityGeneral.Pacman {
                 name = "packages"
                 options {
                     name { 
@@ -24,14 +24,14 @@ setup_00_pb = new Listing<playbook.play> {
     }
 }
 
-setup_01_pb = new Listing<playbook.play> {
+setup_01_pb = new Listing<Playbook.Play> {
     new {
         name = "play_01"
         hosts = "self"
         remote_user = "root"
 
         tasks {
-            new `community.general`.pacman {
+            new CommunityGeneral.Pacman {
                 name = "more packages"
                 options {
                     name { 
@@ -49,7 +49,7 @@ setup_01_pb = new Listing<playbook.play> {
         remote_user = "root"
 
         tasks {
-            new `community.general`.pacman {
+            new CommunityGeneral.Pacman {
                 name = "more more packages"
                 options {
                     name { 

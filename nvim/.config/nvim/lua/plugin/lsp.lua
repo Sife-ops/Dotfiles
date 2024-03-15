@@ -2,31 +2,48 @@ return {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v3.x',
     dependencies = {
-        { "L3MON4D3/LuaSnip" },
-        { "hrsh7th/cmp-buffer" },
-        { "hrsh7th/cmp-nvim-lsp" },
-        { "hrsh7th/cmp-nvim-lua" },
-        { "hrsh7th/cmp-path" },
+        { "neovim/nvim-lspconfig" },
+
         {
             "hrsh7th/nvim-cmp",
-            -- opts = {
-            --     sources = {
-            --         {
-            --             name = "buffer",
-            --             option = {
-            --                 get_bufnrs = function()
-            --                     return vim.api.nvim_list_bufs()
-            --                 end
-            --             }
-            --         },
-            --         { name = "path" }
-            --     }
-            -- },
-            -- config = function(_, opts)
-            --     require("cmp").setup(opts)
-            -- end,
+            dependencies = {
+                { "hrsh7th/cmp-buffer" },
+                { "hrsh7th/cmp-nvim-lsp" },
+                { "hrsh7th/cmp-nvim-lua" },
+                { "hrsh7th/cmp-path" },
+
+                { 'saadparwaiz1/cmp_luasnip' },
+                {
+                    "L3MON4D3/LuaSnip",
+                    dependencies = { "rafamadriz/friendly-snippets" },
+                },
+            },
+            opts = {
+                sources = {
+                    {
+                        name = "buffer",
+                        option = {
+                            get_bufnrs = function()
+                                return vim.api.nvim_list_bufs()
+                            end
+                        }
+                    },
+                    { name = "nvim_lsp" },
+                    { name = "nvim_lua" },
+                    { name = "luasnip" },
+                    { name = "path" },
+                },
+                snippet = {
+                    expand = function(args)
+                        require('luasnip').lsp_expand(args.body)
+                    end,
+                },
+            },
+            config = function(_, opts)
+                require("cmp").setup(opts)
+            end,
         },
-        { "neovim/nvim-lspconfig" },
+
         {
             "windwp/nvim-autopairs",
             opts = {
@@ -41,7 +58,11 @@ return {
             end,
         },
     },
+
     config = function()
+        -- https://github.com/rafamadriz/friendly-snippets/blob/main/snippets/go.json
+        require("luasnip.loaders.from_vscode").lazy_load()
+
         local lz = require("lsp-zero")
 
         lz.on_attach(function(_, bufnr)

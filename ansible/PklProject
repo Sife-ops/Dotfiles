@@ -2,6 +2,6 @@ amends "pkl:Project"
 
 dependencies {
     ["ansipkl"] { 
-        uri = "package://github.com/Sife-ops/ansipkl/releases/download/v0.0.3/ansipkl@0.0.3"
+        uri = "package://github.com/Sife-ops/ansipkl/releases/download/v0.0.4/ansipkl@0.0.4"
     }
 }
