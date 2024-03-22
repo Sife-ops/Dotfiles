@@ -17,7 +17,6 @@
     ansible.builtin.shell:
       cmd: pkill -usr1 -x sxhkd
   - name: start nb
-    when: nb.stdout == ''
     ansible.builtin.shell:
       chdir: ./tmp/ninjabrain
       cmd: setsid -f java -jar Ninjabrain-Bot-{{ ninjabrain_version }}.jar >/dev/null 2>&1

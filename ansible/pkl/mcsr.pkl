@@ -204,7 +204,7 @@ start = P.NewPlaybook(new Listing {
                     chdir = "./tmp/ninjabrain"
                     cmd = "setsid -f java -jar Ninjabrain-Bot-{{ ninjabrain_version }}.jar >/dev/null 2>&1"
                 }
-                `when` = "nb.stdout == ''"
+                // `when` = "nb.stdout == ''"
             }.Task()
             //
             // multimc
