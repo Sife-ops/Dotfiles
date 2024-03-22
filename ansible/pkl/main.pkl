@@ -1,0 +1,31 @@
+module main
+
+import "./mcsr.pkl"
+// import "./roles.pkl"
+
+shebang = "#!/usr/bin/env ansible-playbook\n"
+dashes = "---\n"
+r = new YamlRenderer{}
+
+output {
+    files {
+
+        ["mcsr/mcsr_install.yml"] {
+            text = "\(shebang)\(dashes)\(r.renderDocument(mcsr.install))"
+        }
+
+        // ["example_1.yml"] {
+        //     text = "\(shebang)\(dashes)\(r.renderDocument(example.pb1))"
+        // }
+        //
+        // ["bar/example_2.yml"] {
+        //     text = "\(shebang)\(dashes)\(r.renderDocument(example.pb2))"
+        // }
+        //
+        // ["roles/docker/tasks/main.yml"] {
+        //     text = "\(dashes)\(r.renderDocument(roles.docker))"
+        // }
+
+    }
+}
+

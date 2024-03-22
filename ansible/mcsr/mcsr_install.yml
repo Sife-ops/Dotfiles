@@ -1,129 +1,82 @@
 #!/usr/bin/env ansible-playbook
 ---
 - name: install mcsr
+  remote_user: '{{ username }}'
   hosts: self
-  remote_user: "{{ username }}"
   tasks:
-
-###############################################################################
-## debug
-
-    # - name: debug
-    #   debug:
-    #     var: to_copy
-
-    # - name: end
-    #   meta: end_play
-
-###############################################################################
-## install bash macros
-
-    - name: install xdotool
-      ansible.builtin.package:
-        name: xdotool
-        state: present
-
-    - name: install wmctrl
-      ansible.builtin.package:
-        name: xdotool
-        state: present
-
-    # todo move to common
-    - name: create user scripts folder
-      ansible.builtin.file:
-        path: "/home/{{ username }}/.local/bin"
-        state: directory
-        recurse: yes
-
-    - name: find bash macros
-      ansible.builtin.find:
-        paths: ./bash_macros
-        # recurse: true
-        patterns: "mcsr_*"
-      register: to_copy
-
-    - name: copy bash macros
-      ansible.builtin.copy:
-        src: "{{ item.path }}"
-        dest: "/home/{{ username }}/.local/bin"
-        mode: +x
-      loop: "{{ to_copy.files }}"
-
-###############################################################################
-## sxhkd
-
-    - name: install sxhkd
-      # community.general.pacman:
-      ansible.builtin.package:
-        name: sxhkd
-        state: present
-
-    - name: configure sxhkd
-      ansible.builtin.blockinfile:
-        path: "/home/{{ username }}/.config/sxhkd/sxhkdrc"
-        marker: "# {mark} mcsr hotkeys"
-        create: true
-        backup: yes
-        block: |
-          F1
-              mcsr_microlense_on.sh
-          F7
-              mcsr_microlense_off.sh
-          F8
-              mcsr_measure_on.sh
-          F9
-              mcsr_measure_off.sh
-          F10
-              mcsr_preemptive.sh
-          super+f
-              mcsr_enlarge.sh
-          super+g
-              mcsr_tile.sh
-
-###############################################################################
-## ninjabrian
-
-    - name: create ninjabrain folder
-      ansible.builtin.file:
-        path: "./tmp/ninjabrain"
-        state: directory
-        recurse: yes
-
-    - name: download ninjabrain
-      ansible.builtin.get_url:
-        url: "https://github.com/Ninjabrain1/Ninjabrain-Bot/releases/download/{{ ninjabrain_version }}/Ninjabrain-Bot-{{ ninjabrain_version }}.jar"
-        dest: ./tmp/ninjabrain/
-      when: download | default(True)
-      register: ninjabrain
-
-###############################################################################
-## multimc
-
-    - name: install qt5-base
-      ansible.builtin.package:
-        name: qt5-base
-        state: present
-
-    - name: create multimc download folder
-      ansible.builtin.file:
-        path: ./tmp/multimc
-        state: directory
-        recurse: yes
-
-    - name: download multimc
-      ansible.builtin.get_url:
-        url: https://files.multimc.org/downloads/mmc-develop-lin64.tar.gz
-        dest: ./tmp/multimc/
-      when: download | default(True)
-      register: multimc
-
-    - name: unpack multimc
-      ansible.builtin.shell:
-        chdir: ./tmp/multimc
-        cmd: tar -xf mmc-develop-lin64.tar.gz
-      when: download | default(True)
-
-    - name: copy standardoptions.txt
-      ansible.builtin.copy:
-        src: ./standardoptions.txt
-        dest: ./tmp/multimc/MultiMC/instances/
+  - name: install tools
+    community.general.pacman:
+      name:
+      - xdotool
+      - wmctrl
+      - sxhkd
+      - qt5-base
+  - name: scripts folder
+    ansible.builtin.file:
+      path: /home/{{ username }}/.local/bin
+      recurse: true
+      state: directory
+  - name: find macros
+    register: to_copy
+    ansible.builtin.find:
+      paths:
+      - ./bash_macros
+      patterns:
+      - mcsr_*
+  - name: copy macros
+    loop: '{{ to_copy.files }}'
+    ansible.builtin.copy:
+      dest: /home/{{ username }}/.local/bin
+      mode: +x
+      src: '{{ item.path }}'
+  - name: configure sxhkd
+    ansible.builtin.blockinfile:
+      block: |-
+        F1
+            mcsr_microlense_on.sh
+        F7
+            mcsr_microlense_off.sh
+        F8
+            mcsr_measure_on.sh
+        F9
+            mcsr_measure_off.sh
+        F10
+            mcsr_preemptive.sh
+        super+f
+            mcsr_enlarge.sh
+        super+g
+            mcsr_tile.sh
+      create: true
+      marker: '# {mark} mcsr hotkeys'
+      path: /home/{{ username }}/.config/sxhkd/sxhkdrc
+  - name: ninjabrian folder
+    ansible.builtin.file:
+      path: ./tmp/ninjabrain
+      recurse: true
+      state: directory
+  - name: download ninjabrain
+    register: ninjabrain
+    when: download | default(True)
+    ansible.builtin.get_url:
+      dest: ./tmp/ninjabrain/
+      url: https://github.com/Ninjabrain1/Ninjabrain-Bot/releases/download/{{ ninjabrain_version }}/Ninjabrain-Bot-{{ ninjabrain_version }}.jar
+  - name: multimc folder
+    ansible.builtin.file:
+      path: ./tmp/multimc
+      recurse: true
+      state: directory
+  - name: download multimc
+    register: multimc
+    when: download | default(True)
+    ansible.builtin.get_url:
+      dest: ./tmp/multimc/
+      url: https://files.multimc.org/downloads/mmc-develop-lin64.tar.gz
+  - name: unpack multimc
+    when: download | default(True)
+    ansible.builtin.shell:
+      chdir: ./tmp/multimc
+      cmd: tar -xf mmc-develop-lin64.tar.gz
+  - name: copy standardoptions.txt
+    ansible.builtin.copy:
+      dest: ./tmp/multimc/MultiMC/instances/
+      src: ./standardoptions.txt

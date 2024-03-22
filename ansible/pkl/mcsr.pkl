@@ -1,0 +1,141 @@
+module mcsr
+
+import "@ansipkl/AnsibleBuiltin.pkl" as Ab
+import "@ansipkl/CommunityGeneral.pkl" as Cg
+import "@ansipkl/Playbook.pkl" as P
+
+install = P.NewPlaybook(new Listing {
+    new P.Play {
+        name = "install mcsr"
+        hosts = "self"
+        remote_user = "{{ username }}"
+        tasks {
+            //
+            // installs
+            //
+            new Cg.Pacman {
+                name = "install tools"
+                options {
+                    name {
+                        "xdotool"
+                        "wmctrl"
+                        "sxhkd"
+                        "qt5-base"
+                    }
+                }
+            }.Task()
+            //
+            // bash macros
+            //
+            new Ab.File {
+                name = "scripts folder"
+                options {
+                    path = "/home/{{ username }}/.local/bin"
+                    state = "directory"
+                    recurse = true
+                }
+            }.Task()
+            new Ab.Find {
+                name = "find macros"
+                options {
+                    paths { "./bash_macros" }
+                    patterns { "mcsr_*" }
+                    // recurse: true
+                }
+                register = "to_copy"
+            }.Task()
+            new Ab.Copy {
+                name = "copy macros"
+                options {
+                    src = "{{ item.path }}"
+                    dest = "/home/{{ username }}/.local/bin"
+                    mode = "+x"
+                }
+                loop = "{{ to_copy.files }}"
+            }.Task()
+            //
+            // sxhkd
+            //
+            new Ab.Blockinfile {
+                name = "configure sxhkd"
+                options {
+                    path = "/home/{{ username }}/.config/sxhkd/sxhkdrc"
+                    marker = "# {mark} mcsr hotkeys"
+                    create = true
+                    // backup = true
+                    block = """
+                    F1
+                        mcsr_microlense_on.sh
+                    F7
+                        mcsr_microlense_off.sh
+                    F8
+                        mcsr_measure_on.sh
+                    F9
+                        mcsr_measure_off.sh
+                    F10
+                        mcsr_preemptive.sh
+                    super+f
+                        mcsr_enlarge.sh
+                    super+g
+                        mcsr_tile.sh
+                    """
+                }
+            }.Task()
+            //
+            // ninjabrian
+            //
+            new Ab.File {
+                name = "ninjabrian folder"
+                options {
+                    path = "./tmp/ninjabrain"
+                    state = "directory"
+                    recurse = true
+                }
+            }.Task()
+            new Ab.GetUrl {
+                name = "download ninjabrain"
+                options {
+                    url = "https://github.com/Ninjabrain1/Ninjabrain-Bot/releases/download/{{ ninjabrain_version }}/Ninjabrain-Bot-{{ ninjabrain_version }}.jar"
+                    dest = "./tmp/ninjabrain/"
+                }
+                `when` = "download | default(True)"
+                register = "ninjabrain"
+            }.Task()
+            //
+            // multimc
+            //
+            new Ab.File {
+                name = "multimc folder"
+                options {
+                    path = "./tmp/multimc"
+                    state = "directory"
+                    recurse = true
+                }
+            }.Task()
+            new Ab.GetUrl {
+                name = "download multimc"
+                options {
+                    url = "https://files.multimc.org/downloads/mmc-develop-lin64.tar.gz"
+                    dest = "./tmp/multimc/"
+                }
+                `when` = "download | default(True)"
+                register = "multimc"
+            }.Task()
+            new Ab.Shell {
+                name = "unpack multimc"
+                options {
+                    chdir = "./tmp/multimc"
+                    cmd = "tar -xf mmc-develop-lin64.tar.gz"
+                }
+                `when` = "download | default(True)"
+            }.Task()
+            new Ab.Copy {
+                name = "copy standardoptions.txt"
+                options {
+                    src = "./standardoptions.txt"
+                    dest = "./tmp/multimc/MultiMC/instances/"
+                }
+            }.Task()
+        }
+    }
+})
