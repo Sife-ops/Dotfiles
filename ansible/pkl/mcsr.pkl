@@ -139,3 +139,91 @@ install = P.NewPlaybook(new Listing {
         }
     }
 })
+
+start = P.NewPlaybook(new Listing {
+    new P.Play {
+        name = "start mcsr"
+        hosts = "self"
+        remote_user = "{{ username }}"
+        tasks {
+            // //
+            // // disable window border
+            // //
+            // new Ab.SetFact {
+            //     name = "check border options"
+            //     options_mixin {
+            //         border = false
+            //     }
+            //     `when` = "border is undefined"
+            // }.Task()
+            // new Ab.Shell {
+            //     name = "enable window borders"
+            //     options {
+            //         cmd = "xfconf-query -c xfwm4 -p /general/theme -s Gelly"
+            //     }
+            //     `when` = "border"
+            // }.Task()
+            // // todo meta end_play
+            // new Ab.Shell {
+            //     name = "disable window borders"
+            //     options {
+            //         cmd = "xfconf-query -c xfwm4 -p /general/theme -s empty"
+            //     }
+            // }.Task()
+            //
+            // sxhkd
+            //
+            new Ab.Shell {
+                name = "check if sxhkd is running"
+                options {
+                    cmd = "echo $(pgrep -x sxhkd)"
+                }
+                register = "mmc"
+            }.Task()
+            new Ab.Shell {
+                name = "start sxhkd"
+                options {
+                    cmd = "setsid -f sxhkd >/dev/null 2>&1"
+                }
+                `when` = "mmc.stdout == ''"
+            }.Task()
+            new Ab.Shell {
+                name = "restart sxhkd"
+                options {
+                    cmd = "pkill -usr1 -x sxhkd"
+                }
+                `when` = "mmc.stdout != ''"
+            }.Task()
+            //
+            // ninjabrain
+            //
+            // todo check if nb running
+            new Ab.Shell {
+                name = "start nb"
+                options {
+                    chdir = "./tmp/ninjabrain"
+                    cmd = "setsid -f java -jar Ninjabrain-Bot-{{ ninjabrain_version }}.jar >/dev/null 2>&1"
+                }
+                `when` = "nb.stdout == ''"
+            }.Task()
+            //
+            // multimc
+            //
+            new Ab.Shell {
+                name = "check if mmc is running"
+                options {
+                    cmd = "echo $(pgrep -x MultiMC)"
+                }
+                register = "mmc"
+            }.Task()
+            new Ab.Shell {
+                name = "start mmc"
+                options {
+                    chdir = "./tmp/multimc/MultiMC"
+                    cmd = "setsid -f ./MultiMC >/dev/null 2>&1"
+                }
+                `when` = "mmc.stdout == ''"
+            }.Task()
+        }
+    }
+})

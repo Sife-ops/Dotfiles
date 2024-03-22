@@ -1,76 +1,32 @@
 #!/usr/bin/env ansible-playbook
 ---
-- name: run mcsr
+- name: start mcsr
+  remote_user: '{{ username }}'
   hosts: self
-  remote_user: "{{ username }}"
   tasks:
-
-###############################################################################
-## change theme
-
-    # todo detect xfce
-
-    - name: check border options
-      ansible.builtin.set_fact:
-        border: False
-      when: border is undefined
-
-    - name: enable window borders
-      ansible.builtin.shell:
-        cmd: xfconf-query -c xfwm4 -p /general/theme -s Gelly
-      when: border
-    
-    - name: end
-      meta: end_play
-      when: border
-
-    - name: disable window borders
-      ansible.builtin.shell:
-        cmd: xfconf-query -c xfwm4 -p /general/theme -s empty
-
-###############################################################################
-## sxhkd
-
-    - name: check if sxhkd is running
-      ansible.builtin.shell:
-        cmd: "echo $(pgrep -x sxhkd)"
-      register: mmc
-
-    - name: start sxhkd
-      ansible.builtin.shell:
-        cmd: setsid -f sxhkd >/dev/null 2>&1
-      when: mmc.stdout == ""
-
-    - name: restart sxhkd
-      ansible.builtin.shell:
-        cmd: pkill -usr1 -x sxhkd
-      when: mmc.stdout != ""
-
-###############################################################################
-## ninjabrain
-
-    # # todo
-    # - name: check if nb is running
-    #   ansible.builtin.shell:
-    #     cmd: "echo $(pgrep -x MultiMC)"
-    #   register: nb
-
-    - name: start nb
-      ansible.builtin.shell:
-        chdir: ./tmp/ninjabrain
-        cmd: "setsid -f java -jar Ninjabrain-Bot-{{ ninjabrain_version }}.jar >/dev/null 2>&1"
-      # when: nb.stdout == ""
-
-###############################################################################
-## multimc
-
-    - name: check if mmc is running
-      ansible.builtin.shell:
-        cmd: "echo $(pgrep -x MultiMC)"
-      register: mmc
-
-    - name: start mmc
-      ansible.builtin.shell:
-        chdir: ./tmp/multimc/MultiMC
-        cmd: setsid -f ./MultiMC >/dev/null 2>&1
-      when: mmc.stdout == ""
+  - name: check if sxhkd is running
+    register: mmc
+    ansible.builtin.shell:
+      cmd: echo $(pgrep -x sxhkd)
+  - name: start sxhkd
+    when: mmc.stdout == ''
+    ansible.builtin.shell:
+      cmd: setsid -f sxhkd >/dev/null 2>&1
+  - name: restart sxhkd
+    when: mmc.stdout != ''
+    ansible.builtin.shell:
+      cmd: pkill -usr1 -x sxhkd
+  - name: start nb
+    when: nb.stdout == ''
+    ansible.builtin.shell:
+      chdir: ./tmp/ninjabrain
+      cmd: setsid -f java -jar Ninjabrain-Bot-{{ ninjabrain_version }}.jar >/dev/null 2>&1
+  - name: check if mmc is running
+    register: mmc
+    ansible.builtin.shell:
+      cmd: echo $(pgrep -x MultiMC)
+  - name: start mmc
+    when: mmc.stdout == ''
+    ansible.builtin.shell:
+      chdir: ./tmp/multimc/MultiMC
+      cmd: setsid -f ./MultiMC >/dev/null 2>&1

@@ -1,7 +1,7 @@
 module main
 
 import "./mcsr.pkl"
-// import "./roles.pkl"
+import "./setup.pkl"
 
 shebang = "#!/usr/bin/env ansible-playbook\n"
 dashes = "---\n"
@@ -14,14 +14,22 @@ output {
             text = "\(shebang)\(dashes)\(r.renderDocument(mcsr.install))"
         }
 
-        // ["example_1.yml"] {
-        //     text = "\(shebang)\(dashes)\(r.renderDocument(example.pb1))"
-        // }
-        //
-        // ["bar/example_2.yml"] {
-        //     text = "\(shebang)\(dashes)\(r.renderDocument(example.pb2))"
-        // }
-        //
+        ["mcsr/mcsr_start.yml"] {
+            text = "\(shebang)\(dashes)\(r.renderDocument(mcsr.start))"
+        }
+
+        ["setup/setup_todo.yml"] {
+            text = "\(shebang)\(dashes)\(r.renderDocument(setup.todo))"
+        }
+
+        ["setup/setup_00.yml"] {
+            text = "\(shebang)\(dashes)\(r.renderDocument(setup.pb00))"
+        }
+
+        ["setup/setup_01.yml"] {
+            text = "\(shebang)\(dashes)\(r.renderDocument(setup.pb01))"
+        }
+
         // ["roles/docker/tasks/main.yml"] {
         //     text = "\(dashes)\(r.renderDocument(roles.docker))"
         // }

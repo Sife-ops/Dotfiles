@@ -1,15 +1,14 @@
-import "@ansipkl/Playbook.pkl"
+import "@ansipkl/Playbook.pkl" as P
 // import "@ansipkl/AnsibleBuiltin.pkl"
-import "@ansipkl/CommunityGeneral.pkl"
+import "@ansipkl/CommunityGeneral.pkl" as Cg
 
-setup_00_pb = new Listing<Playbook.Play> {
-    new {
-        name = "play_20X6"
+todo = P.NewPlaybook(new Listing {
+    new P.Play {
+        name = "todo"
         hosts = "self"
         remote_user = "root"
-
         tasks {
-            new CommunityGeneral.Pacman {
+            new Cg.Pacman {
                 name = "packages"
                 options {
                     name { 
@@ -19,19 +18,39 @@ setup_00_pb = new Listing<Playbook.Play> {
                         "otf-ipafont"
                     }
                 }
-            }.into()
+            }.Task()
         }
     }
-}
+})
 
-setup_01_pb = new Listing<Playbook.Play> {
-    new {
+pb00 = P.NewPlaybook(new Listing {
+    new P.Play {
+        name = "play_20X6"
+        hosts = "self"
+        remote_user = "root"
+        tasks {
+            new Cg.Pacman {
+                name = "packages"
+                options {
+                    name { 
+                        "neovide" 
+                        "ttf-iosevka-nerd"
+                        "ttf-terminus-nerd"
+                        "otf-ipafont"
+                    }
+                }
+            }.Task()
+        }
+    }
+})
+
+pb01 = P.NewPlaybook(new Listing {
+    new P.Play {
         name = "play_01"
         hosts = "self"
         remote_user = "root"
-
         tasks {
-            new CommunityGeneral.Pacman {
+            new Cg.Pacman {
                 name = "more packages"
                 options {
                     name { 
@@ -39,17 +58,15 @@ setup_01_pb = new Listing<Playbook.Play> {
                         "hexchat" 
                     }
                 }
-            }.into()
+            }.Task()
         }
     }
-
-    new {
+    new P.Play {
         name = "play_02"
         hosts = "self"
         remote_user = "root"
-
         tasks {
-            new CommunityGeneral.Pacman {
+            new Cg.Pacman {
                 name = "more more packages"
                 options {
                     name { 
@@ -57,8 +74,8 @@ setup_01_pb = new Listing<Playbook.Play> {
                         "inkscape" 
                     }
                 }
-            }.into()
+            }.Task()
         }
     }
-}
+})
 
