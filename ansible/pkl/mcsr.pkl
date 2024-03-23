@@ -24,6 +24,7 @@ install = P.NewPlaybook(new Listing {
                     }
                 }
             }.Task()
+
             //
             // bash macros
             //
@@ -53,6 +54,7 @@ install = P.NewPlaybook(new Listing {
                 }
                 loop = "{{ to_copy.files }}"
             }.Task()
+
             //
             // sxhkd
             //
@@ -81,6 +83,7 @@ install = P.NewPlaybook(new Listing {
                     """
                 }
             }.Task()
+
             //
             // ninjabrian
             //
@@ -101,6 +104,7 @@ install = P.NewPlaybook(new Listing {
                 `when` = "download | default(True)"
                 register = "ninjabrain"
             }.Task()
+
             //
             // multimc
             //
@@ -146,30 +150,35 @@ start = P.NewPlaybook(new Listing {
         hosts = "self"
         remote_user = "{{ username }}"
         tasks {
-            // //
-            // // disable window border
-            // //
-            // new Ab.SetFact {
-            //     name = "check border options"
-            //     options_mixin {
-            //         border = false
-            //     }
-            //     `when` = "border is undefined"
-            // }.Task()
-            // new Ab.Shell {
-            //     name = "enable window borders"
-            //     options {
-            //         cmd = "xfconf-query -c xfwm4 -p /general/theme -s Gelly"
-            //     }
-            //     `when` = "border"
-            // }.Task()
-            // // todo meta end_play
-            // new Ab.Shell {
-            //     name = "disable window borders"
-            //     options {
-            //         cmd = "xfconf-query -c xfwm4 -p /general/theme -s empty"
-            //     }
-            // }.Task()
+
+            //
+            // disable window border
+            //
+            new Ab.SetFact {
+                name = "check border options"
+                options_mixin {
+                    border = false
+                }
+                `when` = "border is undefined"
+            }.Task()
+            new Ab.Shell {
+                name = "enable window borders"
+                options {
+                    cmd = "xfconf-query -c xfwm4 -p /general/theme -s Gelly"
+                }
+                `when` = "border"
+            }.Task()
+            new Ab.MetaTask {
+                `ansible.builtin.meta` = "end_play"
+                `when` = "border"
+            }
+            new Ab.Shell {
+                name = "disable window borders"
+                options {
+                    cmd = "xfconf-query -c xfwm4 -p /general/theme -s empty"
+                }
+            }.Task()
+
             //
             // sxhkd
             //
@@ -194,6 +203,7 @@ start = P.NewPlaybook(new Listing {
                 }
                 `when` = "mmc.stdout != ''"
             }.Task()
+
             //
             // ninjabrain
             //
@@ -206,6 +216,7 @@ start = P.NewPlaybook(new Listing {
                 }
                 // `when` = "nb.stdout == ''"
             }.Task()
+
             //
             // multimc
             //
