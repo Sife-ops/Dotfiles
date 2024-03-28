@@ -1,5 +1,6 @@
 return {
     "nvim-lua/plenary.nvim",
+
     require("plugin.treesitter"),
     {
         -- https://github.com/apple/pkl-neovim/pull/5
@@ -13,7 +14,9 @@ return {
             vim.cmd("TSInstall! pkl")
         end,
     },
+
     require("plugin.lsp"),
+    require("plugin.neogit"),
     require("plugin.telescope"),
     require("plugin.nvimtree"),
     require("plugin.mason"),

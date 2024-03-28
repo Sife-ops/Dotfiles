@@ -82,5 +82,6 @@ return {
         })
 
         require("lspconfig").gopls.setup({})
+        require("lspconfig").erlangls.setup({})
     end,
 }

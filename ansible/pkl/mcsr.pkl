@@ -154,6 +154,7 @@ start = P.NewPlaybook(new Listing {
             //
             // disable window border
             //
+            // todo touch /usr/share/themes/empty/xfwm4/themerc
             new Ab.SetFact {
                 name = "check border options"
                 options_mixin {
