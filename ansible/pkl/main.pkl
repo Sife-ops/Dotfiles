@@ -18,9 +18,9 @@ output {
             text = "\(shebang)\(dashes)\(r.renderDocument(mcsr.start))"
         }
 
-        ["setup/setup_todo.yml"] {
-            text = "\(shebang)\(dashes)\(r.renderDocument(setup.todo))"
-        }
+        // ["setup/setup_todo.yml"] {
+        //     text = "\(shebang)\(dashes)\(r.renderDocument(setup.todo))"
+        // }
 
         ["setup/setup_00.yml"] {
             text = "\(shebang)\(dashes)\(r.renderDocument(setup.pb00))"
