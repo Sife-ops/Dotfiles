@@ -76,7 +76,3 @@
     ansible.builtin.shell:
       chdir: ./tmp/multimc
       cmd: tar -xf mmc-develop-lin64.tar.gz
-  - name: copy standardoptions.txt
-    ansible.builtin.copy:
-      dest: ./tmp/multimc/MultiMC/instances/
-      src: ./standardoptions.txt

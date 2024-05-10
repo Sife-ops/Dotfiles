@@ -20,7 +20,7 @@ fov:1.0
 gamma:5.0
 renderDistance:16
 entityDistanceScaling:5.0
-guiScale:4
+guiScale:3
 particles:0
 maxFps:120
 graphicsMode:1

@@ -133,13 +133,15 @@ install = P.NewPlaybook(new Listing {
                 }
                 `when` = "download | default(True)"
             }.Task()
-            new Ab.Copy {
-                name = "copy standardoptions.txt"
-                options {
-                    src = "./standardoptions.txt"
-                    dest = "./tmp/multimc/MultiMC/instances/"
-                }
-            }.Task()
+            // regarded
+            // new Ab.File {
+            //     name = "link standardoptions.txt"
+            //     options {
+            //         src = "./standardoptions.txt"
+            //         path = "./tmp/multimc/MultiMC/instances/standardoptions.txt"
+            //         state = "link"
+            //     }
+            // }.Task()
         }
     }
 })
