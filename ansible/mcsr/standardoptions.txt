@@ -4,7 +4,7 @@ chatColors:true
 chatLinks:true
 chatLinksPrompt:true
 enableVsync:false
-entityShadows:false
+entityShadows:true
 forceUnicodeFont:false
 discrete_mouse_scroll:false
 invertYMouse:false
@@ -12,7 +12,7 @@ reducedDebugInfo:false
 showSubtitles:true
 touchscreen:false
 fullscreen:false
-bobView:false
+bobView:true
 toggleCrouch:false
 toggleSprint:false
 mouseSensitivity:0.504122793674469
@@ -21,9 +21,9 @@ gamma:5.0
 renderDistance:16
 entityDistanceScaling:5.0
 guiScale:4
-particles:2
+particles:0
 maxFps:120
-graphicsMode:0
+graphicsMode:1
 ao:2
 renderClouds:true
 attackIndicator:1
@@ -44,7 +44,7 @@ chatWidth:1.0
 mipmapLevels:4
 mainHand:right
 narrator:0
-biomeBlendRadius:0
+biomeBlendRadius:2
 mouseWheelSensitivity:1.0
 rawMouseInput:true
 key_key.attack:key.mouse.left
